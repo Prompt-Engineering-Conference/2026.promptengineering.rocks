@@ -1,2 +1,2 @@
-# home
-Public home for SREday
+# web
+Grin.eco website

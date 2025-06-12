@@ -1,10 +1,10 @@
-base_path: "https://www.sreday.com/"
+base_path: "https://promptengineering.rocks/"
 base_folder: "static"
 tickets_url: "https://checkout.eventcreate.com/sreday/select-buy"
-twitter_url: https://twitter.com/sreday_com
-linkedin_url: https://www.linkedin.com/company/sreday/
-youtube_url: https://www.youtube.com/@sreday
-mailto: "mailto:mark@sreday.com"
+twitter_url: https://x.com/PromptEngConf
+linkedin_url: https://www.linkedin.com/company/prompt-engineering-conference/
+youtube_url: https://www.youtube.com/@PromptEngineeringConf
+mailto: "mailto:hello@promptengineering.rocks"
 
 hero_pictures:
 - ../photos/london-2022-0.jpg
@@ -28,60 +28,19 @@ counts:
 
 events:
 
-  - name: London - Prompt Engineering Conference
+  - name: Prompt Engineering Conference 2025
     location: London, UK
     photo_url: ./assets/images/events/sreday-2025-cologne-q2.jpeg
-    url: ./2025-london-q3/
+    url: ./2025-london-q4/
 
 events_past:
 
-  - name: OPrompt Engineering Conference 2024 - Online
+  - name: Prompt Engineering Conference 2024
     location: Online
     photo_url: ./assets/images/events/sreday-2025-cologne-q2.jpeg
-    url: ./2024-online/
+    url: https://2024.promptengineering.rocks/
 
-
-meetups:
-
-  - name: SREday meetup - beers & talks
-    date: Wednesday, February 5 2025
-    time: 6pm
-    location: London, UK
-    address: RiverSafe, Sierra Quebec Bravo, 77 Marsh Wall, London E14 9SH
-    gmaps: <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.657336807931!2d-0.019034622053465677!3d51.50115537181185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760357546dd31f%3A0x92c7bfb860480f6!2sRiverSafe!5e0!3m2!1sen!2suk!4v1731694381921!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    url: meetup-london-2025-feb
-    tickets_url: https://lu.ma/sreday-meetup-lon-2025-feb
-    talks: meetup-london-2025-feb.csv
-    tickets_embed: |
-      <iframe
-          src="https://lu.ma/embed/event/evt-RRz4K1uA2fgPdyp/simple"
-        width="800"
-        height="690"
-        frameborder="0"
-        style="border: 1px solid #bfcbda88; border-radius: 4px;"
-        allowfullscreen=""
-        aria-hidden="false"
-        tabindex="0"
-      ></iframe>
-
-meetups_past:
-
-  - name: SREday & K8SUG meetup
-    date: Wednesday, November 20 2024
-    time: 6pm
-    location: London, UK
-    address: RiverSafe, Sierra Quebec Bravo, 77 Marsh Wall, London E14 9SH
-    gmaps: <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.657336807931!2d-0.019034622053465677!3d51.50115537181185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760357546dd31f%3A0x92c7bfb860480f6!2sRiverSafe!5e0!3m2!1sen!2suk!4v1731694381921!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    url: meetup-london-2024-nov
-    talks: meetup-london-2024-nov.csv
-    tickets_embed: |
-      <iframe
-        src="https://lu.ma/embed/event/evt-FyeAylJ5pdJCTMF/simple"
-        width="600"
-        height="650"
-        frameborder="0"
-        style="border: 1px solid #bfcbda88; border-radius: 4px;"
-        allowfullscreen=""
-        aria-hidden="false"
-        tabindex="0"
-      ></iframe>
+  - name: Prompt Engineering Conference 2023
+    location: Online
+    photo_url: ./assets/images/events/sreday-2025-cologne-q2.jpeg
+    url: https://2023.promptengineering.rocks/

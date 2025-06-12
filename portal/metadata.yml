@@ -1,0 +1,46 @@
+base_path: "https://promptengineering.rocks/"
+base_folder: "static"
+tickets_url: "https://checkout.eventcreate.com/sreday/select-buy"
+twitter_url: https://x.com/PromptEngConf
+linkedin_url: https://www.linkedin.com/company/prompt-engineering-conference/
+youtube_url: https://www.youtube.com/@PromptEngineeringConf
+mailto: "mailto:hello@promptengineering.rocks"
+
+hero_pictures:
+- ../photos/london-2022-0.jpg
+- ../photos/london-2022-1.jpg
+- ../photos/sreday-san-francisco-2024-0.jpg
+- ../photos/sreday-san-francisco-2024-1.jpg
+- ../photos/london-2022-2.jpg
+- ../photos/london-2022-3.jpg
+- ../photos/london-2022-4.jpg
+- ../photos/london-2022-5.jpg
+- ../photos/london-2023-0.jpg
+- ../photos/london-2023-1.jpg
+- ../photos/london-2023-2.jpg
+- ../photos/london-2023-3.jpg
+
+counts:
+ events: 2
+ countries: 3
+ speakers: 100+
+ attendees: 10000+
+
+events:
+
+  - name: Prompt Engineering Conference 2025
+    location: London, UK
+    photo_url: ./assets/images/events/sreday-2025-cologne-q2.jpeg
+    url: ./2025-london-q4/
+
+events_past:
+
+  - name: Prompt Engineering Conference 2024
+    location: Online
+    photo_url: ./assets/images/events/sreday-2025-cologne-q2.jpeg
+    url: https://2024.promptengineering.rocks/
+
+  - name: Prompt Engineering Conference 2023
+    location: Online
+    photo_url: ./assets/images/events/sreday-2025-cologne-q2.jpeg
+    url: https://2023.promptengineering.rocks/

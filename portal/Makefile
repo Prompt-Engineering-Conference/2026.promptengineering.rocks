@@ -8,7 +8,8 @@ clean:
 	rm -rf ./static/*
 
 theme:
-	cp -r ../_assets/template_v1/* static/
+	cp -r template/assets static/assets
+	cp -r template/favicon.ico static
 	cp -r assets static
 
 serve:

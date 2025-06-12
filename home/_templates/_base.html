@@ -51,13 +51,13 @@
 </head>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CQ2KV6LK8G"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TJD11HYWN5"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-CQ2KV6LK8G');
+  gtag('config', 'G-TJD11HYWN5');
 </script>
 
 <style>
@@ -115,7 +115,7 @@
 		<div id="hero-carousel" class="hero-carousel carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
 			<div class="carousel-inner">
 				{% for pic in hero_pictures %}
-				<div class="carousel-item tinted {{ 'active' if loop.index == 1 else ''}}" style="background:url('{{ pic }}') no-repeat center"></div>
+				<div class="carousel-item tinted {{ 'active' if loop.index == 1 else ''}}" style="background:url('{{ pic }}') no-repeat center; background-size: cover;"></div>
 				{% endfor %}
 			</div>
 
@@ -133,7 +133,7 @@
 				<div class="hero-cta mt-5">
 					<a class="btn btn-secondary btn-lg" href="#tickets">Get Tickets</a>
 					{% if event_state != 'after' %}
-					<a class="btn btn-primary btn-lg" href="{{ cfp_url }}" target="_blank">CFP</a>
+					<a class="btn btn-primary btn-lg" href="{{ cfp_url }}" target="_blank">Be a speaker!</a>
 					{% endif %}
 			    </div>
 			</div><!--//hero-text-block-->
@@ -147,7 +147,7 @@
 				<div class="col-6 col-md-3">
 					<div class="item">
 						<div class="number">{{ days }}</div>
-						<div class="unit">Days</div>
+						<div class="unit">Day</div>
 					</div><!--//item-->
 				</div><!--//col-->
 				<div class="col-6 col-md-3">

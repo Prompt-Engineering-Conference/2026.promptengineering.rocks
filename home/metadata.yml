@@ -40,8 +40,10 @@ breaks:
   talks_before: 4
 
 sponsors:
-  - logo: hockeystick.png
-    url: https://www.hockeystick.show
+  - logo: prompt-hub.png
+    url: https://www.prompthub.us/
+  - logo: prompt-perfect.png
+    url: https://promptperfect.xyz/
 
 # these get displayed at the top
 hero_pictures:

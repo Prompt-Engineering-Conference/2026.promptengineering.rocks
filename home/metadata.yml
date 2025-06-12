@@ -17,6 +17,7 @@ cfp_url: https://www.papercall.io/prompt-engineering-conference-2025-london
 days: 1
 attendees: 250
 speakers: 30+
+tracks: 3
 
 rooms:
 - screen 1
@@ -44,10 +45,9 @@ sponsors:
 
 # these get displayed at the top
 hero_pictures:
-- ../photos/london-2023-0.jpg
-- ../photos/london-2023-1.jpg
-- ../photos/london-2023-2.jpg
-- ../photos/london-2023-3.jpg
+- ../photos/venue-1.jpg
+- ../photos/venue-2.jpg
+- ../photos/venue-3.jpg
 
 # probably don't need changing
 base_path: "https://promptengineering.rocks/"

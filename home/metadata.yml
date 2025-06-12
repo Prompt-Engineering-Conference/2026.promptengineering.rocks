@@ -21,10 +21,10 @@ hero_pictures:
 - ../photos/london-2023-3.jpg
 
 counts:
- events: 6
+ events: 2
  countries: 3
- speakers: 180+
- attendees: 1000+
+ speakers: 100+
+ attendees: 10000+
 
 events:
 
@@ -44,3 +44,7 @@ events_past:
     location: Online
     photo_url: ./assets/images/events/sreday-2025-cologne-q2.jpeg
     url: https://2023.promptengineering.rocks/
+
+ meetups:
+ 
+ meetups_past:

@@ -51,6 +51,7 @@ for page in pages:
         f.write(template.render(page=page, **context))
 
 # MEETUPS
+"""
 print(DIVIDER)
 meetups = context.get("meetups") + context.get("meetups_past")
 print(f"Generating {len(meetups)} meetup pages")
@@ -74,3 +75,4 @@ for meetup in meetups:
         print("Writing out", f.name)
         template = env.get_template("meetup.html")
         f.write(template.render(talks=talks_raw, meetup=meetup, **context))
+"""

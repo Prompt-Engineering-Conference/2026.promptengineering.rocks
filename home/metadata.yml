@@ -45,6 +45,16 @@ sponsors:
   - logo: prompt-perfect.png
     url: https://promptperfect.xyz/
 
+partners:
+  - logo: pe-norway-full.png
+    url: hhttps://www.meetup.com/promptengineering/
+  - logo: gdg-london.jpg
+    url: https://www.meetup.com/gdglondon/
+  - logo: berlin-prompt-engineers.png
+    url: https://www.meetup.com/berlin-prompt-engineers-meetup/
+  - logo: it-schulungen.png
+    url: https://www.it-schulungen.com/
+
 # these get displayed at the top
 hero_pictures:
 - ../photos/venue-1.jpg

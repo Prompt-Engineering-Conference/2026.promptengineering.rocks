@@ -265,8 +265,8 @@
 
 <section id="sponsors" class="sponsors-section section">
   <div class="container">
-    <h3 class="section-heading text-center mb-3">Sponsors &amp; Partners</h3>
-    <div class="section-intro text-center single-col-max mx-auto mb-5">Want to become a sponsor? Get in touch!</div>
+    <h3 class="section-heading text-center mb-3">Sponsors</h3>
+    <div class="section-intro text-center single-col-max mx-auto mb-5">Our sponsors get best in class visibility in the AI Engineering community</div>
     <div class="row logos justify-content-center">
       {% for sponsor in sponsors %}
       <div class="logo-item col-6 col-md-4 col-lg-2"><a href="{{sponsor.url}}" target="_blank"><img
@@ -274,7 +274,22 @@
       {% endfor %}
     </div><!--//row-->
     <div class="sponsors-cta text-center pt-5"><a class="btn-primary btn btn-lg"
-        href="mailto:hello@promptengineering.rocks">Become A Sponsor</a></div>
+        href="mailto:hello@promptengineering.rocks">Want to become a sponsor? Get in touch!</a></div>
+  </div><!--//container-->
+</section><!--//sponsors-section-->
+
+<section id="sponsors" class="sponsors-section section">
+  <div class="container">
+    <h3 class="section-heading text-center mb-3">Community Partners</h3>
+    <div class="section-intro text-center single-col-max mx-auto mb-5">Our community partners benefit from the exclusive discounts for their members and joint events with the best conference speakers on stage</div>
+    <div class="row logos justify-content-center">
+      {% for partner in partners %}
+      <div class="logo-item col-6 col-md-4 col-lg-2"><a href="{{partner.url}}" target="_blank"><img
+            src="./assets/images/sponsors/{{ partner.logo }}" alt=""></a></div>
+      {% endfor %}
+    </div><!--//row-->
+    <div class="sponsors-cta text-center pt-5"><a class="btn-primary btn btn-lg"
+        href="mailto:hello@promptengineering.rocks">Want to become a community partner? Get in touch!</a></div>
   </div><!--//container-->
 </section><!--//sponsors-section-->
 

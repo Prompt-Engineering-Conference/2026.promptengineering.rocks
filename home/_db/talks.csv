@@ -76,3 +76,12 @@ We will describe how to convert the idea into the AI-powered pipeline and then w
 **Alena Panshina** is a product manager and consultant with 13 years in tech. Former Yandex PM and ex-CEO of a $2M AI startup, she has been working with LLMs since 2019. She has scaled products from zero to millions of users and now helps companies build AI-powered solutions. Based in Ireland, she has traveled to 40 countries.
 
 "
+,confirmed,Richard Brough,1,1,Blue Beck,Richard Brough.png,https://www.linkedin.com/in/richard-n-brough/,,,,Prompting LLMs to use Tools and Resources with MCP,"The majority of Model Context Protocol (MCP) use right now is directly through end user applications like Claude Desktop or Cursor. However, pretty much any Large language Model, from small open models, to the APIs of the frontier models can be prompted to call tools and retrieve external resources, including those exposed using the Model Context Protocol (MCP).
+
+Doing this effectively in your projects is key to the development of agentic software.
+
+This talk will explore how different models respond to different types of tool use prompting, along with the benefits and pitfalls prompting to generate tool calls in different data formats. We will go through some real examples of interacting with MCP servers, and look at the prompts used by some popular agentic frameworks and tools.",,"Experienced software professional focussed on Machine Learning and Apps with a passion for Open Source AI and a strong interest in novel ways Machine Learning can be used on locally on low power devices.
+
+In 2024 Richard delivered a talk about using the open source CodeGemma model for Google DevFest Scotland, and spoke about the current state of Open Source AI at the Macc Tech event.
+
+Richard is the CTO at Blue Beck Ltd, and has a background in backend service and mobile development, going back to when the first releases of the Android and iOS SDKs became available, on other mobile devices before that, having started his career at RARE as a console game developer."

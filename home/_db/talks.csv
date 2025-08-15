@@ -103,3 +103,18 @@ Vlad is a seasoned full-stack developer with over a decade of experience buildin
 He is a member of the Diesel.rs contributor team and the creator of opencryptolist.xyz, a platform dedicated to fostering open-source contributions in the blockchain industry. Vlad is also the author of getIDL.xyz – a tool to get IDL and source code info from closed-source Solana programs, using AI-based reverse engineering. He has open-sourced, maintained, and contributed to several libraries in the Ruby and Rust ecosystems (including pkcs12cracker, solscan-mcp, and visual-cryptography).
 
 He is also a writer for EffectiveProgrammer, AI Advances, IT Next, and Level Up Coding, and a three-time hackathon winner."
+,confirmed,Meenatchi Sundari,1,1,"Royal Holloway, University of London",Meenatchi Sundari.png,https://www.linkedin.com/in/meenatchi-sundari/,,,,Logic Meets Automation: How DSPy and Prolog-Style Reasoning Boosted GPT-3.5 Accuracy by 19.5%,"Large Language Models (LLMs) often fail not because they lack capability, but because the prompts guiding them are inefficient. Manual prompt engineering is slow, inconsistent, and nearly impossible to scale.
+
+In this talk, I’ll share how I tackled this in my open-source project, prompt-eng-gsm8k-gpt3.5-dspy, where I used DSPy to automate prompt creation and tuning for the GSM8K mathematical reasoning benchmark.
+
+By defining tasks declaratively in DSPy and letting its compiler handle generation and refinement, I compared zero-shot (55.0%), few-shot (60.5%), chain-of-thought (68.0%), self-consistency (72.5%), Prolog-style (71.0%), and my Enhanced Prolog method — which achieved 74.5% accuracy, a 19.5% gain over zero-shot and 6.5% over CoT, while using less time and tokens than self-consistency.
+
+This Enhanced Prolog approach structures the LLM’s reasoning as logical facts and inference rules, making outputs: • More accurate by avoiding reasoning leaps • Debuggable via traceable steps • Machine-verifiable through logical consistency checks
+
+Attendees will learn: 1. How DSPy automates and scales prompt optimization. 2. When to use zero-shot, CoT, few-shot, self-consistency, or logic-based prompting. 3. How Prolog-style reasoning improves reliability and explainability. 4. Setting up A/B testing pipelines for prompt evaluation. 5. Debugging workflows for more trustworthy LLM outputs.
+
+Packed with real metrics, open-source code, and a reproducible workflow, this talk moves you from guesswork to data-driven prompt engineering that’s explainable, efficient, and production-ready.",,"I am a Master’s student in Artificial Intelligence at Royal Holloway, University of London, specializing in prompt engineering, LLM optimization, and NLP. I created the open-source project prompt-eng-gsm8k-gpt3.5-dspy, where I used DSPy to automate prompt creation for the GSM8K benchmark and developed my Enhanced Prolog-style reasoning method, boosting GPT-3.5 accuracy from 55.0% (zero-shot) to 74.5%.
+
+I have hands-on experience testing prompt strategies — zero-shot, few-shot, chain-of-thought, self-consistency, Prolog-style, and DSPy-optimized — across multiple models, including GPT-3.5, LLaMA-2-7B-Chat-HF, and Qwen. My work combines reproducible code, measurable results, and practical workflows that bridge research and real-world applications.
+
+Outside AI, I enjoy doodling, playing badminton, and mentoring peers in AI projects. And while I don’t have a definitive favorite member of One Direction, I’ll say Harry Styles for his creativity — a trait I also bring to my AI experiments."

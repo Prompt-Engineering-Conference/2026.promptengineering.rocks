@@ -40,6 +40,8 @@ breaks:
   talks_before: 4
 
 sponsors:
+  - logo: arato.png
+    url: https://arato.ai/
   - logo: prompt-hub.png
     url: https://www.prompthub.us/
   - logo: prompt-perfect.png

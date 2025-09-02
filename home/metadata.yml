@@ -25,7 +25,7 @@ rooms:
 - Practices, Productivity, Impact
 
 breaks:
-- title: Coffee break
+- title: Registration & coffee
   duration: 30
   comment: Main lobby
   # this decides how many talks in-between this and previous section

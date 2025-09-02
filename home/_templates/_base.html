@@ -107,6 +107,14 @@
 	.hero-block {
 		height: 420px;
 	}
+
+	@media (width <= 800px) {
+		.hero-block {
+    	padding-top: 70px;
+		}
+	}
+ 
+
 </style>
 	
 
@@ -162,7 +170,7 @@
 				<h1 class="logo retro">Prompt Engineering Conference</h1>
 				<h2 class="text-white">Learn how to interact with the world's most powerful AI</h2>
 				<h3 class="text-white"><i class="far fa-calendar-alt me-2"></i>{{ date_string }} <i class="fas fa-map-marker-alt mx-2"></i>{{ location_string }}</h3>
-				<div class="hero-cta mt-5">
+				<div class="hero-cta mt-1">
 					<a class="btn btn-secondary btn-lg" href="#tickets">Get your ticket</a>
 			    </div>
 			</div><!--//hero-text-block-->

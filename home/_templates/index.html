@@ -202,8 +202,11 @@
     <div class="section-intro text-center single-col-max mx-auto mb-5">Our sponsors get best in class visibility in the AI Engineering community</div>
     <div class="row logos justify-content-center">
       {% for sponsor in sponsors %}
-      <div class="logo-item col-6 col-md-4 col-lg-2"><a href="{{sponsor.url}}" target="_blank"><img
-            src="./assets/images/sponsors/{{ sponsor.logo }}" alt=""></a></div>
+      <div class="logo-item col-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center" style="min-height:96px;">
+        <a href="{{sponsor.url}}" target="_blank" class="d-inline-block">
+          <img src="./assets/images/sponsors/{{ sponsor.logo }}" alt="" class="img-fluid" style="max-height:72px; width:auto; object-fit:contain;" />
+        </a>
+      </div>
       {% endfor %}
     </div><!--//row-->
     <div class="sponsors-cta text-center pt-5"><a class="btn-primary btn btn-lg"
@@ -217,8 +220,11 @@
     <div class="section-intro text-center single-col-max mx-auto mb-5">Our community partners benefit from the exclusive discounts for their members and joint events with the best conference speakers on stage</div>
     <div class="row logos justify-content-center">
       {% for partner in partners %}
-      <div class="logo-item col-6 col-md-4 col-lg-2"><a href="{{partner.url}}" target="_blank"><img
-            src="./assets/images/partners/{{ partner.logo }}" alt=""></a></div>
+      <div class="logo-item col-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center" style="min-height:96px;">
+        <a href="{{partner.url}}" target="_blank" class="d-inline-block">
+          <img src="./assets/images/partners/{{ partner.logo }}" alt="" class="img-fluid" style="max-height:72px; width:auto; object-fit:contain;" />
+        </a>
+      </div>
       {% endfor %}
     </div><!--//row-->
     <div class="sponsors-cta text-center pt-5"><a class="btn-primary btn btn-lg"

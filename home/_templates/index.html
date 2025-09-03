@@ -204,7 +204,7 @@
       {% for sponsor in sponsors %}
       <div class="logo-item col-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center" style="min-height:96px;">
         <a href="{{sponsor.url}}" target="_blank" class="d-inline-block">
-          <img src="./assets/images/sponsors/{{ sponsor.logo }}" alt="" class="img-fluid" style="max-height:72px; width:auto; object-fit:contain;" />
+          <img src="./assets/images/sponsors/{{ sponsor.logo }}" alt="" class="img-fluid" style="max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain;" />
         </a>
       </div>
       {% endfor %}
@@ -222,7 +222,7 @@
       {% for partner in partners %}
       <div class="logo-item col-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center" style="min-height:96px;">
         <a href="{{partner.url}}" target="_blank" class="d-inline-block">
-          <img src="./assets/images/partners/{{ partner.logo }}" alt="" class="img-fluid" style="max-height:72px; width:auto; object-fit:contain;" />
+          <img src="./assets/images/partners/{{ partner.logo }}" alt="" class="img-fluid" style="max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain;" />
         </a>
       </div>
       {% endfor %}

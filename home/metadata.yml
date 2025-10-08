@@ -25,13 +25,17 @@ rooms:
 - Practices, Productivity, Impact
 
 breaks:
-- title: Registration & coffee
+- title: Registration
   duration: 30
   comment: Main lobby
   # this decides how many talks in-between this and previous section
   talks_before: 0
+- title: Coffee break
+  duration: 30
+  comment: Main lobby
+  talks_before: 1
 - title: Lunch & networking
-  duration: 60
+  duration: 45
   comment: Main lobby
   talks_before: 3
 - title: Networking & sponsor crawl

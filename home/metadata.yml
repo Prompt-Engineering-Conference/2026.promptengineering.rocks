@@ -42,10 +42,6 @@ breaks:
   duration: 15
   comment: Main lobby
   talks_before: 3
-- title: Networking & sponsor crawl
-  duration: 15
-  comment: Main lobby
-  talks_before: 3
 
 sponsors:
   - logo: arato.png

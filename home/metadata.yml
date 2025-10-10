@@ -78,6 +78,14 @@ partners:
     url: https://www.meetup.com/angular-london/
   - logo: freecodecamp-london.png
     url: https://www.meetup.com/freecodecamp-london/
+  - logo: london-pytorch.png
+    url: https://www.meetup.com/london-pytorch-meetup/
+  - logo: techleadconf.png
+    url: https://techleadconf.com/
+  - logo: gitnation.png
+    url: https://gitnation.com/
+  - logo: city-js.png
+    url: https://cityjsconf.org/
 
 # these get displayed at the top
 hero_pictures:

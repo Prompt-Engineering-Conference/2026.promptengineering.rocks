@@ -1,170 +1,100 @@
-base_path: "https://www.sreday.com/"
-base_folder: "static"
-tickets_url: "https://checkout.eventcreate.com/sreday/select-buy"
-twitter_url: https://twitter.com/sreday_com
-linkedin_url: https://www.linkedin.com/company/sreday/
-youtube_url: https://www.youtube.com/@sreday
-mailto: "mailto:mark@sreday.com"
+# TODO - change these
 
+# start time includes timezone at the end relative to UTC
+start_time: "2025-10-16T09:00:00-00:00"
+# before - no schedule
+# active - schedule
+# after  - hide ticket sales
+event_state: after
+date_string: "October 16, 2025"
+location_string: "Everyman Canary Wharf, London, UK"
+# get this from the event url
+luma_evt: evt-AyRiavyZCxqf5eM
+cfp_url: https://www.papercall.io/prompt-engineering-conference-2025-london
+
+# the number of tracks needs to be the same per day
+# the tracks will be taken in the order they appear in the CSV file
+days: 1
+attendees: 250
+speakers: 30+
+tracks: 3
+
+rooms:
+- Core & Advanced Techniques
+- Agents, Automation, Systems
+- Practices, Productivity, Impact
+
+breaks:
+- title: Registration
+  duration: 30
+  comment: Main lobby
+  # this decides how many talks in-between this and previous section
+  talks_before: 0
+- title: Coffee break
+  duration: 15
+  comment: Main lobby
+  talks_before: 1
+- title: Lunch & networking
+  duration: 45
+  comment: Main lobby
+  talks_before: 3
+- title: Networking & sponsor crawl
+  duration: 15
+  comment: Main lobby
+  talks_before: 3
+- title: Networking & sponsor crawl
+  duration: 15
+  comment: Main lobby
+  talks_before: 2
+
+sponsors:
+  - logo: arato.png
+    url: https://arato.ai/
+  - logo: comet.png
+    url: https://www.comet.com/
+  - logo: aiproductivityhub.png
+    url: https://www.skool.com/ai-productivity-hub/about
+  - logo: prompt-hub.png
+    url: https://www.prompthub.us/
+  - logo: packt.png
+    url: https://packtpub.com/
+
+partners:
+  - logo: pe-norway-full.png
+    url: https://www.meetup.com/promptengineering-community/
+  - logo: gdg-london.jpg
+    url: https://www.meetup.com/gdglondon/
+  - logo: london-agentic-ai-meetup.png
+    url: https://www.meetup.com/london-agentic-ai/
+  - logo: it-schulungen.png
+    url: https://www.it-schulungen.com/
+  - logo: pec.png
+    url: https://www.pec.asia/2025/conference
+  - logo: cubixai.jpg
+    url: https://cubixai.com/
+  - logo: angular-london.png
+    url: https://www.meetup.com/angular-london/
+  - logo: freecodecamp-london.png
+    url: https://www.meetup.com/freecodecamp-london/
+  - logo: london-pytorch.png
+    url: https://www.meetup.com/london-pytorch-meetup/
+  - logo: techleadconf.png
+    url: https://techleadconf.com/
+  - logo: gitnation.png
+    url: https://gitnation.com/
+  - logo: city-js.png
+    url: https://cityjsconf.org/
+
+# these get displayed at the top
 hero_pictures:
-- ../photos/london-2022-0.jpg
-- ../photos/london-2022-1.jpg
-- ../photos/sreday-san-francisco-2024-0.jpg
-- ../photos/sreday-san-francisco-2024-1.jpg
-- ../photos/london-2022-2.jpg
-- ../photos/london-2022-3.jpg
-- ../photos/london-2022-4.jpg
-- ../photos/london-2022-5.jpg
-- ../photos/london-2023-0.jpg
-- ../photos/london-2023-1.jpg
-- ../photos/london-2023-2.jpg
-- ../photos/london-2023-3.jpg
+- ../photos/venue-1.jpg
+- ../photos/venue-2.jpg
+- ../photos/venue-3.jpg
 
-counts:
- events: 6
- countries: 3
- speakers: 180+
- attendees: 1000+
-
-
-events:
-
-  - name: SREday Cologne 2025 Q2
-    location: Ilert.com, Cologne, Germany
-    photo_url: ./assets/images/events/sreday-2025-cologne-q2.jpeg
-    url: ./2025-cologne-q2/
-
-  - name: SREday Amsterdam 2025 Q2
-    location: Catawiki, Amsterdam, NL
-    photo_url: ./assets/images/events/sreday-2025-amsterdam-q2.png
-    url: ./2025-amsterdam-q2/
-
-  - name: SREday London 2025 Q3
-    location: Canary Wharf, London, UK
-    photo_url: ./assets/images/events/sreday-2025-london-q3.png
-    url: ./2025-london-q3/
-
-  - name: SREday Amsterdam 2025 Q4
-    location: ING, Amsterdam, NL
-    photo_url: ./assets/images/events/sreday-2025-amsterdam-q4.png
-    url: ./2025-amsterdam-q4/
-
-events_past:
-
-  - name: SREday San Francisco 2025 Q2
-    location: San Francisco, CA, USA
-    photo_url: ./assets/images/events/sreday-2025-sanfrancisco-q2.jpeg
-    url: ./2025-san-francisco-q2/
-
-  - name: SREday Redmond 2025 Q2
-    location: Redmond, WA, USA
-    photo_url: ./assets/images/events/sreday-2025-redmond-q2.jpeg
-    url: ./2025-redmond-q2/
-
-  - name: SREday London 2025 Q1
-    location: London, UK
-    photo_url: ./assets/images/events/sreday-2025-london-q1.jpeg
-    url: ./2025-london-q1/
-
-  - name: SREday NYC 2025 Q1
-    location: New York, NY
-    photo_url: ./assets/images/events/sreday-2025-nyc-q1.jpeg
-    url: ./2025-nyc-q1/
-
-  - name: SREday Amsterdam 2024 
-    location: Amsterdam, NL
-    photo_url: ./assets/images/events/sreday-2024-amsterdam.jpeg
-    url: ./2024-amsterdam/
-
-  - name: SREday San Francisco 2024 Q4
-    location: San Francisco, CA, USA
-    photo_url: ./assets/images/events/sreday-2024-sanfrancisco-q4.jpeg
-    url: ./2024-san-francisco-q4/
-  
-  - name: SREday London 2024
-    location: London, UK
-    photo_url: ./assets/images/events/sreday-2024-london.jpeg
-    url: ./2024-london/
-
-  - name: SREday San Francisco 2024 Q2
-    location: San Francisco, CA, USA
-    photo_url: ./assets/images/events/sreday-2024-sanfrancisco.jpeg
-    url: ./2024-san-francisco/
-
-  - name: SREday London 2023
-    location: London, UK
-    photo_url: ./assets/images/events/sreday-2023-london.jpeg
-    url: ./2023-london/
-  
-  - name: SREday London 2022
-    location: London, UK
-    photo_url: ./assets/images/events/sreday-2022-london.jpeg
-    url: ./2022-london/
-
-
-meetups:
-
-  - name: SREday meetup - beers & talks
-    date: Wednesday, February 5 2025
-    time: 6pm
-    location: London, UK
-    address: RiverSafe, Sierra Quebec Bravo, 77 Marsh Wall, London E14 9SH
-    gmaps: <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.657336807931!2d-0.019034622053465677!3d51.50115537181185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760357546dd31f%3A0x92c7bfb860480f6!2sRiverSafe!5e0!3m2!1sen!2suk!4v1731694381921!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    url: meetup-london-2025-feb
-    tickets_url: https://lu.ma/sreday-meetup-lon-2025-feb
-    talks: meetup-london-2025-feb.csv
-    tickets_embed: |
-      <iframe
-          src="https://lu.ma/embed/event/evt-RRz4K1uA2fgPdyp/simple"
-        width="800"
-        height="690"
-        frameborder="0"
-        style="border: 1px solid #bfcbda88; border-radius: 4px;"
-        allowfullscreen=""
-        aria-hidden="false"
-        tabindex="0"
-      ></iframe>
-
-meetups_past:
-
-  - name: SREday & K8SUG meetup
-    date: Wednesday, November 20 2024
-    time: 6pm
-    location: London, UK
-    address: RiverSafe, Sierra Quebec Bravo, 77 Marsh Wall, London E14 9SH
-    gmaps: <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.657336807931!2d-0.019034622053465677!3d51.50115537181185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760357546dd31f%3A0x92c7bfb860480f6!2sRiverSafe!5e0!3m2!1sen!2suk!4v1731694381921!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    url: meetup-london-2024-nov
-    talks: meetup-london-2024-nov.csv
-    tickets_embed: |
-      <iframe
-        src="https://lu.ma/embed/event/evt-FyeAylJ5pdJCTMF/simple"
-        width="600"
-        height="650"
-        frameborder="0"
-        style="border: 1px solid #bfcbda88; border-radius: 4px;"
-        allowfullscreen=""
-        aria-hidden="false"
-        tabindex="0"
-      ></iframe>
-
-
-  - name: SREday meetup - beers & talks
-    date: Thursday, October 24 2024
-    time: 6pm
-    location: London, UK
-    address: RiverSafe, Sierra Quebec Bravo, 77 Marsh Wall, London E14 9SH
-    gmaps: <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.657336807931!2d-0.019034622053465677!3d51.50115537181185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760357546dd31f%3A0x92c7bfb860480f6!2sRiverSafe!5e0!3m2!1sen!2suk!4v1731694381921!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    url: meetup-london-2024-oct
-    tickets_url: https://lu.ma/sreday-meetup-lon-2024-oct
-    talks: meetup-london-2024-oct.csv
-    tickets_embed: |
-      <iframe
-          src="https://lu.ma/embed/event/evt-BsVBdncSl0Avikr/simple"
-        width="600"
-        height="650"
-        frameborder="0"
-        style="border: 1px solid #bfcbda88; border-radius: 4px;"
-        allowfullscreen=""
-        aria-hidden="false"
-        tabindex="0"
-      ></iframe>
+# probably don't need changing
+base_path: "https://promptengineering.rocks/"
+base_folder: "static"
+twitter_url: https://x.com/PromptEngConf
+linkedin_url: https://www.linkedin.com/company/prompt-engineering-conference/
+youtube_url: https://www.youtube.com/@PromptEngineeringConf
+mailto: "mailto:hello@promptengineering.rocks"

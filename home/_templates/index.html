@@ -2,191 +2,287 @@
 
 {% block content %}
 
-<section id="events" class="sponsors-section section theme-bg-light text-white">
+{% if event_state == 'before' %}
+<section id="schedule" class="schedule-section section theme-bg-light">
   <div class="container">
-    <h3 class="section-heading text-center mb-3">Upcoming conferences</h3>
-    <div class="row gx-md-5">
+    <h2 class="section-heading text-center mb-5">Schedule</h2>
+    <h4 class="section-heading text-center mb-5">Coming soon</h4>
+  </div>
+</section>
+{% else %}
+<section id="schedule" class="schedule-section section theme-bg-light">
+  <div class="container">
+    <h2 class="section-heading text-center mb-5">Conference Program</h2>
 
-      {% for event in events %}
 
-      <div class="col-12 col-lg-6 mb-4">
-        <div class="card rounded">
-          <a href="{{ event.url }}">
-            <img src="{{ event.photo_url }}" class="card-img-top rounded-top" alt="">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title mb-2">{{ event.name }}</h5>
-            <div class="card-text mb-3">
-              <div class="meta">{{ event.date }}</div>
-            </div>
-            {% if event.url %}
-            <a href="{{ event.url }}">Read more &rarr;</a>
-            {% else %}
-            Details coming soon...
-            {% endif %}
-          </div>
-        </div>
-      </div>
+    {% for day in range(days) %}
+
+    <!-- Nav tabs -->
+    <ul class="schedule-nav nav nav-pills nav-fill" id="myTab" role="tablist">
+      {% for track in tracks[(tracks|length)//days*(day):(tracks|length)//days*(day+1)] %}
+      <li class="nav-item me-2">
+        <a class="nav-link {% if loop.index==1 %}active{% endif %}" id="tab-{{ day }}-{{ loop.index }}"
+          data-bs-toggle="tab" href="#tab-{{ day }}-{{ loop.index }}-content" role="tab"
+          aria-controls="tab-{{ loop.index }}-content" aria-selected={% if loop.index==1 %}"true"{% else %}"false"{%
+          endif %}>
+          <span class="heading">{{ rooms[loop.index0] }}</span>
+          <span class="meta">{{ track }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="schedule-tab-content tab-content">
+
+      {% for track in tracks[(tracks|length)//days*(day):(tracks|length)//days*(day+1)] %}
+      <div class="tab-pane {% if loop.index==1 %}active{% endif %}" id="tab-{{ day }}-{{ loop.index }}-content"
+        role="tabpanel" aria-labelledby="tab-{{ day }}-{{ loop.index }}">
+
+        {% for talk in talks_by_tracks[track] %}
+        <div class="item item-talk">
+          <div class="meta">
+            <h4 class="time mb-3">{{ talk.start_time.strftime('%H:%M') }}</h4>
+            <div class="profile">
+              <a href="#modal-speaker-{{ talk.id }}" data-bs-toggle="modal"
+                data-bs-target="#modal-speaker-{{ talk.id }}"><img class="profile-image rounded-circle  mb-2"
+                  src="{{ talk.photo_url }}" alt=""></a>
+              <div class="name"><a class="theme-link" href="#modal-speaker-{{ talk.id }}" data-bs-toggle="modal"
+                  data-bs-target="#modal-speaker-{{ talk.id }}">{{ talk.name }}</a></div>
+            </div><!--//profile-->
+          </div><!--//meta-->
+          <div class="content">
+            <h3 class="title mb-3">
+              <a class="theme-link" href="#modal-speaker-{{ talk.id }}" data-bs-toggle="modal"
+                data-bs-target="#modal-speaker-{{ talk.id }}">{{ talk.title }}</a>
+            </h3>
+            <div class="location mb-3"></i>{{ talk.comment }}{{ talk.organization }}</div>
+            <div class="desc">{{ talk.abstract_s }}<br /><br /></div>
+          </div><!--//content-->
+        </div><!--//item-->
+
+        {% endfor %}
+
+      </div><!--//tab-{{ loop.index }}-content-->
 
       {% endfor %}
-    </div>
-    <h3 class="section-heading text-center mb-3">Upcoming meetups</h3>
-    <div class="row gx-md-5">
+    </div><!--//schedule-tab-content-->
 
-      {% for event in meetups %}
 
-      <div class="col-12 col-lg-6 mb-4">
-        <div class="card rounded">
-          <a href="./{{ event.url }}">
-            <img src="{{ event.photo_url }}" class="card-img-top rounded-top" alt="">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title mb-2">
-              <a href="{{ event.url }}">
-              {{ event.name }}
-              </a>
-            </h5>
-            <div class="card-text mb-3">
-              <div class="meta">{{ event.location }}</div>
-              <div class="meta">{{ event.date }} @ {{ event.time}}</div>
-            </div>
-          </div>
-        </div>
+    {% endfor %}
+
+  </div>
+</section>
+{% endif %}
+
+<section id="tickets" class="tickets-section section">
+  <div class="container">
+    <h3 class="section-heading text-center mb-3">Get your ticket</h3>
+
+    <p>
+      Please note: For the organization of the in-person Prompt Engineering Conference 2025 in London, we are proud to
+      partner with our trusted colleagues at SREday - the team behind the renowned <a
+        href="https://sreday.com/" target="_blank">SREday</a> event series. As part of this collaboration,
+      all ticket sales will be operated by SREDAY LIMITED, a company registered in England and Wales (Company No.
+      09690643), and will be subject to their <a href="https://promptengineering.rocks/assets/tnc.pdf"
+        target="_blank">Terms & Conditions.</a>
+    </p>
+
+    {% if event_state != 'after' %}
+    <div class="row pricing mb-5 mt-10">
+      <div class="col-12 text-center">
+        {% include 'tickets.html' %}
       </div>
-
-      {% endfor %}
     </div>
+    {% endif %}
+
   </div>
 </section>
 
-<section id="past-events" class="sponsors-section section theme-bg-primary text-white">
+<section id="about" class="schedule-section section theme-bg-light">
   <div class="container">
-    <h3 class="section-heading text-center mb-3 text-white">Past conferences</h3>
-    <div class="row gx-md-5">
+    <h2 class="section-heading text-center mb-1">What is the Prompt Engineering Conference</h2>
 
-      {% for event in events_past %}
+    <p>The Prompt Engineering Conference is the world's first event exclusively dedicated to prompt engineering. We are
+      pioneers in this field. Our close connections with top researchers, influencers, educators, and presenters ensure
+      a strong, inspirational, and skill-enhancing experience for all participants.</p>
 
-      <div class="col-12 col-lg-6 mb-4">
-        <div class="card rounded">
-          <a href="{{ event.url }}">
-            <img src="{{ event.photo_url }}" class="card-img-top rounded-top" alt="">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title mb-2">{{ event.name }}</h5>
-            <div class="card-text mb-3">
-              <div class="meta">{{ event.date }}</div>
-            </div>
-            {% if event.url %}
-            <a href="{{ event.url }}">Read more &rarr;</a>
-            {% else %}
-            Details coming soon...
-            {% endif %}
-          </div>
-        </div>
-      </div>
+    <p>We firmly believe in the significant and substantial contribution of prompt engineering to the development of
+      AI-infused applications. To introduce this topic as an essential skill for modern developers, or even as a
+      distinct job title, we organized this conference exclusively dedicated to this field.</p>
 
-      {% endfor %}
-    </div>
+    <h4 class="section-heading text-center mb-1">Topics</h4>
 
-    <h3 class="section-heading text-center mb-3 text-white">Past meetups</h3>
-    <div class="row gx-md-5">
+    <ul>
+      <li><strong>Development</strong><br />
+        Using prompts in production-ready apps. Helping companies adopt generative AI by sharing use cases, best
+        practices, and lessons learned.
+      </li>
 
-      {% for event in meetups_past %}
+      <li>
+        <strong>Experimentation</strong><br />
+        Pure research, experiments, arts, and ideas - the "tomorrow" of prompt engineering, if you wish.
+      </li>
+    </ul>
 
-      <div class="col-12 col-lg-6 mb-4">
-        <div class="card rounded">
-          <a href="./{{ event.url }}">
-            <img src="{{ event.photo_url }}" class="card-img-top rounded-top" alt="">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title mb-2">
-              <a href="{{ event.url }}">
-              {{ event.name }}
-              </a>
-            </h5>
-            <div class="card-text mb-3">
-              <div class="meta">{{ event.location }}</div>
-              <div class="meta">{{ event.date }} @ {{ event.time}}</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <h4 class="section-heading text-center mb-1">Audience</h4>
 
-      {% endfor %}
-    </div>
+    <p>The Prompt Engineering Conference is open to everyone who wishes to attend, present, and collaborate. Although we dive deeply into
+      prompt engineering, this event is not solely for technical individuals. One unique aspect of this discipline is
+      its accessibility to multiple professions: developers, linguists, data scientists, domain experts, and more—all
+      can become successful prompt engineers.</p>
+
+    <h4 class="section-heading text-center mb-1">Using AI policy</h4>
+
+    <p>We believe that 100% (or so) AI-generated sessions will not meet the quality standards we expect. At the same
+      time, we encourage presenters to use prompt engineering to improve their talk proposal and session content.</p>
+
   </div>
 </section>
 
-
-<section id="testimonials" class="sponsors-section section">
-  <div class="container speakers-section">
-    <h3 class="section-heading text-center mb-3">What others say about SREday</h3>
+<section id="speakers" class="speakers-section section">
+  <div class="container">
+    <h3 class="section-heading text-center mb-3">Speakers</h3>
     <div class="row">
 
-      {% for testimonial in testimonials %}
+      {% for talk in (talks + keynotes)|sort(attribute='name')|dedupe %}
 
       <div class="col-6 col-lg-3 mb-4">
         <div class="card rounded">
-          <img src="./assets/images/profiles/{{ testimonial.Headshot }}" class="card-img-top rounded-0" alt="">
+          <a href="#modal-speaker-{{ talk.id }}" data-bs-toggle="modal"
+            data-bs-target="#modal-speaker-{{ talk.id }}"><img src="{{ talk.photo_url }}" class="card-img-top rounded-0"
+              alt=""></a>
           <div class="card-body">
-            <h5 class="card-title mb-2">{{ testimonial.Name }}</h5>
-            <div class="card-text mb-3 text-muted">
-              <div class="meta">{{ testimonial.Job }}</div>
-              {% if testimonial.Company %}
-              <b class="meta">{{ testimonial.Company }}</b>
-              {% endif %}
-            </div>
+            <h5 class="card-title mb-2">{{ talk.name }}</h5>
             <div class="card-text mb-3">
-              {{ testimonial.Testimonial }}
-            </div>
-          </div>
+              <div class="meta">{{ talk.organization }}</div>
+            </div><!--//card-text-->
+            <a href="./{{ talk.short_url }}">Read more &rarr;</a>
+          </div><!--//card-->
           <div class="card-footer text-muted">
             <ul class="social-list list-inline mb-0">
-              {% if testimonial.Twitter %}<li class="list-inline-item"><a target="_blank" href="https://twitter.com/{{ testimonial.Twitter }}"><i class="fab fa-twitter fa-fw"></i></a></li>{% endif %}
-              {% if testimonial.Linkedin %}<li class="list-inline-item"><a target="_blank" href="{{ testimonial.Linkedin }}"><i class="fab fa-linkedin-in fa-fw"></i></a></li>{% endif %}
-              {% if testimonial.Twitter2 %}<li class="list-inline-item"><a target="_blank" href="https://twitter.com/{{ testimonial.Twitter2 }}"><i class="fab fa-twitter fa-fw"></i></a></li>{% endif %}
-              {% if testimonial.Linkedin2 %}<li class="list-inline-item"><a target="_blank" href="{{ testimonial.Linkedin2 }}"><i class="fab fa-linkedin-in fa-fw"></i></a></li>{% endif %}
-            </ul>
+              {% if talk.twitter %}<li class="list-inline-item"><a href="https://twitter.com/{{ talk.twitter }}"><i
+                    class="fab fa-twitter fa-fw"></i></a></li>{% endif %}
+              {% if talk.linkedin %}<li class="list-inline-item"><a href="{{ talk.linkedin }}"><i
+                    class="fab fa-linkedin-in fa-fw"></i></a></li>{% endif %}
+              {% if talk.twitter2 %}<li class="list-inline-item"><a href="https://twitter.com/{{ talk.twitter2 }}"><i
+                    class="fab fa-twitter fa-fw"></i></a></li>{% endif %}
+              {% if talk.linkedin2 %}<li class="list-inline-item"><a href="{{ talk.linkedin2 }}"><i
+                    class="fab fa-linkedin-in fa-fw"></i></a></li>{% endif %}
+            </ul><!--//social-list-->
           </div>
-        </div>
-      </div>
+        </div><!--//card-->
+      </div><!--//col-->
 
       {% endfor %}
-    </div>
-  </div>
-</section>
 
+      {% if event_state == 'before' %}
 
-<section id="sponsor" class="sponsors-section section theme-bg-primary text-white">
+      <div class="col-6 col-lg-3 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h4>More coming soon</h4>
+          </div><!--//card-->
+        </div><!--//card-->
+      </div><!--//col-->
+
+      {% endif %}
+
+    </div><!--//row-->
+    <div class="speakers-cta text-center py-3"><a class="btn btn-primary btn-lg" href="#tickets">Get your ticket</a></div>
+  </div><!--//container-->
+
+</section><!--//speakers-section-->
+
+{% include 'venue.html' %}
+
+<section id="sponsors" class="sponsors-section section">
   <div class="container">
-    <div class="row gx-md-5">
-      <div class="col-12 mb-3">
-        <h3 class="section-heading text-center text-white">Sponsor</h3>
-        <div class="sponsors-cta text-center pt-5">
-<!-- Calendly inline widget begin -->
-<div class="calendly-inline-widget" data-url="https://calendly.com/sreday/30min" style="min-width:320px;height:700px;"></div>
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<!-- Calendly inline widget end -->
-        </div>
+    <h3 class="section-heading text-center mb-3">Sponsors</h3>
+    <div class="section-intro text-center single-col-max mx-auto mb-5">Our sponsors get best in class visibility in the AI Engineering community</div>
+    <div class="row logos justify-content-center">
+      {% for sponsor in sponsors %}
+      <div class="logo-item col-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center" style="min-height:96px;">
+        <a href="{{sponsor.url}}" target="_blank" class="d-inline-block">
+          <img src="./assets/images/sponsors/{{ sponsor.logo }}" alt="" class="img-fluid" style="max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain;" />
+        </a>
       </div>
-    </div>
-  </div>
-</section>
+      {% endfor %}
+    </div><!--//row-->
+    <div class="sponsors-cta text-center pt-5"><a class="btn-primary btn btn-lg"
+        href="mailto:hello@promptengineering.rocks">Want to become a sponsor? Get in touch!</a></div>
+  </div><!--//container-->
+</section><!--//sponsors-section-->
 
-<section id="partner" class="sponsors-section section theme-bg-light">
+<section id="partners" class="sponsors-section section">
   <div class="container">
-    <div class="row gx-md-5">
-      <div class="col-12 mb-3">
-        <h3 class="section-heading text-center mb-3">Partner</h3>
-        <div class="section-intro text-center single-col-max mx-auto">
-          Interested in bringing SREday to your city?
-        </div>
-        <div class="sponsors-cta text-center pt-5">
-          <a class="btn-secondary btn btn-lg" href="{{ mailto }}">Become A Partner</a>
-        </div>
+    <h3 class="section-heading text-center mb-3">Community Partners</h3>
+    <div class="section-intro text-center single-col-max mx-auto mb-5">Our community partners benefit from the exclusive discounts for their members and joint events with the best conference speakers on stage</div>
+    <div class="row logos justify-content-center">
+      {% for partner in partners %}
+      <div class="logo-item col-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center" style="min-height:96px;">
+        <a href="{{partner.url}}" target="_blank" class="d-inline-block">
+          <img src="./assets/images/partners/{{ partner.logo }}" alt="" class="img-fluid" style="max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain;" />
+        </a>
       </div>
-    </div>
-  </div>
-</section>
+      {% endfor %}
+    </div><!--//row-->
+    <div class="sponsors-cta text-center pt-5"><a class="btn-primary btn btn-lg"
+        href="mailto:hello@promptengineering.rocks">Want to become a community partner? Get in touch!</a></div>
+  </div><!--//container-->
+</section><!--//sponsors-section-->
+
+
+{% for talk in talks + keynotes %}
+<!-- Modal Speaker {{ talk.id }} -->
+<div class="modal modal-speaker modal-speaker-{{ talk.id }}" id="modal-speaker-{{ talk.id }}" tabindex="-1"
+  role="dialog" aria-labelledby="speaker-{{ talk.id }}-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 id="speaker-{{ talk.id }}-ModalLabel" class="modal-title sr-only">{{ talk.name }}</h4>
+      </div>
+      <div class="modal-body p-0">
+        <div class="theme-bg-light p-5">
+          <div class="row">
+            <div class="col-12 col-md-auto text-center">
+              <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="{{ talk.photo_url }}"
+                alt="" />
+            </div>
+
+            <div class="col text-center text-md-start mx-auto">
+              <h2 class="name mb-2">{{ talk.name }}</h2>
+              <div class="meta mb-2">{{ talk.organization }}</div>
+              <ul class="social-list list-inline mb-0">
+                {% if talk.twitter %}<li class="list-inline-item"><a href="https://twitter.com/{{ talk.twitter }}"><i
+                      class="fab fa-twitter fa-fw"></i></a></li>{% endif %}
+                {% if talk.linkedin %}<li class="list-inline-item"><a href="{{ talk.linkedin }}"><i
+                      class="fab fa-linkedin-in fa-fw"></i></a></li>{% endif %}
+                {% if talk.twitter2 %}<li class="list-inline-item"><a href="https://twitter.com/{{ talk.twitter2 }}"><i
+                      class="fab fa-twitter fa-fw"></i></a></li>{% endif %}
+                {% if talk.linkedin2 %}<li class="list-inline-item"><a href="{{ talk.linkedin2 }}"><i
+                      class="fab fa-linkedin-in fa-fw"></i></a></li>{% endif %}
+              </ul><!--//social-list-->
+            </div><!--//col-->
+          </div><!--//row-->
+        </div>
+        <div class="desc p-2 p-lg-3">
+          <h3>{{ talk.title }}</h3>
+        </div>
+        <div class="desc p-2 p-lg-3">
+          <p>{{ talk.abstract | markdown }}</p>
+        </div>
+        <div class="desc p-2 p-lg-3">
+          <p>{{ talk.description | markdown }}</p>
+        </div>
+        <div class="desc p-2 p-lg-3">
+          <p>{{ talk.bio | markdown }}</p>
+        </div>
+      </div><!--//modal-body-->
+    </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+{% endfor %}
 
 {% endblock %}

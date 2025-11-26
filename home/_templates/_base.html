@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-	<title>SREday - Site Reliability Engineering conferences</title>
+	<title>Prompt Engineering Conference - {{ location_string }}, {{ date_string }} - The world's first conference about prompt engineering</title>
 	
 	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Flagship conference for SREs, DevOps and Platform engineers">
+	<meta name="description" content="Prompt Engineering Conference. The conference in {{ location_string }} will showcase a comprehensive range of topics, including theoretical foundations of prompt engineering, prompt generation methodologies, practical strategies for prompts optimizing, fine-tuning strategies, bias mitigation, innovative techniques, and many more. CFP is open!">
 
-	<link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="./assets/images/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./assets/images/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./assets/images/icons/favicon-16x16.png">
 	<link rel="manifest" href="./assets/site.webmanifest">
 	
 	<!-- Google Font -->
@@ -23,90 +23,113 @@
 	<!-- Theme CSS -->  
 	<link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
 
-    <meta name="image" property="og:image" content="https://sreday.com/photos/{{ hero_pictures[0].split('/')[-1] }}">
+    <meta name="image" property="og:image" content="https://promptengineering.rocks/assets/images/social.png"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="SREday - London, San Francisco, New York, Tokyo, Amsterdam"/>
-    <meta property="og:description" content="Conference on Site Reliability Engineering, Cloud and DevOps. Probably the most awesome SRE conference!"/>
-
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:site" content="@sreday_com">
-	<meta name="twitter:creator" content="@sreday_com">
-    <meta name="twitter:title" content="SREday - London, San Francisco, New York, Tokyo, Amsterdam"/>
-    <meta name="twitter:description" content="Conference on Site Reliability Engineering, Cloud and DevOps. Probably the most awesome SRE conference in {{ location_string }}!"/>
-    <meta name="twitter:image" content="https://sreday.com/photos/{{ hero_pictures[0].split('/')[-1] }}">
+    <meta property="og:title" content="Prompt Engineering Conference - {{ location_string }} - {{ date_string }}"/>
+    <meta property="og:description" content="The conference in {{ location_string }} will showcase a comprehensive range of topics, including theoretical foundations of prompt engineering, prompt generation methodologies, practical strategies for prompts optimizing, fine-tuning strategies, bias mitigation, innovative techniques, and many more. CFP is open!"/>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
 
-<!-- Twitter conversion tracking base code -->
-<script>
-	!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
-	},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
-	a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
-	twq('config','ofo1h');
-	</script>
-	<!-- End Twitter conversion tracking base code -->
-</head>
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@PromptEngConf">
+	<meta name="twitter:creator" content="@PromptEngConf">
+    <meta name="twitter:title" content="Prompt Engineering Conference - {{ location_string }} - {{ date_string }}"/>
+    <meta name="twitter:description" content="The conference in {{ location_string }} will showcase a comprehensive range of topics, including theoretical foundations of prompt engineering, prompt generation methodologies, practical strategies for prompts optimizing, fine-tuning strategies, bias mitigation, innovative techniques, and many more. CFP is open!"/>
+    <meta name="twitter:image" content="https://promptengineering.rocks/assets/images/social.png"/>
+
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CQ2KV6LK8G"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TJD11HYWN5"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-CQ2KV6LK8G');
+  gtag('config', 'G-TJD11HYWN5');
 </script>
 
 <style>
-.tinted {
-	box-shadow: 0 3000px rgba(0, 0, 0, 0.5) inset;
-}
-.retro {
-	font-family: 'Monoton', sans-serif;
-}
-.logo {
-	font-size: 5rem;
-	color: white;
-	font-weight: 400;
-}
-.theme-bg-primary {
-	background: #713660;
-}
-.social-list li{
-	font-size: 1.75rem;
-}
-.social-list li a{
-	color: white;
-}
+	.tinted {
+		box-shadow: 0 3000px rgba(38, 37, 57, 0.8) inset;
+	}
+	.retro {
+		font-family: 'Monoton', sans-serif;
+	}
+	.logo {
+		font-size: 3rem;
+		color: white;
+		font-weight: 400;
+	}
+	.theme-bg-primary {
+		background: #6b40d8;
+	}
+	.header-shrink {
+    	background: #262539;
+	}
+	.hero-text-block h3 {
+		font-weight: normal;
+	}
+	.hero-text-block h1 {
+		margin-bottom: 1rem;
+	}
+	.hero-text-block h2 {
+		margin-bottom: 1rem;
+		font-size: 1.2rem;
+	}
+	.hero-text-block h3 {
+		margin-bottom: 1.5rem;
+		font-size: 1.2rem;
+	}
+	.btn-primary {
+    	background: rgb(107, 64, 216);
+	}
+	.btn-primary:hover {
+    	background: rgb(122, 76, 239);
+	}
+	.btn-secondary {
+    	background: rgb(244, 172, 54);
+	}
+	.btn-secondary:hover {
+    	background: rgb(212, 154, 60);
+	}
+	.hero-block {
+		height: 420px;
+	}
+
+	@media (width <= 800px) {
+		.hero-block {
+    	padding-top: 70px;
+		}
+	}
+ 
+
 </style>
-
-
+	
 
 <body>    
 	<header id="header" class="header fixed-top">	    
 		<div class="branding">
 			<div class="container-fluid">
 				<nav class="main-nav navbar navbar-expand-lg">
-					<div class="site-logo"><a class="scrollto" href="#home">
+					<div class="site-logo"><a class="scrollto" href="#hero-block">
                         <!-- <img class="logo-icon" src="assets/images/logo-white.svg" alt="logo"></a> -->
                     </div>
-
+					
+					<div class="navbar-btn order-lg-2"><a class="btn btn-secondary" href="https://www.youtube.com/watch?v=fSl-2f5eXek&list=PLQEYbmzcCfpdgo4z4htF2elNKqzwEbDIM">All Videos</a></div>
+					
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					
 					<div id="navigation" class="navbar-collapse collapse  justify-content-lg-end me-lg-3">
 						<ul class="nav navbar-nav">
-							
-							<li class="nav-item"><a class="nav-link scrollto" href="#home">Home</a></li>                                              
-							<li class="nav-item"><a class="nav-link scrollto" href="#events">Upcoming events</a></li>
-							<li class="nav-item"><a class="nav-link scrollto" href="#past-events">Past events</a></li>
-							<li class="nav-item"><a class="nav-link scrollto" href="#testimonials">Testimonials</a></li>
-							<li class="nav-item"><a class="nav-link scrollto" href="#sponsor">Sponsor</a></li>
-							<li class="nav-item"><a class="nav-link scrollto" href="#partner">Partner</a></li>
-							<li class="nav-item"><a class="nav-link" target="_blank" href="./assets/tnc.pdf">Terms & Conditions</a></li>
+							                                            
+							<li class="nav-item"><a class="nav-link scrollto" href="#schedule">Program</a></li>
+							<li class="nav-item"><a class="nav-link scrollto" href="#speakers">Speakers</a></li>
+							<li class="nav-item"><a class="nav-link scrollto" href="#venue">Venue</a></li>
+							<li class="nav-item"><a class="nav-link scrollto" href="#sponsors">Sponsors</a></li>
 						</ul><!--//nav-->
 					</div><!--//navabr-collapse-->
 
@@ -120,7 +143,7 @@
 		<div id="hero-carousel" class="hero-carousel carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
 			<div class="carousel-inner">
 				{% for pic in hero_pictures %}
-				<div class="carousel-item tinted {{ 'active' if loop.index == 1 else ''}}" style="background:url('{{ pic }}') no-repeat center"></div>
+				<div class="carousel-item tinted {{ 'active' if loop.index == 1 else ''}}" style="background:url('{{ pic }}') no-repeat center; background-size: cover;"></div>
 				{% endfor %}
 			</div>
 
@@ -132,15 +155,12 @@
 		</div>
 		<div class="container">
 			<div class="hero-text-block text-center" style="max-width: 100%;">
-				<h1 class="logo retro">SREDAY</h1>
-				<h2 class="text-white">Site Reliability, DevOps and Cloud</h2>
-				<h3 class="text-white">In-person conference</h3>
-				<h4 class="text-white mt-5">New York City, San Francisco, Redmond, London, Cologne & Amsterdam</h4>
-				<ul class="social-list list-inline mt-4"> 
-					<li class="list-inline-item me-3"><a target="_blank" href="{{ linkedin_url }}"><i class="fab fa-linkedin fa-fw"></i></a></li>
-					<li class="list-inline-item me-3"><a target="_blank" href="{{ youtube_url  }}"><i class="fab fa-youtube fa-fw"></i></a></li>
-					<li class="list-inline-item me-0"><a target="_blank" href="{{ twitter_url  }}"><i class="fab fa-twitter fa-fw"></i></a></li>
-				</ul>
+				<h1 class="logo retro">Prompt Engineering Conference</h1>
+				<h2 class="text-white">Learn how to interact with the most advanced AI on our planet</h2>
+				<h3 class="text-white"><i class="far fa-calendar-alt me-2"></i>{{ date_string }} <i class="fas fa-map-marker-alt mx-2"></i>{{ location_string }}</h3>
+				<div class="hero-cta mt-1">
+					<a class="btn btn-secondary btn-lg" href="https://www.youtube.com/watch?v=fSl-2f5eXek&list=PLQEYbmzcCfpdgo4z4htF2elNKqzwEbDIM">Watch All Videos</a>
+			    </div>
 			</div><!--//hero-text-block-->
 		</div><!--//container-->
 
@@ -151,25 +171,25 @@
 			<div class="row">
 				<div class="col-6 col-md-3">
 					<div class="item">
-						<div class="number">{{ counts.countries }}</div>
-						<div class="unit">Countries</div>
+						<div class="number">{{ days }}</div>
+						<div class="unit">Day</div>
 					</div><!--//item-->
 				</div><!--//col-->
 				<div class="col-6 col-md-3">
 					<div class="item">
-						<div class="number">{{ counts.events }}</div>
-						<div class="unit">Events</div>
-					</div><!--//item-->
-				</div><!--//col-->
-				<div class="col-6 col-md-3">
-					<div class="item">
-						<div class="number">{{ counts.speakers }}</div>
+						<div class="number">{{ speakers }}</div>
 						<div class="unit">Speakers</div>
 					</div><!--//item-->
 				</div><!--//col-->
 				<div class="col-6 col-md-3">
 					<div class="item">
-						<div class="number">{{ counts.attendees }}</div>
+						<div class="number">3 <!-- {{ tracks | length }} --></div>
+						<div class="unit">Tracks</div>
+					</div><!--//item-->
+				</div><!--//col-->
+				<div class="col-6 col-md-3">
+					<div class="item">
+						<div class="number">{{ attendees }}</div>
 						<div class="unit">Attendees</div>
 					</div><!--//item-->
 				</div><!--//col-->
@@ -192,6 +212,15 @@
             <li class="list-inline-item me-3"><a target="_blank" href="{{ twitter_url  }}"><i class="fab fa-twitter fa-fw"></i></a></li>
             <li class="list-inline-item me-0"><a target="_blank" href="{{ youtube_url  }}"><i class="fab fa-youtube fa-fw"></i></a></li>
         </ul>
+        
+        <ul class="footer-links list-inline mx-auto mb-4">
+            <li class="list-inline-item"><a href="https://2024.promptengineering.rocks/code-of-conduct">Code of Conduct</a></li>
+            <li class="list-inline-item">|</li>
+            <li class="list-inline-item"><a href="https://2024.promptengineering.rocks/">2024's Edition</a></li>
+            <li class="list-inline-item">|</li>
+            <li class="list-inline-item me-0"><a href="https://2023.promptengineering.rocks/">2023's Edition</a></li>
+        </ul>
+        <!--//footer-link-->
         
          <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
         <small class="copyright">Designed with <i class="fas fa-heart" style="color: #EC645E;"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>

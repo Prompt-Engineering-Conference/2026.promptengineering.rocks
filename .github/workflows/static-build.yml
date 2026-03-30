@@ -21,6 +21,7 @@ jobs:
         run: |
           make clean
           make generate
+          echo "promptengineering.rocks" > static/CNAME
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.4.0

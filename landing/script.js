@@ -3,7 +3,7 @@
     if (slides.length <= 1) return;
 
     let current = 0;
-    const intervalMs = 30000;
+    const intervalMs = 10000;
 
     setInterval(function () {
         slides[current].classList.remove('active');

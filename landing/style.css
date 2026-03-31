@@ -32,7 +32,7 @@ html, body {
 .overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(0, 0, 0, 0.78);
     z-index: 1;
 }
 
@@ -61,4 +61,28 @@ html, body {
     font-weight: 300;
     letter-spacing: 0.15em;
     text-transform: uppercase;
+}
+
+.coming-soon {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.15rem;
+    font-weight: 300;
+    margin-top: 1.5rem;
+}
+
+.editions {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}
+
+.editions a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.editions a:hover {
+    color: #fff;
+    text-decoration: underline;
 }

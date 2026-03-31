@@ -1,6 +1,22 @@
 years := $(wildcard 20*)
 
-generate: $(addprefix static/,$(addsuffix /index.html,$(years))) static/index.html
+########################################################################
+# LANDING PAGE (temporary)
+# To switch back to the regular site:
+#   1. Remove the "landing" target below
+#   2. Change "generate" default target back to:
+#        generate: $(addprefix static/,$(addsuffix /index.html,$(years))) static/index.html
+########################################################################
+generate: landing
+
+landing:
+	mkdir -p static/bg
+	cp landing/index.html landing/style.css landing/script.js landing/logo-white.svg static/
+	cp home/assets/bg/* static/bg/
+########################################################################
+
+# --- Regular site build (uncomment and set as default to restore) ---
+# generate: $(addprefix static/,$(addsuffix /index.html,$(years))) static/index.html
 
 20%/static/index.html: 20%/_build/* 20%/_templates/* 20%/_db/* 20%/Makefile 20%/metadata.*
 	@echo $@
@@ -36,4 +52,4 @@ serve:
 	python3 _build/serve.py
 	open http://localhost:8080
 
-.PHONY: env deps clean serve
+.PHONY: env deps clean serve landing

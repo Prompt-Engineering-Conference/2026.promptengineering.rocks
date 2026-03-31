@@ -17,10 +17,16 @@ jobs:
           make --version
           make deps
 
+      # --- LANDING PAGE MODE ---
+      # To switch back to the full site, replace this Build step with:
+      #   make clean
+      #   make generate
+      #   echo "promptengineering.rocks" > static/CNAME
       - name: Build 🔧
         run: |
-          make clean
-          make generate
+          mkdir -p static/bg
+          cp landing/index.html landing/style.css landing/script.js landing/logo-white.svg static/
+          cp home/assets/bg/* static/bg/
           echo "promptengineering.rocks" > static/CNAME
 
       - name: Deploy 🚀

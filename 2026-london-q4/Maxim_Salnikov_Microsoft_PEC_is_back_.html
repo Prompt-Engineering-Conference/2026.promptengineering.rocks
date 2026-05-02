@@ -127,7 +127,7 @@
 		<div class="branding">
 			<div class="container-fluid">
 				<nav class="main-nav navbar navbar-expand-lg">
-					<div class="site-logo"><a href="/">
+					<div class="site-logo"><a href="index.html">
                         <!-- <img class="logo-icon" src="assets/images/logo-white.svg" alt="logo"></a> -->
                     </div>
 
@@ -142,12 +142,12 @@
 						<ul class="nav navbar-nav">
 
 							<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-							<li class="nav-item"><a class="nav-link" href="#tickets">Tickets</a></li>
-							<li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
-							<li class="nav-item"><a class="nav-link" href="#speakers">Speakers</a></li>
-							<li class="nav-item"><a class="nav-link" href="#venue">Venue</a></li>
+							<li class="nav-item"><a class="nav-link" href="index.html#tickets">Tickets</a></li>
+							<li class="nav-item"><a class="nav-link" href="index.html#schedule">Schedule</a></li>
+							<li class="nav-item"><a class="nav-link" href="index.html#speakers">Speakers</a></li>
+							<li class="nav-item"><a class="nav-link" href="index.html#venue">Venue</a></li>
 							
-							<li class="nav-item"><a class="nav-link" href="#sponsors">Sponsors</a></li>
+							<li class="nav-item"><a class="nav-link" href="index.html#sponsors">Sponsors</a></li>
 						</ul><!--//nav-->
 						
 					</div><!--//navabr-collapse-->
@@ -189,7 +189,7 @@
 				<h3 class="text-white"><i class="far fa-calendar-alt me-2"></i>October 15, 2026 <i class="fas fa-map-marker-alt mx-2"></i>London, UK</h3>
 				<div class="hero-cta mt-5">
 					
-					<a class="btn btn-secondary btn-lg" href="#tickets">Get Tickets</a>
+					<a class="btn btn-secondary btn-lg" href="./#tickets">Get Tickets</a>
 					
 					
 					<a class="btn btn-primary btn-lg" href="https://www.papercall.io/prompt-engineering-conference-2026-london" target="_blank">CFP</a>
@@ -244,262 +244,32 @@
 <!-- CONTENT -->
 
 
-<section id="about" class="about-section section">
-
-  <div class="container">
-    <div class="event-countdown text-center mb-3">
-    
-      <h4 class="countdown-intro mb-2 text-center mb-3">Event Starts In:</h4>
-      <div id="countdown-box" class="countdown-box"></div>
-    
-    </div>
-  </div>
-  <script>
-    /* ======= Countdown ========= */
-    // set the date we're counting down to
-    var target_date = new Date("2026-10-15T09:00:00+01:00").getTime();
-     
-    // variables for time units
-    var days, hours, minutes, seconds;
-     
-    // get tag element
-    var countdown =  document.getElementById("countdown-box");
-    var days_span = document.createElement("SPAN");
-    days_span.className = 'days';
-    countdown.appendChild(days_span);
-    var hours_span = document.createElement("SPAN");
-    hours_span.className = 'hours';
-    countdown.appendChild(hours_span);
-    var minutes_span = document.createElement("SPAN");
-    minutes_span.className = 'minutes';
-    countdown.appendChild(minutes_span);
-    var secs_span = document.createElement("SPAN");
-    secs_span.className = 'secs';
-    countdown.appendChild(secs_span);
-     
-    // update the tag with id "countdown" every 1 second
-    setInterval(function () {
-     
-        // find the amount of "seconds" between now and target
-        var current_date = new Date().getTime();
-        var seconds_left = (target_date - current_date) / 1000;
-     
-        // do some time calculations
-        days = parseInt(seconds_left / 86400);
-        seconds_left = seconds_left % 86400;
-         
-        hours = parseInt(seconds_left / 3600);
-        seconds_left = seconds_left % 3600;
-         
-        minutes = parseInt(seconds_left / 60);
-        seconds = parseInt(seconds_left % 60);
-         
-        // format countdown string + set tag value.
-        days_span.innerHTML = '<span class="number">' + days + '</span>' + '<span class="unit">Days</span>';
-        hours_span.innerHTML = '<span class="number">' + hours + '</span>' + '<span class="unit">Hrs</span>';
-        minutes_span.innerHTML = '<span class="number">' + minutes + '</span>' + '<span class="unit">Mins</span>';
-        secs_span.innerHTML = '<span class="number">' + seconds + '</span>' + '<span class="unit">Secs</span>'; 
-     
-    }, 1000);
-    </script>
-</section>
-
-
-<section id="tickets" class="tickets-section section">
-  <div class="container">
-    <h3 class="section-heading text-center mb-3">Tickets</h3>
-
-    <div class="row pricing mb-5 mt-10">
-      <div class="col-12 text-center">
-        <iframe
-  id="luma-tickets-iframe"
-  src="https://lu.ma/embed/event/evt-PLACEHOLDER/simple"
-  width="100%"
-  frameborder="0"
-  style="border: 1px solid #bfcbda88; border-radius: 4px; display: block; height: 1000px; min-height: 1000px;"
-  allowfullscreen=""
-  aria-hidden="false"
-  tabindex="0"
-></iframe>
-
-<div class="text-center mt-4">
-  <a
-    href="https://lu.ma/event/evt-PLACEHOLDER"
-    class="luma-checkout--button btn btn-secondary btn-lg"
-    data-luma-action="checkout"
-    data-luma-event-id="evt-PLACEHOLDER"
-  >
-    Register on Luma
-  </a>
-</div>
-
-<script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
-<script>
-  (function() {
-    var params = window.location.search;
-    var iframe = document.getElementById('luma-tickets-iframe');
-
-    // Append query params to iframe src
-    if (iframe && params) {
-      var src = iframe.getAttribute('src');
-      var sep = src.indexOf('?') > -1 ? '&' : '?';
-      iframe.setAttribute('src', src + sep + params.substring(1));
-    }
-
-    // Append query params to button
-    if (params) {
-      var btn = document.querySelector('.luma-checkout--button');
-      if (btn) {
-        var href = btn.getAttribute('href');
-        var sep = href.indexOf('?') > -1 ? '&' : '?';
-        btn.setAttribute('href', href + sep + params.substring(1));
-      }
-    }
-
-    // Auto-resize iframe via Luma postMessage (overrides fixed height if received)
-    window.addEventListener('message', function(e) {
-      if (!iframe) return;
-      var d = e.data;
-      if (!d) return;
-      // Handle multiple possible Luma message formats
-      var h = null;
-      if (typeof d.height === 'number' && d.height > 100) h = d.height;
-      else if (typeof d.height === 'string' && parseInt(d.height) > 100) h = parseInt(d.height);
-      if (h !== null) {
-        iframe.style.height = h + 'px';
-      }
-    });
-  })();
-</script>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
 <style>
-  .speakers-section .card {
-    height: 100%;
-  }
-  .speakers-section .card-footer {
-    min-height: 3rem;
-  }
-  .speakers-section .card-body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    font-size: 0.9rem;
-  }
-  .speakers-section .card-title {
-    font-size: 1.1rem;
-  }
-  .event-card-buttons {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 6px;
-    margin-top: auto;
-    width: 100%;
-  }
-  .speakers-section .event-card-buttons a {
-    flex: 0 1 50%;
-    text-align: center;
-    min-width: 0;
-    display: block;
-  }
-  .event-read-more-btn {
-    display: inline-block;
-    padding: 6px 12px;
-    background: var(--brand);
-    color: #fff;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.8rem;
-    white-space: nowrap;
-    transition: background 0.2s ease;
-  }
-  .event-read-more-btn:hover,
-  .event-read-more-btn:focus {
-    background: var(--brand-light);
-    color: #fff;
-    text-decoration: none;
-  }
-  .event-watch-btn {
-    display: inline-block;
-    padding: 6px 12px;
-    background: #EC645E;
-    color: #fff;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.8rem;
-    white-space: nowrap;
-    transition: background 0.2s ease;
-  }
-  .event-watch-btn:hover,
-  .event-watch-btn:focus {
-    background: #F28B87;
-    color: #fff;
-    text-decoration: none;
-  }
-  .event-watch-btn-sm {
-    padding: 4px 12px;
-    font-size: 0.85rem;
-    margin-left: 12px;
-  }
-  .schedule-abstract {
-    position: relative;
-    max-height: 3.2em;
-    line-height: 1.6;
-    overflow: hidden;
+  .talk-content .desc p,
+  .talk-content .desc li {
     text-align: justify;
+    line-height: 1.75;
+    color: #444;
+    font-size: 0.95rem;
   }
-  .schedule-abstract-read-more {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    padding-left: 3em;
-    background: linear-gradient(to right, transparent, #e8f8f0 30%);
-    font-weight: 700;
-    color: var(--brand);
-    text-decoration: underline;
-  }
-  .schedule-section .item {
-    margin-bottom: 4.5rem;
+  .talk-content .desc {
+    padding-bottom: 0.25rem;
   }
 </style>
 
-
-<section id="schedule" class="schedule-section section theme-bg-light">
+<section id="speakers-section" class="speakers-section section">
   <div class="container">
-    <h2 class="section-heading text-center mb-5">Schedule</h2>
-    <h4 class="section-heading text-center mb-5">Coming soon</h4>
-  </div>
-</section>
+    <h1 class="section-heading text-center mb-3">PEC is back !!!</h1>
+    <div class="row">
 
-
-
-
-<section id="speakers" class="speakers-section section">
-  <div class="container">
-    <h3 class="section-heading text-center mb-3">Speakers</h3>
-    <div class="row row-cols-2 row-cols-lg-5">
-
-      
-
-      <div class="col mb-4">
-        <div class="card rounded">
-          <a href="#modal-speaker-0" data-bs-toggle="modal" data-bs-target="#modal-speaker-0"><img src="../speakers/Maxim Salnikov.png" class="card-img-top rounded-0" alt=""></a>
+      <div class="col-6 col-lg-3 mb-4" style="align-self:start;">
+        <div class="card rounded-0">
+          <img src="../speakers/Maxim Salnikov.png" class="card-img-top rounded-0" alt="">
           <div class="card-body">
             <h5 class="card-title mb-2">Maxim Salnikov</h5>
             <div class="card-text mb-3">
               <div class="meta">Microsoft</div>
             </div><!--//card-text-->
-            <div class="event-card-buttons">
-              <a href="./Maxim_Salnikov_Microsoft_PEC_is_back_#speakers-section" class="event-read-more-btn">Read more</a>
-              
-            </div>
           </div><!--//card-->
           <div class="card-footer text-muted">
             <ul class="social-list list-inline mb-0">
@@ -512,71 +282,41 @@
         </div><!--//card-->
       </div><!--//col-->
 
-      
-
-      
-
-      <div class="col mb-4">
-        <div class="card">
+      <div class="col-6 col-lg-9 mb-4">
+        <div class="card rounded-0 talk-content">
           <div class="card-body">
-            <h4>More coming soon</h4>
-          </div><!--//card-->
-        </div><!--//card-->
-      </div><!--//col-->
 
-      
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>coming soon...</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p></p>
+              </div>
+
+              
+
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+          </div>
+        </div><!--//card-->
+      </div><!--//col--> 
 
     </div><!--//row-->
-    <div class="speakers-cta text-center py-3"><a class="btn btn-primary btn-lg" href="#tickets">Get Tickets</a></div>
+  <div class="text-center mt-4 mb-2">
+    <a class="btn btn-secondary btn-lg" href="./">Full lineup and tickets</a>
+  </div>
   </div><!--//container-->
 
 </section><!--//speakers-section-->
 
 
 
-<section id="venue" class="venue-section section  theme-bg-primary text-white">
-    <div class="container">
-      <h3 class="section-heading text-center mb-5 text-white">Venue</h3>
-      <div class="row gx-5 py-lg-5">
-        <div class="col-12 col-lg-7 h-100">
-          <div class="desc">
-            <h4 class="text-white mb-3">Everyman Canary Wharf</h4>
-            <p>
-              Crossrail Place <br />
-              Canary Wharf, Level -2 <br />
-              E14 5AR, London, UK <br />
-            </p>
-  
-            <div class="row pt-3">
-              <div style="border-radius:12px;overflow:hidden;display:inline-block;">
-              <div style="border-radius:12px;overflow:hidden;display:inline-block;">
-              <div style="border-radius:12px;overflow:hidden;display:inline-block;">
-              <div style="border-radius:12px;overflow:hidden;display:inline-block;">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.3841988883164!2d-0.020629122093954937!3d51.50616707181291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487602b73a00cddb%3A0x8a0668cd288be896!2sEveryman%20Canary%20Wharf!5e0!3m2!1sen!2suk!4v1689427207813!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              </div>
-              </div>
-              </div>
-              </div>
-            </div><!--//row-->
-          </div><!--//desc-->
-        </div><!--//col-->
-        <div class="col-12 col-xl-3 col-lg-4 offset-lg-1 position-relative h-100 mt-5 mt-lg-0">
-          <div class="figures-holder">
-            <div class="figure figure-1"><img class="shadow" src="assets/images/venue/venue-1.jpg" alt=""></div>
-            <div class="figure figure-2"><img class="shadow" src="assets/images/venue/venue-2.jpg" alt=""></div>
-            <div class="figure figure-3"><img class="shadow" src="assets/images/venue/venue-3.jpg" alt=""></div>
-          </div><!--//figures-holder-->
-        </div><!--//col-->
-      </div><!--//row-->
-    </div><!--//container-->
-  </section><!--//venue-section-->
-  
-
-
-
-
-
-<section id="sponsors" class="sponsors-section section">
+<section id="sponsors-section" class="sponsors-section section">
   <div class="container">
     <h3 class="section-heading text-center mb-3">Sponsors &amp; Partners</h3>
     <div class="section-intro text-center single-col-max mx-auto mb-5">Want to become a sponsor? Get in touch!</div>
@@ -620,66 +360,6 @@
     <div class="sponsors-cta text-center pt-5"><a class="btn-primary btn btn-lg" href="mailto:hello@promptengineering.rocks">Become A Sponsor</a></div>
   </div><!--//container-->
 </section><!--//sponsors-section-->
-
-
-
-<style>
-  .modal-speaker .desc p,
-  .modal-speaker .desc li {
-    text-align: justify;
-    line-height: 1.75;
-    color: #444;
-    font-size: 0.95rem;
-  }
-  .modal-speaker .desc {
-    padding-bottom: 0.25rem;
-  }
-</style>
-
-
-<!-- Modal Speaker 0 -->
-<div class="modal modal-speaker modal-speaker-0" id="modal-speaker-0" tabindex="-1" role="dialog" aria-labelledby="speaker-0-ModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-0-ModalLabel" class="modal-title sr-only"
->Maxim Salnikov</h4>
-          </div>
-          <div class="modal-body p-0">
-              <div class="theme-bg-light p-5">
-                  <div class="row">
-                      <div class="col-12 col-md-auto text-center">
-                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Maxim Salnikov.png" alt="" />
-                      </div>
-
-                      <div class="col text-center text-md-start mx-auto">
-                          <h2 class="name mb-2">Maxim Salnikov</h2>
-                          <div class="meta mb-2">Microsoft</div>
-                          <ul class="social-list list-inline mb-0">
-                            
-                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/webmax/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
-                            
-                            
-                          </ul><!--//social-list-->
-                      </div><!--//col-->
-                  </div><!--//row-->
-              </div>
-              <div class="desc p-2 p-lg-3">
-                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
-                <p><p>coming soon...</p></p>
-              </div>
-              <div class="desc p-2 p-lg-3">
-                <p></p>
-              </div>
-              <div class="desc p-2 p-lg-3">
-                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
-                <p></p>
-              </div>
-          </div><!--//modal-body-->
-      </div><!--//modal-content-->
-  </div><!--//modal-dialog-->
-</div><!--//modal-->
 
 
 

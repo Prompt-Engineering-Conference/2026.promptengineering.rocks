@@ -1,4 +1,5 @@
 jinja2
 pyyaml
-jinja_markdown
+jinja-markdown
 python-dateutil
+Pillow

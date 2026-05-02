@@ -1,0 +1,144 @@
+tiers:
+  - id: leads
+    name: "Conference Leads"
+
+    requires: "Cannot be purchased solo"
+    price:
+      small: 500
+      medium: 1000
+      large: 1000
+    benefits:
+      - "Receive full attendee contact list"
+
+  - id: keynote
+    name: "Keynote Session"
+
+    price:
+      small: 1000
+      medium: 3000
+      large: 5000
+    benefits:
+      - "30-minute morning slot"
+      - "100% audience — no parallel talks"
+
+  - id: talk
+    name: "Regular Session Slot"
+
+    price:
+      small: 500
+      medium: 2000
+      large: 2000
+    benefits:
+      - "30-minute afternoon slot"
+      - "May run alongside parallel tracks"
+
+  - id: booth
+    name: "Booth / Table"
+
+    price:
+      small: 1000
+      medium: 2000
+      large: 4000
+    benefits:
+      - "Table (150 × 100cm) with a 24-inch monitor"
+      - "Electricity, Wi-Fi, space for a rollup banner"
+
+  - id: logo_swag
+    name: "Logo Sponsor + Swag Distribution"
+
+    price:
+      small: 500
+      medium: 1000
+      large: 1000
+    benefits:
+      - "Logo on the website, on-stage mention"
+      - "Swag distributed to all attendees"
+
+  - id: food
+    name: "Coffee Break / Lunch / Happy Hour"
+
+    price_label:
+      small: "£500 + £10pp"
+      medium: "£1000 + £15pp"
+      large: "£1000 + £15pp"
+    benefits:
+      - "Microphone time before the selected break"
+      - "Distribute your swag alongside food & drinks"
+
+  - id: clothing
+    name: "Branded Wearables"
+
+    price_label:
+      small: "£500 + variable"
+      medium: "£1000 + variable"
+      large: "£1000 + variable"
+    benefits:
+      - "Your logo on t-shirts, hoodies, socks, etc."
+      - "£10–£30 per person, depending on the item"
+
+  - id: tickets
+    name: "Discounted Ticket Pack"
+
+    price_label: "20% off 5+ tickets"
+    benefits:
+      - "Purchase 5 or more tickets at a discount"
+      - "Share your vouchers with anyone"
+
+  - id: startup_discount
+    name: "Startup Discount"
+
+    price_label: "20% off anything"
+    benefits:
+      - "Early-stage startups under $5M in funding"
+      - "Contact us to apply"
+
+#on request:
+
+  - id: host
+    name: "Bring the conference to your city"
+
+    price_label: "On request"
+
+  - id: co_located
+    name: "Co-Located Event"
+
+    price_label: "On request"
+
+  - id: workshop
+    name: "Workshop"
+
+    price_label: "On request"
+
+  - id: hackathon
+    name: "Hackathon"
+
+    price_label: "On request"
+
+  - id: meetup
+    name: "Post-Conference Meetup"
+
+    price_label: "On request"
+
+  - id: email_blast
+    name: "Attendee Email Blast"
+
+    price_label: "On request"
+
+sister_brands:
+  - name: "LLMday"
+    url: "https://llmday.com"
+    logo: "/assets/images/llmday_sticker.png"
+  - name: "SREday"
+    url: "https://sreday.com"
+    logo: "/assets/images/sreday_sticker.png"
+  - name: "Conf42"
+    url: "https://conf42.com"
+    logo: "/assets/images/conf42_sticker.png"
+
+open_source_tools:
+  - name: "CFP Ninja"
+    url: "https://cfp.ninja/"
+    logo: "/assets/images/cfpninja sticker.png"
+  - name: "Certified FYI"
+    url: "https://certified.fyi/"
+    logo: "/assets/images/certified fyi sticker.png"

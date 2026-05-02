@@ -8,19 +8,19 @@ start_time: "2125-11-06T09:00:00-08:00"
 event_state: before
 date_string: "November 7, 2025"
 location_string: "Mars, Milky Way"
+city_name: "Mars"
 # get this from the event url
-luma_evt: evt-xAhCqaXMWAXAEEm
-cfp_url: https://www.papercall.io/sreday-amsterdam-2025-q4
+luma_evt: evt-PLACEHOLDER
+cfp_url: https://www.papercall.io/prompt-engineering-conference
 
 # the number of tracks needs to be the same per day
 # the tracks will be taken in the order they appear in the CSV file
 days: 1
-attendees: 200
-speakers: 25+
+attendees: 100
+speakers: 10+
 
 rooms:
 - main room
-- round room
 
 breaks:
 - title: Coffee break
@@ -38,20 +38,33 @@ breaks:
   talks_before: 4
 
 sponsors:
-  - logo: hockeystick.png
-    url: https://www.hockeystick.show
+  - logo: arato.png
+    url: https://arato.ai/
 
 # these get displayed at the top
 hero_pictures:
-- ../photos/london-2023-0.jpg
-- ../photos/london-2023-1.jpg
-- ../photos/london-2023-2.jpg
-- ../photos/london-2023-3.jpg
+- ../photos/venue-1.jpg
+- ../photos/venue-2.jpg
+- ../photos/venue-3.jpg
+
+# brand identity
+brand_name: "Prompt Engineering Conference"
+brand_domain: "promptengineering.rocks"
+brand_description: "The world's first conference about prompt engineering"
+brand_tagline: "Learn how to interact with the most advanced AI on our planet"
+brand_og_pitch: "Probably the most exciting prompt engineering conference in"
+brand_color: "#6b40d8"
+brand_twitter: "@PromptEngConf"
+brand_ga_id: "G-TJD11HYWN5"
+brand_gads_id: ""
+brand_twt_pixel: ""
+logo_image: "../home/assets/images/logo-token.png"
 
 # probably don't need changing
-base_path: "https://www.sreday.com/"
+base_path: "https://promptengineering.rocks/"
 base_folder: "static"
-twitter_url: https://twitter.com/sreday_com
-linkedin_url: https://www.linkedin.com/company/sreday/
-youtube_url: https://www.youtube.com/@sreday
-mailto: "mailto:mark@sreday.com"
+twitter_url: https://x.com/PromptEngConf
+linkedin_url: https://www.linkedin.com/company/prompt-engineering-conference/
+youtube_url: https://www.youtube.com/@PromptEngineeringConf
+mailto: "mailto:hello@promptengineering.rocks"
+youtube_playlist:

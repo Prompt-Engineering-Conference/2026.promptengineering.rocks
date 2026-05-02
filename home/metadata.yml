@@ -1,100 +1,27 @@
-# TODO - change these
-
-# start time includes timezone at the end relative to UTC
-start_time: "2025-10-16T09:00:00-00:00"
-# before - no schedule
-# active - schedule
-# after  - hide ticket sales
-event_state: after
-date_string: "October 16, 2025"
-location_string: "Everyman Canary Wharf, London, UK"
-# get this from the event url
-luma_evt: evt-AyRiavyZCxqf5eM
-cfp_url: https://www.papercall.io/prompt-engineering-conference-2025-london
-
-# the number of tracks needs to be the same per day
-# the tracks will be taken in the order they appear in the CSV file
-days: 1
-attendees: 250
-speakers: 30+
-tracks: 3
-
-rooms:
-- Core & Advanced Techniques
-- Agents, Automation, Systems
-- Practices, Productivity, Impact
-
-breaks:
-- title: Registration
-  duration: 30
-  comment: Main lobby
-  # this decides how many talks in-between this and previous section
-  talks_before: 0
-- title: Coffee break
-  duration: 15
-  comment: Main lobby
-  talks_before: 1
-- title: Lunch & networking
-  duration: 45
-  comment: Main lobby
-  talks_before: 3
-- title: Networking & sponsor crawl
-  duration: 15
-  comment: Main lobby
-  talks_before: 3
-- title: Networking & sponsor crawl
-  duration: 15
-  comment: Main lobby
-  talks_before: 2
-
-sponsors:
-  - logo: arato.png
-    url: https://arato.ai/
-  - logo: comet.png
-    url: https://www.comet.com/
-  - logo: aiproductivityhub.png
-    url: https://www.skool.com/ai-productivity-hub/about
-  - logo: prompt-hub.png
-    url: https://www.prompthub.us/
-  - logo: packt.png
-    url: https://packtpub.com/
-
-partners:
-  - logo: pe-norway-full.png
-    url: https://www.meetup.com/promptengineering-community/
-  - logo: gdg-london.jpg
-    url: https://www.meetup.com/gdglondon/
-  - logo: london-agentic-ai-meetup.png
-    url: https://www.meetup.com/london-agentic-ai/
-  - logo: it-schulungen.png
-    url: https://www.it-schulungen.com/
-  - logo: pec.png
-    url: https://www.pec.asia/2025/conference
-  - logo: cubixai.jpg
-    url: https://cubixai.com/
-  - logo: angular-london.png
-    url: https://www.meetup.com/angular-london/
-  - logo: freecodecamp-london.png
-    url: https://www.meetup.com/freecodecamp-london/
-  - logo: london-pytorch.png
-    url: https://www.meetup.com/london-pytorch-meetup/
-  - logo: techleadconf.png
-    url: https://techleadconf.com/
-  - logo: gitnation.png
-    url: https://gitnation.com/
-  - logo: city-js.png
-    url: https://cityjsconf.org/
-
-# these get displayed at the top
-hero_pictures:
-- ../photos/venue-1.jpg
-- ../photos/venue-2.jpg
-- ../photos/venue-3.jpg
-
-# probably don't need changing
+brand_name: "Prompt Engineering Conference"
 base_path: "https://promptengineering.rocks/"
 base_folder: "static"
 twitter_url: https://x.com/PromptEngConf
 linkedin_url: https://www.linkedin.com/company/prompt-engineering-conference/
 youtube_url: https://www.youtube.com/@PromptEngineeringConf
 mailto: "mailto:hello@promptengineering.rocks"
+
+hero_video:
+hero_pictures:
+- ../photos/venue-1.jpg
+- ../photos/venue-2.jpg
+- ../photos/venue-3.jpg
+
+events:
+  - name: Prompt Engineering Conference London 2026
+    date: "October 15, 2026"
+    location: London, UK
+    photo_url: ./assets/images/events/pe-2026-london-q4.png
+    url: ./2026-london-q4/
+    size: large
+    youtube_playlist:
+
+events_past: []
+
+meetups: []
+meetups_past: []

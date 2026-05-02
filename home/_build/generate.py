@@ -3,36 +3,15 @@
 import datetime
 import re
 import csv
-import textwrap
-import string
 import yaml
-from datetime import timedelta
 import markdown
+import os
+import shutil
+import glob
 
 from jinja2 import Environment, FileSystemLoader
 from jinja_markdown import MarkdownExtension
 
-DIVIDER = "#"*80
-DEFAULT_TALK_DURATION = 30
-SITEMAP_URLS = []
-
-def generate_short_url(url):
-    url = url.replace(" ", "-").replace("_", "-")
-    url = ''.join(filter(lambda x: x in string.printable, url))
-    url = re.sub('[^a-zA-Z0-9]', '-', url)
-    url = re.sub('[-]+', '-', url)
-    return url[:100]
-
-def generate_talk_url(talk):
-    url = "{name1}{name2}{company}{title}".format(
-        name1=talk.get("name", "").replace(" ", "_"),
-        name2=("_" + talk.get("co-speaker", "").replace(" ", "_")) if talk.get("co-speaker") else "",
-        company=("_" + talk.get("organization", "").replace(" ", "_")) if talk.get("organization") else "",
-        title=("_" + talk.get("title", "").replace(",", "_").replace(" ", "_")) if talk.get("title") else "",
-    )
-    url = ''.join(filter(lambda x: x in string.printable, url))
-    url = re.sub('[\\W]+', '', url)
-    return url[:100]
 
 def read_csv(path):
     """ Read the pre-process the CSV """
@@ -41,149 +20,184 @@ def read_csv(path):
         reader = csv.DictReader(f)
         for item in reader:
             item = dict(item)
-            if "abstract" in item:
-                item["abstract_s"] = textwrap.shorten(item.get("abstract",""), 300, placeholder="...")
-                item["abstract_m"] = textwrap.shorten(item.get("abstract",""), 1000, placeholder="...")
             items.append(item)
     return items
 
 
-# Jinja init
+DIVIDER = "#"*80
+SITEMAP_URLS = []
+
+# init the jinja stuff
 file_loader = FileSystemLoader("_templates")
 env = Environment(loader=file_loader)
 env.add_extension(MarkdownExtension)
-env.filters["short_url"] = generate_short_url
 env.filters["markdown"] = lambda x: markdown.markdown(x)
-def dedupe(items):
-     present = set()
-     output = []
-     for item in items:
-         name = item.get("name")
-         if name not in present:
-             output.append(item)
-             present.add(name)
-     return output
-env.filters["dedupe"] = dedupe
 
 # load the context from the metadata file
 print(DIVIDER)
 print("Loading context")
-talks_raw = read_csv("./_db/talks.csv")
 with open('metadata.yml') as f:
     context = yaml.load(f, Loader=yaml.FullLoader)
     BASE_FOLDER = "./" + context.get("base_folder")
 
-# pick up the ids & photos
-for i, talk in enumerate(talks_raw):
-    talk["id"] = str(i)
-    photo = talk.get("photo")
-    if photo:
-        talk["photo_url"] = "../speakers/" + photo
-    else:
-        talk["photo_url"] = talk.get("avatar")
-    talk["short_url"] = generate_talk_url(talk)
+# read the csv
+context["testimonials"] = read_csv("./_db/testimonials.csv")
+context["ambassadors"] = read_csv("./_db/ambassadors.csv")
 
-# sort into talks and keynotes
-talks = [
-    talk for talk in talks_raw
-    if "confirmed" in talk["status"].lower()
-]
-keynotes = [
-    talk for talk in talks_raw
-    if "keynote" in talk["status"].lower()
-]
-context["talks"] = talks
-context["keynotes"] = keynotes
+# DYNAMIC STATS
+print(DIVIDER)
+print("Calculating dynamic stats")
 
-# we order the tracks in how they appear in the CSV file
-tracks_ordered = []
-# all talks sorted in tracks
-tracks = dict()
-for talk in talks:
-    track = talk.get("track")
-    if track not in tracks:
-        tracks[track] = []
-        tracks_ordered.append(track)
-    tracks[track].append(talk)
-context["tracks"] = tracks_ordered
+# Events = total event entries in metadata (excludes meetups)
+_events_count = (
+    len(context.get("events") or []) +
+    len(context.get("events_past") or [])
+)
+print(f"  Events: {_events_count}")
 
-# insert breaks & wrap up into each track
-breaks = context.get("breaks")
-for track in tracks_ordered:
-    old_order = tracks[track]
-    new_order = []
-    offset = 0
-    for brk in context.get("breaks"):
-        for i in range(brk.get("talks_before")):
-            if offset < len(old_order):
-                new_order.append(old_order[offset])
-                offset += 1
-        # copy because we'll be modifying times on these
-        new_order.append(brk.copy())
-    while offset < len(old_order):
-        new_order.append(old_order[offset])
-        offset += 1
-    new_order.append(dict(
-        title="Wrap up",
-        comment="Scan each other's QR codes & head to a nearby pub!"
-    ))
-    tracks[track] = new_order
+# Countries = unique countries derived from event folder names
+_CITY_COUNTRY = {
+    "london": "UK", "amsterdam": "Netherlands", "san-francisco": "USA",
+    "nyc": "USA", "paris": "France", "cologne": "Germany", "munich": "Germany",
+    "campinas": "Brazil", "chennai": "India", "bangalore": "India",
+    "lisbon": "Portugal", "barcelona": "Spain", "redmond": "USA",
+    "austin": "USA", "seattle": "USA", "warsaw": "Poland",
+    "brussels": "Belgium", "tokyo": "Japan", "berlin": "Germany",
+    "zurich": "Switzerland", "dublin": "Ireland", "stockholm": "Sweden",
+    "singapore": "Singapore", "sydney": "Australia",
+}
+_countries = set()
+for _mf in glob.glob("../20*/metadata.yml"):
+    _folder = os.path.basename(os.path.dirname(_mf))
+    _city_part = re.sub(r'^\d{4}-', '', _folder)
+    _city_part = re.sub(r'-q\d+$', '', _city_part)
+    _country = _CITY_COUNTRY.get(_city_part)
+    if not _country:
+        # fallback: parse location_string last segment
+        try:
+            _loc_data = yaml.load(open(_mf), Loader=yaml.FullLoader)
+            _loc = str(_loc_data.get("location_string") or "")
+            if _loc:
+                _last = _loc.split(",")[-1].strip()
+                _NORMALIZE = {"US": "USA", "UK": "UK", "NL": "Netherlands",
+                              "United States": "USA", "United Kingdom": "UK"}
+                _country = _NORMALIZE.get(_last, _last)
+        except Exception:
+            pass
+    if _country:
+        _countries.add(_country)
+print(f"  Countries: {len(_countries)} — {sorted(_countries)}")
 
-# insert keynotes or placeholders
-for i, track in enumerate(tracks_ordered):
-    current_day = (i // len(context.get("rooms"))) + 1
-    prepend = []
-    for talk in keynotes:
-        if talk.get("day") == str(current_day):
-            if i % len(context.get("rooms")) == 0:
-                prepend.append(talk)
-            else:
-                prepend.append(dict(
-                    placeholder=True,
-                    duration=talk.get("duration"),
-                ))
-    tracks[track] = prepend + tracks[track]
+# Speakers = unique speaker names across all event _db CSVs
+_speakers = set()
+for _csv_path in glob.glob("../20*/_db/*.csv"):
+    try:
+        with open(_csv_path, "r", encoding="utf-8", errors="replace") as _cf:
+            _reader = csv.DictReader(_cf)
+            for _row in _reader:
+                _name = (_row.get("name") or _row.get("Name") or _row.get("speaker") or "").strip()
+                if _name and not _name.startswith("_"):
+                    _speakers.add(_name)
+    except Exception:
+        pass
+_spk_rem = len(_speakers) % 10
+_spk_rounded = (len(_speakers) - _spk_rem) if _spk_rem <= 4 else (len(_speakers) + (10 - _spk_rem))
+print(f"  Speakers: {len(_speakers)} raw -> {_spk_rounded}+")
 
-# insert times & durations
-for track in tracks:
-    current_time = datetime.datetime.fromisoformat(context.get("start_time"))
-    for talk in tracks[track]:
-        talk["duration"] = int(talk.get("duration") or DEFAULT_TALK_DURATION)
-        talk["start_time"] = current_time
-        current_time += timedelta(minutes=talk["duration"])
+# Attendees = sum of per-event attendee counts, rounded by remainder
+_att_total = 0
+for _mf in glob.glob("../20*/metadata.yml"):
+    try:
+        _att_data = yaml.load(open(_mf), Loader=yaml.FullLoader)
+        _att_val = str(_att_data.get("attendees") or "0")
+        _att_num = int(re.sub(r'[^\d]', '', _att_val) or 0)
+        _att_total += _att_num
+    except Exception:
+        pass
+_att_rem = _att_total % 100
+_att_rounded = (_att_total + (100 - _att_rem)) if _att_rem >= 50 else (_att_total - _att_rem)
+print(f"  Attendees: {_att_total} raw -> {_att_rounded}+")
 
-# remove placeholders
-for track in tracks:
-    tracks[track] = [t for t in tracks[track] if not t.get("placeholder")]
+context["counts"] = {
+    "events":     f"{_events_count}+",
+    "countries":  f"{len(_countries)}+",
+    "speakers":   f"{_spk_rounded}+",
+    "attendees":  f"{_att_rounded}+",
+}
 
+# SPONSOR LOGOS CAROUSEL
+# Scan all event subfolders (../20*) for sponsor logos, deduplicate, sort
+print(DIVIDER)
+print("Scanning sponsor logos from event subfolders")
+SPONSORS_DEST = BASE_FOLDER + "/sponsors"
+os.makedirs(SPONSORS_DEST, exist_ok=True)
+seen = set()
+sponsor_logos = []
+for logo_path in sorted(glob.glob("../sponsors/*.png") + glob.glob("../sponsors/*.jpg")):
+    filename = os.path.basename(logo_path)
+    key = filename.lower()
+    if key not in seen:
+        seen.add(key)
+        dest = os.path.join(SPONSORS_DEST, filename)
+        shutil.copy2(logo_path, dest)
+        sponsor_logos.append(filename)
+        print(f"  {filename}")
+sponsor_logos.sort(key=lambda x: x.lower())
 
-context["talks_by_tracks"] = tracks
-print("Loaded %d confirmed talks in %d tracks: %s" % (len(context["talks"]), len(tracks), tracks.keys()))
+# Split sponsors from community partners / sister conferences
+_sp_exclude_logos = {
+    'hockeystick.png', 'arf.png', 'ksug.ai.png', 'filmforum.png', 'uhub.png',
+    'pe-norway-full.png', 'gdg-london.jpg', 'london-agentic-ai-meetup.png',
+    'angular-london.png', 'freecodecamp-london.png', 'london-pytorch.png',
+    'techleadconf.png', 'gitnation.png', 'city-js.png',
+    'it-schulungen.png', 'pec.png', 'cubixai.jpg',
+    'jug-amsterdam.png', 'k8sug.png',
+    'kube-events.png', 'kube_events.png', 'kube_careers.png', 'kubespaces.png',
+    'gdg_london.png', 'NL_MEETUP.png',
+    'chennaisre.png', 'srecommunitycoimbatore.png', 'aigeeks.png',
+    'cloud native lisbon.png', 'cloud native porto.png',
+    'devops braga.png', 'devops lisbon.png',
+    'kcd porto.png', 'leiria tech talks.png', 'viseu tech talks.png',
+    'lisbon genai community.png', 'aws porto.png',
+    'IacConf.png', 'DevIT.png', 'DevIT_black.png',
+}
+partner_logos = sorted([l for l in sponsor_logos if l in _sp_exclude_logos], key=lambda x: x.lower())
+sponsor_logos = sorted([l for l in sponsor_logos if l not in _sp_exclude_logos], key=lambda x: x.lower())
+context["sponsor_logos"] = sponsor_logos
+context["partner_logos"] = partner_logos
+print(f"  Total: {len(sponsor_logos)} sponsor logos, {len(partner_logos)} partner logos")
 
 # MAIN PAGES
 print(DIVIDER)
 pages = ["index.html"]
 print(f"Generating main pages: {pages}")
 for page in pages:
-    with open(BASE_FOLDER + "/" + page, "w") as f:
+    with open(BASE_FOLDER + "/" + page, "w", encoding="utf-8") as f:
         print("Writing out", page)
         template = env.get_template(page)
         f.write(template.render(page=page, **context))
-        if page != "index.html":
-            SITEMAP_URLS.append((page.replace(".html",""), 0.75))
 
-# template each talk page for the event
-for talk in talks_raw:
-    print("Generating talk subpage %s" % (talk.get("short_url")))
-    with open(BASE_FOLDER + "/" + talk.get("short_url").replace(".html","")  + ".html", "w") as f:
-        template = env.get_template("talk.html")
-        f.write(template.render(talk=talk, **context))
-        SITEMAP_URLS.append((talk.get("short_url").replace(".html",""), 0.75))
-
-# SITEMAP
+# MEETUPS
 print(DIVIDER)
-print("Generating sitemap.xml with %d items" % len(SITEMAP_URLS))
-now = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=datetime.timezone.utc).isoformat()
-with open(BASE_FOLDER + "/sitemap.xml", "w") as f:
-    template = env.get_template("sitemap.xml")
-    f.write(template.render(urls=SITEMAP_URLS, now=now))
+meetups = (context.get("meetups") or []) + (context.get("meetups_past") or [])
+print(f"Generating {len(meetups)} meetup pages")
+for meetup in meetups:
+    print(f"Generating {meetup.get('name')} meetup subpage")
+    try:
+        # read the csv
+        talks_raw = read_csv("./_db/" + meetup.get("talks"))
+    except Exception as e:
+        print("Couldn't read talks", e)
+        continue
+
+    # pick up the ids & photos
+    for i, talk in enumerate(talks_raw):
+        talk["id"] = str(i)
+        photo = talk.get("photo")
+        if photo:
+            talk["photo_url"] = "../speakers/" + photo
+
+    with open(BASE_FOLDER + "/" + meetup.get("url") + ".html", "w", encoding="utf-8") as f:
+        print("Writing out", f.name)
+        template = env.get_template("meetup.html")
+        f.write(template.render(talks=talks_raw, meetup=meetup, **context))

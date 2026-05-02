@@ -1,0 +1,27 @@
+brand_name: "Prompt Engineering Conference"
+base_path: "https://promptengineering.rocks/"
+base_folder: "static"
+twitter_url: https://x.com/PromptEngConf
+linkedin_url: https://www.linkedin.com/company/prompt-engineering-conference/
+youtube_url: https://www.youtube.com/@PromptEngineeringConf
+mailto: "mailto:hello@promptengineering.rocks"
+
+hero_video:
+hero_pictures:
+- ../photos/venue-1.jpg
+- ../photos/venue-2.jpg
+- ../photos/venue-3.jpg
+
+events:
+  - name: Prompt Engineering Conference London 2026
+    date: "October 15, 2026"
+    location: London, UK
+    photo_url: ./assets/images/events/pe-2026-london-q4.png
+    url: ./2026-london-q4/
+    size: large
+    youtube_playlist:
+
+events_past: []
+
+meetups: []
+meetups_past: []

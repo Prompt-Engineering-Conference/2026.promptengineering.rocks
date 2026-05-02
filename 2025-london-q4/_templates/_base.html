@@ -152,7 +152,8 @@
 							{% if event_state != 'after' %}<li class="nav-item"><a class="nav-link" href="{{ 'index.html' if page != 'index.html' else '' }}#tickets">Tickets</a></li>{% endif %}
 							<li class="nav-item"><a class="nav-link" href="{{ 'index.html' if page != 'index.html' else '' }}#schedule">Schedule</a></li>
 							<li class="nav-item"><a class="nav-link" href="{{ 'index.html' if page != 'index.html' else '' }}#speakers">Speakers</a></li>
-							<li class="nav-item"><a class="nav-link" href="{{ 'index.html' if page != 'index.html' else '' }}#venue">Venue</a></li>
+							{% if city_name != "Online" %}<li class="nav-item"><a class="nav-link" href="{{ 'index.html' if page != 'index.html' else '' }}#venue">Venue</a></li>{% endif %}
+							{% if youtube_playlist %}<li class="nav-item"><a class="nav-link" href="{{ 'index.html' if page != 'index.html' else '' }}#playlist">Playlist</a></li>{% endif %}
 							<li class="nav-item"><a class="nav-link" href="{{ 'index.html' if page != 'index.html' else '' }}#sponsors">Sponsors</a></li>
 						</ul><!--//nav-->
 						{% endif %}

@@ -1,0 +1,70 @@
+start_time: "2024-11-20T09:00:00+00:00"
+event_state: after
+date_string: "November 20, 2024"
+location_string: "Online"
+city_name: "Online"
+luma_evt: evt-PLACEHOLDER
+cfp_url: https://www.papercall.io/prompt-engineering-conference-2024
+
+days: 1
+attendees: 250
+speakers: "30+"
+
+rooms:
+- track 1
+- track 2
+- track 3
+
+breaks:
+- title: Welcome
+  duration: 15
+  comment: Online
+  talks_before: 0
+- title: Break
+  duration: 15
+  comment: Online
+  talks_before: 3
+- title: Break
+  duration: 15
+  comment: Online
+  talks_before: 3
+- title: Break
+  duration: 15
+  comment: Online
+  talks_before: 2
+
+sponsors:
+  - logo: arato.png
+    url: https://arato.ai/
+  - logo: comet.png
+    url: https://www.comet.com/
+  - logo: aiproductivityhub.png
+    url: https://www.skool.com/ai-productivity-hub/about
+  - logo: prompt-hub.png
+    url: https://www.prompthub.us/
+  - logo: packt.png
+    url: https://packtpub.com/
+
+hero_pictures:
+- ../photos/venue-1.jpg
+
+# brand identity
+brand_name: "Prompt Engineering Conference"
+brand_domain: "promptengineering.rocks"
+brand_description: "The world's first conference about prompt engineering"
+brand_tagline: "Learn how to interact with the most advanced AI on our planet"
+brand_og_pitch: "Probably the most exciting prompt engineering conference in"
+brand_color: "#6b40d8"
+brand_twitter: "@PromptEngConf"
+brand_ga_id: "G-TJD11HYWN5"
+brand_gads_id: ""
+brand_twt_pixel: ""
+logo_image: "assets/images/logo-token.png"
+
+base_path: "https://promptengineering.rocks/"
+base_folder: "static"
+twitter_url: https://x.com/PromptEngConf
+linkedin_url: https://www.linkedin.com/company/prompt-engineering-conference/
+youtube_url: https://www.youtube.com/@PromptEngineeringConf
+mailto: "mailto:hello@promptengineering.rocks"
+youtube_playlist: https://www.youtube.com/watch?v=fSl-2f5eXek&list=PLQEYbmzcCfpdgo4z4htF2elNKqzwEbDIM

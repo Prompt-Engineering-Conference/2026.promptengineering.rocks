@@ -29,6 +29,20 @@ events_past:
     url: ./2025-london-q4/
     size: large
     youtube_playlist:
+  - name: Prompt Engineering Conference 2024
+    date: "November 20, 2024"
+    location: Online
+    photo_url: ./assets/images/events/pe-2024-online.jpg
+    url: ./2024-online/
+    size: large
+    youtube_playlist: https://www.youtube.com/watch?v=fSl-2f5eXek&list=PLQEYbmzcCfpdgo4z4htF2elNKqzwEbDIM
+  - name: Prompt Engineering Conference 2023
+    date: "October 12, 2023"
+    location: Online
+    photo_url: ./assets/images/events/pe-2023-online.jpg
+    url: ./2023-online/
+    size: large
+    youtube_playlist: https://www.youtube.com/watch?v=fSl-2f5eXek&list=PLQEYbmzcCfpdgo4z4htF2elNKqzwEbDIM
 
 meetups: []
 meetups_past: []

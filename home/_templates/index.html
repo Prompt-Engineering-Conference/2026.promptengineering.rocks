@@ -35,11 +35,13 @@
     <div class="text-center mt-4">
       <a class="btn-secondary btn btn-lg" href="https://luma.com/sre" target="_blank">Subscribe to our LUMA calendar</a>
     </div>
+    {% if hero_video %}
     <div class="hero-video-standalone mt-5">
       <video autoplay muted loop playsinline poster="{{ hero_pictures[0] }}">
         <source src="{{ hero_video }}?v=2" type="video/mp4">
       </video>
     </div>
+    {% endif %}
     {% endif %}
     {% if meetups %}
     <h3 class="section-heading text-center mb-3">Upcoming meetups</h3>

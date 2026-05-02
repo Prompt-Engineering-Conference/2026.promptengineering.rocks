@@ -9,7 +9,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout
         uses: actions/checkout@v2.3.1
 
       - name: Deps
@@ -17,19 +17,16 @@ jobs:
           make --version
           make deps
 
-      # --- LANDING PAGE MODE ---
-      # To switch back to the full site, replace this Build step with:
-      #   make clean
-      #   make generate
-      #   echo "promptengineering.rocks" > static/CNAME
-      - name: Build 🔧
+      - name: Build
         run: |
-          mkdir -p static/bg
-          cp landing/index.html landing/style.css landing/script.js landing/logo-white.svg static/
-          cp home/assets/bg/* static/bg/
+          make clean
+          make generate
           echo "promptengineering.rocks" > static/CNAME
 
-      - name: Deploy 🚀
+      - name: Optimize Images
+        run: python _build/optimize_images.py
+
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.4.0
         with:
           branch: gh-pages

@@ -1,22 +1,6 @@
 years := $(wildcard 20*)
 
-########################################################################
-# LANDING PAGE (temporary)
-# To switch back to the regular site:
-#   1. Remove the "landing" target below
-#   2. Change "generate" default target back to:
-#        generate: $(addprefix static/,$(addsuffix /index.html,$(years))) static/index.html
-########################################################################
-generate: landing
-
-landing:
-	mkdir -p static/bg
-	cp landing/index.html landing/style.css landing/script.js landing/logo-white.svg static/
-	cp home/assets/bg/* static/bg/
-########################################################################
-
-# --- Regular site build (uncomment and set as default to restore) ---
-# generate: $(addprefix static/,$(addsuffix /index.html,$(years))) static/index.html
+generate: $(addprefix static/,$(addsuffix /index.html,$(years))) static/index.html
 
 20%/static/index.html: 20%/_build/* 20%/_templates/* 20%/_db/* 20%/Makefile 20%/metadata.*
 	@echo $@
@@ -29,14 +13,23 @@ landing:
 static/20%/index.html: 20%/static/index.html
 	@echo ">>>" $@
 	cp -r 20$*/static/ static/20$*
+	cp 20$*/metadata.yml static/20$*
+	cp 20$*/_db/talks.csv static/20$*
 
 static/index.html: home/**/*
 	cd home && \
 		make clean && \
 		make generate && \
-		cp -r static/* ../static
+		cp -r static/* ../static && \
+		cp metadata.yml ../static
 	cp -r photos ./static
 	cp -r speakers ./static
+	cp -r sponsors ./static
+
+landing:
+	mkdir -p static/bg
+	cp landing/index.html landing/style.css landing/script.js landing/logo-white.svg static/
+	cp home/assets/bg/* static/bg/
 
 env:
 	python3 -m venv env
@@ -52,4 +45,7 @@ serve:
 	python3 _build/serve.py
 	open http://localhost:8080
 
-.PHONY: env deps clean serve landing
+optimize:
+	python _build/optimize_images.py
+
+.PHONY: env deps clean serve optimize landing

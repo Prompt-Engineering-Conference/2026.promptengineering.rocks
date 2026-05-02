@@ -89,7 +89,7 @@ brand_twitter: "@PromptEngConf"
 brand_ga_id: "G-TJD11HYWN5"
 brand_gads_id: ""
 brand_twt_pixel: ""
-logo_image: "../home/assets/images/logo-token.png"
+logo_image: "assets/images/logo-token.png"
 
 base_path: "https://promptengineering.rocks/"
 base_folder: "static"

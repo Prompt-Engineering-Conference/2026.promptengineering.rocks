@@ -198,7 +198,7 @@
 				</div><!--//col-->
 				<div class="col-6 col-md-3">
 					<div class="item">
-						<div class="number">1+</div>
+						<div class="number">2+</div>
 						<div class="unit">Events</div>
 					</div><!--//item-->
 				</div><!--//col-->
@@ -210,7 +210,7 @@
 				</div><!--//col-->
 				<div class="col-6 col-md-3">
 					<div class="item">
-						<div class="number">300+</div>
+						<div class="number">500+</div>
 						<div class="unit">Attendees</div>
 					</div><!--//item-->
 				</div><!--//col-->
@@ -262,6 +262,70 @@
 
 
 
+
+<section id="past-events" class="sponsors-section section theme-bg-primary text-white">
+  <div class="container">
+    
+    <h3 class="section-heading text-center mb-3 text-white">Past conferences</h3>
+    <div class="row gx-md-5">
+
+      
+
+      <div class="col-12 col-lg-6 mb-4">
+        <div class="card rounded">
+          <a href="./2025-london-q4/">
+            <img src="./assets/images/events/pe-2025-london-q4.jpg" class="card-img-top rounded-top" alt="">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Prompt Engineering Conference London 2025</h5>
+            <div class="card-text mb-3">
+              <div class="meta">October 16, 2025</div>
+            </div>
+            
+            <a href="./2025-london-q4/" class="event-read-more-btn">Read more &rarr;</a>
+            
+            
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+    
+    
+    
+  </div>
+</section>
+<style>
+.past-conf-extra, .past-meetup-extra, .amb-extra { display: none; }
+.btn-past-more { text-decoration: none; }
+.btn-past-more:hover, .btn-past-more:focus { text-decoration: none; }
+#show-more-amb { background: #6b40d8; color: #fff; border-color: #6b40d8; text-decoration: none; }
+#show-more-amb:hover, #show-more-amb:focus { background: #3db07f; color: #fff; border-color: #3db07f; text-decoration: none; }
+.btn-past-more { color: #000; background: #fff; border: 2px solid #fff; }
+.btn-past-more:hover, .btn-past-more:focus { background: #f0f0f0; color: #000; border-color: #f0f0f0; }
+.yt-playlist-btn { display: inline-block; margin-left: 12px; padding: 8px 18px; background: #EC645E; color: #fff; border-radius: 6px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 700; transition: background 0.2s ease; }
+.yt-playlist-btn:hover, .yt-playlist-btn:focus { background: #f08580; color: #fff; text-decoration: none; }
+.event-read-more-btn { display: inline-block; padding: 8px 18px; background: #6b40d8; color: #fff; border-radius: 6px; text-decoration: none; transition: background 0.2s ease; font-family: 'Montserrat', sans-serif; font-weight: 700; }
+.event-read-more-btn:hover, .event-read-more-btn:focus { background: #3db07f; color: #fff; text-decoration: none; }
+.card { transition: box-shadow .4s ease, border-color .4s ease; border: 1px solid transparent; }
+#events .card:hover { border-color: rgba(60,180,130,.35); box-shadow: 0 0 20px rgba(60,180,130,.18), 0 0 48px rgba(60,180,130,.07); }
+#past-events .card:hover { border-color: rgba(255,255,255,.25); box-shadow: 0 0 20px rgba(255,255,255,.12), 0 0 48px rgba(255,255,255,.05); }
+</style>
+<script>
+function showMoreAmb() {
+  document.querySelectorAll('.amb-extra').forEach(function(el) { el.classList.remove('amb-extra'); });
+  document.getElementById('show-more-amb').style.display = 'none';
+}
+function showMorePastConf() {
+  document.querySelectorAll('.past-conf-extra').forEach(function(el) { el.classList.remove('past-conf-extra'); });
+  document.getElementById('show-more-past-conf').style.display = 'none';
+}
+function showMorePastMeetup() {
+  document.querySelectorAll('.past-meetup-extra').forEach(function(el) { el.classList.remove('past-meetup-extra'); });
+  document.getElementById('show-more-past-meetup').style.display = 'none';
+}
+</script>
 
 
 

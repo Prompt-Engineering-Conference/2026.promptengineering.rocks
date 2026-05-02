@@ -79,9 +79,12 @@
 		font-family: 'Monoton', sans-serif;
 	}
 	.logo {
-		font-size: 5rem;
 		color: white;
 		font-weight: 400;
+	}
+	.logo img {
+		max-width: 400px;
+		height: auto;
 	}
 	.theme-bg-primary {
 		background: {{ brand_color }};
@@ -91,6 +94,11 @@
 	}
 	.hero-block .social-list li a, footer .social-list li a {
 		color: white;
+		text-decoration: none;
+	}
+	.hero-block .social-list li a:hover, footer .social-list li a:hover {
+		color: white;
+		text-decoration: none;
 	}
 	html {
 		scroll-behavior: smooth;
@@ -173,7 +181,7 @@
 		</div>
 		<div class="container">
 			<div class="hero-text-block text-center" style="max-width: 100%;">
-				{% if logo_image %}<h1 class="logo retro"><img src="{{ logo_image }}" alt="{{ brand_name }}" style="max-width: 350px; height: auto;" /></h1>{% else %}<h1 class="logo retro"><img src="../home/assets/images/logo-token.png" alt="Prompt Engineering Conference" style="max-width: 350px; height: auto;"></h1>{% endif %}
+				<h1 class="logo"><img src="{{ logo_image or '../home/assets/images/logo-token.png' }}" alt="{{ brand_name }}"></h1>
 				{% if noindex %}
 				<h2 class="text-white">Sponsorship Prospectus - {{ brand_name }} {{ city_name }}</h2>
 				<h3 class="text-white"><i class="far fa-calendar-alt me-2"></i>{{ date_string }} <i class="fas fa-map-marker-alt mx-2"></i>{{ location_string }}</h3>
@@ -197,7 +205,7 @@
 						<li class="list-inline-item me-3"><a target="_blank" href="https://luma.com/sre" style="text-decoration:none;">✦</a></li>
 						<li class="list-inline-item me-3"><a target="_blank" href="https://discord.gg/ravEjTxNAX"><i class="fab fa-discord fa-fw"></i></a></li>
 						<li class="list-inline-item me-3"><a target="_blank" href="{{ linkedin_url }}"><i class="fab fa-linkedin fa-fw"></i></a></li>
-						<li class="list-inline-item me-3"><a href="mailto:hello@promptengineering.rocks"><i class="fas fa-envelope fa-fw"></i></a></li>
+						<li class="list-inline-item me-3"><a href="mailto:salnikov@gmail.com"><i class="fas fa-envelope fa-fw"></i></a></li>
 						<li class="list-inline-item me-0"><a target="_blank" rel="noopener noreferrer" href="{{ youtube_url }}"><i class="fab fa-youtube fa-fw"></i></a></li>
 					</ul>
 				{% endif %}
@@ -252,7 +260,7 @@
             <li class="list-inline-item me-3"><a target="_blank" href="https://luma.com/sre" style="text-decoration:none;">✦</a></li>
             <li class="list-inline-item me-3"><a target="_blank" href="https://discord.gg/ravEjTxNAX"><i class="fab fa-discord fa-fw"></i></a></li>
             <li class="list-inline-item me-3"><a target="_blank" href="{{ linkedin_url }}"><i class="fab fa-linkedin fa-fw"></i></a></li>
-            <li class="list-inline-item me-3"><a href="mailto:hello@promptengineering.rocks"><i class="fas fa-envelope fa-fw"></i></a></li>
+            <li class="list-inline-item me-3"><a href="mailto:salnikov@gmail.com"><i class="fas fa-envelope fa-fw"></i></a></li>
             <li class="list-inline-item me-0"><a target="_blank" rel="noopener noreferrer" href="{{ youtube_url }}"><i class="fab fa-youtube fa-fw"></i></a></li>
         </ul>
 

@@ -16,7 +16,7 @@ events:
   - name: Prompt Engineering Conference London 2026
     date: "October 15, 2026"
     location: London, UK
-    photo_url: ./assets/images/events/pe-2026-london-q4.png
+    photo_url: ./assets/images/events/pe-2026-london-q4.jpg
     url: ./2026-london-q4/
     size: large
     youtube_playlist:

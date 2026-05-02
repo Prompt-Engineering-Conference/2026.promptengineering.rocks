@@ -21,7 +21,14 @@ events:
     size: large
     youtube_playlist:
 
-events_past: []
+events_past:
+  - name: Prompt Engineering Conference London 2025
+    date: "October 16, 2025"
+    location: London, UK
+    photo_url: ./assets/images/events/pe-2025-london-q4.jpg
+    url: ./2025-london-q4/
+    size: large
+    youtube_playlist:
 
 meetups: []
 meetups_past: []

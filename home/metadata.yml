@@ -25,7 +25,7 @@ events:
 
 events_past:
 
-  - name: Prompt Engineering Conference London 2025
+  - name: PEC London 2025
     date: "October 16, 2025"
     location: London, UK
     photo_url: ./assets/images/events/pec-2025-london-q4.jpg
@@ -33,7 +33,7 @@ events_past:
     size: large
     youtube_playlist: https://www.youtube.com/playlist?list=PLQEYbmzcCfpdgo4z4htF2elNKqzwEbDIM
 
-  - name: Prompt Engineering Conference 2024
+  - name: PEC 2024 - Online
     date: "November 20, 2024"
     location: Online
     photo_url: ./assets/images/events/pec-2024-online.jpg
@@ -41,7 +41,7 @@ events_past:
     size: large
     youtube_playlist: https://www.youtube.com/playlist?list=PLQEYbmzcCfpc4b9Z1zGd4waWwthP-PdmM
 
-  - name: Prompt Engineering Conference 2023
+  - name: PEC 2023 - Online
     date: "October 12, 2023"
     location: Online
     photo_url: ./assets/images/events/pec-2023-online.jpg

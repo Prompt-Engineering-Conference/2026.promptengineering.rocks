@@ -17,7 +17,7 @@ events:
   - name: Prompt Engineering Conference London 2026
     date: "October 15, 2026"
     location: London, UK
-    photo_url: ./assets/images/events/pe-2026-london-q4.jpg
+    photo_url: ./assets/images/events/pec-2026-london-q4.jpg
     url: ./2026-london-q4/
     size: large
     youtube_playlist:
@@ -27,7 +27,7 @@ events_past:
   - name: Prompt Engineering Conference London 2025
     date: "October 16, 2025"
     location: London, UK
-    photo_url: ./assets/images/events/pe-2025-london-q4.jpg
+    photo_url: ./assets/images/events/pec-2025-london-q4.jpg
     url: ./2025-london-q4/
     size: large
     youtube_playlist: https://www.youtube.com/playlist?list=PLQEYbmzcCfpdgo4z4htF2elNKqzwEbDIM
@@ -35,7 +35,7 @@ events_past:
   - name: Prompt Engineering Conference 2024
     date: "November 20, 2024"
     location: Online
-    photo_url: ./assets/images/events/pe-2024-online.jpg
+    photo_url: ./assets/images/events/pec-2024-online.jpg
     url: ./2024-online/
     size: large
     youtube_playlist: https://www.youtube.com/playlist?list=PLQEYbmzcCfpc4b9Z1zGd4waWwthP-PdmM
@@ -43,7 +43,7 @@ events_past:
   - name: Prompt Engineering Conference 2023
     date: "October 12, 2023"
     location: Online
-    photo_url: ./assets/images/events/pe-2023-online.jpg
+    photo_url: ./assets/images/events/pec-2023-online.jpg
     url: ./2023-online/
     size: large
     youtube_playlist: https://www.youtube.com/playlist?list=PLQEYbmzcCfpe-3GLDTtwvfF6MpjLVVFZ1

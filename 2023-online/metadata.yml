@@ -46,7 +46,10 @@ sponsors:
     url: https://packtpub.com/
 
 hero_pictures:
-- ../photos/venue-1.jpg
+- ../photos/pec-1.jpg
+- ../photos/pec-2.jpg
+- ../photos/pec-3.jpg
+- ../photos/pec-4.jpg
 
 # brand identity
 brand_name: "Prompt Engineering Conference"

@@ -333,7 +333,7 @@
      
         // find the amount of "seconds" between now and target
         var current_date = new Date().getTime();
-        var seconds_left = (target_date - current_date) / 1000;
+        var seconds_left = Math.max(0, (target_date - current_date) / 1000);
      
         // do some time calculations
         days = parseInt(seconds_left / 86400);
@@ -481,7 +481,7 @@
     transition: background 0.2s;
   }
   .track-nav-links a:hover {
-    background: var(--brand-dark);
+    background: var(--brand-light);
     color: white;
   }
   .view-toggle-link {
@@ -493,6 +493,8 @@
     border: 1px solid var(--brand);
     border-radius: 4px;
     transition: all 0.2s;
+    min-width: 10rem;
+    text-align: center;
   }
   .view-toggle-link:hover {
     background: var(--brand);
@@ -618,6 +620,7 @@
     <!-- Track navigation -->
     <div class="track-nav">
       <div class="track-nav-inner">
+
         <div class="track-nav-links" id="track-links-0">
 
           <a href="#track-0-1">track 1</a>
@@ -627,6 +630,7 @@
           <a href="#track-0-3">track 3</a>
 
         </div>
+
         <span class="view-toggle-link" id="view-toggle-0" onclick="toggleView(0)">view as table</span>
       </div>
     </div>
@@ -2658,13 +2662,13 @@ The talk closes with a glimpse into how these ideas are being implemented in pra
         timelineView.classList.remove('hidden');
         toggleBtn.textContent = 'view as table';
         toggleBtn.classList.remove('active');
-        trackLinks.style.display = 'flex';
+        if (trackLinks) trackLinks.style.display = 'flex';
       } else {
         tableView.classList.add('active');
         timelineView.classList.add('hidden');
         toggleBtn.textContent = 'view as timeline';
         toggleBtn.classList.add('active');
-        trackLinks.style.display = 'none';
+        if (trackLinks) trackLinks.style.display = 'none';
       }
     }
     </script>
@@ -2681,7 +2685,7 @@ The talk closes with a glimpse into how these ideas are being implemented in pra
 <section id="speakers" class="speakers-section section">
   <div class="container">
     <h3 class="section-heading text-center mb-3">Speakers</h3>
-    <div class="row row-cols-2 row-cols-lg-5">
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5">
 
       
 
@@ -3500,7 +3504,6 @@ The talk closes with a glimpse into how these ideas are being implemented in pra
 </section><!--//speakers-section-->
 
 
-
 <section id="venue" class="venue-section section  theme-bg-primary text-white">
     <div class="container">
       <h3 class="section-heading text-center mb-5 text-white">Venue</h3>
@@ -3538,18 +3541,6 @@ The talk closes with a glimpse into how these ideas are being implemented in pra
     </div><!--//container-->
   </section><!--//venue-section-->
   
-
-
-
-<section id="playlist" class="section text-white" style="background: #3DA2E0;">
-  <div class="container text-center">
-    <h3 class="section-heading mb-4 text-white">Watch the Talks</h3>
-    <div class="ratio ratio-16x9" style="max-width: 800px; margin: 0 auto;">
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLQEYbmzcCfpdgo4z4htF2elNKqzwEbDIM" title="YouTube playlist" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </div>
-</section>
-
 
 
 <section id="sponsors" class="sponsors-section section">
@@ -3607,8 +3598,40 @@ The talk closes with a glimpse into how these ideas are being implemented in pra
     color: #444;
     font-size: 0.95rem;
   }
+  .modal-speaker .modal-close-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 1;
+    background: var(--brand);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 2.1rem;
+    line-height: 1;
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .modal-speaker .modal-close-btn:hover {
+    background: var(--brand-light);
+  }
+  .modal-speaker .modal-header {
+    display: none;
+  }
+  .modal-speaker .modal-body {
+    position: relative;
+  }
+  .modal-speaker .talk-title-bar {
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+    text-align: center;
+  }
   .modal-speaker .desc {
-    padding-bottom: 0.25rem;
+    padding-bottom: 0.125rem;
   }
 </style>
 
@@ -3617,12 +3640,8 @@ The talk closes with a glimpse into how these ideas are being implemented in pra
 <div class="modal modal-speaker modal-speaker-1" id="modal-speaker-1" tabindex="-1" role="dialog" aria-labelledby="speaker-1-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-1-ModalLabel" class="modal-title sr-only"
->Dr Roushanak Rahmat</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -3641,6 +3660,7 @@ The talk closes with a glimpse into how these ideas are being implemented in pra
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">A Comprehensive Guide to Prompt Engineering Speaker participation</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Prompt engineering is rapidly emerging as a critical skill for anyone working with Large Language Models. This session will demystify the process, blending the art of intuitive communication with the science of structured querying. We will cover core concepts such as prompt structure, context injection, and task specification, alongside practical strategies for eliciting creative text generation, accurate information retrieval, and effective problem-solving from LLMs. Learn how to master the nuances of prompting and unlock the full potential of these powerful AI tools.</p></p>
@@ -3664,12 +3684,8 @@ Dr. Rahmat excels at bridging the gap between technical teams and strategic stak
 <div class="modal modal-speaker modal-speaker-2" id="modal-speaker-2" tabindex="-1" role="dialog" aria-labelledby="speaker-2-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-2-ModalLabel" class="modal-title sr-only"
->Ricardo Sueiras</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -3688,6 +3704,7 @@ Dr. Rahmat excels at bridging the gap between technical teams and strategic stak
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Build without limits - Tips and techniques for better Prompting</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>AI Coding Assistants promise to revolutionise developer productivity, yet many engineers struggle to achieve consistent results. Drawing from my twelve month journey with these tools, this talk reveals practical strategies for transforming frustrating experiences into reliable outcomes. I'll share specific techniques that have consistently produced good quality code, concrete examples of successful prompting patterns, and resources that developers can use. Whether you're new to AI assistants or looking to refine your approach, you'll leave with a better understanding of the potential of these tools' to improve your development efficiency.</p></p>
@@ -3708,12 +3725,8 @@ Dr. Rahmat excels at bridging the gap between technical teams and strategic stak
 <div class="modal modal-speaker modal-speaker-3" id="modal-speaker-3" tabindex="-1" role="dialog" aria-labelledby="speaker-3-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-3-ModalLabel" class="modal-title sr-only"
->Shashi Jagtap</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -3732,6 +3745,7 @@ Dr. Rahmat excels at bridging the gap between technical teams and strategic stak
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Beyond Handcrafted Prompts: The Era of Prompt Optimization</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Prompts are powerful, but they are also brittle. Manually handcrafted prompts often work well for a time, but when models or their weights change, performance degrades forcing developers back into a cycle of prompt tinkering. This trial-and-error process is laborious, unscalable, and costly to maintain. In this talk, we introduce the era of prompt optimization: what it is, how it works, and why it is essential for building scalable and reliable AI systems. We will explore current tools and techniques, with a focus on automated prompt optimization using DSPy and its family of optimizers, and review some of the latest research and approaches in the field. Attendees will gain a clear understanding of how prompt optimization transforms prompting from brittle craftsmanship into a robust, reproducible, and scientific workflow.</p></p>
@@ -3752,12 +3766,8 @@ Dr. Rahmat excels at bridging the gap between technical teams and strategic stak
 <div class="modal modal-speaker modal-speaker-4" id="modal-speaker-4" tabindex="-1" role="dialog" aria-labelledby="speaker-4-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-4-ModalLabel" class="modal-title sr-only"
->W. Ian Douglas</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -3776,6 +3786,7 @@ Dr. Rahmat excels at bridging the gap between technical teams and strategic stak
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Vibe Prompting: The Secret to Perfect-First-Try Vibe Coding</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Ever found yourself doing the "vibe coding" dance? You know, where you have a brilliant idea but end up spending countless hours refactoring because the implementation didn't quite match your vision? What if I told you there's a better way to vibe with AI?
@@ -3798,12 +3809,8 @@ Ready to take your vibe coding to the next level? Let's explore how "vibe prompt
 <div class="modal modal-speaker modal-speaker-5" id="modal-speaker-5" tabindex="-1" role="dialog" aria-labelledby="speaker-5-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-5-ModalLabel" class="modal-title sr-only"
->Ajit Jaokar</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -3822,6 +3829,7 @@ Ready to take your vibe coding to the next level? Let's explore how "vibe prompt
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Role-Based Prompting for Image Generation: Cultural Precision Through Reasoning</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Getting an AI-generated image to capture nuanced, context-specific details—such as authentic cultural references—can be surprisingly difficult. In this session, we’ll explore a practical, reasoning-driven workflow for bridging that gap. The process begins by constructing a detailed persona for a subject-matter expert (for example, a historian of Japanese culture). Using a reasoning engine, we then generate prompts from the expert’s perspective, feed them into an image generation model, and finally, apply AI-based analysis to evaluate the result—closing the loop with metacognitive feedback. I’ll share real-world examples where this approach produced strikingly authentic and context-aware images, along with tips for adapting it to your own creative and professional use cases.</p></p>
@@ -3842,12 +3850,8 @@ Ready to take your vibe coding to the next level? Let's explore how "vibe prompt
 <div class="modal modal-speaker modal-speaker-6" id="modal-speaker-6" tabindex="-1" role="dialog" aria-labelledby="speaker-6-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-6-ModalLabel" class="modal-title sr-only"
->Muhammad Ahsan Ayaz</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -3866,6 +3870,7 @@ Ready to take your vibe coding to the next level? Let's explore how "vibe prompt
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">The Prompt is Dead, Long Live the Context</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>In case you didn't know, the era of the prompt as the sole monarch of AI engineering is over. For years, we've treated prompts like magic incantations, but this narrow focus creates brittle, amnesiac systems that fail in the real world. The simple prompt is dead. Its successor? Context Engineering.
@@ -3893,12 +3898,8 @@ It's time to stop whispering into a keyhole and start architecting the world beh
 <div class="modal modal-speaker modal-speaker-7" id="modal-speaker-7" tabindex="-1" role="dialog" aria-labelledby="speaker-7-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-7-ModalLabel" class="modal-title sr-only"
->Richard Marginson</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -3917,6 +3918,7 @@ It's time to stop whispering into a keyhole and start architecting the world beh
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Unlock Your Team's Potential: Building Your Agency's Prompt Playbook</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Are you ready to harness the full power of AI, but not sure where to start? This presentation is for you! We'll demystify prompt engineering and show you how to build a custom prompt library and internal training program right within your own agency or team.
@@ -3946,12 +3948,8 @@ Prior to joining RDEL, Richard managed and grew accounts at The Canadian Profess
 <div class="modal modal-speaker modal-speaker-8" id="modal-speaker-8" tabindex="-1" role="dialog" aria-labelledby="speaker-8-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-8-ModalLabel" class="modal-title sr-only"
->Vlad Dyachenko</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -3970,6 +3968,7 @@ Prior to joining RDEL, Richard managed and grew accounts at The Canadian Profess
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Prompt Driven Development (PDD) or the Art of Prompting</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>AI is like steroids. It can speed up the process, but you still have to go to the gym and practice the fundamentals. You have to suffer. (c) In this talk, I will explore the art and science of writing actionable, high-context prompts that transform AI from a "hallucinating assistant" into a productive teammate, without skipping the basics.
@@ -3998,12 +3997,8 @@ He is also a writer for EffectiveProgrammer, AI Advances, IT Next, and Level Up 
 <div class="modal modal-speaker modal-speaker-9" id="modal-speaker-9" tabindex="-1" role="dialog" aria-labelledby="speaker-9-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-9-ModalLabel" class="modal-title sr-only"
->Erik Schwartz</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4022,6 +4017,7 @@ He is also a writer for EffectiveProgrammer, AI Advances, IT Next, and Level Up 
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Beyond Prompt Libraries: Teaching AI (and Your Teams) to Ask Better Questions</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Prompt libraries are yesterday’s solution. Copy-paste tricks don’t scale and they don’t create resilient teams. In this session, Erik Schwartz will show executives how to move beyond libraries and towards prompt self-sufficiency, using meta-prompting techniques that teach AI (and your people) to ask better questions, adapt on the fly, and build a culture of prompt fluency. Walk away with practical frameworks and meta-prompts you can put to work immediately.</p></p>
@@ -4045,12 +4041,8 @@ A regular speaker, writer, and host of the London AI Dinner, Erik is recognised 
 <div class="modal modal-speaker modal-speaker-10" id="modal-speaker-10" tabindex="-1" role="dialog" aria-labelledby="speaker-10-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-10-ModalLabel" class="modal-title sr-only"
->Ilya Kiselev</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4069,6 +4061,7 @@ A regular speaker, writer, and host of the London AI Dinner, Erik is recognised 
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Multilingual by Design: Adapting Prompts and Processes Across Learning Languages</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>This talk lifts the lid on how we have built processes around our new features, while onboarding language experts to become prompt engineers.</p>
@@ -4110,12 +4103,8 @@ A regular speaker, writer, and host of the London AI Dinner, Erik is recognised 
 <div class="modal modal-speaker modal-speaker-11" id="modal-speaker-11" tabindex="-1" role="dialog" aria-labelledby="speaker-11-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-11-ModalLabel" class="modal-title sr-only"
->Tahreem Rasul</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4134,6 +4123,7 @@ A regular speaker, writer, and host of the London AI Dinner, Erik is recognised 
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Designing Reliable Agent Workflows with Context Engineering</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Building AI agents is no longer the hard part—making them reliable is. This talk dives into the under-discussed but critical practice of context engineering: the techniques used to control what your agents “see,” “remember,” and respond to.
@@ -4158,12 +4148,8 @@ Outside of tech, I have a deep love for classic literature (yes, Tolstoy counts�
 <div class="modal modal-speaker modal-speaker-12" id="modal-speaker-12" tabindex="-1" role="dialog" aria-labelledby="speaker-12-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-12-ModalLabel" class="modal-title sr-only"
->Thierno Thiam</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4182,6 +4168,7 @@ Outside of tech, I have a deep love for classic literature (yes, Tolstoy counts�
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Getting started with Chrome Built-in AI APIs</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>AI offers a wide array of applications, from audio transcription and image description to writing assistance, proofreading, content translation, and diverse general prompting purposes. For implementing these kinds of use cases, you broadly have three options:
@@ -4203,12 +4190,8 @@ Outside of tech, I have a deep love for classic literature (yes, Tolstoy counts�
 <div class="modal modal-speaker modal-speaker-13" id="modal-speaker-13" tabindex="-1" role="dialog" aria-labelledby="speaker-13-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-13-ModalLabel" class="modal-title sr-only"
->Carlo Peluso & Guido Nebiolo</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4227,6 +4210,7 @@ Outside of tech, I have a deep love for classic literature (yes, Tolstoy counts�
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Meta Agents: Self-Building Al Agents in a Vibe-Driven World</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Discover how Meta Agents transform natural-language instructions into fully operational Al agents. In this session, we'll explore the "vibe-driven" approach to architecting Al Agents - where you describe the Al Agent you need, and a Meta Agent designs, builds, and deploys it for you. The Meta Agent captures your requirements, organizes the right tools and knowledge bases, defines the system prompt, and handles AWS deployment. Participants will see a live demonstration in which we will interact with a Meta Agent to create a new Al agent, and we will test it together. We will unpack the design decisions, methodology, and process, leaving the audience with practical skills to architect and deploy their own version of Meta Agents.</p></p>
@@ -4248,12 +4232,8 @@ Guido Nebiolo is a seasoned IT professional with over 10 years of experience and
 <div class="modal modal-speaker modal-speaker-14" id="modal-speaker-14" tabindex="-1" role="dialog" aria-labelledby="speaker-14-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-14-ModalLabel" class="modal-title sr-only"
->Sergey Konstantinov & Alena Panshina</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4272,6 +4252,7 @@ Guido Nebiolo is a seasoned IT professional with over 10 years of experience and
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Context Engineering in LLM Pipelines</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>In this talk we'll walk the audience through the modern AI-powered service set up, from the very basics to technicalities of hosting AI applications in a cloud.
@@ -4294,12 +4275,8 @@ We will describe how to convert the idea into the AI-powered pipeline and then w
 <div class="modal modal-speaker modal-speaker-15" id="modal-speaker-15" tabindex="-1" role="dialog" aria-labelledby="speaker-15-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-15-ModalLabel" class="modal-title sr-only"
->Richard Brough</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4318,6 +4295,7 @@ We will describe how to convert the idea into the AI-powered pipeline and then w
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Prompting LLMs to use Tools and Resources with MCP</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>The majority of Model Context Protocol (MCP) use right now is directly through end user applications like Claude Desktop or Cursor. However, pretty much any Large language Model, from small open models, to the APIs of the frontier models can be prompted to call tools and retrieve external resources, including those exposed using the Model Context Protocol (MCP).
@@ -4342,12 +4320,8 @@ Richard is the CTO at Blue Beck Ltd, and has a background in backend service and
 <div class="modal modal-speaker modal-speaker-16" id="modal-speaker-16" tabindex="-1" role="dialog" aria-labelledby="speaker-16-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-16-ModalLabel" class="modal-title sr-only"
->Sander Schulhoff & Goda Go</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4366,6 +4340,7 @@ Richard is the CTO at Blue Beck Ltd, and has a background in backend service and
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Prompt Injections, Red Teams, and the Unsolvable Problem</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Join Sander Schulhoff, creator of the first prompt engineering guide and leader in AI red teaming, for a deep dive into the evolving world of AI security. This session explores the challenges of defending against prompt injection attacks, the realities of adversarial robustness, and the future of prompt engineering. With stories from major AI labs, practical prompting techniques, and candid discussion on the unsolved problems in AI safety, this conversation is a must-watch for anyone interested in the cutting edge of artificial intelligence.</p></p>
@@ -4386,12 +4361,8 @@ Richard is the CTO at Blue Beck Ltd, and has a background in backend service and
 <div class="modal modal-speaker modal-speaker-17" id="modal-speaker-17" tabindex="-1" role="dialog" aria-labelledby="speaker-17-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-17-ModalLabel" class="modal-title sr-only"
->Richmond Alake</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4410,6 +4381,7 @@ Richard is the CTO at Blue Beck Ltd, and has a background in backend service and
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Memory Engineering: Going Beyond Context Engineering</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Large Language Models (LLMs) are powerful, but their limitations become clear in multi-turn interactions: they lose track of context, repeat mistakes, and forget what matters. Lately, developers have relied on context engineering—clever prompt design, retrieval pipelines, and compression—to work around these constraints. But context alone is ephemeral. To build agents that are reliable, believable, and capable, we need to move beyond context and into memory engineering.</p>
@@ -4435,12 +4407,8 @@ Richard is the CTO at Blue Beck Ltd, and has a background in backend service and
 <div class="modal modal-speaker modal-speaker-18" id="modal-speaker-18" tabindex="-1" role="dialog" aria-labelledby="speaker-18-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-18-ModalLabel" class="modal-title sr-only"
->Meenatchi Sundari</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4459,6 +4427,7 @@ Richard is the CTO at Blue Beck Ltd, and has a background in backend service and
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Logic Meets Automation: How DSPy and Prolog-Style Reasoning Boosted GPT-3.5 Accuracy by 19.5%</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Large Language Models (LLMs) often fail not because they lack capability, but because the prompts guiding them are inefficient. Manual prompt engineering is slow, inconsistent, and nearly impossible to scale.
@@ -4486,12 +4455,8 @@ Outside AI, I enjoy doodling, playing badminton, and mentoring peers in AI proje
 <div class="modal modal-speaker modal-speaker-19" id="modal-speaker-19" tabindex="-1" role="dialog" aria-labelledby="speaker-19-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-19-ModalLabel" class="modal-title sr-only"
->Konrad Komorowski & Peteris Bikis</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4510,6 +4475,7 @@ Outside AI, I enjoy doodling, playing badminton, and mentoring peers in AI proje
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">From GraphQL to MCP</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>The Model Context Protocol (MCP) is a great base protocol that allows AI agents to connect to 3rd party systems, and has gained rapid adoption across the industry. However, it requires designing APIs with specific patterns that make them easy for AI agents to use.
@@ -4535,12 +4501,8 @@ You’ll learn about practical strategies for exposing your existing APIs to AI 
 <div class="modal modal-speaker modal-speaker-20" id="modal-speaker-20" tabindex="-1" role="dialog" aria-labelledby="speaker-20-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-20-ModalLabel" class="modal-title sr-only"
->Sjoerd Tiemensma & Goda Go</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4559,6 +4521,7 @@ You’ll learn about practical strategies for exposing your existing APIs to AI 
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Lessons learned from teaching & building AI Second Brain</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p><strong>Over 18 months</strong>, JarvisJr evolved from a naive <em>“search everything”</em> chatbot into an intelligent memory agent that <strong>decides when to search</strong>.</p>
@@ -4595,12 +4558,8 @@ You’ll learn about practical strategies for exposing your existing APIs to AI 
 <div class="modal modal-speaker modal-speaker-21" id="modal-speaker-21" tabindex="-1" role="dialog" aria-labelledby="speaker-21-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-21-ModalLabel" class="modal-title sr-only"
->Jesus Serrano</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4619,6 +4578,7 @@ You’ll learn about practical strategies for exposing your existing APIs to AI 
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Can AI Develop a Whole Videogame?</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>From prompt to play: witness how cutting-edge generative models, clever chaining and a sprinkle of game-dev know-how can birth an end-to-end, fully-playable beat ’em up... Including art, music, code and lore.... just in my spare time. Get inspired, steal workflows, ship your dream game.</p></p>
@@ -4642,12 +4602,8 @@ He also serves as an AI Tutor and Course Co-Director at the University of Oxford
 <div class="modal modal-speaker modal-speaker-22" id="modal-speaker-22" tabindex="-1" role="dialog" aria-labelledby="speaker-22-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-22-ModalLabel" class="modal-title sr-only"
->Jacques Verre</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4666,6 +4622,7 @@ He also serves as an AI Tutor and Course Co-Director at the University of Oxford
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Algorithmic Context Engineering for Agents with Optimizers</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Could we use algorithms to help solve our next bottleneck? As LLMs become multi-step agents baked with tools and varying degrees of complexity improving how context is handled from cost, latency to accuracy becomes a compounding problem: shaping what agents see, remember, and do across tools, memory, and retrieval while continuously improving the underlying ai application without manual prompt surgery.</p></p>
@@ -4686,12 +4643,8 @@ He also serves as an AI Tutor and Course Co-Director at the University of Oxford
 <div class="modal modal-speaker modal-speaker-23" id="modal-speaker-23" tabindex="-1" role="dialog" aria-labelledby="speaker-23-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-23-ModalLabel" class="modal-title sr-only"
->Pini Reznik</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4710,6 +4663,7 @@ He also serves as an AI Tutor and Course Co-Director at the University of Oxford
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Hacking the Authoring Process: Lessons from Writing a Book with AI</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Over the last 18 months, I didn't just write a book about the AI revolution; I wrote a book with it. My book, From Cloud Native to AI Native, Catching the Next Wave of Innovation, was created in a deep, evolving partnership with generative AI. This talk is the story of our collaboration.
@@ -4732,12 +4686,8 @@ This journey provides a powerful parallel to the core message of my book: becomi
 <div class="modal modal-speaker modal-speaker-24" id="modal-speaker-24" tabindex="-1" role="dialog" aria-labelledby="speaker-24-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-24-ModalLabel" class="modal-title sr-only"
->Gena Frangina</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4756,6 +4706,7 @@ This journey provides a powerful parallel to the core message of my book: becomi
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Prompt Your Way to Calm: Using AI to Reduce Stress and Avoid Burnout</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Even the most skilled developers can hit a wall—stress and burnout silently sabotage focus, creativity, and productivity. What if the same AI tools you use to write code could also coach your mind to stay calm, clear, and resilient?
@@ -4779,12 +4730,8 @@ Today, she blends hypnotherapy, coaching, and software engineering expertise to 
 <div class="modal modal-speaker modal-speaker-25" id="modal-speaker-25" tabindex="-1" role="dialog" aria-labelledby="speaker-25-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-25-ModalLabel" class="modal-title sr-only"
->Tal Salmona, Jacques Verre & Dan Cleary</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4803,6 +4750,7 @@ Today, she blends hypnotherapy, coaching, and software engineering expertise to 
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Ai Agents - Fireside Chat</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p></p>
@@ -4823,12 +4771,8 @@ Today, she blends hypnotherapy, coaching, and software engineering expertise to 
 <div class="modal modal-speaker modal-speaker-26" id="modal-speaker-26" tabindex="-1" role="dialog" aria-labelledby="speaker-26-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-26-ModalLabel" class="modal-title sr-only"
->Jinju Baek</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4847,6 +4791,7 @@ Today, she blends hypnotherapy, coaching, and software engineering expertise to 
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Translating Prompts, Transforming Communities</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>A simple Pull Request to translate the Prompt Engineering Guide sparked a journey—from a late-night side project to mentoring in OSSCA’s LLM program. This talk shares how curiosity, community, and open source shaped a growing AI movement in Korea.</p></p>
@@ -4867,12 +4812,8 @@ Today, she blends hypnotherapy, coaching, and software engineering expertise to 
 <div class="modal modal-speaker modal-speaker-27" id="modal-speaker-27" tabindex="-1" role="dialog" aria-labelledby="speaker-27-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-27-ModalLabel" class="modal-title sr-only"
->Jeroen Egelmeers</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4891,6 +4832,7 @@ Today, she blends hypnotherapy, coaching, and software engineering expertise to 
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Coding, Rewritten: What 10.000+ AI-Generated Code Completions Taught Me About the Future of Software Development</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>What if coding wasn't just about writing code anymore? After a year-long deep dive into over 30 AI coding tools — including ChatGPT, Claude, Google Gemini, DeepSeek, Grok, GitHub Copilot, Cursor, Windsurf, Claude Code, Lovable, V0, and many… more — I’ve learned how radically the developer experience is evolving. As a former full-stack (Java) engineer turned Prompt Engineering Advocate, I stepped away from the keyboard and let AI agents take the lead. But I also coded together with AI. With more than 5,000 AI-generated code completions only on Windsurf, I’ve seen what works, what doesn’t, and what’s coming next.In this talk, I’ll reveal what happens when AI agents don’t just complete your code — they challenge your logic, suggest UX improvements, plan, and autonomously refactor your functions. You’ll learn how responsibilities shift in agent-amplified workflows, how to manage memory and context windows, what Flush Coding is, what rule and planning files are, why our refactoring mindset makes it hard to adapt, agentic swarms and why not VibeCoding but AmpCoding might just be your next paradigm. We’ll walk through real examples, transforming a screenshot into a working application and debugging with agents that understand your enterprise codebase. You’ll leave with practical insights, clear takeaways, and a vision of how to stay in control — even when you’re not the one coding. You will receive a report out with community-driven insights. It’s still your name on the commit. Let’s make it count.</p></p>
@@ -4912,12 +4854,8 @@ Jeroen frequently delivers presentations on Prompt Engineering, AmpCoding, and S
 <div class="modal modal-speaker modal-speaker-28" id="modal-speaker-28" tabindex="-1" role="dialog" aria-labelledby="speaker-28-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-28-ModalLabel" class="modal-title sr-only"
->Filip Makraduli</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4936,6 +4874,7 @@ Jeroen frequently delivers presentations on Prompt Engineering, AmpCoding, and S
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Prompting Your Way to a Search and Recommender System</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Can prompting and context engineering be enough to build a production-ready search and recommender system? We compare keyword, vector and hybrid retrieval methods, then introduce Superlinked’s mixture-of-encoders architecture, which combines specialized encoders with LLM query understanding for better relevance. With AI-driven coding workflows, we show how prompting can scaffold components, guide evaluation and accelerate iteration. Because Superlinked provides the structure and resources to handle multi-attribute and metadata-aware queries out of the box, teams can move from prototype to production much faster. We also cover integrations with LangChain and LlamaIndex, making it easy to connect with existing pipelines. Attendees will learn practical strategies to build high-quality search and recommender systems quickly using prompting and the open source Superlinked library.</p></p>
@@ -4956,12 +4895,8 @@ Jeroen frequently delivers presentations on Prompt Engineering, AmpCoding, and S
 <div class="modal modal-speaker modal-speaker-29" id="modal-speaker-29" tabindex="-1" role="dialog" aria-labelledby="speaker-29-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-29-ModalLabel" class="modal-title sr-only"
->Dr David Crepaz-Keay</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -4980,6 +4915,7 @@ Jeroen frequently delivers presentations on Prompt Engineering, AmpCoding, and S
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">AI, Prompting and Mental Health</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>This session explores the emerging role of artificial intelligence (AI) in mental health, considering its application both within mental health services and everyday use by the public. AI is already being trialled in areas such as digital triage, clinical decision support, mood monitoring, and therapy-adjacent tools, raising important questions about efficacy, safety, and integration with professional practice and the UK regulator NICE is appraising two interventions with LLM or AI components.</p>
@@ -5003,12 +4939,8 @@ Jeroen frequently delivers presentations on Prompt Engineering, AmpCoding, and S
 <div class="modal modal-speaker modal-speaker-30" id="modal-speaker-30" tabindex="-1" role="dialog" aria-labelledby="speaker-30-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-30-ModalLabel" class="modal-title sr-only"
->Mattis Stene-Johansen</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -5027,6 +4959,7 @@ Jeroen frequently delivers presentations on Prompt Engineering, AmpCoding, and S
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Orchestrating the Next Billion Agents</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>Prompt engineering has taken us far, but it’s reaching its limits. Current AI systems are fragile: prompts are brittle, agents are isolated, and orchestration often collapses into spaghetti glue code. To unlock the next leap, we need to move beyond tricks and hacks and start thinking in systems.</p>
@@ -5052,12 +4985,8 @@ Jeroen frequently delivers presentations on Prompt Engineering, AmpCoding, and S
 <div class="modal modal-speaker modal-speaker-0" id="modal-speaker-0" tabindex="-1" role="dialog" aria-labelledby="speaker-0-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-0-ModalLabel" class="modal-title sr-only"
->Tal Salmona</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -5076,6 +5005,7 @@ Jeroen frequently delivers presentations on Prompt Engineering, AmpCoding, and S
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">Keynote: Beyond Output: Evaluating Agentic Workflows in LLM Systems</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p><p>As LLMs evolve into multi-step agents, evaluation must move beyond input-output correctness. This session shows how to assess both node-level decisions and full agentic flows, with a live demo of multi-node agents and practical eval techniques.</p></p>

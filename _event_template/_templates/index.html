@@ -82,7 +82,7 @@
      
         // find the amount of "seconds" between now and target
         var current_date = new Date().getTime();
-        var seconds_left = (target_date - current_date) / 1000;
+        var seconds_left = Math.max(0, (target_date - current_date) / 1000);
      
         // do some time calculations
         days = parseInt(seconds_left / 86400);
@@ -250,7 +250,7 @@
     transition: background 0.2s;
   }
   .track-nav-links a:hover {
-    background: var(--brand-dark);
+    background: var(--brand-light);
     color: white;
   }
   .view-toggle-link {
@@ -262,6 +262,8 @@
     border: 1px solid var(--brand);
     border-radius: 4px;
     transition: all 0.2s;
+    min-width: 10rem;
+    text-align: center;
   }
   .view-toggle-link:hover {
     background: var(--brand);
@@ -387,11 +389,13 @@
     <!-- Track navigation -->
     <div class="track-nav">
       <div class="track-nav-inner">
+{% if (tracks|length) // days > 1 %}
         <div class="track-nav-links" id="track-links-{{ day }}">
 {% for track in tracks[(tracks|length)//days*(day):(tracks|length)//days*(day+1)] %}
           <a href="#track-{{ day }}-{{ loop.index }}">{{ rooms[loop.index0] }}</a>
 {% endfor %}
         </div>
+{% endif %}
         <span class="view-toggle-link" id="view-toggle-{{ day }}" onclick="toggleView({{ day }})">view as table</span>
       </div>
     </div>
@@ -516,13 +520,13 @@
         timelineView.classList.remove('hidden');
         toggleBtn.textContent = 'view as table';
         toggleBtn.classList.remove('active');
-        trackLinks.style.display = 'flex';
+        if (trackLinks) trackLinks.style.display = 'flex';
       } else {
         tableView.classList.add('active');
         timelineView.classList.add('hidden');
         toggleBtn.textContent = 'view as timeline';
         toggleBtn.classList.add('active');
-        trackLinks.style.display = 'none';
+        if (trackLinks) trackLinks.style.display = 'none';
       }
     }
     </script>
@@ -541,7 +545,7 @@
 <section id="speakers" class="speakers-section section">
   <div class="container">
     <h3 class="section-heading text-center mb-3">Speakers</h3>
-    <div class="row row-cols-2 row-cols-lg-5">
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5">
 
       {% for talk in (talks + keynotes)|sort(attribute='name')|dedupe %}
 
@@ -590,20 +594,7 @@
 </section><!--//speakers-section-->
 {% endif %}
 
-{% if city_name != "Online" %}
 {% include 'venue.html' %}
-{% endif %}
-
-{% if youtube_playlist %}
-<section id="playlist" class="section text-white" style="background: #3DA2E0;">
-  <div class="container text-center">
-    <h3 class="section-heading mb-4 text-white">Watch the Talks</h3>
-    <div class="ratio ratio-16x9" style="max-width: 800px; margin: 0 auto;">
-      <iframe src="https://www.youtube.com/embed/videoseries?list={{ youtube_playlist.split('list=')[-1] }}" title="YouTube playlist" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </div>
-</section>
-{% endif %}
 
 {% if sponsors %}
 <section id="sponsors" class="sponsors-section section">
@@ -629,8 +620,40 @@
     color: #444;
     font-size: 0.95rem;
   }
+  .modal-speaker .modal-close-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 1;
+    background: var(--brand);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 2.1rem;
+    line-height: 1;
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .modal-speaker .modal-close-btn:hover {
+    background: var(--brand-light);
+  }
+  .modal-speaker .modal-header {
+    display: none;
+  }
+  .modal-speaker .modal-body {
+    position: relative;
+  }
+  .modal-speaker .talk-title-bar {
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+    text-align: center;
+  }
   .modal-speaker .desc {
-    padding-bottom: 0.25rem;
+    padding-bottom: 0.125rem;
   }
 </style>
 
@@ -639,12 +662,8 @@
 <div class="modal modal-speaker modal-speaker-{{ talk.id }}" id="modal-speaker-{{ talk.id }}" tabindex="-1" role="dialog" aria-labelledby="speaker-{{ talk.id }}-ModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 id="speaker-{{ talk.id }}-ModalLabel" class="modal-title sr-only"
->{{ talk.name }}</h4>
-          </div>
           <div class="modal-body p-0">
+              <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
               <div class="theme-bg-light p-5">
                   <div class="row">
                       <div class="col-12 col-md-auto text-center">
@@ -663,6 +682,7 @@
                       </div><!--//col-->
                   </div><!--//row-->
               </div>
+              <div class="talk-title-bar">{{ talk.title }}</div>
               <div class="desc p-2 p-lg-3">
                 <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
                 <p>{{ talk.abstract | markdown }}</p>

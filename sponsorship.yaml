@@ -21,6 +21,17 @@ tiers:
       - "30-minute morning slot"
       - "100% audience — no parallel talks"
 
+  - id: workshop
+    name: "Workshop"
+
+    price:
+      small: 1000
+      medium: 3000
+      large: 5000
+    benefits:
+      - "60-minute hands-on session"
+      - "Showcase your tech to an engaged audience"
+
   - id: talk
     name: "Regular Session Slot"
 
@@ -101,11 +112,6 @@ tiers:
 
   - id: co_located
     name: "Co-Located Event"
-
-    price_label: "On request"
-
-  - id: workshop
-    name: "Workshop"
 
     price_label: "On request"
 

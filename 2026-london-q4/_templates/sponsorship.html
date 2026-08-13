@@ -53,6 +53,47 @@
 #sp-dark-body .sp-section-title { color: #fff; }
 #sp-dark-body .sp-gbp-note    { color: #666; }
 
+/* ── Currency toggle ────────────────────────────────── */
+.sp-currency-toggle {
+  display: inline-flex;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+  vertical-align: middle;
+  position: relative;
+}
+.sp-currency-slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  height: calc(100% - 6px);
+  border-radius: 999px;
+  background: var(--sp-accent);
+  transition: transform .3s cubic-bezier(.4,0,.2,1), width .3s cubic-bezier(.4,0,.2,1);
+  pointer-events: none;
+  z-index: 0;
+}
+.sp-currency-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: .85rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color .2s;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+.sp-currency-btn:hover { color: #ccc; }
+.sp-currency-btn.active {
+  color: #fff;
+}
+
 /* ── Sponsor pills ───────────────────────────────────── */
 .sp-pill {
   display: inline-block;
@@ -302,7 +343,7 @@
   gap: 6px;
 }
 .sp-custom-ideas li { font-size: .9rem; color: #d0d0d0; padding: 4px 0; }
-.sp-custom-ideas li::before { content: "✓ "; color: #6b40d8; font-weight: 700; }
+.sp-custom-ideas li::before { content: "✓ "; color: #26986A; font-weight: 700; }
 @media (max-width: 640px) {
   .sp-custom-card { grid-template-columns: 1fr; }
   .sp-custom-card-left { border-right: none; border-bottom: 1px solid rgba(38,152,106,.3); padding-right: 0; padding-bottom: 20px; margin-bottom: 20px; }
@@ -315,7 +356,7 @@
 .sp-tier-card {
   border: 1px solid rgba(255,255,255,.08);
   border-radius: 12px;
-  padding: 32px 24px;
+  padding: 26px 24px;
   background: #1e1e1e;
   height: 100%;
   position: relative;
@@ -328,22 +369,98 @@
   border-color: rgba(180, 130, 20, .5);
   box-shadow: 0 0 22px rgba(180, 130, 20, .22), 0 0 50px rgba(180, 130, 20, .08);
 }
+.sp-tier-card.sp-tier-highlight {
+  border-color: var(--sp-accent);
+  box-shadow: 0 4px 24px rgba(107,64,216,.2);
+}
+.sp-tier-card.sp-tier-highlight:hover {
+  border-color: rgba(180, 130, 20, .7);
+  box-shadow: 0 0 30px rgba(180, 130, 20, .30), 0 0 70px rgba(180, 130, 20, .10);
+}
+.sp-popular-badge {
+  position: absolute;
+  top: -13px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--sp-accent);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 3px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
 .sp-tier-name     { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; color: #fff; }
-.sp-tier-price    { font-size: 2.2rem; font-weight: 800; color: #fff; }
+.sp-tier-subtitle { font-size: .85rem; color: #999; margin-bottom: 2px; }
+.sp-tier-price    { font-size: 2.2rem; font-weight: 800; color: #fff; transition: opacity .18s ease; }
+.sp-tier-price.sp-fade { opacity: 0; }
+.sp-tier-price.sp-discounted { color: #4adb8b; }
+
+/* ── Discount toggle switch ────────────────────────── */
+.sp-discount-toggle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 2.2rem;
+  font-weight: 800;
+  user-select: none;
+}
+.sp-discount-check { display: none; }
+.sp-discount-switch {
+  width: 44px; height: 24px;
+  background: #444;
+  border-radius: 12px;
+  position: relative;
+  transition: background .2s;
+  flex-shrink: 0;
+}
+.sp-discount-switch::after {
+  content: '';
+  width: 20px; height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px; left: 2px;
+  transition: transform .2s;
+}
+.sp-discount-check:checked + .sp-discount-switch {
+  background: var(--sp-accent);
+}
+.sp-discount-check:checked + .sp-discount-switch::after {
+  transform: translateX(20px);
+}
+
+/* Strikethrough original price */
+.sp-tier-original {
+  display: none;
+  float: right;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #888;
+  text-decoration: line-through;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+.sp-tier-original.sp-slide-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Active discount card glow */
+.sp-discount-card-active {
+  border-color: var(--sp-accent) !important;
+  box-shadow: 0 0 20px rgba(107,64,216,.25) !important;
+  background: #211a2e !important;
+}
 .sp-tier-body     { flex: 1; display: flex; flex-direction: column; justify-content: center; }
 .sp-tier-benefits { list-style: none; padding: 0; margin: 0 0 12px; }
 .sp-tier-benefits li { padding: 5px 0; font-size: .9rem; color: #d0d0d0; }
-.sp-tier-benefits li::before { content: "✓ "; color: #6b40d8; font-weight: 700; }
-.sp-tier-requires {
-  font-size: .9rem;
-  color: #f5d800;
-  margin-top: 5px;
-  padding: 6px 10px;
-  background: rgba(245,216,0,.1);
-  border: 1px solid rgba(245,216,0,.3);
-  border-radius: 6px;
-  text-align: center;
-}
+.sp-tier-benefits li::before { content: "✓ "; color: #26986A; font-weight: 700; }
+.sp-tier-benefits li.sp-tier-warn { color: #f5d800; }
+.sp-tier-benefits li.sp-tier-warn::before { content: "⚠ "; color: #f5d800; }
 
 /* ── Get in touch / CTA buttons ──────────────────────── */
 #sp-dark-body .btn-outline-secondary {
@@ -444,25 +561,50 @@
 <section class="sp-section" id="opportunities">
   <div class="container">
     <h2 class="sp-section-title text-center">Sponsorship opportunities</h2>
-    <p class="sp-gbp-note text-center" style="font-size:1.04rem;margin-top:-.8rem;margin-bottom:1.5rem;">Pricing in GBP / £ — British Pound Sterling.<br>We are a London-based company organizing conferences worldwide.</p>
+    <p class="sp-gbp-note text-center" style="font-size:1.04rem;margin-top:-.8rem;margin-bottom:1.5rem;">
+      We are a London-based company organizing conferences worldwide.<br>
+      Sponsors are invoiced in GBP / £ &mdash; British Pound Sterling.<br>
+      The conversions are for reference and may not be 100% accurate.
+    </p>
+    <p class="sp-gbp-note text-center" style="font-size:1.04rem;margin-top:-.5rem;margin-bottom:1.5rem;">
+      Convert:
+      <span class="sp-currency-toggle">
+        <span class="sp-currency-slider"></span>
+        {% for cur_code, cur_info in exchange_rates.items() %}<button class="sp-currency-btn{% if cur_code == 'GBP' %} active{% endif %}" data-currency="{{ cur_code }}" onclick="spSwitchCurrency('{{ cur_code }}')">{{ cur_code }}</button>{% endfor %}
+      </span>
+    </p>
     <div class="row justify-content-center g-4 mt-2">
       {% for tier in sponsorship_tiers %}
       <div class="col-12 col-md-4">
-        <div class="sp-tier-card">
-          <div class="sp-tier-name">{{ tier.name }}</div>
+        <div class="sp-tier-card {% if tier.highlight %}sp-tier-highlight{% endif %}" data-tier-id="{{ tier.id }}">
+          {% if tier.highlight %}
+          <div class="sp-popular-badge">⭐ Most popular</div>
+          {% endif %}
+          <div class="sp-tier-name">{{ tier.name }}{% if tier.id not in ('startup_discount', 'food', 'clothing') %}<span class="sp-tier-original"></span>{% endif %}</div>
+          {% if tier.subtitle %}<div class="sp-tier-subtitle">{{ tier.subtitle }}</div>{% endif %}
+          {% if tier.id == 'startup_discount' %}
           <div class="sp-tier-price">
+            <label class="sp-discount-toggle-label">
+              <input type="checkbox" class="sp-discount-check" onchange="spToggleDiscount(this.checked)">
+              <span class="sp-discount-switch"></span>
+              {{ tier.price_label }}
+            </label>
+          </div>
+          {% else %}
+          <div class="sp-tier-price"{% for cur_code, cur_data in tier.currencies.items() %} data-price-{{ cur_code|lower }}="{% if cur_data.price_label is defined %}{% if cur_data.price_label is mapping %}{{ cur_data.price_label[event_size] }}{% else %}{{ cur_data.price_label }}{% endif %}{% elif cur_data.price is defined %}{{ cur_data.symbol }}{{ cur_data.price[event_size] }}{% endif %}" data-dprice-{{ cur_code|lower }}="{% if cur_data.discounted_price_label is defined %}{% if cur_data.discounted_price_label is mapping %}{{ cur_data.discounted_price_label[event_size] }}{% else %}{{ cur_data.discounted_price_label }}{% endif %}{% elif cur_data.discounted_price is defined %}{{ cur_data.symbol }}{{ cur_data.discounted_price[event_size] }}{% endif %}"{% endfor %}>
             {% if tier.price_label %}{% if tier.price_label is mapping %}{{ tier.price_label[event_size] }}{% else %}{{ tier.price_label }}{% endif %}{% else %}£{{ tier.price[event_size] }}{% endif %}
           </div>
+          {% endif %}
           <div class="sp-tier-body">
-            {% if tier.benefits %}
+            {% if tier.benefits or tier.requires %}
             <ul class="sp-tier-benefits">
               {% for b in tier.benefits %}
               <li>{{ b }}</li>
               {% endfor %}
+              {% if tier.requires %}
+              <li class="sp-tier-warn">{{ tier.requires }}</li>
+              {% endif %}
             </ul>
-            {% endif %}
-            {% if tier.requires %}
-            <div class="sp-tier-requires">⚠ {{ tier.requires }} ⚠</div>
             {% endif %}
           </div>
         </div>
@@ -491,6 +633,113 @@
     </div>
   </div>
 </section>
+
+<script>
+(function() {
+  var spCurrentCurrency = 'GBP';
+  var spDiscountActive = false;
+
+  /* ── Countdown (number-rolling) transition for currency switch ── */
+  function spCountdown(el, newText, duration) {
+    if (el._countdownId) cancelAnimationFrame(el._countdownId);
+    var oldText = el.textContent.trim();
+    var oldNums = (oldText.match(/\d+/g) || []).map(Number);
+    var newNums = (newText.match(/\d+/g) || []).map(Number);
+    if (oldNums.length !== newNums.length || newNums.length === 0) {
+      el.textContent = newText;
+      return;
+    }
+    var start = performance.now();
+    function step(now) {
+      var t = Math.min((now - start) / duration, 1);
+      var ease = 1 - Math.pow(1 - t, 3);
+      var idx = 0;
+      el.textContent = newText.replace(/\d+/g, function() {
+        var v = Math.round(oldNums[idx] + (newNums[idx] - oldNums[idx]) * ease);
+        idx++;
+        return String(v);
+      });
+      if (t < 1) el._countdownId = requestAnimationFrame(step);
+      else el._countdownId = null;
+    }
+    el._countdownId = requestAnimationFrame(step);
+  }
+
+  function spMoveSlider(btn) {
+    var slider = document.querySelector('.sp-currency-slider');
+    if (!slider || !btn) return;
+    var toggle = btn.parentElement;
+    var tRect = toggle.getBoundingClientRect();
+    var bRect = btn.getBoundingClientRect();
+    slider.style.width = bRect.width + 'px';
+    slider.style.transform = 'translateX(' + (bRect.left - tRect.left - 3) + 'px)';
+  }
+
+  // Position slider on load
+  requestAnimationFrame(function() {
+    spMoveSlider(document.querySelector('.sp-currency-btn.active'));
+  });
+
+  window.spSwitchCurrency = function(code) {
+    spCurrentCurrency = code;
+    var priceAttr = spDiscountActive ? 'data-dprice-' : 'data-price-';
+    var attr = priceAttr + code.toLowerCase();
+    var origAttr = 'data-price-' + code.toLowerCase();
+    var btns = document.querySelectorAll('.sp-currency-btn');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].classList.toggle('active', btns[i].getAttribute('data-currency') === code);
+      if (btns[i].getAttribute('data-currency') === code) spMoveSlider(btns[i]);
+    }
+    var els = document.querySelectorAll('.sp-tier-price[' + attr + ']');
+    for (var j = 0; j < els.length; j++) {
+      var el = els[j];
+      var newPrice = el.getAttribute(attr);
+      var origPrice = el.getAttribute(origAttr);
+      spCountdown(el, newPrice, 400);
+      var card = el.closest('.sp-tier-card');
+      var origSpan = card ? card.querySelector('.sp-tier-original') : null;
+      if (origSpan) {
+        if (spDiscountActive && origPrice !== newPrice) {
+          origSpan.textContent = origPrice;
+          origSpan.style.display = 'inline';
+        } else {
+          origSpan.style.display = 'none';
+        }
+      }
+    }
+  };
+
+  /* ── Countdown + slide transition for discount toggle ────────── */
+  window.spToggleDiscount = function(on) {
+    spDiscountActive = on;
+    var cc = spCurrentCurrency.toLowerCase();
+    var priceAttr = on ? 'data-dprice-' + cc : 'data-price-' + cc;
+    var origAttr = 'data-price-' + cc;
+    var els = document.querySelectorAll('.sp-tier-price[data-dprice-' + cc + ']');
+    for (var j = 0; j < els.length; j++) {
+      var el = els[j];
+      var newPrice = el.getAttribute(priceAttr);
+      var origPrice = el.getAttribute(origAttr);
+      spCountdown(el, newPrice, 400);
+      el.classList.toggle('sp-discounted', on && origPrice !== newPrice);
+      var card = el.closest('.sp-tier-card');
+      var origSpan = card ? card.querySelector('.sp-tier-original') : null;
+      if (origSpan) {
+        if (on && origPrice !== newPrice) {
+          origSpan.textContent = origPrice;
+          origSpan.style.display = 'inline';
+          requestAnimationFrame(function(s) { return function() { s.classList.add('sp-slide-in'); }; }(origSpan));
+        } else {
+          origSpan.classList.remove('sp-slide-in');
+          setTimeout(function(s) { return function() { s.style.display = 'none'; }; }(origSpan), 300);
+        }
+      }
+    }
+    var sdCard = document.querySelector('.sp-tier-card[data-tier-id="startup_discount"]');
+    if (sdCard) sdCard.classList.toggle('sp-discount-card-active', on);
+  };
+})();
+</script>
 
 {# ── Conference stats button + expandable panel ──────── #}
 <section class="sp-section" id="stats" style="padding-top: 0; padding-bottom: 40px;">
@@ -768,7 +1017,7 @@ function spToggleStats() {
     <p class="text-center" style="color:#aaa;margin-top:-.6rem;margin-bottom:1.5rem;">Secure your sponsorship with <a href="https://www.linkedin.com/in/marek-pawlikowski/" target="_blank" rel="noopener noreferrer" style="color:#9b84e0;">Mark Pawlikowski</a></p>
     <div class="row justify-content-center">
       <div class="col-12 col-lg-10 d-flex flex-wrap justify-content-center gap-3">
-        <a href="{{ calendly_sponsor_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary sp-cta-btn">Hop on a call</a>
+        {% if calendly_sponsor_url %}<a href="{{ calendly_sponsor_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary sp-cta-btn">Hop on a call</a>{% endif %}
         <a href="{{ mailto }}" class="btn btn-primary sp-cta-btn">✉ Email Mark</a>
         <a href="https://wa.me/447307415008" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp sp-cta-btn"><i class="fab fa-whatsapp me-2"></i>DM Mark</a>
       </div>

@@ -102,12 +102,12 @@ tiers:
       - "£10–£30 per person, depending on the item"
 
   - id: startup_discount
-    name: "Startup Discount"
+    name: "Check eligibility for"
 
-    price_label: "20% off anything"
+    price_label: "20% Discount"
     benefits:
       - "Early-stage startups under $5M in funding"
-      - "Contact us to apply"
+      - "Sponsoring 3+ events in a year"
 
 #on request:
 

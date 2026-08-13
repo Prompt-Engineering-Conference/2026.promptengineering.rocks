@@ -52,7 +52,7 @@
 <meta name="robots" content="noindex, nofollow">
 <style>
 /* ── Sponsorship page styles ─────────────────────────── */
-:root { --sp-accent: #6b40d8; }
+:root { --sp-accent: #ee4247; }
 
 .sp-hero {
   position: relative;
@@ -145,9 +145,9 @@
 /* ── Sponsor pills ───────────────────────────────────── */
 .sp-pill {
   display: inline-block;
-  background: #1a2e24;
+  background: #2e1719;
   color: var(--sp-accent);
-  border: 1px solid rgba(38,152,106,.35);
+  border: 1px solid rgba(238,66,71,.35);
   border-radius: 999px;
   padding: 4px 14px;
   font-size: .82rem;
@@ -172,7 +172,7 @@
   letter-spacing: .01em;
   transition: background .2s, box-shadow .2s;
 }
-.btn-stats:hover  { background: #1e7a55; box-shadow: 0 4px 18px rgba(38,152,106,.4); }
+.btn-stats:hover  { background: #c2282d; box-shadow: 0 4px 18px rgba(238,66,71,.4); }
 .btn-stats:active { transform: scale(.97); }
 .btn-stats-icon { display: flex; align-items: center; flex-shrink: 0; }
 .btn-stats-chevron { transition: transform .3s ease; }
@@ -226,16 +226,16 @@
 .sp-stats-empty    { color: #999; font-size: .9rem; margin: 0; }
 /* Pills inside white panel override the dark pill rule */
 #sp-dark-body .sp-stats-inner .sp-pill {
-  background: #f0faf5;
+  background: #fdf0f0;
   color: var(--sp-accent);
-  border-color: #a7d9bf;
+  border-color: #f0b0b2;
 }
 
 /* ── New stats panel styles ──────────────────────────── */
 .sp-stats-inner {
-  --spi-green:       #6b40d8;
-  --spi-green-light: #e8f7ef;
-  --spi-green-mid:   #b6dfc9;
+  --spi-green:       #ee4247;
+  --spi-green-light: #fdeeee;
+  --spi-green-mid:   #f0a5a7;
   --spi-border:      #efefef;
   --spi-faint:       #f5f5f5;
 }
@@ -249,14 +249,14 @@
   padding: 14px 24px; border: 1px solid var(--spi-green-mid);
   border-radius: 999px; background: var(--spi-green-light); text-align: center;
 }
-.sp-stats-big-num-value { font-family: 'Montserrat', sans-serif; font-size: 1.9rem; font-weight: 700; color: #1a5c3a; line-height: 1; letter-spacing: -.01em; }
+.sp-stats-big-num-value { font-family: 'Montserrat', sans-serif; font-size: 1.9rem; font-weight: 700; color: #6e1f21; line-height: 1; letter-spacing: -.01em; }
 .sp-stats-big-num-value sup { font-size: .9rem; color: var(--spi-green); vertical-align: super; font-weight: 700; }
-.sp-stats-big-num-label { font-size: .72rem; color: #3a8a60; text-transform: uppercase; letter-spacing: .07em; margin-top: 5px; }
+.sp-stats-big-num-label { font-size: .72rem; color: #c04a4e; text-transform: uppercase; letter-spacing: .07em; margin-top: 5px; }
 
 /* TLDR pill */
 .sp-stats-tldr {
   display: inline-block; background: var(--spi-green-light); border: 1px solid var(--spi-green-mid);
-  border-radius: 999px; padding: 8px 18px; font-size: .9rem; color: #1a5c3a; margin-bottom: 22px;
+  border-radius: 999px; padding: 8px 18px; font-size: .9rem; color: #6e1f21; margin-bottom: 22px;
 }
 
 /* 2-col grid + cards */
@@ -286,10 +286,10 @@
   display: inline-flex; align-items: center;
   border-radius: 999px; padding: 6px 16px;
   font-size: .9rem; border: 1px solid var(--spi-green-mid);
-  background: var(--spi-green-light); color: #1a5c3a;
+  background: var(--spi-green-light); color: #6e1f21;
   text-decoration: none; transition: background .15s, border-color .15s;
 }
-.sp-stats-pill:hover { background: var(--spi-green-light); border-color: var(--spi-green-mid); color: #1a5c3a; cursor: default; }
+.sp-stats-pill:hover { background: var(--spi-green-light); border-color: var(--spi-green-mid); color: #6e1f21; cursor: default; }
 
 /* timeline */
 .sp-stats-timeline { position: relative; padding: 20px 0 8px; margin-bottom: 8px; }
@@ -315,7 +315,7 @@
   border-radius: 8px; padding: 8px 10px; text-align: center;
   text-decoration: none; width: 100%; transition: background .15s;
 }
-.sp-stats-tl-chip:hover { background: #d4f0e2; text-decoration: none; }
+.sp-stats-tl-chip:hover { background: #fadcdc; text-decoration: none; }
 .sp-stats-tl-prospectus {
   display: block;
   margin-top: 6px;
@@ -324,20 +324,20 @@
   border-radius: 6px;
   padding: 4px 10px;
   font-size: .75rem;
-  color: #1a5c3a;
+  color: #6e1f21;
   text-align: center;
   text-decoration: none;
   transition: background .15s;
 }
-.sp-stats-tl-prospectus:hover { background: #d4f0e2; text-decoration: none; color: #1a5c3a; }
+.sp-stats-tl-prospectus:hover { background: #fadcdc; text-decoration: none; color: #6e1f21; }
 .sp-stats-tl-prospectus.past { background: #e8e8e8; border-color: #ccc; color: #555; }
 .sp-stats-tl-prospectus.past:hover { background: #d8d8d8; text-decoration: none; color: #555; }
-.sp-stats-tl-city  { font-family: 'Montserrat', sans-serif; font-size: .8rem; font-weight: 700; color: #1a5c3a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.sp-stats-tl-date  { font-size: .75rem; color: #3a8a60; margin-top: 2px; }
-.sp-stats-tl-seats { font-size: .75rem; color: #3a8a60; }
-.sp-stats-tl-past  { font-size: .7rem; color: #8fcfb0; font-style: italic; }
+.sp-stats-tl-city  { font-family: 'Montserrat', sans-serif; font-size: .8rem; font-weight: 700; color: #6e1f21; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sp-stats-tl-date  { font-size: .75rem; color: #c04a4e; margin-top: 2px; }
+.sp-stats-tl-seats { font-size: .75rem; color: #c04a4e; }
+.sp-stats-tl-past  { font-size: .7rem; color: #eeb0b2; font-style: italic; }
 .sp-stats-tl-pin-event { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 0; }
-.sp-stats-tl-pin { font-size: 2.25rem; line-height: 1; color: #1a6b4a; margin-bottom: 10px; position: relative; top: -4px; }
+.sp-stats-tl-pin { font-size: 2.25rem; line-height: 1; color: #6e1f21; margin-bottom: 10px; position: relative; top: -4px; }
 
 /* GIF */
 .sp-stats-gif-wrap { margin-top: 32px; border-radius: 12px; overflow: hidden; width: 90%; margin-left: auto; margin-right: auto; }
@@ -356,7 +356,7 @@
   border-radius: 12px;
   padding: 36px 32px;
   background: #1c2a22;
-  border: 1px solid rgba(38,152,106,.3);
+  border: 1px solid rgba(238,66,71,.3);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0;
@@ -364,7 +364,7 @@
 }
 .sp-custom-card-left {
   padding-right: 32px;
-  border-right: 1px solid rgba(38,152,106,.3);
+  border-right: 1px solid rgba(238,66,71,.3);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -378,7 +378,7 @@
 }
 .sp-custom-card-left .sp-custom-subtitle {
   font-size: 1rem;
-  color: #9b84e0;
+  color: #f5989b;
   margin-bottom: 0;
 }
 .sp-custom-divider { display: none; }
@@ -394,7 +394,7 @@
 .sp-custom-ideas li::before { content: "✓ "; color: #26986A; font-weight: 700; }
 @media (max-width: 640px) {
   .sp-custom-card { grid-template-columns: 1fr; }
-  .sp-custom-card-left { border-right: none; border-bottom: 1px solid rgba(38,152,106,.3); padding-right: 0; padding-bottom: 20px; margin-bottom: 20px; }
+  .sp-custom-card-left { border-right: none; border-bottom: 1px solid rgba(238,66,71,.3); padding-right: 0; padding-bottom: 20px; margin-bottom: 20px; }
   .sp-custom-ideas { padding-left: 0; }
   .sp-stats-tl-events { display: grid; grid-template-columns: 1fr 1fr; overflow-x: visible; }
   .sp-stats-tl-pin-event { grid-column: 1 / -1; }
@@ -419,7 +419,7 @@
 }
 .sp-tier-card.sp-tier-highlight {
   border-color: var(--sp-accent);
-  box-shadow: 0 4px 24px rgba(107,64,216,.2);
+  box-shadow: 0 4px 24px rgba(238,66,71,.2);
 }
 .sp-tier-card.sp-tier-highlight:hover {
   border-color: rgba(180, 130, 20, .7);
@@ -500,8 +500,8 @@
 /* Active discount card glow */
 .sp-discount-card-active {
   border-color: var(--sp-accent) !important;
-  box-shadow: 0 0 20px rgba(107,64,216,.25) !important;
-  background: #211a2e !important;
+  box-shadow: 0 0 20px rgba(238,66,71,.25) !important;
+  background: #2e1a1b !important;
 }
 .sp-tier-body     { flex: 1; display: flex; flex-direction: column; justify-content: center; }
 .sp-tier-benefits { list-style: none; padding: 0; margin: 0 0 12px; }
@@ -572,7 +572,7 @@
 }
 .sp-faq-q {
   font-weight: 700;
-  color: #1a6e4a;
+  color: #6e1f21;
   margin-bottom: 6px;
   font-size: .95rem;
 }
@@ -958,31 +958,6 @@
               <li>Your logo on t-shirts, hoodies, socks, etc.</li>
               
               <li>£10–£30 per person, depending on the item</li>
-              
-              
-            </ul>
-            
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-12 col-md-4">
-        <div class="sp-tier-card " data-tier-id="tickets">
-          
-          <div class="sp-tier-name">Discounted Ticket Pack<span class="sp-tier-original"></span></div>
-          
-          
-          <div class="sp-tier-price" data-price-gbp="20% off 5+ tickets" data-dprice-gbp="20% off 5+ tickets" data-price-usd="20% off 5+ tickets" data-dprice-usd="20% off 5+ tickets" data-price-eur="20% off 5+ tickets" data-dprice-eur="20% off 5+ tickets">
-            20% off 5+ tickets
-          </div>
-          
-          <div class="sp-tier-body">
-            
-            <ul class="sp-tier-benefits">
-              
-              <li>Purchase 5 or more tickets at a discount</li>
-              
-              <li>Share your vouchers with anyone</li>
               
               
             </ul>
@@ -1474,7 +1449,7 @@ function spToggleStats() {
 <section class="sp-section sp-section-alt" id="buy">
   <div class="container">
     <h2 class="sp-section-title text-center">Ready to give Prompt Engineering Conference a try?</h2>
-    <p class="text-center" style="color:#aaa;margin-top:-.6rem;margin-bottom:1.5rem;">Secure your sponsorship with <a href="https://www.linkedin.com/in/marek-pawlikowski/" target="_blank" rel="noopener noreferrer" style="color:#9b84e0;">Mark Pawlikowski</a></p>
+    <p class="text-center" style="color:#aaa;margin-top:-.6rem;margin-bottom:1.5rem;">Secure your sponsorship with <a href="https://www.linkedin.com/in/marek-pawlikowski/" target="_blank" rel="noopener noreferrer" style="color:#f5989b;">Mark Pawlikowski</a></p>
     <div class="row justify-content-center">
       <div class="col-12 col-lg-10 d-flex flex-wrap justify-content-center gap-3">
         <a href="https://calendly.com/mark-llmday/30-sponsor" target="_blank" rel="noopener noreferrer" class="btn btn-secondary sp-cta-btn">Hop on a call</a>

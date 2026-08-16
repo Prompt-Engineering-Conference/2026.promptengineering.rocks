@@ -117,6 +117,10 @@
 	}
 	.hero-block {
 		height: 620px;
+		/* less top padding than the theme's 130px pulls the content up,
+		   leaving more air between the social pill and the stats bar
+		   without changing the hero height */
+		padding-top: 96px;
 	}
 
 	@media (width <= 800px) {

@@ -10,7 +10,8 @@
 #   an already-shown company go under hidden_duplicates.
 # Matching is case-insensitive.
 
-non_sponsor_orgs: []
+non_sponsor_orgs:
+  - packt.png           # publisher / media partner
 
 community_partners:
   - pe-norway-full.png

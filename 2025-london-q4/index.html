@@ -350,6 +350,147 @@
     </script>
 </section>
 
+<!-- ── ABOUT THE CONFERENCE (expandable) ─────────────────────────────── -->
+
+<section id="about-conf" class="section pt-0 pb-4">
+  <div class="container text-center">
+    <button class="btn-about-conf" type="button" aria-expanded="false"
+            aria-controls="about-conf-panel" onclick="acToggle(this)">
+      About the conference <span class="ac-chevron">&#9662;</span>
+    </button>
+    <div id="about-conf-panel" class="ac-panel mx-auto text-start">
+      <div class="ac-panel-inner">
+        <p class="ac-blurb">PEC is a worldwide series of community events for engineers, researchers and builders working with prompts, context and AI interaction. Across cities around the world, we bring together people designing and operating LLM-powered systems to share real-world techniques, compare approaches and explore how prompt engineering is evolving alongside agents, models and AI-native software.</p>
+        
+        <h5 class="ac-topics-heading">Topics so far:</h5>
+        
+        <div class="ac-topic-group">
+          <div class="ac-topic-name">Prompt Engineering</div>
+          <ul class="ac-topic-talks">
+            <li>A Comprehensive Guide to Prompt Engineering Speaker participation</li>
+            <li>Build without limits - Tips and techniques for better Prompting</li>
+            <li>Beyond Handcrafted Prompts: The Era of Prompt Optimization</li>
+            <li>Vibe Prompting: The Secret to Perfect-First-Try Vibe Coding</li>
+            <li>Role-Based Prompting for Image Generation: Cultural Precision Through Reasoning</li>
+            <li>Unlock Your Team&#39;s Potential: Building Your Agency&#39;s Prompt Playbook</li>
+            <li>Prompt Driven Development (PDD) or the Art of Prompting</li>
+            <li>Beyond Prompt Libraries: Teaching AI (and Your Teams) to Ask Better Questions</li>
+            <li>Translating Prompts, Transforming Communities</li>
+            <li>Prompting Your Way to a Search and Recommender System</li>
+            <li>AI, Prompting and Mental Health</li>
+            
+          </ul>
+        </div>
+        
+        <div class="ac-topic-group">
+          <div class="ac-topic-name">Context Engineering</div>
+          <ul class="ac-topic-talks">
+            <li>Designing Reliable Agent Workflows with Context Engineering</li>
+            <li>Context Engineering in LLM Pipelines</li>
+            <li>Memory Engineering: Going Beyond Context Engineering</li>
+            <li>Algorithmic Context Engineering for Agents with Optimizers</li>
+            
+          </ul>
+        </div>
+        
+        <div class="ac-topic-group">
+          <div class="ac-topic-name">AI Agents & Agentic Workflows</div>
+          <ul class="ac-topic-talks">
+            <li>The Prompt is Dead, Long Live the Context</li>
+            <li>Meta Agents: Self-Building Al Agents in a Vibe-Driven World</li>
+            <li>Prompting LLMs to use Tools and Resources with MCP</li>
+            <li>From GraphQL to MCP</li>
+            <li>Ai Agents - Fireside Chat</li>
+            <li>Coding, Rewritten: What 10.000+ AI-Generated Code Completions Taught Me About the Future of Software Development</li>
+            <li>Orchestrating the Next Billion Agents</li>
+            <li>Keynote: Beyond Output: Evaluating Agentic Workflows in LLM Systems</li>
+            
+          </ul>
+        </div>
+        
+        <div class="ac-topic-group">
+          <div class="ac-topic-name">LLM Evaluation & Testing</div>
+          <ul class="ac-topic-talks">
+            <li>Multilingual by Design: Adapting Prompts and Processes Across Learning Languages</li>
+            <li>Logic Meets Automation: How DSPy and Prolog-Style Reasoning Boosted GPT-3.5 Accuracy by 19.5%</li>
+            
+          </ul>
+        </div>
+        
+        <div class="ac-topic-group">
+          <div class="ac-topic-name">Prompt Security & Guardrails</div>
+          <ul class="ac-topic-talks">
+            <li>Prompt Injections, Red Teams, and the Unsolvable Problem</li>
+            
+          </ul>
+        </div>
+        
+        <div class="ac-topic-group">
+          <div class="ac-topic-name">Multimodal Prompting</div>
+          <ul class="ac-topic-talks">
+            <li>Getting started with Chrome Built-in AI APIs</li>
+            <li>Can AI Develop a Whole Videogame?</li>
+            
+          </ul>
+        </div>
+        
+        <div class="ac-topic-group">
+          <div class="ac-topic-name">Production Patterns & Case Studies</div>
+          <ul class="ac-topic-talks">
+            <li>Lessons learned from teaching &amp; building AI Second Brain</li>
+            <li>Hacking the Authoring Process: Lessons from Writing a Book with AI</li>
+            
+          </ul>
+        </div>
+        
+        <div class="ac-topic-group">
+          <div class="ac-topic-name">...and more</div>
+          <ul class="ac-topic-talks">
+            <li>Prompt Your Way to Calm: Using AI to Reduce Stress and Avoid Burnout</li>
+            
+          </ul>
+        </div>
+        
+        
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .btn-about-conf {
+    background: transparent;
+    border: 1px solid var(--brand);
+    color: var(--brand-dark);
+    border-radius: 999px;
+    padding: 8px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: .9rem;
+    transition: background .2s, color .2s;
+  }
+  .btn-about-conf:hover { background: var(--brand-pale); }
+  .btn-about-conf[aria-expanded="true"] { background: var(--brand); color: #fff; }
+  .ac-chevron { display: inline-block; margin-left: 6px; transition: transform .3s; }
+  .btn-about-conf[aria-expanded="true"] .ac-chevron { transform: rotate(180deg); }
+  .ac-panel { max-width: 800px; overflow: hidden; max-height: 0; transition: max-height .585s cubic-bezier(.4,0,.2,1); }
+  .ac-panel-inner { padding: 18px 4px 6px; }
+  .ac-blurb { color: #555; }
+  .ac-topics-heading { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--brand-dark); margin-top: 16px; }
+  .ac-topic-group { margin-top: 10px; }
+  .ac-topic-name { font-weight: 700; color: var(--brand); }
+  .ac-topic-talks { margin: 4px 0 0; padding-left: 20px; color: #555; font-size: .9rem; }
+</style>
+<script>
+  function acToggle(btn) {
+    var panel = document.getElementById('about-conf-panel');
+    var open = btn.getAttribute('aria-expanded') !== 'true';
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    panel.style.maxHeight = open ? panel.scrollHeight + 'px' : '0';
+  }
+</script>
+
+<!-- ── END ABOUT THE CONFERENCE ──────────────────────────────────────── -->
+
 
 
 <style>

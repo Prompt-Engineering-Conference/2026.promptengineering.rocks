@@ -1,0 +1,38 @@
+# "About the conference" panel on every event index page.
+# blurb: paragraph shown when the panel is expanded.
+# categories: the buckets under "Topics so far:" (order = display order AND
+#   tiebreak priority). Keyword matching (see the ABOUT block in generate.py):
+#   - case-insensitive; keywords of <=3 chars match whole words only (plus
+#     optional plural "s"); longer keywords are word-boundary prefix matches
+#     ("observab" matches "observability")
+#   - a title hit scores 3, an abstract hit 1; multi-word phrases count double
+#   - each talk lands in exactly one category (highest score; earlier category
+#     wins ties); unmatched talks go under "...and more"
+blurb: >-
+  PEC is a worldwide series of community events for engineers, researchers
+  and builders working with prompts, context and AI interaction. Across
+  cities around the world, we bring together people designing and operating
+  LLM-powered systems to share real-world techniques, compare approaches and
+  explore how prompt engineering is evolving alongside agents, models and
+  AI-native software.
+categories:
+  - name: Prompt Engineering
+    keywords: [prompt engineering, prompting, prompt design, few-shot, zero-shot, chain of thought, system prompt]
+  - name: Context Engineering
+    keywords: [context engineering, context window, long context, context management, memory, compaction]
+  - name: AI Agents & Agentic Workflows
+    keywords: [agent, agentic, workflow, autonomous, multi-agent, orchestrat, mcp]
+  - name: LLM Evaluation & Testing
+    keywords: [eval, benchmark, testing, hallucin, llm-as-a-judge, judge, accuracy, regression]
+  - name: RAG & Knowledge Systems
+    keywords: [rag, retrieval, vector, embedding, knowledge, semantic search, grounding]
+  - name: Structured Outputs & Tool Use
+    keywords: [structured output, json, function calling, tool use, tool calling, schema, constrained]
+  - name: Prompt Security & Guardrails
+    keywords: [injection, jailbreak, guardrail, security, safety, red team, adversarial]
+  - name: Multimodal Prompting
+    keywords: [multimodal, vision, image, audio, video, voice, speech]
+  - name: AI UX & Human-AI Interaction
+    keywords: [ux, user experience, human-ai, interface, conversational, interaction design, copilot]
+  - name: Production Patterns & Case Studies
+    keywords: [production, case study, at scale, lessons, real-world, enterprise, cost]

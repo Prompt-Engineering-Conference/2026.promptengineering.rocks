@@ -105,11 +105,15 @@ if _os.path.exists(_og_home_meta_path):
             else:
                 print("WARNING: event thumbnail %s not uploaded yet" % _og_candidate)
             break
+_og_domain = context.get('brand_domain') or 'promptengineering.rocks'
 if _og_photo:
-    context['og_image_url'] = 'https://%s/%s' % (context['brand_domain'], _og_photo)
-else:
+    context['og_image_url'] = 'https://%s/%s' % (_og_domain, _og_photo)
+elif context.get('hero_pictures'):
     print("WARNING: no event thumbnail available -- og:image falls back to default hero photo")
-    context['og_image_url'] = 'https://%s/photos/%s' % (context['brand_domain'], context['hero_pictures'][0].split('/')[-1])
+    context['og_image_url'] = 'https://%s/photos/%s' % (_og_domain, context['hero_pictures'][0].split('/')[-1])
+else:
+    print("WARNING: no event thumbnail available -- og:image falls back to hero-1.jpg")
+    context['og_image_url'] = context.get('base_path', '') + '/assets/images/hero-1.jpg'
 print("og:image = %s" % context['og_image_url'])
 
 # pick up the ids & photos

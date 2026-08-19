@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import datetime
+import math
 import re
 import csv
 import textwrap
@@ -658,6 +659,75 @@ _all_tiers         = _sponsorship_config.get('tiers', [])
 _sponsorship_tiers = [t for t in _all_tiers if t.get('price_label') != 'On request']
 _on_request_tiers  = [t for t in _all_tiers if t.get('price_label') == 'On request']
 
+# ── Multi-currency pre-computation ──────────────────────────────────────────
+_exchange_rates = _sponsorship_config.get('exchange_rates', {})
+
+def _convert_price(gbp_value, rate):
+    """Convert GBP amount to target currency, round up to nearest 100."""
+    return int(math.ceil(gbp_value * rate / 100) * 100)
+
+def _convert_price_label(label_str, symbol, rate):
+    """Replace all £<number> in a price_label string with the target currency.
+    E.g. '£500 + £10pp' at rate 1.27 → '$600 + $15pp'.
+    Strings without £ (e.g. '20% off anything') pass through unchanged.
+    """
+    if '£' not in label_str:
+        return label_str
+    def _repl(m):
+        v = int(m.group(1)) * rate
+        rounded = int(math.ceil(v / 100) * 100) if v >= 100 else int(math.ceil(v / 5) * 5)
+        return symbol + str(rounded)
+    return re.sub(r'£(\d+)', _repl, label_str)
+
+for _tier in _sponsorship_tiers:
+    _tier['currencies'] = {}
+    for _cc, _ci in _exchange_rates.items():
+        _sym, _rate = _ci['symbol'], _ci['rate']
+        _cd = {'symbol': _sym, 'code': _cc}
+        if _tier.get('price'):
+            _cd['price'] = {sz: _convert_price(v, _rate) for sz, v in _tier['price'].items()}
+        if _tier.get('price_label'):
+            if isinstance(_tier['price_label'], dict):
+                _cd['price_label'] = {sz: _convert_price_label(lbl, _sym, _rate) for sz, lbl in _tier['price_label'].items()}
+            else:
+                _cd['price_label'] = _convert_price_label(_tier['price_label'], _sym, _rate)
+        _tier['currencies'][_cc] = _cd
+
+# ── 20% startup discount pre-computation ──────────────────────────────────
+def _apply_discount(amount, discount=0.80):
+    """Apply 20% discount to a converted currency amount."""
+    v = amount * discount
+    return int(round(v / 100) * 100) if v >= 100 else int(round(v))
+
+def _discount_price_label(label_str, symbol, discount=0.80):
+    """Apply 20% discount to currency amounts in a label string, skipping per-person (pp) amounts."""
+    escaped = re.escape(symbol)
+    def _repl(m):
+        if m.group(2):  # followed by "pp" — keep original
+            return m.group(0)
+        v = int(m.group(1)) * discount
+        return symbol + str(int(round(v / 100) * 100) if v >= 100 else int(round(v)))
+    return re.sub(escaped + r'(\d+)(pp)?', _repl, label_str)
+
+for _tier in _sponsorship_tiers:
+    for _cc, _cd in _tier['currencies'].items():
+        _sym = _cd['symbol']
+        if 'price' in _cd:
+            _cd['discounted_price'] = {
+                sz: _apply_discount(v) for sz, v in _cd['price'].items()
+            }
+        if 'price_label' in _cd:
+            if isinstance(_cd['price_label'], dict):
+                _cd['discounted_price_label'] = {
+                    sz: _discount_price_label(lbl, _sym)
+                    for sz, lbl in _cd['price_label'].items()
+                }
+            else:
+                _cd['discounted_price_label'] = _discount_price_label(
+                    _cd['price_label'], _sym
+                )
+# ── End multi-currency ──────────────────────────────────────────────────────
+
 print(f"  Total events: {_total_events}, attendees: {_total_attendees} (raw {_total_attendees_raw}), speakers: {_spk_rounded}+ (raw {_global_speaker_count}), cities: {_total_cities}, ambassadors: {_total_ambassadors}")
 print(f"  Global top companies: {len(_global_top_companies)}, global sponsors: {len(_global_sponsors)}")
 print(f"  Timeline events: {len(_timeline_events)}, countries: {_total_countries}")
@@ -685,6 +755,7 @@ with open(BASE_FOLDER + '/sponsorship.html', 'w', encoding='utf-8') as _f:
         # sponsorship tiers
         sponsorship_tiers=_sponsorship_tiers,
         on_request_tiers=_on_request_tiers,
+        exchange_rates=_exchange_rates,
         sister_brands=_sponsorship_config.get('sister_brands', []),
         open_source_tools=_sponsorship_config.get('open_source_tools', []),
         **{**context, 'event_size': _event_size, 'sponsors': _confirmed_sponsors}

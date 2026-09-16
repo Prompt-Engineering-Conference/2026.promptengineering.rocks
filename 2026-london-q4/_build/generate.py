@@ -178,10 +178,21 @@ with open('metadata.yml', encoding='utf-8') as f:
 # hero picture when the event has no card yet
 import os as _os
 _og_photo = None
+_og_home_meta = {}
 _og_home_meta_path = '../home/metadata.yml'
 if _os.path.exists(_og_home_meta_path):
     with open(_og_home_meta_path, encoding='utf-8') as _f:
         _og_home_meta = yaml.load(_f, Loader=yaml.FullLoader)
+    # sponsor lead form endpoint: home/metadata.yml is the single source of truth (backend: _build/lead-form.gs)
+    context.setdefault('lead_form_url', (_og_home_meta or {}).get('lead_form_url', ''))
+    # speaker onboarding endpoint (hidden /onboarding/ page; backend: _build/onboarding-form.gs in llmday)
+    context.setdefault('onboarding_form_url', (_og_home_meta or {}).get('onboarding_form_url', ''))
+    # speaker fast-track endpoint (hidden /fasttrack/ page; backend: _build/fasttrack-form.gs in llmday)
+    context.setdefault('fasttrack_form_url', (_og_home_meta or {}).get('fasttrack_form_url', ''))
+    # speaker invitation letter endpoint (hidden /invitation/ page; backend: _build/invitation-form.gs in llmday)
+    context.setdefault('invitation_form_url', (_og_home_meta or {}).get('invitation_form_url', ''))
+    # sponsor onboarding endpoint (hidden /onboardsponsor/ page; backend: _build/sponsor-onboarding-form.gs in llmday)
+    context.setdefault('sponsor_onboarding_form_url', (_og_home_meta or {}).get('sponsor_onboarding_form_url', ''))
     _og_current_folder = _os.path.basename(_os.getcwd())
     for _he in (_og_home_meta.get('events') or []) + (_og_home_meta.get('events_past') or []):
         if _he.get('url', '').strip('./').rstrip('/') == _og_current_folder and _he.get('photo_url'):
@@ -201,6 +212,88 @@ else:
     print("WARNING: no event thumbnail available -- og:image falls back to hero-1.jpg")
     context['og_image_url'] = context.get('base_path', '') + '/assets/images/hero-1.jpg'
 print("og:image = %s" % context['og_image_url'])
+
+# ── SPEAKER ONBOARDING: facts for the hidden /onboarding/ page ──────────────
+# The page (onboarding.html) posts this dict to the Apps Script, which fills ONE
+# universal "Info for speakers" email with it. Optional per-event overrides live
+# under `onboarding:` in metadata.yml (event_name, venue_name, venue_address,
+# slot_minutes, dinner, extra). Venue name/address are scraped from venue.html.
+context.setdefault('onboarding_form_url', '')
+_ob_slug = _os.path.basename(_os.getcwd())
+
+
+def _ob_slug_parts(slug):
+    """'2026-san-francisco-q4' -> ('2026', 'San Francisco', 'Q4'); missing parts come back as ''."""
+    m = re.match(r'^(\d{4})-(.+?)(?:-q([1-4]))?$', slug)
+    if not m:
+        return '', '', ''
+    return m.group(1), m.group(2).replace('-', ' ').title(), ('Q' + m.group(3)) if m.group(3) else ''
+
+
+def _ob_event_name(slug, city_name, brand_name):
+    """'2026-san-francisco-q4' -> 'SREday San Francisco 2026 Q4' (city from metadata when present)."""
+    year, slug_city, quarter = _ob_slug_parts(slug)
+    return ' '.join(p for p in [brand_name, city_name or slug_city, year, quarter] if p)
+
+
+def _ob_venue(path='_templates/venue.html'):
+    """(venue_name, venue_address) from the hardcoded venue partial; ('', '') when absent.
+    Name = first <h4>; address = the <p> right after it, <br>-separated lines joined with ', ',
+    stopping at the first blank line (London-q3 lists 'Tube access' after a blank <br />)."""
+    try:
+        with open(path, encoding='utf-8') as _f:
+            html = _f.read()
+    except OSError:
+        return '', ''
+    h4 = re.search(r'<h4[^>]*>(.*?)</h4>', html, re.S | re.I)
+    if not h4:
+        return '', ''
+    name = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', h4.group(1))).strip()
+    p = re.search(r'</h4>\s*<p[^>]*>(.*?)</p>', html, re.S | re.I)
+    if not p:
+        return name, ''
+    lines = []
+    for seg in re.split(r'<br\s*/?>', p.group(1), flags=re.I):
+        seg = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', seg)).strip(' ,;')
+        if not seg:
+            if lines:
+                break
+            continue
+        lines.append(seg)
+    return name, ', '.join(lines)
+
+
+_ob = dict(context.get('onboarding') or {})
+_ob_vname, _ob_vaddr = _ob_venue()
+_ob_date = str(context.get('date_string', ''))
+context['onboarding_event'] = {
+    'brand':         str(context.get('brand_key') or context.get('brand_name', '')).lower(),   # brand_key: pec (PEC's brand_name is three words)
+    'brand_name':    context.get('brand_name', ''),
+    'slug':          _ob_slug,
+    'event_name':    _ob.get('event_name') or _ob_event_name(_ob_slug, context.get('city_name'), context.get('brand_name', '')),
+    'city':          context.get('city_name') or _ob_slug_parts(_ob_slug)[1],
+    'date':          _ob_date,
+    'month_day':     re.sub(r',\s*\d{4}\s*$', '', _ob_date),
+    'event_url':     context.get('base_path', '') + _ob_slug + '/',
+    'tickets_url':   context.get('base_path', '') + _ob_slug + '/#tickets',
+    'venue_name':    _ob.get('venue_name') or _ob_vname or context.get('location_string', ''),
+    'venue_address': _ob.get('venue_address') or _ob_vaddr or context.get('location_string', ''),
+    'attendees':     context.get('attendees') or 0,
+    'youtube_url':   context.get('youtube_url', ''),
+    'calendly_url':  context.get('calendly_sponsor_url', ''),
+    'slot_minutes':  int(_ob.get('slot_minutes', 30) or 30),
+    'dinner':        str(_ob.get('dinner', 'TBC')),
+    'extra':         str(_ob.get('extra', '') or ''),
+}
+print("Onboarding: %s | %s | %s" % (context['onboarding_event']['event_name'], _ob_vname or '(no <h4> in venue.html)', _ob_vaddr or '-'))
+# ── END SPEAKER ONBOARDING ──────────────────────────────────────────────────
+
+# ── SPEAKER FAST TRACK: facts for the hidden /fasttrack/ page (speaker submits talk + headshot) ──
+context.setdefault('fasttrack_form_url', '')
+_ft_src = context['onboarding_event']
+context['fasttrack_event'] = {k: _ft_src[k] for k in ('brand', 'brand_name', 'slug', 'event_name', 'city', 'date', 'event_url')}
+context['fasttrack_event']['cfp_url'] = str(context.get('cfp_url', '') or '')
+# ── END SPEAKER FAST TRACK ──────────────────────────────────────────────────
 
 # pick up the ids & photos
 for i, talk in enumerate(talks_raw):
@@ -353,7 +446,11 @@ for talk in talks:
         tracks[track] = []
         tracks_ordered.append(track)
     tracks[track].append(talk)
+# metadata.yml may declare the planned track count ("tracks: N") - that wins
+# for display so pages show the plan before talks are announced
+_planned_tracks = context.get("tracks") if isinstance(context.get("tracks"), int) else None
 context["tracks"] = tracks_ordered
+context["tracks_display"] = _planned_tracks or max(len(tracks_ordered), 1)
 
 # insert breaks & wrap up into each track
 breaks = context.get("breaks")
@@ -531,6 +628,7 @@ for _gf in _all_siblings:
 _global_speaker_count = len(_global_speaker_names)
 _spk_rem = _global_speaker_count % 10
 _spk_rounded = (_global_speaker_count - _spk_rem) if _spk_rem <= 4 else (_global_speaker_count + (10 - _spk_rem))
+_spk_rounded = max(10, _spk_rounded)  # never show 0+ on a fresh brand
 
 # round attendees (same as home page banner: remainder ≥50 → up to next 100, <50 → down)
 _att_rem = _total_attendees_raw % 100
@@ -895,6 +993,238 @@ for page in pages:
         f.write(template.render(page=page, **context))
         if page != "index.html":
             SITEMAP_URLS.append((page.replace(".html",""), 0.75))
+
+# ── SPEAKER INVITATION: facts for the hidden /invitation/ page ──────────────
+# The page (invitation.html) posts this dict to the Apps Script (llmday/_build/invitation-form.gs),
+# which fills ONE "You're invited to speak" letter the speaker can forward to their marketing team.
+# The "About the event" paragraph adapts to how full the lineup is (tier), using the SAME data
+# as the About panel (about_companies, about_topics), the sponsorship page (_confirmed_sponsors)
+# and /status/ (confirmed talks vs 12 slots per track). Nothing here is opinion, only counts/names.
+context.setdefault('invitation_form_url', '')
+_INV_SLOTS_PER_TRACK = 12          # keep in sync with home/_build/generate.py _SLOTS_PER_TRACK
+import csv as _inv_csv
+from urllib.parse import urlparse as _inv_urlparse
+
+
+def _inv_confirmed(rows):
+    """talks.csv rows that count as confirmed on /status/ (status has 'confirmed' or 'keynote';
+    '_Registration & Networking'-style agenda rows skipped)."""
+    return [r for r in rows
+            if re.search(r'confirmed|keynote', str(r.get('status', '')), re.I)
+            and not str(r.get('name', '')).strip().startswith('_')]
+
+
+def _inv_companies(rows):
+    """About-panel rule: company_parts() drops job titles, universities skipped, deduped, alphabetical."""
+    out, seen = [], set()
+    for r in rows:
+        for org in company_parts(str(r.get('organization') or '')):
+            k = org.lower()
+            if 'university' in k or k in seen:
+                continue
+            seen.add(k)
+            out.append(org)
+    out.sort(key=lambda s: s.lower())
+    return out
+
+
+def _inv_host(url):
+    try:
+        return re.sub(r'^www\.', '', (_inv_urlparse(str(url or '')).netloc or '').lower())
+    except ValueError:
+        return ''
+
+
+def _inv_sponsor_names(sponsors):
+    """Display names for the event's confirmed sponsors: metadata `name:` when given, else the
+    home/_db/sponsors.csv row whose id equals the logo file stem, else the csv row with the same
+    website host (only when that host belongs to ONE row: harness.io is shared by Harness and Chaos
+    Carnival), else the logo file name title-cased."""
+    by_id, by_host, ambiguous = {}, {}, set()
+    _csv_path = '../home/_db/sponsors.csv'
+    if _os.path.exists(_csv_path):
+        with open(_csv_path, encoding='utf-8-sig', newline='') as _f:
+            for row in _inv_csv.DictReader(_f):
+                name = str(row.get('name') or '').strip()
+                if not name:
+                    continue
+                by_id.setdefault(str(row.get('id') or '').strip().lower(), name)
+                h = _inv_host(row.get('url'))
+                if h:
+                    ambiguous.add(h) if h in by_host else by_host.setdefault(h, name)
+    out, seen = [], set()
+    for s in sponsors:
+        stem = re.sub(r'\.[a-z0-9]+$', '', str(s.get('logo') or '').strip(), flags=re.I)
+        host = _inv_host(s.get('url'))
+        name = (str(s.get('name') or '').strip() or by_id.get(stem.lower())
+                or (by_host.get(host) if host not in ambiguous else None))
+        if not name:
+            name = re.sub(r'[-_]+', ' ', stem).strip()
+            name = name.upper() if len(name) <= 3 else name.title()    # ing.png -> ING, harness.png -> Harness
+        if name and name.lower() not in seen:
+            seen.add(name.lower())
+            out.append(name)
+    return out
+
+
+def _inv_previous_edition(home_meta, city):
+    """Facts about the most recent PAST event in the same city (fallback: the brand's most recent past
+    event anywhere). Only 2025+ folders are read (the sreday 2022-2024 archives stay untouched)."""
+    best_city, best_any = None, None
+    for he in (home_meta.get('events_past') or []):
+        folder = str(he.get('url', '')).strip('./').rstrip('/')
+        if not re.match(r'^20(2[5-9]|[3-9]\d)-', folder) or folder == _ob_slug:
+            continue
+        mpath = _os.path.join('..', folder, 'metadata.yml')
+        if not _os.path.exists(mpath):
+            continue
+        try:
+            with open(mpath, encoding='utf-8') as _f:
+                m = yaml.load(_f, Loader=yaml.FullLoader) or {}
+        except Exception as _e:                                   # noqa: BLE001 - a broken past folder must not break this build
+            print("Invitation: cannot read %s (%s)" % (mpath, _e))
+            continue
+        start = str(m.get('start_time') or '')
+        cand = {'folder': folder, 'start': start, 'meta': m}
+        if not best_any or start > best_any['start']:
+            best_any = cand
+        if str(m.get('city_name') or '').strip().lower() == str(city or '').strip().lower():
+            if not best_city or start > best_city['start']:
+                best_city = cand
+    pick = best_city or best_any
+    if not pick:
+        return None
+    rows = []
+    tpath = _os.path.join('..', pick['folder'], '_db', 'talks.csv')
+    if _os.path.exists(tpath):
+        try:
+            rows = _inv_confirmed(read_csv(tpath))
+        except Exception as _e:                                   # noqa: BLE001
+            print("Invitation: cannot read %s (%s)" % (tpath, _e))
+    m = pick['meta']
+    return {
+        'event_name': _ob_event_name(pick['folder'], m.get('city_name'), context.get('brand_name', '')),
+        'url':        context.get('base_path', '') + pick['folder'] + '/',
+        'date':       str(m.get('date_string') or ''),
+        'same_city':  pick is best_city,
+        'talks':      len(rows),
+        'companies':  _inv_companies(rows),
+    }
+
+
+def _inv_host_company(sponsors):
+    """The sponsor hosting the event, when the venue / location string names it ("Datadog, New York",
+    "ING Cedar, Amsterdam"). Override with `invitation: host: "..."` in metadata.yml; '' = no host."""
+    _override = (context.get('invitation') or {}).get('host')
+    if _override is not None:
+        return str(_override).strip()
+    hay = ' '.join([str(context['onboarding_event'].get('venue_name') or ''), str(context.get('location_string') or '')]).lower()
+    for s in sponsors:
+        stem = re.sub(r'\.[a-z0-9]+$', '', str(s.get('logo') or '').strip(), flags=re.I).lower()
+        for cand in _inv_sponsor_names([s]) + ([stem] if len(stem) >= 3 else []):
+            if re.search(r'(?<![a-z0-9])' + re.escape(cand.lower()) + r'(?![a-z0-9])', hay):
+                return _inv_sponsor_names([s])[0]
+    return ''
+
+
+_inv_rows = _inv_confirmed(talks_raw)
+_inv_tracks = int(context.get('tracks_display') or 1)
+_inv_target = _INV_SLOTS_PER_TRACK * _inv_tracks
+_inv_pct = int(round(100.0 * len(_inv_rows) / _inv_target)) if _inv_target else 0
+_inv_tier = 'strong' if _inv_pct >= 50 else ('building' if _inv_pct >= 25 else 'early')
+_inv_src = context['onboarding_event']
+context['invitation_event'] = {k: _inv_src[k] for k in ('brand', 'brand_name', 'slug', 'event_name', 'city', 'date', 'event_url',
+                                                        'venue_name', 'attendees', 'youtube_url', 'calendly_url', 'slot_minutes')}
+context['invitation_event'].update({
+    'fasttrack_url':    _inv_src['event_url'] + 'fasttrack/',
+    'sponsor_page_url': _inv_src['event_url'] + 'sponsorship',
+    'tracks':           _inv_tracks,
+    'confirmed':        len(_inv_rows),
+    'talks_target':     _inv_target,
+    'fill_pct':         _inv_pct,
+    'tier':             _inv_tier,
+    'companies':        list(context.get('about_companies') or []),
+    'topics':           [{'name': t['category'], 'count': len(t['talks'])}
+                         for t in (context.get('about_topics') or []) if t.get('category') != '...and more'],
+    'sponsors':         _inv_sponsor_names(_confirmed_sponsors),
+    'host_company':     _inv_host_company(_confirmed_sponsors),
+    'previous':         _inv_previous_edition(_og_home_meta or {}, context.get('city_name')),
+})
+print("Invitation: %s | %d/%d talks (%d%%, %s) | %d companies | %d topics | sponsors: %s | host: %s | previous: %s" % (
+    context['invitation_event']['event_name'], len(_inv_rows), _inv_target, _inv_pct, _inv_tier,
+    len(context['invitation_event']['companies']), len(context['invitation_event']['topics']),
+    ', '.join(context['invitation_event']['sponsors']) or '-', context['invitation_event']['host_company'] or '-',
+    (context['invitation_event']['previous'] or {}).get('event_name', '-')))
+# ── END SPEAKER INVITATION ──────────────────────────────────────────────────
+
+# ── SPONSOR ONBOARDING: facts for the hidden /onboardsponsor/ page ──────────
+# The page (onboardsponsor.html) posts this dict plus the toggled opportunities to the Apps Script
+# (llmday/_build/sponsor-onboarding-form.gs), which fills ONE "Info for sponsors" email whose
+# sections follow the selection. The opportunities ARE the purchasable sponsorship.yaml tiers
+# (minus the discount row and the 'On request' ones - Marek 2026-09-15), so the pills match /sponsorship. Optional overrides live under
+# `sponsor_onboarding:` in metadata.yml (sponsor_code, extra).
+context.setdefault('sponsor_onboarding_form_url', '')
+# short pill labels + pill order (Marek 2026-09-15); sponsorship.yaml keeps the long public names and its own order.
+# The 'food' tier is split into three pills (coffee / lunch / happy hour) so the email can talk about the right break.
+_SO_SHORT = {'leads': 'Leads', 'booth': 'Booth', 'keynote': 'Keynote', 'workshop': 'Workshop', 'talk': 'Regular session',
+             'logo_swag': 'Logo + Swag', 'break_coffee': 'Coffee break', 'break_lunch': 'Lunch break', 'break_happy': 'Happy hour',
+             'clothing': 'Wearables'}
+_SO_SPLIT = {'food': ['break_coffee', 'break_lunch', 'break_happy']}
+_SO_ORDER = list(_SO_SHORT)
+
+
+def _so_items(tiers):
+    out = []
+    for t in tiers:
+        tid = str(t.get('id') or '')
+        if not tid or tid == 'startup_discount':
+            continue
+        benefits = [str(x) for x in (t.get('benefits') or [])]
+        for pid in _SO_SPLIT.get(tid, [tid]):
+            out.append({'id': pid, 'name': _SO_SHORT.get(pid) or str(t.get('name') or tid), 'benefits': benefits})
+    return sorted(out, key=lambda it: _SO_ORDER.index(it['id']) if it['id'] in _SO_ORDER else 99)
+
+_so = dict(context.get('sponsor_onboarding') or {})
+_so_src = context['onboarding_event']
+context['sponsor_onboarding_event'] = {k: _so_src[k] for k in ('brand', 'brand_name', 'slug', 'event_name', 'city', 'date', 'month_day',
+                                                             'event_url', 'tickets_url', 'venue_name', 'venue_address', 'attendees',
+                                                             'youtube_url', 'calendly_url', 'slot_minutes')}
+context['sponsor_onboarding_event'].update({
+    'sponsor_page_url': _so_src['event_url'] + 'sponsorship',
+    'host_url':         context.get('base_path', '') + 'host',
+    'event_size':       _event_size,
+    'items':            _so_items(_sponsorship_tiers),
+    'sponsor_code':     str(_so.get('sponsor_code', '') or ''),
+    'extra':            str(_so.get('extra', '') or ''),
+})
+print("Sponsor onboarding: %s | %d opportunities | size %s" % (
+    context['sponsor_onboarding_event']['event_name'], len(context['sponsor_onboarding_event']['items']), _event_size))
+# ── END SPONSOR ONBOARDING ──────────────────────────────────────────────────
+
+# HIDDEN PAGE: /<event>/onboarding/ (speaker onboarding form). Standalone template,
+# noindex, deliberately NOT appended to SITEMAP_URLS.
+_os.makedirs(BASE_FOLDER + "/onboarding", exist_ok=True)
+with open(BASE_FOLDER + "/onboarding/index.html", "w", encoding="utf-8") as f:
+    f.write(env.get_template("onboarding.html").render(page="onboarding.html", **context))
+print("Writing out onboarding/index.html (hidden, not in sitemap)")
+
+# HIDDEN PAGE: /<event>/fasttrack/ (invite-only speaker submission form). Same rules as onboarding.
+_os.makedirs(BASE_FOLDER + "/fasttrack", exist_ok=True)
+with open(BASE_FOLDER + "/fasttrack/index.html", "w", encoding="utf-8") as f:
+    f.write(env.get_template("fasttrack.html").render(page="fasttrack.html", **context))
+print("Writing out fasttrack/index.html (hidden, not in sitemap)")
+
+# HIDDEN PAGE: /<event>/invitation/ (speaker invitation letter, "convince your boss"). Same rules as onboarding.
+_os.makedirs(BASE_FOLDER + "/invitation", exist_ok=True)
+with open(BASE_FOLDER + "/invitation/index.html", "w", encoding="utf-8") as f:
+    f.write(env.get_template("invitation.html").render(page="invitation.html", **context))
+print("Writing out invitation/index.html (hidden, not in sitemap)")
+
+# HIDDEN PAGE: /<event>/onboardsponsor/ (sponsor onboarding form). Same rules as onboarding.
+_os.makedirs(BASE_FOLDER + "/onboardsponsor", exist_ok=True)
+with open(BASE_FOLDER + "/onboardsponsor/index.html", "w", encoding="utf-8") as f:
+    f.write(env.get_template("onboardsponsor.html").render(page="onboardsponsor.html", **context))
+print("Writing out onboardsponsor/index.html (hidden, not in sitemap)")
 
 # SITEMAP
 print(DIVIDER)

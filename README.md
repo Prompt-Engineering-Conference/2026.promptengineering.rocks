@@ -1,6 +1,6 @@
 # Prompt Engineering Conference
 
-In-person conferences for Site Reliability, DevOps and Cloud engineers.
+Website of the Prompt Engineering Conference (promptengineering.rocks) - built with the same generator as llmday.com / sreday.com / platformday.com.
 
 
 ## Running locally
@@ -66,3 +66,92 @@ repo root (home page only - conference pages are unaffected):
   in `partners.yaml` - it shows up in the Partner carousel instead.
 - **Duplicates**: if a company has more than one logo file, list the extra
   variants under `hidden_duplicates` so it only appears once on the home page.
+
+## Sponsor lead form
+
+The home page `#sponsor` section has an "Email us" expandable form under the Calendly widget
+(`home/_templates/index.html`). It posts JSON to a Google Apps Script web app whose source lives in
+`_build/lead-form.gs`; the script emails `hello@promptengineering.rocks` **and** the sponsor in one message
+(from `mark@llmday.com` - PEC has no mail alias of its own) so the thread is open for both sides immediately.
+
+- The deployed `/exec` URL lives in `home/metadata.yml` -> `lead_form_url`. When it is empty the form
+  falls back to a prefilled `mailto:` link, so the UI can ship before the script is deployed.
+- Deploy / re-deploy steps are in the header comment of `_build/lead-form.gs` (Web app, Execute as: Me,
+  Who has access: Anyone). Editing the script needs a new deployment *version*; the URL stays the same.
+- PEC shares the deployments of llmday/sreday/platformday: the form sends `brand` = `pec` (`brand_key` in the event
+  `metadata.yml`), the script maps it to `hello@promptengineering.rocks` + the `mark@llmday.com` sender. The PEC copy of the
+  form has NO "which conference" picker - it always submits `Prompt Engineering Conference`.
+- The email lists `Form sent from: <page URL>` (home page -> `https://promptengineering.rocks/`, event page -> its folder URL).
+- Event pages (event index + talk pages) use the same form as the "Become A Sponsor" pill via
+  `_event_template/_templates/_lead_form.html` (propagated into every `20*/_templates/`); the event build
+  reads `lead_form_url` from `home/metadata.yml`. That partial is a deliberate COPY of the home-page block in
+  `home/_templates/index.html` (label, pill colour, card border and navbar hash differ) - when changing fields
+  or copy, edit both, then propagate the partial to all event folders.
+
+## Speaker onboarding (hidden page)
+
+Every non-frozen event gets a hidden page at `/<event>/onboarding/` (e.g. `/2026-london-q4/onboarding/`) with
+a passphrase-gated form: paste one or many speaker emails, **Preview**, **Send now** or **Send in 1 hour** (the latter leaves a Gmail draft that a timed trigger sends; edit the draft meanwhile, delete it to cancel). A Google Apps Script then emails
+the ONE universal "`<Event> - <Month Day> - Info for speakers`" message From `mark@llmday.com` (PEC has no alias) To that same alias (hello@ is not copied)
+with every speaker in **Bcc**, and files the thread in the Inbox unread under the "Speaker onboarding" label
+(speaker "OK" replies land on it).
+
+- Template: `_event_template/_templates/onboarding.html` (standalone, does not extend `_base.html`, `noindex`,
+  never listed in the sitemap; identical in all four repos - the colour comes from `brand_color`). Propagated to
+  every `20*/_templates/` like the other templates.
+- Facts: `_event_template/_build/generate.py` builds `onboarding_event` from `metadata.yml` (`date_string`,
+  `city_name`, `attendees`, `base_path`, `youtube_url`, `calendly_sponsor_url`) plus the venue name/address
+  scraped from `_templates/venue.html` (first `<h4>` and the `<p>` after it, up to the first blank line).
+  The event name is `brand + city + year + quarter` from the folder name. Optional per-event overrides in
+  `metadata.yml`:
+  ```yaml
+  onboarding:
+    event_name: "Prompt Engineering Conference London 2026 Q4"      # default: built from the folder name
+    venue_name: "Everyman Canary Wharf"      # default: scraped from venue.html
+    venue_address: "Crossrail Place, ..."    # default: scraped from venue.html
+    slot_minutes: 25                         # default 30 (talk = slot - 5)
+    dinner: "TBC"                            # "TBC" | free text | "none" (drops the dinner line)
+    extra: ""                                # optional paragraph before "What happens next?"
+  ```
+- Email wording lives ONLY in the Apps Script `llmday/_build/onboarding-form.gs` (kept in the llmday repo; one
+  deployment serves all brands, PEC included - its speaker discount code is PEC20). Deploy steps are in its header comment. The `/exec` URL goes into
+  `home/metadata.yml` -> `onboarding_form_url` in all four repos; while it is empty the page refuses to send.
+- Protection: passphrase in the Script Property `ONBOARDING_PASSPHRASE` (never in the repos); 3 wrong attempts
+  lock the endpoint for 15 min, 10 for 24 h (delete the `ONBOARDING_LOCK` property to clear); daily caps of
+  50 sends / 500 recipients; max 50 recipients per send. Sender, template and links are pinned server-side.
+
+## Speaker fast track (hidden page)
+
+Every non-frozen event also gets `/<event>/fasttrack/`: an invite-only submission form for speakers we already
+talked to (the bypass of the public cfp.ninja CFP). Fields: who they talked to on our team, name, company,
+email, LinkedIn, talk title, abstract (markdown), short bio (markdown), headshot (optional).
+The headshot is uploaded untouched and arrives attached as **`<Name>.<original extension>`** (10 MB max); everything is
+posted as JSON to `fasttrack_form_url`.
+
+- Template `_event_template/_templates/fasttrack.html` (standalone, noindex, not in the sitemap, identical in all
+  three repos); facts come from `fasttrack_event` built in `_event_template/_build/generate.py` (subset of the
+  onboarding facts). Backend `llmday/_build/fasttrack-form.gs` (kept in the llmday repo, its own Apps Script
+  deployment "Fast track"); URL in `home/metadata.yml` -> `fasttrack_form_url`.
+- The email is organizer-facing: From `mark@<brand>` To that alias, Reply-To the speaker (who is NOT copied), Cc only
+  the outreach route when the team member is recognised: Miko/Mark/Aleksandra -> `aleksandra@sreday.com`, Anna/Blanka/Sylwia -> `anna@<brand>` (for PEC: `anna@llmday.com`),
+  Petras/Magdalena/Emilia -> nobody extra. Unrecognised names add no Cc. The alias table (nicknames, typos via
+  edit distance) lives in the `.gs`; the page fetches it for the live hint. Body format mirrors Anna's outreach
+  mails: red heading, invited-by line with the form URL, then a Name/Email/Organization/LinkedIn/Talk Title/Talk Abstract/Bio table. Subject `<Name> - Fast Track - <Event>`. Headshot optional.
+- Guards: honeypot, 30 submissions/day, 5 MB per attachment, LinkedIn host check, links pinned to the brand domain.
+
+## Speaker invitation + sponsor onboarding (hidden pages)
+
+`/<event>/invitation/` (an organizer sends a speaker an official "invitation to speak" letter, same passphrase as onboarding)
+and `/<event>/onboardsponsor/` (after a sponsor signs: toggle the opportunities they bought, the script sends one
+"Info for sponsors" email) follow the same pattern: standalone templates in `_event_template/_templates/`, facts built
+in `_event_template/_build/generate.py` (`invitation_event`, `sponsor_onboarding_event`), backends
+`llmday/_build/invitation-form.gs` and `llmday/_build/sponsor-onboarding-form.gs`, URLs `invitation_form_url` /
+`sponsor_onboarding_form_url` in `home/metadata.yml`.
+
+## Hidden /status/ page + data checks
+
+`home/_build/generate.py` renders `/status/` (noindex, not in the sitemap): confirmed talks vs 12 slots per track
+(`tracks:` in the event `metadata.yml`), sponsors minus the `partners.yaml` categories, a time-sensitive health pill,
+and "Data checks" - problems in `talks.csv` / `metadata.yml` / sponsor logos found at build time. The same checks are
+printed in every build log and, on GitHub Actions, become inline annotations + a job summary. They never fail the build.
+PEC is not a sister brand of the other three sites, so the page shows no cross-brand buttons.

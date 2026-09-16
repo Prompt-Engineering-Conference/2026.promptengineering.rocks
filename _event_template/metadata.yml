@@ -16,6 +16,7 @@ cfp_url: https://cfp.ninja/e/prompt-engineering-conference
 # the number of tracks needs to be the same per day
 # the tracks will be taken in the order they appear in the CSV file
 days: 1
+tracks: 1
 attendees: 100
 speakers: 10+
 
@@ -50,6 +51,7 @@ hero_pictures:
 
 # brand identity
 brand_name: "Prompt Engineering Conference"
+brand_key: "pec"            # short key for the shared form backends (BRANDS in llmday/_build/*.gs)
 brand_domain: "promptengineering.rocks"
 brand_description: "The world's first conference about prompt engineering"
 brand_tagline: "Learn how to interact with the most advanced AI on our planet"

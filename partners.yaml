@@ -29,4 +29,7 @@ sister_conferences_job_boards:
   - gitnation.png
   - city-js.png
 
+# small / vague tech brands that should not sit in the Sponsor carousel (same key as the sisters)
+minor_companies: []
+
 hidden_duplicates: []

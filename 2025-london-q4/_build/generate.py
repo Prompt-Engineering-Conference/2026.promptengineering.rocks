@@ -173,6 +173,24 @@ with open('metadata.yml', encoding='utf-8') as f:
     context = yaml.load(f, Loader=yaml.FullLoader)
     BASE_FOLDER = "./" + context.get("base_folder")
 
+def luma_is_free(evt_id):
+    if not evt_id:
+        return False
+    try:
+        import urllib.request
+        req = urllib.request.Request(
+            "https://luma.com/embed/event/%s/simple" % evt_id,
+            headers={"User-Agent": "Mozilla/5.0"})
+        body = urllib.request.urlopen(req, timeout=10).read().decode("utf-8", "ignore")
+        return '"is_free":true' in body
+    except Exception as e:
+        print("WARN: could not check Luma pricing (%s); assuming paid" % e)
+        return False
+
+
+context["luma_is_free"] = luma_is_free(context.get("luma_evt"))
+print("Luma event %s is_free=%s" % (context.get("luma_evt") or "(none)", context["luma_is_free"]))
+
 # og:image / twitter:image — use this event's card image from home/metadata.yml
 # (the single source of truth for the events list), falling back to the first
 # hero picture when the event has no card yet
@@ -279,6 +297,7 @@ context['onboarding_event'] = {
     'venue_name':    _ob.get('venue_name') or _ob_vname or context.get('location_string', ''),
     'venue_address': _ob.get('venue_address') or _ob_vaddr or context.get('location_string', ''),
     'attendees':     context.get('attendees') or 0,
+    'is_free':       bool(context.get('luma_is_free')),   # Luma says the ticket is free -> onboarding email skips the ticket codes
     'youtube_url':   context.get('youtube_url', ''),
     'calendly_url':  context.get('calendly_sponsor_url', ''),
     'slot_minutes':  int(_ob.get('slot_minutes', 30) or 30),

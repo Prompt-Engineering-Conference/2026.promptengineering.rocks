@@ -386,21 +386,6 @@
         </div>
         <div class="lead-group-hint">Pick at least one</div>
       </div>
-      <div class="lead-group" data-group="regions">
-        <div class="lead-group-label">Regions <em>(one or more)</em></div>
-        <div class="lead-chips">
-          
-          <label class="lead-chip"><input type="checkbox" name="regions" value="US"><span>US</span></label>
-          
-          <label class="lead-chip"><input type="checkbox" name="regions" value="EU"><span>EU</span></label>
-          
-          <label class="lead-chip"><input type="checkbox" name="regions" value="ASIA"><span>ASIA</span></label>
-          
-          <label class="lead-chip"><input type="checkbox" name="regions" value="LATAM"><span>LATAM</span></label>
-          
-        </div>
-        <div class="lead-group-hint">Pick at least one</div>
-      </div>
       <div class="lead-group" data-group="budget">
         <div class="lead-group-label">Budget</div>
         <div class="lead-chips">
@@ -563,7 +548,7 @@ function leadCollect(form) {
     company:   (fd.get('company') || '').trim(),
     interests: fd.getAll('interests'),
     brands:    ['Prompt Engineering Conference'],   // PEC: single brand, no conference picker
-    regions:   fd.getAll('regions'),
+    regions:   [],   // PEC: no region picker
     budget:    fd.get('budget') || '',
     consent:   fd.get('consent') === 'yes',
     website:   fd.get('website') || '',
@@ -580,7 +565,7 @@ function leadMailto(d) {
   var subject = (d.company || 'Sponsorship inquiry') + (d.brands.length ? ' <> ' + d.brands.join(', ') : '');
   var body = 'Hi Mark,\n\n' + d.name + ' from ' + d.company + ' would like to learn more about ' + leadInterestPhrase(d) + ':\n\n' +
              '- Name: ' + d.name + '\n- Email: ' + d.email + '\n- Company: ' + d.company + '\n' +
-             '- Conferences: ' + d.brands.join(', ') + '\n- Regions: ' + d.regions.join(', ') + '\n- Budget: ' + d.budget + '\n\nThanks!';
+             '- Conferences: ' + d.brands.join(', ') + '\n- Budget: ' + d.budget + '\n\nThanks!';
   return LEAD_MAILTO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 }
 function leadValidate(form, d) {
@@ -591,7 +576,7 @@ function leadValidate(form, d) {
     el.classList.toggle('is-invalid', bad);
     if (bad && !firstBad) firstBad = el;
   });
-  ['interests', 'regions', 'budget', 'consent'].forEach(function(k) {
+  ['interests', 'budget', 'consent'].forEach(function(k) {
     var group = form.querySelector('.lead-group[data-group="' + k + '"]');
     var bad = Array.isArray(d[k]) ? d[k].length === 0 : !d[k];
     group.classList.toggle('is-invalid', bad);

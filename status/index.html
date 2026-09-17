@@ -130,7 +130,7 @@
 <main class="wrap">
   <div class="brand">Prompt Engineering Conference · status</div>
   <h1>Upcoming conferences</h1>
-  <div class="sub">Confirmed talks against 12 slots per track, plus confirmed sponsors (media and community partners excluded).</div>
+  <div class="sub">Confirmed talks against 12 talks per track</div>
   <div class="legend">
     <span style="--c: var(--critical)">Critical</span>
     <span style="--c: var(--bad)">Bad</span>
@@ -180,7 +180,7 @@
   </div>
 
   <details class="ladder">
-    <summary>Health ladder (share of 12 slots per track confirmed, by days to the event)</summary>
+    <summary>Conference health logic</summary>
     <div class="ladder-body"><div class="ladder-inner">
     <table>
       <thead><tr><th>Days to event</th><th>Critical</th><th>Bad</th><th>Neutral</th><th>Good</th><th>Full!</th></tr></thead>
@@ -221,8 +221,8 @@
   </section>
 
   <section class="added">
-    <h2>Speakers added, last 7 days</h2>
-    <div class="sub">Every confirmed speaker that joined an upcoming lineup, on the day the change was pushed (11 Sep to 17 Sep 2026, Europe/London). Rebuilt with every push; a speaker re-added after a removal shows on the latest day only.</div>
+    <h2>Speakers added to the website</h2>
+    <div class="sub">Who was added when, and to which conference, last 7 days</div>
     
     <div class="days">
       
@@ -268,7 +268,7 @@
   
   <section class="checks">
     <h2>Data checks</h2>
-    <div class="sub">Problems found in prompt engineering conference repo data at build time. Red is broken on the live site, orange is worth a look. Each line links to the exact page where the problem occurs.</div>
+    <div class="sub">Problems found as the website builds, let's fix them to keep it clean!</div>
     
     
     
@@ -313,9 +313,17 @@
   </section>
   
 
-  <div class="foot">Generated 2026-09-17 20:08 UTC at build time. Organizer tool, not linked from the site.</div>
+  <div class="foot">Generated 2026-09-17 21:53 UTC at build time. Organizer tool, not linked from the site.</div>
 </main>
 <script>
+(function () {                                     // addition times in the viewer's own timezone (team spans timezones)
+  var els = document.querySelectorAll('.day li small[data-ts]');
+  for (var i = 0; i < els.length; i++) {
+    var t = new Date(els[i].getAttribute('data-ts'));
+    if (isNaN(t.getTime())) continue;
+    els[i].textContent = t.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+})();
 (function () {
   var d = document.querySelector('details.ladder'); if (!d) return;
   var s = d.querySelector('summary'), body = d.querySelector('.ladder-body'), busy = false;

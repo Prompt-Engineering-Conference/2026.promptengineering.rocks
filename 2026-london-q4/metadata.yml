@@ -39,12 +39,16 @@ breaks:
   talks_before: 2
 
 sponsors:
+  - logo: harness.png
+    url: https://www.harness.io/
   - logo: aiproductivityhub.png
     url: https://www.skool.com/ai-productivity-hub/about
   - logo: prompt-hub.png
     url: https://www.prompthub.us/
   - logo: packt.png
     url: https://packtpub.com/
+  - logo: hockeystick.png
+    url: https://www.hockeystick.show
   - logo: pe-norway-full.png
     url: https://www.meetup.com/promptengineering-community/
   - logo: gdg-london.jpg
@@ -55,7 +59,7 @@ sponsors:
     url: https://www.it-schulungen.com/
   - logo: pec.png
     url: https://www.pec.asia/2025/conference
-  - logo: cubixai.jpg
+  - logo: cubixai.png
     url: https://cubixai.com/
   - logo: angular-london.png
     url: https://www.meetup.com/angular-london/

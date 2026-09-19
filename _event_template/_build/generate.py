@@ -666,7 +666,7 @@ _sp_exclude_logos = {
     'pe-norway-full.png', 'gdg-london.jpg', 'london-agentic-ai-meetup.png',
     'angular-london.png', 'freecodecamp-london.png', 'london-pytorch.png',
     'techleadconf.png', 'gitnation.png', 'city-js.png',
-    'it-schulungen.png', 'pec.png', 'cubixai.jpg',
+    'it-schulungen.png', 'pec.png', 'cubixai.png', 'packt.png',
     'jug-amsterdam.png', 'k8sug.png',
     'kube-events.png', 'kube_events.png', 'kube_careers.png', 'kubespaces.png',
     'gdg_london.png', 'NL_MEETUP.png',

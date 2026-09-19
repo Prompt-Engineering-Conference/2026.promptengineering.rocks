@@ -12,6 +12,7 @@
 
 non_sponsor_orgs:
   - packt.png           # publisher / media partner
+  - hockeystick.png     # podcast / media partner
 
 community_partners:
   - pe-norway-full.png
@@ -21,7 +22,7 @@ community_partners:
   - freecodecamp-london.png
   - london-pytorch.png
   - it-schulungen.png
-  - cubixai.jpg
+  - cubixai.png
 
 sister_conferences_job_boards:
   - pec.png             # PEC Asia

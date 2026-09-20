@@ -19,7 +19,8 @@
           <div class="card-body">
             <h5 class="card-title mb-2">{{ event.name }}</h5>
             {% if event.url %}
-            <a href="{{ event.url }}" class="event-read-more-btn">Read more &rarr;</a>
+            <a href="{{ event.url }}" class="event-read-more-btn">Explore</a>
+            {% if event.cfp_button_url %}<a href="{{ event.cfp_button_url }}" class="event-cfp-btn" target="_blank" rel="noopener">CFP</a>{% endif %}
             {% else %}
             Details coming soon...
             {% endif %}
@@ -183,7 +184,7 @@ function toggleNote(id) {
           <div class="card-body">
             <h5 class="card-title mb-2">{{ event.name }}</h5>
             {% if event.url %}
-            <a href="{{ event.url }}" class="event-read-more-btn">Read more &rarr;</a>
+            <a href="{{ event.url }}" class="event-read-more-btn">Explore</a>
             {% else %}
             Details coming soon...
             {% endif %}
@@ -249,6 +250,8 @@ function toggleNote(id) {
 .yt-playlist-btn:hover, .yt-playlist-btn:focus { background: #f08580; color: #fff; text-decoration: none; }
 .event-read-more-btn { display: inline-block; padding: 8px 18px; background: #6b40d8; color: #fff; border-radius: 6px; text-decoration: none; transition: background 0.2s ease; font-family: 'Montserrat', sans-serif; font-weight: 700; }
 .event-read-more-btn:hover, .event-read-more-btn:focus { background: #5a32b3; color: #fff; text-decoration: none; }
+.event-cfp-btn { display: inline-block; padding: 6px 16px; background: #fff; color: #6b40d8; border: 2px solid #6b40d8; margin-left: 8px; border-radius: 6px; text-decoration: none; transition: background 0.2s ease, color 0.2s ease; font-family: 'Montserrat', sans-serif; font-weight: 700; }
+.event-cfp-btn:hover, .event-cfp-btn:focus { background: #6b40d8; color: #fff; text-decoration: none; }
 .card { transition: box-shadow .4s ease, border-color .4s ease; border: 1px solid transparent; }
 #events .card:hover { border-color: rgba(60,180,130,.35); box-shadow: 0 0 20px rgba(60,180,130,.18), 0 0 48px rgba(60,180,130,.07); }
 #past-events .card:hover { border-color: rgba(255,255,255,.25); box-shadow: 0 0 20px rgba(255,255,255,.12), 0 0 48px rgba(255,255,255,.05); }

@@ -41,6 +41,8 @@
     .reg-head .free-pill { margin-left: -4px; align-self: center; }   /* .reg-head already has a 12px flex gap */
     td.hours { white-space: nowrap; font: inherit; }
     td.hours.na { color: #aaa; }
+    /* Schedule still not announced with the event a month out (Marek 2026-09-27): a red nudge, not a grey shrug */
+    td.hours.announce { color: var(--critical); font-weight: 700; }
     td.hours a { color: #111; font-weight: 600; text-decoration: none; border-bottom: 1px dashed #bbb; }   /* start / end links to the event page's #schedule */
     td.hours a:hover { color: var(--accent); border-bottom-color: var(--accent); }
     .frog { display: inline-block; font-size: 1.3rem; line-height: 1; text-decoration: none; transition: transform .15s; }
@@ -357,6 +359,7 @@
             <div class="pct">50%</div>
           </td>
           <td class="hl"><span class="pill neutral" style="--c: var(--neutral)">Neutral</span></td>
+          
           <td class="hours na">no schedule yet</td>
           <td class="num cfp"><a class="frog" href="https://cfp.ninja/dashboard/events/67/proposals" target="_blank" rel="noopener" title="Manage talks on cfp.ninja" aria-label="Prompt Engineering Conference London 2026: manage talks on cfp.ninja">&#128056;</a></td>
         </tr>
@@ -394,8 +397,8 @@
 
   <section class="regs">
     <h2>Registrations</h2>
-    <div class="fresh" data-built="2026-09-27T10:03:40+00:00" title="Not live: the numbers refresh every time the website is built">
-      <span class="pill fresh-pill">Last build</span><span class="fresh-text">2026-09-27 10:03 UTC</span>
+    <div class="fresh" data-built="2026-09-27T12:17:09+00:00" title="Not live: the numbers refresh every time the website is built">
+      <span class="pill fresh-pill">Last build</span><span class="fresh-text">2026-09-27 12:17 UTC</span>
     </div>
     
     
@@ -684,7 +687,7 @@
   </section>
   
 
-  <div class="foot">Generated 2026-09-27 10:03 UTC at build time. Organizer tool, not linked from the site.</div>
+  <div class="foot">Generated 2026-09-27 12:17 UTC at build time. Organizer tool, not linked from the site.</div>
 </main>
 <script>
 (function () {                                     // Registrations / Speakers / Sponsors / Data checks as tabs (Marek 2026-09-17)

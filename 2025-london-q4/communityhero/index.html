@@ -114,7 +114,9 @@
   <div class="ch-brand">Prompt Engineering Conference · community heroes</div>
   <h1 class="ch-title">Community Hero at Prompt Engineering Conference London 2025 Q4</h1>
   <div class="ch-sub">October 16, 2025 · London · <a href="https://promptengineering.rocks/2025-london-q4/" target="_blank" rel="noopener">event page</a></div>
+  
   <p class="ch-intro">You applied for a Community Hero ticket: free admission in exchange for helping us promote the event. Everything you need is on this page. Fill in your details, generate and grab your card, pick a post and a message to spread, then tell us what you did. We&#39;ll review your activities and confirm your free ticket!</p>
+  
 
   <form id="ch-form" novalidate>
     <div class="ch-card">
@@ -125,7 +127,7 @@
         <label class="ch-field" data-field="role"><span>Job title</span><input type="text" name="role" autocomplete="organization-title" maxlength="120"></label>
         <label class="ch-field" data-field="company"><span>Company</span><input type="text" name="company" autocomplete="organization" maxlength="120"></label>
         <label class="ch-field ch-wide" data-field="linkedin"><span>LinkedIn profile URL</span><input type="url" name="linkedin" autocomplete="url" placeholder="https://www.linkedin.com/in/..." maxlength="300"></label>
-        <label class="ch-field ch-wide" data-field="photo"><span>Your photo <small>(a clear headshot, it goes on your card)</small></span>
+        <label class="ch-field ch-wide" data-field="photo"><span>Your photo <small>(headshot picture or avatar, it goes on your card)</small></span>
           <div class="ch-photo-box" id="ch-photo-box"><img id="ch-photo-prev" alt="" hidden><div class="ch-photo-text" id="ch-photo-text"><b>Choose a photo</b> or drop it here. JPG or PNG, a square headshot works best, up to 10 MB.</div><input type="file" name="photo" id="ch-photo" accept="image/*"></div>
         </label>
       </div>
@@ -148,12 +150,14 @@
     </div>
     
 
+    
     <div class="ch-card" id="ch-code-card">
       <div class="ch-step"><i>4</i><h2>Your discount code</h2></div>
       <div class="ch-code-row"><div class="ch-code" id="ch-code">HERO30</div><div class="ch-code-off" id="ch-code-off">30% off</div></div>
       <div class="ch-row"><button type="button" class="btn-ch ghost" id="ch-code-copy">Copy code</button><span class="ch-copied" id="ch-code-copied"></span></div>
       <div class="ch-hint">You may use this code publicly.</div>
     </div>
+    
 
     <div class="ch-card">
       <div class="ch-step"><i>5</i><h2>Your post</h2><small>LinkedIn, X, etc. - where your community is active</small></div>
@@ -208,7 +212,7 @@
 
 <script>
 var CH_URL = "https://script.google.com/macros/s/AKfycbyeW8C7ZfEjrELd0-GHy4p-fiBYTyBGsPkJ-M7uNkoD69Xk8UyhIUBfl7u67eQIfmPG/exec";
-var E = {"attendees": 250, "banner": "/assets/images/events/pec-2025-london-q4.jpg", "blurb_short": "PEC is a worldwide series of community events for engineers, researchers and builders working with prompts, context and AI interaction.", "brand": "pec", "brand_color": "#6b40d8", "brand_name": "Prompt Engineering Conference", "city": "London", "companies": ["AI Productivity Hub", "Arato.ai", "Arato.ai, Comet ML", "AWS", "Block", "Blue Beck"], "date": "October 16, 2025", "day": "16", "event_name": "Prompt Engineering Conference London 2025 Q4", "event_url": "https://promptengineering.rocks/2025-london-q4/", "keynotes": ["Tal Salmona"], "luma_url": "https://lu.ma/event/evt-PLACEHOLDER", "month": "October", "month_day": "October 16", "pick_talks": [{"company": "IBM", "keynote": false, "speaker": "Dr Roushanak Rahmat"}, {"company": "AWS", "keynote": false, "speaker": "Ricardo Sueiras"}, {"company": "Superagentic AI", "keynote": false, "speaker": "Shashi Jagtap"}, {"company": "Block", "keynote": false, "speaker": "W. Ian Douglas"}, {"company": "University of Oxford", "keynote": false, "speaker": "Ajit Jaokar"}, {"company": "Scania", "keynote": false, "speaker": "Muhammad Ahsan Ayaz"}, {"company": "RDEL Group", "keynote": false, "speaker": "Richard Marginson"}, {"company": "Cybergizer X Tablecheck", "keynote": false, "speaker": "Vlad Dyachenko"}, {"company": "TheAiExpert.ai", "keynote": false, "speaker": "Erik Schwartz"}, {"company": "Busuu", "keynote": false, "speaker": "Ilya Kiselev"}, {"company": "Red Buffer", "keynote": false, "speaker": "Tahreem Rasul"}, {"company": "Google", "keynote": false, "speaker": "Thierno Thiam"}, {"company": "Reply", "keynote": false, "speaker": "Carlo Peluso"}, {"company": "Blue Beck", "keynote": false, "speaker": "Richard Brough"}, {"company": "HackAPrompt", "keynote": false, "speaker": "Sander Schulhoff"}, {"company": "MongoDB", "keynote": false, "speaker": "Richmond Alake"}, {"company": "Royal Holloway, University of London", "keynote": false, "speaker": "Meenatchi Sundari"}, {"company": "Isometric", "keynote": false, "speaker": "Konrad Komorowski"}, {"company": "TwoFeetUp \u0026 AI Productivity Hub", "keynote": false, "speaker": "Sjoerd Tiemensma"}, {"company": "Microsoft", "keynote": false, "speaker": "Jesus Serrano"}, {"company": "Comet", "keynote": false, "speaker": "Jacques Verre"}, {"company": "re:cinq", "keynote": false, "speaker": "Pini Reznik"}, {"company": "IT Stress Relief", "keynote": false, "speaker": "Gena Frangina"}, {"company": "Arato.ai, Comet ML \u0026 PromptHub", "keynote": false, "speaker": "Tal Salmona"}, {"company": "Hitecnsol", "keynote": false, "speaker": "Jinju Baek"}, {"company": "Sogeti Netherlands", "keynote": false, "speaker": "Jeroen Egelmeers"}, {"company": "Superlinked", "keynote": false, "speaker": "Filip Makraduli"}, {"company": "The Mental Health Foundation", "keynote": false, "speaker": "Dr David Crepaz-Keay"}, {"company": "Rhizomatic Labs", "keynote": false, "speaker": "Mattis Stene-Johansen"}], "promo_code": "HERO30", "promo_code_near": "HERO50", "promo_label": "30% off", "promo_label_near": "50% off", "slug": "2025-london-q4", "speakers_n": 31, "start_date": "2025-10-16", "subtitle": "London 2025 Q4", "tickets_url": "https://promptengineering.rocks/2025-london-q4/#tickets", "topic_talks": [{"category": "Prompt Engineering", "talks": [{"company": "IBM", "speaker": "Dr Roushanak Rahmat", "title": "A Comprehensive Guide to Prompt Engineering Speaker participation"}, {"company": "AWS", "speaker": "Ricardo Sueiras", "title": "Build without limits - Tips and techniques for better Prompting"}, {"company": "Superagentic AI", "speaker": "Shashi Jagtap", "title": "Beyond Handcrafted Prompts: The Era of Prompt Optimization"}]}, {"category": "Context Engineering", "talks": [{"company": "Red Buffer", "speaker": "Tahreem Rasul", "title": "Designing Reliable Agent Workflows with Context Engineering"}, {"company": "", "speaker": "Sergey Konstantinov", "title": "Context Engineering in LLM Pipelines"}, {"company": "MongoDB", "speaker": "Richmond Alake", "title": "Memory Engineering: Going Beyond Context Engineering"}]}, {"category": "AI Agents \u0026 Agentic Workflows", "talks": [{"company": "Scania", "speaker": "Muhammad Ahsan Ayaz", "title": "The Prompt is Dead, Long Live the Context"}, {"company": "Reply", "speaker": "Carlo Peluso", "title": "Meta Agents: Self-Building Al Agents in a Vibe-Driven World"}, {"company": "Blue Beck", "speaker": "Richard Brough", "title": "Prompting LLMs to use Tools and Resources with MCP"}]}, {"category": "LLM Evaluation \u0026 Testing", "talks": [{"company": "Busuu", "speaker": "Ilya Kiselev", "title": "Multilingual by Design: Adapting Prompts and Processes Across Learning Languages"}, {"company": "Royal Holloway, University of London", "speaker": "Meenatchi Sundari", "title": "Logic Meets Automation: How DSPy and Prolog-Style Reasoning Boosted GPT-3.5 Accuracy by 19.5%"}]}, {"category": "Prompt Security \u0026 Guardrails", "talks": [{"company": "HackAPrompt", "speaker": "Sander Schulhoff", "title": "Prompt Injections, Red Teams, and the Unsolvable Problem"}]}, {"category": "Multimodal Prompting", "talks": [{"company": "Google", "speaker": "Thierno Thiam", "title": "Getting started with Chrome Built-in AI APIs"}, {"company": "Microsoft", "speaker": "Jesus Serrano", "title": "Can AI Develop a Whole Videogame?"}]}, {"category": "Production Patterns \u0026 Case Studies", "talks": [{"company": "TwoFeetUp \u0026 AI Productivity Hub", "speaker": "Sjoerd Tiemensma", "title": "Lessons learned from teaching \u0026 building AI Second Brain"}, {"company": "re:cinq", "speaker": "Pini Reznik", "title": "Hacking the Authoring Process: Lessons from Writing a Book with AI"}]}], "topics": ["Prompt Engineering", "Context Engineering", "AI Agents \u0026 Agentic Workflows", "LLM Evaluation \u0026 Testing", "Prompt Security \u0026 Guardrails"], "venue_line": "Crossrail Place, Canary Wharf", "venue_name": "Everyman Canary Wharf", "venue_short": "Everyman Canary Wharf", "weekday": "Thursday", "wordmark": "/assets/images/logo-token.png"};
+var E = {"attendees": 250, "banner": "/assets/images/events/pec-2025-london-q4.jpg", "blurb_short": "PEC is a worldwide series of community events for engineers, researchers and builders working with prompts, context and AI interaction.", "brand": "pec", "brand_color": "#6b40d8", "brand_name": "Prompt Engineering Conference", "city": "London", "companies": ["AI Productivity Hub", "Arato.ai", "Arato.ai, Comet ML", "AWS", "Block", "Blue Beck"], "date": "October 16, 2025", "day": "16", "event_name": "Prompt Engineering Conference London 2025 Q4", "event_url": "https://promptengineering.rocks/2025-london-q4/", "is_free": false, "keynotes": ["Tal Salmona"], "luma_url": "https://lu.ma/event/evt-PLACEHOLDER", "month": "October", "month_day": "October 16", "pick_talks": [{"company": "IBM", "keynote": false, "speaker": "Dr Roushanak Rahmat"}, {"company": "AWS", "keynote": false, "speaker": "Ricardo Sueiras"}, {"company": "Superagentic AI", "keynote": false, "speaker": "Shashi Jagtap"}, {"company": "Block", "keynote": false, "speaker": "W. Ian Douglas"}, {"company": "University of Oxford", "keynote": false, "speaker": "Ajit Jaokar"}, {"company": "Scania", "keynote": false, "speaker": "Muhammad Ahsan Ayaz"}, {"company": "RDEL Group", "keynote": false, "speaker": "Richard Marginson"}, {"company": "Cybergizer X Tablecheck", "keynote": false, "speaker": "Vlad Dyachenko"}, {"company": "TheAiExpert.ai", "keynote": false, "speaker": "Erik Schwartz"}, {"company": "Busuu", "keynote": false, "speaker": "Ilya Kiselev"}, {"company": "Red Buffer", "keynote": false, "speaker": "Tahreem Rasul"}, {"company": "Google", "keynote": false, "speaker": "Thierno Thiam"}, {"company": "Reply", "keynote": false, "speaker": "Carlo Peluso"}, {"company": "Blue Beck", "keynote": false, "speaker": "Richard Brough"}, {"company": "HackAPrompt", "keynote": false, "speaker": "Sander Schulhoff"}, {"company": "MongoDB", "keynote": false, "speaker": "Richmond Alake"}, {"company": "Royal Holloway, University of London", "keynote": false, "speaker": "Meenatchi Sundari"}, {"company": "Isometric", "keynote": false, "speaker": "Konrad Komorowski"}, {"company": "TwoFeetUp \u0026 AI Productivity Hub", "keynote": false, "speaker": "Sjoerd Tiemensma"}, {"company": "Microsoft", "keynote": false, "speaker": "Jesus Serrano"}, {"company": "Comet", "keynote": false, "speaker": "Jacques Verre"}, {"company": "re:cinq", "keynote": false, "speaker": "Pini Reznik"}, {"company": "IT Stress Relief", "keynote": false, "speaker": "Gena Frangina"}, {"company": "Arato.ai, Comet ML \u0026 PromptHub", "keynote": false, "speaker": "Tal Salmona"}, {"company": "Hitecnsol", "keynote": false, "speaker": "Jinju Baek"}, {"company": "Sogeti Netherlands", "keynote": false, "speaker": "Jeroen Egelmeers"}, {"company": "Superlinked", "keynote": false, "speaker": "Filip Makraduli"}, {"company": "The Mental Health Foundation", "keynote": false, "speaker": "Dr David Crepaz-Keay"}, {"company": "Rhizomatic Labs", "keynote": false, "speaker": "Mattis Stene-Johansen"}], "promo_code": "HERO30", "promo_code_near": "HERO50", "promo_label": "30% off", "promo_label_near": "50% off", "slug": "2025-london-q4", "speakers_n": 31, "start_date": "2025-10-16", "subtitle": "London 2025 Q4", "tickets_url": "https://promptengineering.rocks/2025-london-q4/#tickets", "topic_talks": [{"category": "Prompt Engineering", "talks": [{"company": "IBM", "speaker": "Dr Roushanak Rahmat", "title": "A Comprehensive Guide to Prompt Engineering Speaker participation"}, {"company": "AWS", "speaker": "Ricardo Sueiras", "title": "Build without limits - Tips and techniques for better Prompting"}, {"company": "Superagentic AI", "speaker": "Shashi Jagtap", "title": "Beyond Handcrafted Prompts: The Era of Prompt Optimization"}]}, {"category": "Context Engineering", "talks": [{"company": "Red Buffer", "speaker": "Tahreem Rasul", "title": "Designing Reliable Agent Workflows with Context Engineering"}, {"company": "", "speaker": "Sergey Konstantinov", "title": "Context Engineering in LLM Pipelines"}, {"company": "MongoDB", "speaker": "Richmond Alake", "title": "Memory Engineering: Going Beyond Context Engineering"}]}, {"category": "AI Agents \u0026 Agentic Workflows", "talks": [{"company": "Scania", "speaker": "Muhammad Ahsan Ayaz", "title": "The Prompt is Dead, Long Live the Context"}, {"company": "Reply", "speaker": "Carlo Peluso", "title": "Meta Agents: Self-Building Al Agents in a Vibe-Driven World"}, {"company": "Blue Beck", "speaker": "Richard Brough", "title": "Prompting LLMs to use Tools and Resources with MCP"}]}, {"category": "LLM Evaluation \u0026 Testing", "talks": [{"company": "Busuu", "speaker": "Ilya Kiselev", "title": "Multilingual by Design: Adapting Prompts and Processes Across Learning Languages"}, {"company": "Royal Holloway, University of London", "speaker": "Meenatchi Sundari", "title": "Logic Meets Automation: How DSPy and Prolog-Style Reasoning Boosted GPT-3.5 Accuracy by 19.5%"}]}, {"category": "Prompt Security \u0026 Guardrails", "talks": [{"company": "HackAPrompt", "speaker": "Sander Schulhoff", "title": "Prompt Injections, Red Teams, and the Unsolvable Problem"}]}, {"category": "Multimodal Prompting", "talks": [{"company": "Google", "speaker": "Thierno Thiam", "title": "Getting started with Chrome Built-in AI APIs"}, {"company": "Microsoft", "speaker": "Jesus Serrano", "title": "Can AI Develop a Whole Videogame?"}]}, {"category": "Production Patterns \u0026 Case Studies", "talks": [{"company": "TwoFeetUp \u0026 AI Productivity Hub", "speaker": "Sjoerd Tiemensma", "title": "Lessons learned from teaching \u0026 building AI Second Brain"}, {"company": "re:cinq", "speaker": "Pini Reznik", "title": "Hacking the Authoring Process: Lessons from Writing a Book with AI"}]}], "topics": ["Prompt Engineering", "Context Engineering", "AI Agents \u0026 Agentic Workflows", "LLM Evaluation \u0026 Testing", "Prompt Security \u0026 Guardrails"], "venue_line": "Crossrail Place, Canary Wharf", "venue_name": "Everyman Canary Wharf", "venue_short": "Everyman Canary Wharf", "weekday": "Thursday", "wordmark": "/assets/images/logo-token.png"};
 var $ = function (id) { return document.getElementById(id); };
 var form = $('ch-form');
 function val(k) { return (form.elements[k].value || '').trim(); }
@@ -245,7 +249,10 @@ function sessionsProse(n) {
 
 // ---- the hero code (same rule as the card: HERO30 while the event is 14+ days away, HERO50 inside that) -----
 // The code always sits alone on its own line: people copy it.
-function codeBlock(lead) { var hc = heroCode(); return hc[0] ? lead.replace('{off}', hc[1]) + '\n' + hc[0] + '\n\n' : ''; }
+function codeBlock(lead) {
+  if (E.is_free) return "It's free to attend, you just need to register.\n\n";
+  var hc = heroCode(); return hc[0] ? lead.replace('{off}', hc[1]) + '\n' + hc[0] + '\n\n' : '';
+}
 var when = E.date + (E.venue_name ? ' · ' + E.venue_name : ''), tag = '#' + E.brand_name.replace(/\s+/g, '') + ' #' + E.city.replace(/\s+/g, '');
 
 // ---- the Personal post (Marek 2026-09-28): five wordings of one structure, one picked at random per page load,
@@ -268,10 +275,13 @@ function talksText() {
 }
 function topicsText() { return list(E.topics, 3); }
 function codeInline() { var hc = heroCode(); return hc[0] ? hc[1] + ' with the code ' + hc[0] + '\n' : ''; }
+function rsvpLines() {                          // free event: "Register for FREE", no code; paid: RSVP + the code
+  return E.is_free ? 'Register for FREE: ' + E.event_url + '\n' : 'RSVP: ' + E.event_url + '\n' + codeInline();
+}
 function personalPost() {
   var N = sessionsText(), T = talksText(), P = topicsText(), B = tagged(E.brand_name);
   var join = function (lead) { return lead + ' ' + E.city + ' on ' + E.month_day; };
-  var tail = function (ask, thanks) { return ask + '\nRSVP: ' + E.event_url + '\n' + codeInline() + '\n' + thanks; };
+  var tail = function (ask, thanks) { return ask + '\n' + rsvpLines() + '\n' + thanks; };
   var V = [                                      // excited and warm, emojis welcome - the Professional post stays composed
     function () {
       return "I'm a Community Hero at " + E.event_name + '! 🎉\n\n' +
@@ -320,7 +330,7 @@ function talksBullets() {
 function proPost() {
   var N = sessionsText(), L = talksBullets(), P = topicsText(), B = tagged(E.brand_name), EV = E.event_name;
   var where = E.city + ' on ' + E.month_day;
-  var tail = function (ask, thanks) { return (ask ? ask + '\n' : '') + 'RSVP: ' + E.event_url + '\n' + codeInline() + '\n' + thanks; };
+  var tail = function (ask, thanks) { return (ask ? ask + '\n' : '') + rsvpLines() + '\n' + thanks; };
   // the hero's own job title and company from step 1 (company taggable); each version phrases it its own way
   var role = val('role'), comp = val('company') ? tagged(val('company')) : '', aRole = role ? (/^[aeiou]/i.test(role) ? 'an ' : 'a ') + role : '';
   var who = function (both, onlyRole, onlyComp) { return role && comp ? both : role ? onlyRole : comp ? onlyComp : ''; };
@@ -434,6 +444,7 @@ render('post'); render('msg');
 // the discount code step: the same code as on the card (HERO30, HERO50 inside 14 days of the event)
 (function () {
   var hc = heroCode();
+  if (!$('ch-code-card')) return;                 // free event: no code step
   if (!hc[0]) { $('ch-code-card').hidden = true; return; }
   $('ch-code').textContent = hc[0]; $('ch-code-off').textContent = hc[1];
   $('ch-code-copy').addEventListener('click', function () {
@@ -605,7 +616,7 @@ function drawCard() {
   ctx.save(); ctx.shadowColor = K.glow; ctx.shadowBlur = 60; ctx.strokeStyle = ringGradient(cx, cy, r); ctx.lineWidth = 14;
   ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
   // venue bar: pin, venue + street on the left, the hero ticket code (own line) and what it gives on the right
-  var y = 1210, h = 190, hc = heroCode(), code = hc[0], codeW = 0;
+  var y = 1210, h = 190, hc = E.is_free ? ['FREE', 'Register now'] : heroCode(), code = hc[0], codeW = 0;
   glass(90, y, 1320, h, 40, 'rgba(255,255,255,.18)');
   if (code) { ctx.font = '900 60px Montserrat, Arial, sans-serif'; codeW = ctx.measureText(code).width; }
   var textMax = 1360 - 260 - (code ? codeW + 50 : 0);

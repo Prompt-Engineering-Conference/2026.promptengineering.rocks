@@ -1,2 +1,4 @@
 static
 env
+# Cache of optimised images and teaser PNGs (see _build/optimize_images.py)
+.cache/

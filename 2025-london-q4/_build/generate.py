@@ -4,6 +4,7 @@ import datetime
 import math
 import re
 import csv
+import html
 import textwrap
 import string
 import yaml
@@ -121,6 +122,18 @@ def generate_talk_url(talk):
     url = re.sub('[\\W]+', '', url)
     return url[:100]
 
+def md_plain(text):
+    """Markdown -> plain text for places that show the abstract as text (schedule preview, short abstracts):
+    "[SREday](https://sreday.com/)" -> "SREday", **bold** / _italic_ / `code` / "## heading" / "- item" lose
+    their markup, raw <tags> go; the full description (talk page, modal) still renders the markdown"""
+    if not text:
+        return ''
+    html_out = markdown.markdown(str(text))
+    out = re.sub(r'</?(?:p|li|ul|ol|h[1-6]|br|div|blockquote|pre|hr|tr|table)\b[^>]*>', ' ', html_out)   # blocks -> a space
+    out = re.sub(r'<[^>]+>', '', out)                                                                    # inline tags go
+    out = html.unescape(out)
+    return re.sub(r'\s+', ' ', out).strip()
+
 def read_csv(path):
     """ Read the pre-process the CSV """
     items = []
@@ -130,8 +143,8 @@ def read_csv(path):
         for item in reader:
             item = dict(item)
             if "abstract" in item:
-                item["abstract_s"] = textwrap.shorten(item.get("abstract",""), 300, placeholder="...")
-                item["abstract_m"] = textwrap.shorten(item.get("abstract",""), 1000, placeholder="...")
+                item["abstract_s"] = textwrap.shorten(md_plain(item.get("abstract","")), 300, placeholder="...")
+                item["abstract_m"] = textwrap.shorten(md_plain(item.get("abstract","")), 1000, placeholder="...")
             items.append(item)
     return items
 
@@ -154,6 +167,7 @@ def _markdown_no_headers(text):
             cleaned.append(line)
     return markdown.markdown('\n'.join(cleaned))
 env.filters["markdown"] = _markdown_no_headers
+env.filters["plain"] = md_plain
 def dedupe(items):
      present = set()
      output = []

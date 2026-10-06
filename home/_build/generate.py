@@ -223,6 +223,13 @@ for page in pages:
         template = env.get_template(page)
         f.write(template.render(page=page, **context))
 
+# HEADSHOT MAKER (hidden tool, /headshots/; same page as on sreday / llmday / platformday): speaker photo into the PEC
+# circle (home/assets/images/headshot-circle.png). Standalone template with root-absolute paths; not in the sitemap.
+os.makedirs(BASE_FOLDER + "/headshots", exist_ok=True)
+with open(BASE_FOLDER + "/headshots/index.html", "w", encoding="utf-8") as f:
+    print("Writing out headshots/index.html (hidden, not in sitemap)")
+    f.write(env.get_template("headshots.html").render(page="headshots.html", **context))
+
 # STATUS PAGE (hidden, /status/): lineup + sponsor progress of every upcoming event.
 # Talks: rows of ../<event>/_db/talks.csv whose status contains "confirmed" or "keynote", against 12 slots
 # per track (tracks from the event metadata). Sponsors: the event's sponsors list minus the partner

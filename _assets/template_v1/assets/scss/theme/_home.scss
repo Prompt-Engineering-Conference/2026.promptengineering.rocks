@@ -144,7 +144,7 @@
 	}
 	.unit {
 		font-size: 1.5rem;
-		color: rgba(0, 0, 0, 0.6);
+		color: rgba(255, 255, 255, 0.7);
 	}
 }
 
@@ -217,8 +217,9 @@
 	}
 	
 	.card-img-top {
+		transition: filter .2s ease;
 		&:hover {
-			@include opacity(0.9);
+			filter: brightness(1.1) contrast(0.9);
 		}
 	}
 
@@ -438,7 +439,10 @@
 		img {
 			border: 10px solid #fff;
 			max-width: 100%;
-			
+			transition: filter .2s ease;
+			&:hover {
+				filter: brightness(1.1) contrast(0.9);
+			}
 		}
 		&.figure-1 {
 			z-index: 1;
@@ -478,6 +482,10 @@
 	margin-bottom: 1rem;
 	img {
 		max-width: 100%;
+		transition: filter .2s ease;
+		&:hover {
+			filter: brightness(1.1) contrast(0.9);
+		}
 	}
 }
 /* footer */
@@ -673,9 +681,8 @@
 }
 .hero-block .social-list li a {
 	display: inline-block;
-	transition: transform .2s ease, text-shadow .2s ease;
+	transition: transform .2s ease;
 }
 .hero-block .social-list li a:hover {
 	transform: translateY(-2px);
-	text-shadow: 0 6px 14px rgba(0,0,0,.45);
 }

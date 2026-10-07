@@ -3,3 +3,5 @@ env
 # Cache of optimised images and teaser PNGs (see _build/optimize_images.py)
 .cache/
 .DS_Store
+__pycache__/
+*.pyc

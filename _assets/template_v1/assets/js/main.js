@@ -121,18 +121,32 @@ scrollLinks.forEach((scrollLink) => {
 		const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
 		
 		window.scrollTo({top: y, behavior: 'smooth'});
+		history.pushState(null, null, scrollLink.getAttribute("href"));
 		
 		
 		//Collapse mobile menu after clicking
-		if (pageNavWrapper.classList.contains('show')){
-			pageNavWrapper.classList.remove('show');
-		}
+		closeMobileNav();
 
 		
     });
 	
 });
     
+
+/* ===== Mobile menu ===== */
+/* Collapse the open hamburger menu. Used by the .scrollto handler above and by a delegated
+   handler below, so plain nav-link anchors (sreday home, all event pages) close it too. */
+function closeMobileNav() {
+	if (!pageNavWrapper || !pageNavWrapper.classList.contains('show')) return;
+	if (window.bootstrap && bootstrap.Collapse) {
+		bootstrap.Collapse.getOrCreateInstance(pageNavWrapper, { toggle: false }).hide();
+	} else {
+		pageNavWrapper.classList.remove('show');
+	}
+}
+if (pageNavWrapper) {
+	pageNavWrapper.addEventListener('click', (e) => { if (e.target.closest('a')) closeMobileNav(); });
+}
 
 /* ===== Navbar glow ===== */
 // A soft vertical flare behind the glassy navbar that follows the mouse (styles: "NAVBAR GLOW" in the css).

@@ -239,6 +239,9 @@ print(DIVIDER)
 # PEC is no sister (Marek 2026-09-16): only its own brand here, so the page shows no sister buttons
 _STATUS_BRANDS = [("Prompt Engineering Conference", "https://promptengineering.rocks/status/", "#6b40d8")]
 _SLOTS_PER_TRACK = 12
+# a "before" event at SCHEDULE_AUTO_PCT% or more is built as active: its schedule is published automatically
+# (Marek 2026-10-06; same rule in _event_template/_build/generate.py)
+SCHEDULE_AUTO_PCT = 70
 # Start / end column (Marek 2026-09-27): an event still in the "before" state this close to its date has no
 # published schedule, which stops being normal and becomes a to-do; the cell says so in red instead of "no schedule yet".
 _ANNOUNCE_DAYS = 30
@@ -555,7 +558,19 @@ for _ev in (context.get("events") or []):
     # "Current start / end": the time bracket the event page itself renders in its schedule meta line
     # (only when event_state is "active"; the event folders are built before home in the root Makefile).
     _hours = "N/A"
-    if str(_em.get("event_state") or "") == "active":
+    # auto-published schedule: a "before" event at SCHEDULE_AUTO_PCT% of its slots, with a confirmed venue (no
+    # venue_tbc, a venue name in its _templates/venue.html), is built as active
+    _state = str(_em.get("event_state") or "")
+    if _state == "before" and _pct >= SCHEDULE_AUTO_PCT and not _em.get("venue_tbc"):
+        try:
+            with open("../" + _folder + "/_templates/venue.html", encoding="utf-8", errors="replace") as _vf:
+                _vm = re.search(r"<h4[^>]*>(.*?)</h4>", _vf.read(), re.S | re.I)
+            _vname = re.sub(r"<[^>]+>", "", _vm.group(1)).strip() if _vm else ""
+        except OSError:
+            _vname = ""
+        if _vname and not re.search(r"\b(tba|tbc|tbd|to be (confirmed|announced))\b", _vname, re.I):
+            _state = "active"
+    if _state == "active":
         try:
             with open("../" + _folder + "/static/index.html", encoding="utf-8", errors="replace") as _hf:
                 _m = re.search(r'<span class="schedule-meta-item">(\d{1,2}(?::\d{2})?[AP]M\s*-\s*\d{1,2}(?::\d{2})?[AP]M)</span>', _hf.read())
@@ -572,7 +587,7 @@ for _ev in (context.get("events") or []):
         "issues": _issues[:_LINT_MAX_PER_EVENT], "issues_more": max(0, len(_issues) - _LINT_MAX_PER_EVENT),
         "errors": _n_err, "warnings": len(_issues) - _n_err,
         "name": _ev.get("name") or _folder, "folder": _folder, "url": "/" + _folder + "/",
-        "date": str(_em.get("date_string") or ""), "state": str(_em.get("event_state") or ""),
+        "date": str(_em.get("date_string") or ""), "state": _state,
         "tracks": _tracks, "confirmed": _confirmed, "available": _available, "pct": _pct,
         "health": _key, "health_label": _label, "sponsors": len(_sponsors), "days_left": _days_left, "hours": _hours,
         "luma_evt": str(_em.get("luma_evt") or "").strip(), "sponsor_list": _sponsors,   # for the Luma registrations block

@@ -3,6 +3,7 @@
 import datetime
 import math
 import re
+import os
 import csv
 import html
 import textwrap
@@ -122,6 +123,39 @@ def generate_talk_url(talk):
     url = re.sub('[\\W]+', '', url)
     return url[:100]
 
+# talks.csv "status" column (Marek 2026-10-03). New values: talk / keynote / workshop / draft.
+# Legacy values keep working: "confirmed" (anything containing it) = talk, anything containing
+# "keynote" = keynote. draft = waiting for the speaker's confirmation: left out of the build, counted
+# on /status/. Anything else (declined, ...) stays hidden. Same rules in home/_build/generate.py
+# and _build/redflag.py.
+LIVE_KINDS = ('talk', 'keynote', 'workshop')
+
+def talk_kind(status):
+    s = str(status or '').strip().lower()
+    if re.search(r'\bdraft\b', s):
+        return 'draft'
+    if 'keynote' in s:
+        return 'keynote'
+    if re.search(r'\bworkshop\b', s):
+        return 'workshop'
+    if 'confirmed' in s or re.search(r'\btalk\b', s):
+        return 'talk'
+    return None
+
+_KEYNOTE_PREFIX = re.compile(r'^\s*keynote\s*:\s*', re.I)
+_WORKSHOP_PREFIX = re.compile(r'^\s*(?:\d+\s*h\s+)?workshop\s*:\s*', re.I)
+
+def talk_pill(talk):
+    """(pill, title without the prefix the pill replaces). Keynote: status keynote, or the legacy
+    "Keynote:" title prefix (also on a confirmed row). Workshop: status workshop."""
+    title = (talk.get("title") or "").strip()
+    kind = talk.get("kind")
+    if kind == 'keynote' or _KEYNOTE_PREFIX.match(title):
+        return 'Keynote', _KEYNOTE_PREFIX.sub('', title)
+    if kind == 'workshop':
+        return 'Workshop', _WORKSHOP_PREFIX.sub('', title)
+    return '', title
+
 def md_plain(text):
     """Markdown -> plain text for places that show the abstract as text (schedule preview, short abstracts):
     "[SREday](https://sreday.com/)" -> "SREday", **bold** / _italic_ / `code` / "## heading" / "- item" lose
@@ -205,6 +239,7 @@ with open('metadata.yml', encoding='utf-8') as f:
     BASE_FOLDER = "./" + context.get("base_folder")
 
 
+
 def luma_is_free(evt_id):
     if not evt_id:
         return False
@@ -224,6 +259,49 @@ context["luma_is_free"] = luma_is_free(context.get("luma_evt"))
 if context.get("registration_free") is not None:   # events not on Luma (e.g. in10t_event): metadata says free or not
     context["luma_is_free"] = bool(context.get("registration_free"))
 print("Luma event %s is_free=%s" % (context.get("luma_evt") or "(none)", context["luma_is_free"]))
+
+# ── CFP status from cfp.ninja (build time) ───────────────────────────────────
+# The hero pill reads "CFP" while the event's cfp.ninja CFP is open and "Register" (-> #tickets) once it is
+# closed. cfp.ninja's own rule: open only if cfp_status == "open" AND now < cfp_close_at; closed/reviewing/
+# complete -> closed. Anything uncertain (no cfp.ninja URL, network error, 404, not yet open) keeps "CFP".
+# SKIP_CFP_CHECK=1 skips the request (offline builds). Past events are never probed (the pill is not shown).
+def cfp_ninja_slug(url):
+    m = re.match(r'^https?://(www[.])?cfp[.]ninja/e/([^/?#]+)', str(url or '').strip())
+    return m.group(2) if m else None
+
+
+def cfp_is_open(url, event_state):
+    slug = cfp_ninja_slug(url)
+    if not slug or event_state == 'after':
+        return True
+    if os.environ.get('SKIP_CFP_CHECK'):
+        print("CFP %s: check skipped (SKIP_CFP_CHECK), keeping the CFP pill" % slug)
+        return True
+    try:
+        import json as _json
+        import urllib.request
+        req = urllib.request.Request("https://cfp.ninja/api/v0/e/%s" % slug, headers={"User-Agent": "Mozilla/5.0"})
+        data = _json.loads(urllib.request.urlopen(req, timeout=5).read().decode("utf-8", "ignore"))
+        ev = data.get('data', data) if isinstance(data, dict) else {}
+        status = str(ev.get('cfp_status') or '').lower()
+        close_at = str(ev.get('cfp_close_at') or '')
+        closed = status in ('closed', 'reviewing', 'complete')
+        if status == 'open' and close_at:
+            try:
+                close_dt = datetime.datetime.fromisoformat(close_at.replace('Z', '+00:00'))
+                if close_dt.tzinfo is None:
+                    close_dt = close_dt.replace(tzinfo=datetime.timezone.utc)
+                closed = datetime.datetime.now(datetime.timezone.utc) >= close_dt
+            except ValueError:
+                pass
+        print("CFP %s: %s (status=%s, closes %s)" % (slug, 'closed' if closed else 'open', status or '?', close_at or '?'))
+        return not closed
+    except Exception as e:
+        print("WARN: could not check cfp.ninja status for %s (%s); keeping the CFP pill" % (slug, e))
+        return True
+
+
+context["cfp_open"] = cfp_is_open(context.get("cfp_url"), context.get("event_state"))
 
 # og:image / twitter:image — use this event's card image from home/metadata.yml
 # (the single source of truth for the events list), falling back to the first
@@ -326,16 +404,15 @@ _VENUE_TBC = 'Venue to be confirmed soon'
 _ob_vname, _ob_vaddr = (_VENUE_TBC, str(context.get('location_string', ''))) if context.get('venue_tbc') else _ob_venue()
 
 # AUTO-PUBLISH THE SCHEDULE (Marek 2026-10-06): an event on event_state "before" goes "active" once 70% of its talk
-# slots are announced, by the /status/ criteria: talks.csv rows with status confirmed or keynote against 12 slots per
-# track (metadata "tracks"). Only with a confirmed venue ("don't publish schedule if there's no venue"): no
-# venue_tbc and a venue name in _templates/venue.html. An event set to active (or after) by hand is left alone.
+# slots are announced, by the /status/ criteria: live talks.csv rows (talk / keynote / workshop, never draft) against
+# 12 slots per track (metadata "tracks"). Only with a confirmed venue ("don't publish schedule if there's no venue"):
+# no venue_tbc and a venue name in _templates/venue.html. An event set to active (or after) by hand is left alone.
 # Same numbers as _SLOTS_PER_TRACK / SCHEDULE_AUTO_PCT in home/_build/generate.py.
 SCHEDULE_AUTO_PCT = 70
 SLOTS_PER_TRACK = 12
 if str(context.get("event_state") or "").strip() == "before":
     _auto_tracks = int(re.sub(r"[^\d]", "", str(context.get("tracks") or "1")) or 1)
-    _auto_live = sum(1 for t in talks_raw if "confirmed" in str(t.get("status") or "").lower()
-                     or "keynote" in str(t.get("status") or "").lower())
+    _auto_live = sum(1 for t in talks_raw if talk_kind(t.get("status")) in LIVE_KINDS)
     _auto_pct = round(100.0 * _auto_live / (_auto_tracks * SLOTS_PER_TRACK))
     _auto_venue = not context.get("venue_tbc") and bool(_ob_vname) \
         and not re.search(r"\b(tba|tbc|tbd|to be (confirmed|announced))\b", _ob_vname, re.I)
@@ -374,6 +451,7 @@ context.setdefault('fasttrack_form_url', '')
 _ft_src = context['onboarding_event']
 context['fasttrack_event'] = {k: _ft_src[k] for k in ('brand', 'brand_name', 'slug', 'event_name', 'city', 'date', 'event_url')}
 context['fasttrack_event']['cfp_url'] = str(context.get('cfp_url', '') or '')
+context['fasttrack_event']['cfp_open'] = bool(context.get('cfp_open', True))   # closed CFP is not advertised on the fast-track page
 # ── END SPEAKER FAST TRACK ──────────────────────────────────────────────────
 
 # ── SPEAKER WAITLIST (Marek 2026-09-22): facts for the hidden /waitlist/ page - the fast track form for people we
@@ -387,6 +465,8 @@ context['waitlist_event']['rsvp_url'] = ('https://lu.ma/event/' + _wl_luma) if _
 # pick up the ids & photos
 for i, talk in enumerate(talks_raw):
     talk["id"] = str(i)
+    talk["kind"] = talk_kind(talk.get("status"))
+    talk["pill"], talk["title_display"] = talk_pill(talk)
     photo = talk.get("photo")
     if photo:
         talk["photo_url"] = "../speakers/" + photo
@@ -420,15 +500,13 @@ for i, talk in enumerate(talks_raw):
     else:
         talk["display_name"] = name
 
-# sort into talks and keynotes
-talks = [
-    talk for talk in talks_raw
-    if "confirmed" in talk["status"].lower()
-]
-keynotes = [
-    talk for talk in talks_raw
-    if "keynote" in talk["status"].lower()
-]
+# sort into talks (in a track: talk + workshop) and keynotes (plenary at the start of the day);
+# drafts and anything else stay out of the build
+talks = [talk for talk in talks_raw if talk["kind"] in ('talk', 'workshop')]
+keynotes = [talk for talk in talks_raw if talk["kind"] == 'keynote']
+_drafts = [talk for talk in talks_raw if talk["kind"] == 'draft']
+if _drafts:
+    print("Drafts left out of the build (status draft): %d" % len(_drafts))
 context["talks"] = talks
 context["keynotes"] = keynotes
 
@@ -531,9 +609,7 @@ if len(_about_talks) >= 3 and _about_cats:
     for _t in _about_talks:
         _hay_title = _t["title"].strip().lower()
         _hay_abs = (_t.get("abstract") or "").lower()
-        _about_title_disp = _t["title"].strip()
-        if _about_title_disp.lower().startswith("keynote:"):
-            _about_title_disp = _about_title_disp[len("keynote:"):].strip()
+        _about_title_disp = _t["title_display"]
         _about_entry = {
             "title": _about_title_disp,
             "url": ((_t.get("short_url") or "").replace(".html", "") + ".html#speakers-section") if _t.get("short_url") else "",
@@ -663,9 +739,9 @@ for track in tracks:
         if end > schedule_end:
             schedule_end = end
 context["schedule_time_bracket"] = (
-    schedule_start.strftime('%I:%M%p').replace(':00', '')
+    schedule_start.strftime('%I:%M%p').lstrip('0').replace(':00', '')   # no leading zero, portable (Windows has no %-I)
     + " - "
-    + schedule_end.strftime('%I:%M%p').replace(':00', '')
+    + schedule_end.strftime('%I:%M%p').lstrip('0').replace(':00', '')
 )
 
 # remove placeholders
@@ -697,9 +773,13 @@ context["talks_by_tracks"] = tracks
 print("Loaded %d confirmed talks in %d tracks: %s" % (len(context["talks"]), len(tracks), tracks.keys()))
 
 # template each talk page for the event (a longer session's extra rows share
-# its page)
+# its page). Only rows on the schedule get a page: drafts and declined rows
+# must not leak into the sitemap.
 for talk in talks_raw:
     if talk["id"] in _merged_ids:
+        continue
+    if talk["kind"] not in LIVE_KINDS:
+        print("Skipping talk subpage %s (status '%s')" % (talk.get("short_url"), talk.get("status", "")))
         continue
     print("Generating talk subpage %s" % (talk.get("short_url")))
     with open(BASE_FOLDER + "/" + talk.get("short_url").replace(".html","")  + ".html", "w", encoding="utf-8") as f:
@@ -747,6 +827,30 @@ _city_slug = '-'.join(_city_parts)
 
 _all_siblings = sorted(_glob.glob('../20*/'))
 
+# ── First edition in this city for the brand? ───────────────────────────────
+# True when no sibling folder for the same city has an earlier (year, quarter).
+# The sponsorship page then locks the 20% discount on. An explicit
+# `first_in_city: true|false` in metadata.yml overrides the folder scan
+# (e.g. for history that predates this repo).
+def _folder_city_and_when(_name):
+    _p = _name.split('-')
+    _year = next((int(x) for x in _p if re.match(r'^\d{4}$', x)), 0)
+    _q = next((int(x[1:]) for x in _p if re.match(r'^q\d+$', x, re.IGNORECASE)), 0)
+    _city = '-'.join(x for x in _p
+                     if not re.match(r'^\d{4}$', x)
+                     and not re.match(r'^q\d+$', x, re.IGNORECASE))
+    return _city, (_year, _q)
+
+_, _current_when = _folder_city_and_when(_current_folder)
+if context.get('first_in_city') is not None:
+    _first_in_city = bool(context.get('first_in_city'))
+else:
+    _first_in_city = not any(
+        _c == _city_slug and _w < _current_when
+        for _c, _w in (_folder_city_and_when(_os.path.basename(_os.path.normpath(_s)))
+                       for _s in _all_siblings)
+    )
+
 # ── Global stats: all events across all cities ──────────────────────────────
 _global_org_counts = {}
 _global_speaker_names = set()
@@ -759,8 +863,7 @@ for _gf in _all_siblings:
     _gt_path = _os.path.join(_gf, '_db', 'talks.csv')
     if _os.path.exists(_gt_path):
         for _t in read_csv(_gt_path):
-            _status = _t.get('status', '').lower()
-            if 'confirmed' in _status or 'keynote' in _status:
+            if talk_kind(_t.get('status')) in LIVE_KINDS:
                 _spk_name = (_t.get('name') or _t.get('Name') or '').strip()
                 if _spk_name:
                     _global_speaker_names.add(_spk_name)
@@ -1140,7 +1243,8 @@ with open(BASE_FOLDER + '/sponsorship.html', 'w', encoding='utf-8') as _f:
         exchange_rates=_exchange_rates,
         sister_brands=_sponsorship_config.get('sister_brands', []),
         open_source_tools=_sponsorship_config.get('open_source_tools', []),
-        **{**context, 'event_size': _event_size, 'sponsors': _confirmed_sponsors}
+        **{**context, 'event_size': _event_size, 'sponsors': _confirmed_sponsors,
+           'first_in_city': _first_in_city}
     ))
 with open(BASE_FOLDER + '/sponsorship.html', encoding='utf-8') as _f:
     _sp_html = _f.read()
@@ -1191,10 +1295,10 @@ from urllib.parse import urlparse as _inv_urlparse
 
 
 def _inv_confirmed(rows):
-    """talks.csv rows that count as confirmed on /status/ (status has 'confirmed' or 'keynote';
-    '_Registration & Networking'-style agenda rows skipped)."""
+    """talks.csv rows that count as confirmed on /status/ (talk_kind talk/keynote/workshop, drafts
+    not counted; '_Registration & Networking'-style agenda rows skipped)."""
     return [r for r in rows
-            if re.search(r'confirmed|keynote', str(r.get('status', '')), re.I)
+            if talk_kind(r.get('status')) in LIVE_KINDS
             and not str(r.get('name', '')).strip().startswith('_')]
 
 
@@ -1464,7 +1568,7 @@ for _ev in (_ch_home.get('events') or []) + (_ch_home.get('events_past') or []):
 _ch_blurb = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', str(context.get('about_blurb') or ''))).strip()
 _ch_first = re.split(r'(?<=[.!?])\s+', _ch_blurb)[0] if _ch_blurb else ''
 # talks per About category (speaker, company, title) so the hero's posts and messages can say who presents on what
-_ch_by_title = {str(_t.get('title') or '').strip().lower(): _t for _t in _about_talks}
+_ch_by_title = {_t['title_display'].lower(): _t for _t in _about_talks}   # About entries carry the display title
 _ch_topic_talks = []
 for _tp in (context.get('about_topics') or []):
     if _tp.get('category') == '...and more':
@@ -1481,7 +1585,7 @@ for _tp in (context.get('about_topics') or []):
         except Exception:
             pass
         _sp = re.split(r'\s*&\s*|\s*,\s*|\s+and\s+', str(_t.get('name') or ''))[0].strip()
-        _lst.append({'speaker': _sp, 'company': _org, 'title': re.sub(r'^\s*Keynote:\s*', '', str(_t.get('title') or '').strip())})
+        _lst.append({'speaker': _sp, 'company': _org, 'title': _t['title_display']})
         if len(_lst) == 3:
             break
     if _lst:

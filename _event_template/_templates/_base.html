@@ -15,10 +15,10 @@
 	<link rel="manifest" href="./assets/site.webmanifest">
 
 	<!-- Google Font -->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800|Roboto:300,400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/fonts.css">
 
 	<!-- FontAwesome JS-->
-	<script defer src="assets/fontawesome/js/all.min.js"></script>
+	<link rel="stylesheet" href="assets/css/icons.css">
 
 	<!-- Theme CSS -->
 	<link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
@@ -28,9 +28,6 @@
     <meta property="og:title" content="{{ brand_name }} - {{ location_string }} - {{ date_string }}"/>
     <meta property="og:description" content="{{ brand_description }}. {{ brand_og_pitch }} {{ location_string }}!"/>
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
 
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="{{ brand_twitter }}">
@@ -40,11 +37,12 @@
     <meta name="twitter:image" content="{{ og_image_url }}">
 
 
+<script>/* analytics load after the page is shown (venue wifi) */function _later(f){addEventListener('load',function(){(window.requestIdleCallback||setTimeout)(f)})}</script>
 <!-- Twitter conversion tracking base code -->
 <script>
 	!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
 	},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
-	a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+	a=t.getElementsByTagName(n)[0],_later(function(){a.parentNode.insertBefore(u,a)}))}(window,document,'script');
 	twq('config','{{ brand_twt_pixel }}');
 	</script>
 	<!-- End Twitter conversion tracking base code -->
@@ -52,7 +50,7 @@
 </head>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ brand_ga_id }}"></script>
+<script>_later(function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id={{ brand_ga_id }}';document.head.appendChild(s)})</script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -62,7 +60,6 @@
 </script>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ brand_gads_id }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -194,23 +191,27 @@
 				{% else %}
 				<h2 class="text-white">{{ brand_tagline }}</h2>
 				<h3 class="text-white"><i class="far fa-calendar-alt me-2"></i>{{ date_string }} <i class="fas fa-map-marker-alt mx-2"></i>{{ location_string }}</h3>
-				<div class="hero-cta mt-5">
-					{% if youtube_playlist %}
-					<a class="btn btn-secondary btn-lg" href="{{ youtube_playlist }}" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="white" style="vertical-align:middle;margin-right:6px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Playlist</a>
-					{% elif event_state != 'after' %}
-					<a class="btn btn-secondary btn-lg" href="{% if talk %}./#tickets{% else %}#tickets{% endif %}">Get Tickets</a>
-					{% endif %}
+				<div class="hero-cta hero-cta-row">
 					{% if event_state != 'after' %}
-					<a class="btn btn-primary btn-lg" href="{{ cfp_url }}" target="_blank">CFP</a>
+					{% if cfp_open and cfp_url %}
+					<a class="btn btn-primary btn-lg cta-left" href="{{ cfp_url }}" target="_blank" rel="noopener noreferrer">CFP</a>
+					{% else %}
+					<a class="btn btn-primary btn-lg cta-left" href="{% if talk %}./#tickets{% else %}#tickets{% endif %}">Register</a>
 					{% endif %}
-			    </div>
-					<ul class="social-list list-inline mt-4">
+					{% endif %}
+					<ul class="social-list list-inline" style="margin:0;">
 						<li class="list-inline-item me-3"><a target="_blank" href="https://luma.com/sre" style="text-decoration:none;">✦</a></li>
 						<li class="list-inline-item me-3"><a target="_blank" href="https://discord.gg/ravEjTxNAX"><i class="fab fa-discord fa-fw"></i></a></li>
 						<li class="list-inline-item me-3"><a target="_blank" href="{{ linkedin_url }}"><i class="fab fa-linkedin fa-fw"></i></a></li>
 						<li class="list-inline-item me-3"><a href="{{ mailto }}"><i class="fas fa-envelope fa-fw"></i></a></li>
 						<li class="list-inline-item me-0"><a target="_blank" rel="noopener noreferrer" href="{{ youtube_url }}"><i class="fab fa-youtube fa-fw"></i></a></li>
 					</ul>
+					{% if youtube_playlist %}
+					<a class="btn btn-secondary btn-lg cta-right" href="{{ youtube_playlist }}" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="white" style="vertical-align:middle;margin-right:6px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Playlist</a>
+					{% elif event_state != 'after' %}
+					<a class="btn btn-secondary btn-lg cta-right" href="{% if talk %}./#sponsors{% else %}#sponsors{% endif %}">Sponsor</a>
+					{% endif %}
+			    </div>
 				{% endif %}
 			</div><!--//hero-text-block-->
 		</div><!--//container-->
@@ -272,11 +273,10 @@
 
 
 <!-- Javascript -->
-<script src="assets/plugins/popper.min.js"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.bundle.js"></script>
-<script src="assets/plugins/smoothscroll.min.js"></script>
-<script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script>
-<script src="assets/js/main.js"></script>
+<script defer src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script defer src="assets/plugins/smoothscroll.min.js"></script>
+<script defer src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script>
+<script defer src="assets/js/main.js"></script>
 
 </body>
 </html>

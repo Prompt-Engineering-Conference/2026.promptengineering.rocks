@@ -336,12 +336,11 @@ if _os.path.exists(_og_home_meta_path):
             else:
                 print("WARNING: event thumbnail %s not uploaded yet" % _og_candidate)
             break
-_og_domain = context.get('brand_domain') or 'promptengineering.rocks'
 if _og_photo:
-    context['og_image_url'] = 'https://%s/%s' % (_og_domain, _og_photo)
+    context['og_image_url'] = 'https://%s/%s' % (context['brand_domain'], _og_photo)
 elif context.get('hero_pictures'):
     print("WARNING: no event thumbnail available -- og:image falls back to default hero photo")
-    context['og_image_url'] = 'https://%s/photos/%s' % (_og_domain, context['hero_pictures'][0].split('/')[-1])
+    context['og_image_url'] = 'https://%s/photos/%s' % (context['brand_domain'], context['hero_pictures'][0].split('/')[-1])
 else:
     print("WARNING: no event thumbnail available -- og:image falls back to hero-1.jpg")
     context['og_image_url'] = context.get('base_path', '') + '/assets/images/hero-1.jpg'
@@ -424,7 +423,7 @@ if str(context.get("event_state") or "").strip() == "before":
 
 _ob_date = str(context.get('date_string', ''))
 context['onboarding_event'] = {
-    'brand':         str(context.get('brand_key') or context.get('brand_name', '')).lower(),   # brand_key: pec (PEC's brand_name is three words)
+    'brand':         str(context.get('brand_key') or context.get('brand_name', '')).lower(),   # brand_key: short form-backend key where the brand name is several words (PEC: pec)
     'brand_name':    context.get('brand_name', ''),
     'slug':          _ob_slug,
     'event_name':    _ob.get('event_name') or _ob_event_name(_ob_slug, context.get('city_name'), context.get('brand_name', '')),
@@ -903,8 +902,9 @@ _global_top_companies = sorted(_global_org_counts.items(), key=lambda x: x[1], r
 _sp_exclude_logos = {
     # Non-sponsor orgs
     'hockeystick.png', 'arf.png', 'ksug.ai.png', 'filmforum.png', 'uhub.png',
-    'starterai.png',
+    'starterai.png', 'in10t.png',
     # Community partners / meetup groups
+    'aws-girls-uruguay.png',
     'pe-norway-full.png', 'gdg-london.jpg', 'london-agentic-ai-meetup.png',
     'angular-london.png', 'freecodecamp-london.png', 'london-pytorch.png',
     'techleadconf.png', 'gitnation.png', 'city-js.png',
@@ -912,14 +912,17 @@ _sp_exclude_logos = {
     'jug-amsterdam.png', 'k8sug.png',
     'kube-events.png', 'kube_events.png', 'kube_careers.png', 'kubespaces.png',
     'gdg_london.png', 'NL_MEETUP.png',
-    'chennaisre.png', 'srecommunitycoimbatore.png', 'aigeeks.png',
+    'chennaisre.png', 'srecommunitycoimbatore.png', 'srehyderabadi.png',
+    'aigeeks.png', 'AIFRONTIERS.png', 'houseofai.png',
     'cloud native lisbon.png', 'cloud native porto.png',
     'devops braga.png', 'devops lisbon.png',
     'kcd porto.png', 'leiria tech talks.png', 'viseu tech talks.png',
     'lisbon genai community.png',
     'aws porto.png',
-    # Sister conferences
-    'IacConf.png', 'DevIT.png', 'DevIT_black.png',
+    'synvert xgeeks.png',
+    # Sister conferences / job boards
+    'IacConf.png', 'DevIT.png', 'DevIT_black.png', 'DevIT-usa.png',
+    'devit.png', 'devitjobs.png',
 }
 _sp_logo_counts = {}
 _sp_logo_meta = {}

@@ -206,15 +206,15 @@
 .sp-stats-s-sub   { font-size: .9rem; color: #555; margin-bottom: 24px; }
 
 /* big number pills */
-.sp-stats-big-numbers { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+.sp-stats-big-numbers { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
 .sp-stats-big-num {
   display: inline-flex; flex-direction: column; align-items: center;
-  padding: 14px 24px; border: 1px solid var(--spi-green-mid);
+  padding: 11px 19px; border: 1px solid var(--spi-green-mid);
   border-radius: 999px; background: var(--spi-green-light); text-align: center;
 }
-.sp-stats-big-num-value { font-family: 'Montserrat', sans-serif; font-size: 1.9rem; font-weight: 700; color: #6e1f21; line-height: 1; letter-spacing: -.01em; }
-.sp-stats-big-num-value sup { font-size: .9rem; color: var(--spi-green); vertical-align: super; font-weight: 700; }
-.sp-stats-big-num-label { font-size: .72rem; color: #c04a4e; text-transform: uppercase; letter-spacing: .07em; margin-top: 5px; }
+.sp-stats-big-num-value { font-family: 'Montserrat', sans-serif; font-size: 1.52rem; font-weight: 700; color: #6e1f21; line-height: 1; letter-spacing: -.01em; }
+.sp-stats-big-num-value sup { font-size: .72rem; color: var(--spi-green); vertical-align: super; font-weight: 700; }
+.sp-stats-big-num-label { font-size: .58rem; color: #c04a4e; text-transform: uppercase; letter-spacing: .07em; margin-top: 4px; }
 
 /* TLDR pill */
 .sp-stats-tldr {
@@ -355,6 +355,8 @@
 }
 .sp-custom-ideas li { font-size: .9rem; color: #d0d0d0; padding: 4px 0; }
 .sp-custom-ideas li::before { content: "✓ "; color: #26986A; font-weight: 700; }
+.sp-custom-ideas a { color: inherit; font-weight: 700; text-decoration: none; transition: color .2s, text-shadow .2s; }
+.sp-custom-ideas a:hover { color: #fff; text-shadow: 0 0 12px rgba(255,255,255,.8), 0 0 26px rgba(255,255,255,.4); }
 @media (max-width: 640px) {
   .sp-custom-card { grid-template-columns: 1fr; }
   .sp-custom-card-left { border-right: none; border-bottom: 1px solid rgba(38,152,106,.45); padding-right: 0; padding-bottom: 20px; margin-bottom: 20px; }
@@ -379,28 +381,6 @@
 .sp-tier-card:hover {
   border-color: rgba(180, 130, 20, .5);
   box-shadow: 0 0 22px rgba(180, 130, 20, .22), 0 0 50px rgba(180, 130, 20, .08);
-}
-.sp-tier-card.sp-tier-highlight {
-  border-color: var(--sp-accent);
-  box-shadow: 0 4px 24px rgba(238,66,71,.2);
-}
-.sp-tier-card.sp-tier-highlight:hover {
-  border-color: rgba(180, 130, 20, .7);
-  box-shadow: 0 0 30px rgba(180, 130, 20, .30), 0 0 70px rgba(180, 130, 20, .10);
-}
-.sp-popular-badge {
-  position: absolute;
-  top: -13px; left: 50%;
-  transform: translateX(-50%);
-  background: var(--sp-accent);
-  color: #fff;
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  padding: 3px 14px;
-  border-radius: 999px;
-  white-space: nowrap;
 }
 .sp-tier-name     { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; color: #fff; }
 .sp-tier-subtitle { font-size: .85rem; color: #999; margin-bottom: 2px; }
@@ -465,6 +445,21 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* First edition in a city: launch banner + locked 20% switch */
+.sp-launch-banner { margin: 0 auto 1.75rem; text-align: center; }   /* just the pill (Marek 2026-10-06) */
+.sp-launch-pill {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--sp-accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: .95rem;
+  letter-spacing: .02em;
+}
+.sp-discount-locked { cursor: default; }
+.sp-discount-locked .sp-discount-check:disabled + .sp-discount-switch { opacity: 1; }
 
 /* Active discount card glow */
 .sp-discount-card-active {
@@ -616,6 +611,11 @@
 <section class="sp-section" id="opportunities">
   <div class="container">
     <h2 class="sp-section-title text-center">Sponsorship opportunities</h2>
+    {% if first_in_city %}
+    <div class="sp-launch-banner">
+      <div class="sp-launch-pill">First {{ brand_name }} in {{ city_name }} - 20% launch discount applied!</div>
+    </div>
+    {% endif %}
     <p class="sp-gbp-note text-center" style="font-size:1.04rem;margin-top:-.8rem;margin-bottom:1.5rem;">
       We are a London-based company organizing conferences worldwide.<br>
       Sponsors are invoiced in GBP / £ &mdash; British Pound Sterling.<br>
@@ -631,19 +631,24 @@
     <div class="row justify-content-center g-4 mt-2">
       {% for tier in sponsorship_tiers %}
       <div class="col-12 col-md-4">
-        <div class="sp-tier-card {% if tier.highlight %}sp-tier-highlight{% endif %}" data-tier-id="{{ tier.id }}">
-          {% if tier.highlight %}
-          <div class="sp-popular-badge">⭐ Most popular</div>
-          {% endif %}
-          <div class="sp-tier-name">{{ tier.name }}{% if tier.id not in ('startup_discount', 'food', 'clothing') %}<span class="sp-tier-original"></span>{% endif %}</div>
+        <div class="sp-tier-card" data-tier-id="{{ tier.id }}">
+          <div class="sp-tier-name">{% if first_in_city and tier.id == 'startup_discount' %}Launch partner{% else %}{{ tier.name }}{% endif %}{% if tier.id not in ('startup_discount', 'food', 'clothing') %}<span class="sp-tier-original"></span>{% endif %}</div>
           {% if tier.subtitle %}<div class="sp-tier-subtitle">{{ tier.subtitle }}</div>{% endif %}
           {% if tier.id == 'startup_discount' %}
           <div class="sp-tier-price">
+            {% if first_in_city %}
+            <label class="sp-discount-toggle-label sp-discount-locked" title="Launch edition: the 20% discount is always on">
+              <input type="checkbox" class="sp-discount-check" checked disabled>
+              <span class="sp-discount-switch"></span>
+              20% off
+            </label>
+            {% else %}
             <label class="sp-discount-toggle-label">
               <input type="checkbox" class="sp-discount-check" onchange="spToggleDiscount(this.checked)">
               <span class="sp-discount-switch"></span>
               {{ tier.price_label }}
             </label>
+            {% endif %}
           </div>
           {% else %}
           <div class="sp-tier-price"{% for cur_code, cur_data in tier.currencies.items() %} data-price-{{ cur_code|lower }}="{% if cur_data.price_label is defined %}{% if cur_data.price_label is mapping %}{{ cur_data.price_label[event_size] }}{% else %}{{ cur_data.price_label }}{% endif %}{% elif cur_data.price is defined %}{{ cur_data.symbol }}{{ cur_data.price[event_size] }}{% endif %}" data-dprice-{{ cur_code|lower }}="{% if cur_data.discounted_price_label is defined %}{% if cur_data.discounted_price_label is mapping %}{{ cur_data.discounted_price_label[event_size] }}{% else %}{{ cur_data.discounted_price_label }}{% endif %}{% elif cur_data.discounted_price is defined %}{{ cur_data.symbol }}{{ cur_data.discounted_price[event_size] }}{% endif %}"{% endfor %}>
@@ -653,9 +658,14 @@
           <div class="sp-tier-body">
             {% if tier.benefits or tier.requires %}
             <ul class="sp-tier-benefits">
+              {% if first_in_city and tier.id == 'startup_discount' %}
+              <li>Applied automatically: first {{ brand_name }} in {{ city_name }}</li>
+              <li>Valid on every package on this page</li>
+              {% else %}
               {% for b in tier.benefits %}
               <li>{{ b }}</li>
               {% endfor %}
+              {% endif %}
               {% if tier.requires %}
               <li class="sp-tier-warn">{{ tier.requires }}</li>
               {% endif %}
@@ -674,12 +684,12 @@
           </div>
           <ul class="sp-custom-ideas">
             {% for tier in on_request_tiers[:3] %}
-            <li>{{ tier.name }}</li>
+            <li>{% if tier.url %}<a href="{{ tier.url }}" target="_blank">{{ tier.name }}</a>{% else %}{{ tier.name }}{% endif %}</li>
             {% endfor %}
           </ul>
           <ul class="sp-custom-ideas">
             {% for tier in on_request_tiers[3:] %}
-            <li>{{ tier.name }}</li>
+            <li>{% if tier.url %}<a href="{{ tier.url }}" target="_blank">{{ tier.name }}</a>{% else %}{{ tier.name }}{% endif %}</li>
             {% endfor %}
           </ul>
         </div>
@@ -693,6 +703,7 @@
 (function() {
   var spCurrentCurrency = 'GBP';
   var spDiscountActive = false;
+  var spDiscountLocked = {{ 'true' if first_in_city else 'false' }};
 
   /* ── Tokenize a price string into symbol / number / text tokens ── */
   function spTokenize(text) {
@@ -847,6 +858,7 @@
 
   /* ── Countdown + slide transition for discount toggle ────────── */
   window.spToggleDiscount = function(on) {
+    if (spDiscountLocked) on = true;
     spDiscountActive = on;
     var cc = spCurrentCurrency.toLowerCase();
     var priceAttr = on ? 'data-dprice-' + cc : 'data-price-' + cc;
@@ -874,6 +886,8 @@
     var sdCard = document.querySelector('.sp-tier-card[data-tier-id="startup_discount"]');
     if (sdCard) sdCard.classList.toggle('sp-discount-card-active', on);
   };
+
+  if (spDiscountLocked) window.spToggleDiscount(true);
 })();
 </script>
 
@@ -929,7 +943,7 @@
               </div>
             </div>
           </div>
-          <video src="assets/images/llm conspiracy.mp4" autoplay loop muted playsinline class="sp-stats-header-gif-img" style="width:588px; border-radius:12px; flex-shrink:0; aspect-ratio:16/9; object-fit:contain; display:none;"></video>
+          <video src="assets/images/llm conspiracy.mp4" autoplay loop muted playsinline class="sp-stats-header-gif-img" style="width:529px; border-radius:12px; flex-shrink:0; aspect-ratio:16/9; object-fit:contain; display:none;"></video>
         </div>
 
         <hr class="sp-stats-sep">
@@ -943,7 +957,7 @@
         </div>
 
         <div class="sp-stats-card" style="margin-bottom:32px">
-          <div class="sp-stats-card-title">Top attendee companies</div>
+          <div class="sp-stats-card-title">Top companies that have attended</div>
           <div class="sp-stats-pill-grid" style="margin-bottom:0">
             <span class="sp-stats-pill">AWS</span>
             <span class="sp-stats-pill">Google</span>
@@ -1108,7 +1122,7 @@
         </div>
 
         <div class="text-center" style="margin-top:32px;">
-          <button class="btn-stats-close" onclick="spToggleStats(); setTimeout(function(){ window.location.hash='stats'; }, 10);">
+          <button class="btn-stats-close" onclick="spToggleStats(); setTimeout(function(){ document.getElementById('stats').scrollIntoView({behavior:'smooth'}); }, 10);">
             Close stats
             <span style="display:flex;align-items:center;">
               <svg width="17" height="10" viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg);">
@@ -1130,6 +1144,30 @@ function spToggleStats() {
   panel.style.maxHeight = open ? panel.scrollHeight + 'px' : '0';
   btn.setAttribute('aria-expanded', String(open));
 }
+
+// Auto-expand the stats panel when reaching #stats via link, navbar or hash change
+function spAutoExpand(hash) {
+  var map = { '#stats': ['sp-stats-toggle', 'spToggleStats'] };
+  var m = map[hash];
+  if (!m) return;
+  var btn = document.getElementById(m[0]);
+  if (btn && btn.getAttribute('aria-expanded') !== 'true') {
+    window[m[1]]();
+    setTimeout(function() {
+      var sec = document.getElementById(hash.slice(1));
+      if (sec) sec.scrollIntoView({behavior: 'smooth'});
+    }, 150);
+  }
+}
+document.addEventListener('DOMContentLoaded', function() {
+  spAutoExpand(window.location.hash);
+  document.querySelectorAll('a[href="#stats"]').forEach(function(a) {
+    a.addEventListener('click', function() {
+      setTimeout(function() { spAutoExpand(a.getAttribute('href')); }, 0);
+    });
+  });
+});
+window.addEventListener('hashchange', function() { spAutoExpand(window.location.hash); });
 </script>
 
 {# ── Confirmed sponsors ─────────────────────────────── #}
@@ -1153,7 +1191,7 @@ function spToggleStats() {
     <p class="text-center" style="color:#aaa;margin-top:-.6rem;margin-bottom:1.5rem;">Secure your sponsorship with <a href="https://www.linkedin.com/in/marek-pawlikowski/" target="_blank" rel="noopener noreferrer" style="color:#f5989b;">Mark Pawlikowski</a></p>
     <div class="row justify-content-center">
       <div class="col-12 col-lg-10 d-flex flex-wrap justify-content-center gap-3">
-        {% if calendly_sponsor_url %}<a href="{{ calendly_sponsor_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary sp-cta-btn">Hop on a call</a>{% endif %}
+        <a href="{{ calendly_sponsor_url or "https://calendly.com/sreday/30min" }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary sp-cta-btn">Hop on a call</a>
         <a href="{{ mailto }}" class="btn btn-primary sp-cta-btn">✉ Email Mark</a>
         <a href="https://wa.me/447307415008" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp sp-cta-btn"><i class="fab fa-whatsapp me-2"></i>DM Mark</a>
       </div>
@@ -1195,6 +1233,9 @@ function spToggleStats() {
           <span id="sp-faq-all-label">Show all</span>
         </button>
       </div>
+      {% if first_in_city %}
+      {% set faq_items = [{"q": "Why 20% off?", "a": "It's our first " ~ brand_name ~ " in " ~ city_name ~ ". Every launch edition is a bit of an experiment, so the sponsors who join us from day one get 20% off as a thank-you for coming along for the ride."}] + faq_items %}
+      {% endif %}
       {% for item in faq_items %}
       <details class="sp-faq-item">
         <summary class="sp-faq-q">{{ item.q }}</summary>

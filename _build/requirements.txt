@@ -1,5 +1,5 @@
 jinja2
 pyyaml
-jinja-markdown
+jinja-markdown==1.210911
 python-dateutil
 Pillow

@@ -1,0 +1,2397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Prompt Engineering Conference - Online, November 20, 2024</title>
+	<!-- link previews: _build/og_images.py -->
+	<meta property="og:title" content="Prompt Engineering Conference - Online - November 20, 2024">
+	<meta property="og:description" content="The world&#x27;s first conference about prompt engineering. Probably the most exciting prompt engineering conference in Online!">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://promptengineering.rocks/2024-online/">
+	<meta property="og:site_name" content="Prompt Engineering Conference">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:image" content="https://promptengineering.rocks/og/d867757f38362210.jpg">
+	<meta property="og:image:secure_url" content="https://promptengineering.rocks/og/d867757f38362210.jpg">
+	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="600">
+	<meta property="og:image:alt" content="Prompt Engineering Conference - Online - November 20, 2024">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@PromptEngConf">
+	<meta name="twitter:creator" content="@PromptEngConf">
+	<meta name="twitter:title" content="Prompt Engineering Conference - Online - November 20, 2024">
+	<meta name="twitter:description" content="The world&#x27;s first conference about prompt engineering. Probably the most exciting prompt engineering conference in Online!">
+	<meta name="twitter:image" content="https://promptengineering.rocks/og/d867757f38362210.jpg">
+	<meta name="twitter:image:alt" content="Prompt Engineering Conference - Online - November 20, 2024">
+
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Prompt Engineering Conference conference">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+	<link rel="manifest" href="./assets/site.webmanifest">
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800|Roboto:300,400,700&display=swap" rel="stylesheet">
+
+	<!-- FontAwesome JS-->
+	<script defer src="assets/fontawesome/js/all.min.js"></script>
+
+	<!-- Theme CSS -->
+	<link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
+
+
+<!-- Twitter conversion tracking base code -->
+<script>
+	!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+	},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
+	a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+	twq('config','');
+	</script>
+	<!-- End Twitter conversion tracking base code -->
+	
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TJD11HYWN5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TJD11HYWN5');
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+<style>
+	.tinted {
+		box-shadow: 0 3000px rgba(30, 30, 90, 0.7) inset;
+	}
+	.retro {
+		font-family: 'Monoton', sans-serif;
+	}
+	.logo {
+		color: white;
+		font-weight: 400;
+	}
+	.logo img {
+		max-width: 400px;
+		height: auto;
+	}
+	.theme-bg-primary {
+		background: #6b40d8;
+	}
+	.hero-block .social-list li, footer .social-list li {
+		font-size: 1.75rem;
+	}
+	.hero-block .social-list li a, footer .social-list li a {
+		color: white;
+		text-decoration: none;
+	}
+	.hero-block .social-list li a:hover, footer .social-list li a:hover {
+		color: white;
+		text-decoration: none;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+	section[id] {
+		scroll-margin-top: 70px;
+	}
+	#home {
+		scroll-margin-top: 70px;
+	}
+	.hero-cta a, .hero-cta a:hover { text-decoration: none; }
+	:root {
+		--brand: #6b40d8;
+		--brand-light: color-mix(in srgb, #6b40d8 70%, white);
+		--brand-lighter: color-mix(in srgb, #6b40d8 45%, white);
+		--brand-lightest: color-mix(in srgb, #6b40d8 15%, white);
+		--brand-pale: color-mix(in srgb, #6b40d8 10%, white);
+		--brand-dark: color-mix(in srgb, #6b40d8 100%, black 20%);
+		--brand-darker: color-mix(in srgb, #6b40d8 100%, black 35%);
+	}
+</style>
+
+
+<body>
+	<header id="header" class="header fixed-top">
+		<div class="branding">
+			<div class="container-fluid">
+				<nav class="main-nav navbar navbar-expand-lg">
+					<div class="site-logo"><a href="/">
+                        <!-- <img class="logo-icon" src="assets/images/logo-white.svg" alt="logo"></a> -->
+                    </div>
+
+					
+
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div id="navigation" class="navbar-collapse collapse  justify-content-lg-end me-lg-3">
+						
+						<ul class="nav navbar-nav">
+
+							<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+							
+							<li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
+							<li class="nav-item"><a class="nav-link" href="#speakers">Speakers</a></li>
+							
+							<li class="nav-item"><a class="nav-link" href="#playlist">Playlist</a></li>
+							<li class="nav-item"><a class="nav-link" href="#sponsors">Sponsors</a></li>
+						</ul><!--//nav-->
+						
+					</div><!--//navabr-collapse-->
+
+				</nav><!--//main-nav-->
+
+			</div><!--//container-->
+		</div><!--//branding-->
+	</header><!--//header-->
+
+	
+	<div id="home" class="hero-block">
+		<div id="hero-carousel" class="hero-carousel carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+			<div class="carousel-inner">
+				
+				<div class="carousel-item tinted active" style="background:url('../photos/pec-1.jpg') no-repeat center; background-size: cover;"></div>
+				
+				<div class="carousel-item tinted " style="background:url('../photos/pec-2.jpg') no-repeat center; background-size: cover;"></div>
+				
+				<div class="carousel-item tinted " style="background:url('../photos/pec-3.jpg') no-repeat center; background-size: cover;"></div>
+				
+				<div class="carousel-item tinted " style="background:url('../photos/pec-4.jpg') no-repeat center; background-size: cover;"></div>
+				
+			</div>
+
+		</div>
+		<div class="container">
+			<div class="hero-text-block text-center" style="max-width: 100%;">
+				<h1 class="logo"><img src="assets/images/logo-token.png" alt="Prompt Engineering Conference"></h1>
+				
+				<h2 class="text-white">Learn how to interact with the most advanced AI on our planet</h2>
+				<h3 class="text-white"><i class="far fa-calendar-alt me-2"></i>November 20, 2024 <i class="fas fa-map-marker-alt mx-2"></i>Online</h3>
+				<div class="hero-cta mt-5">
+					
+					<a class="btn btn-secondary btn-lg" href="https://www.youtube.com/playlist?list=PLQEYbmzcCfpc4b9Z1zGd4waWwthP-PdmM" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="white" style="vertical-align:middle;margin-right:6px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Playlist</a>
+					
+					
+			    </div>
+					<ul class="social-list list-inline mt-4">
+						<li class="list-inline-item me-3"><a target="_blank" href="https://luma.com/sre" style="text-decoration:none;">✦</a></li>
+						<li class="list-inline-item me-3"><a target="_blank" href="https://discord.gg/ravEjTxNAX"><i class="fab fa-discord fa-fw"></i></a></li>
+						<li class="list-inline-item me-3"><a target="_blank" href="https://www.linkedin.com/company/prompt-engineering-conference/"><i class="fab fa-linkedin fa-fw"></i></a></li>
+						<li class="list-inline-item me-3"><a href="mailto:salnikov@gmail.com"><i class="fas fa-envelope fa-fw"></i></a></li>
+						<li class="list-inline-item me-0"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@PromptEngineeringConf"><i class="fab fa-youtube fa-fw"></i></a></li>
+					</ul>
+				
+			</div><!--//hero-text-block-->
+		</div><!--//container-->
+
+	</div><!--//hero-block-->
+	
+
+	<div class="stats-block theme-bg-primary text-white py-4 text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-6 col-md-3">
+					<div class="item">
+						<div class="number">1</div>
+						<div class="unit">Day</div>
+					</div><!--//item-->
+				</div><!--//col-->
+				<div class="col-6 col-md-3">
+					<div class="item">
+						<div class="number">30+</div>
+						<div class="unit">Speakers</div>
+					</div><!--//item-->
+				</div><!--//col-->
+				<div class="col-6 col-md-3">
+					<div class="item">
+						<div class="number">1</div>
+						<div class="unit">Track</div>
+					</div><!--//item-->
+				</div><!--//col-->
+				<div class="col-6 col-md-3">
+					<div class="item">
+						<div class="number">250+</div>
+						<div class="unit">Attendees</div>
+					</div><!--//item-->
+				</div><!--//col-->
+			</div>
+		</div><!--//container-->
+	</div><!--//stats-block-->
+
+
+<!-- CONTENT -->
+
+
+<section id="about" class="about-section section">
+
+  <div class="container">
+    <div class="event-countdown text-center mb-3">
+    
+      <h4 class="countdown-intro mb-2 text-center mb-3">Event finished, what's next?</h4>
+      
+      <style>
+        .idx-tl { position: relative; padding: 20px 0 8px; margin-bottom: 8px; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .idx-tl-line { position: absolute; top: 26px; left: 0; right: 0; height: 2px; background: var(--brand-lighter); z-index: 0; }
+        .idx-tl-events { display: flex; justify-content: space-between; position: relative; gap: 8px; overflow-x: auto; padding-bottom: 8px; align-items: stretch; }
+        .idx-tl-event { display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 0; }
+        .idx-tl-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--brand); border: 2px solid #fff; outline: 2px solid var(--brand); margin-bottom: 10px; flex-shrink: 0; z-index: 1; }
+        .idx-tl-dot.past { background: #999; outline-color: #999; }
+        .idx-tl-chip { background: var(--brand-lightest); border: 1px solid var(--brand-lighter); border-radius: 8px; padding: 8px 10px; text-align: center; text-decoration: none; width: 100%; transition: background .15s; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .idx-tl-city { font-family: 'Montserrat', sans-serif; font-size: .8rem; font-weight: 700; color: var(--brand-dark); overflow-wrap: break-word; word-break: break-word; }
+        .idx-tl-chip:hover { background: var(--brand-pale); text-decoration: none; }
+        .idx-tl-chip.past { background: #e8e8e8; border-color: #ccc; }
+        .idx-tl-chip.past:hover { background: #d8d8d8; }
+        .idx-tl-chip.past .idx-tl-city { color: #555; }
+        .idx-tl-date { font-size: .75rem; color: var(--brand-light); margin-top: 2px; }
+        .idx-tl-chip.past .idx-tl-date { color: #777; }
+        .idx-tl-pin-event { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+        .idx-tl-pin { font-size: 2.25rem; line-height: 1; color: var(--brand-dark); margin-bottom: 10px; position: relative; top: -4px; }
+      </style>
+      <div class="idx-tl">
+        <div class="idx-tl-line"></div>
+        <div class="idx-tl-events">
+          
+          
+          
+          <div class="idx-tl-event">
+            <div class="idx-tl-dot past"></div>
+            <a href="../2025-london-q4/" class="idx-tl-chip past">
+              <div class="idx-tl-city">London</div>
+              <div class="idx-tl-date" style="font-style:normal;">United Kingdom</div>
+              <div class="idx-tl-date">October 16, 2025</div>
+            </a>
+          </div>
+          
+          
+          
+          <div class="idx-tl-pin-event"><div class="idx-tl-pin">▼</div></div>
+          
+          <div class="idx-tl-event">
+            <div class="idx-tl-dot "></div>
+            <a href="../2026-london-q4/" class="idx-tl-chip">
+              <div class="idx-tl-city">London</div>
+              <div class="idx-tl-date" style="font-style:normal;">United Kingdom</div>
+              <div class="idx-tl-date">November 26, 2026</div>
+            </a>
+          </div>
+          
+        </div>
+      </div>
+      
+    
+    </div>
+  </div>
+  <script>
+    /* ======= Countdown ========= */
+    // set the date we're counting down to
+    var target_date = new Date("2024-11-20T09:00:00+00:00").getTime();
+     
+    // variables for time units
+    var days, hours, minutes, seconds;
+     
+    // get tag element
+    var countdown =  document.getElementById("countdown-box");
+    var days_span = document.createElement("SPAN");
+    days_span.className = 'days';
+    countdown.appendChild(days_span);
+    var hours_span = document.createElement("SPAN");
+    hours_span.className = 'hours';
+    countdown.appendChild(hours_span);
+    var minutes_span = document.createElement("SPAN");
+    minutes_span.className = 'minutes';
+    countdown.appendChild(minutes_span);
+    var secs_span = document.createElement("SPAN");
+    secs_span.className = 'secs';
+    countdown.appendChild(secs_span);
+     
+    // update the tag with id "countdown" every 1 second
+    setInterval(function () {
+     
+        // find the amount of "seconds" between now and target
+        var current_date = new Date().getTime();
+        var seconds_left = (target_date - current_date) / 1000;
+     
+        // do some time calculations
+        days = parseInt(seconds_left / 86400);
+        seconds_left = seconds_left % 86400;
+         
+        hours = parseInt(seconds_left / 3600);
+        seconds_left = seconds_left % 3600;
+         
+        minutes = parseInt(seconds_left / 60);
+        seconds = parseInt(seconds_left % 60);
+         
+        // format countdown string + set tag value.
+        days_span.innerHTML = '<span class="number">' + days + '</span>' + '<span class="unit">Days</span>';
+        hours_span.innerHTML = '<span class="number">' + hours + '</span>' + '<span class="unit">Hrs</span>';
+        minutes_span.innerHTML = '<span class="number">' + minutes + '</span>' + '<span class="unit">Mins</span>';
+        secs_span.innerHTML = '<span class="number">' + seconds + '</span>' + '<span class="unit">Secs</span>'; 
+     
+    }, 1000);
+    </script>
+</section>
+
+
+
+<style>
+  .speakers-section .card {
+    height: 100%;
+  }
+  .speakers-section .card-footer {
+    min-height: 3rem;
+  }
+  .speakers-section .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+  }
+  .speakers-section .card-title {
+    font-size: 1.1rem;
+  }
+  .event-card-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+    margin-top: auto;
+    width: 100%;
+  }
+  .speakers-section .event-card-buttons a {
+    flex: 0 1 50%;
+    text-align: center;
+    min-width: 0;
+    display: block;
+  }
+  .event-read-more-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--brand);
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+  }
+  .event-read-more-btn:hover,
+  .event-read-more-btn:focus {
+    background: var(--brand-light);
+    color: #fff;
+    text-decoration: none;
+  }
+  .event-watch-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #EC645E;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+  }
+  .event-watch-btn:hover,
+  .event-watch-btn:focus {
+    background: #F28B87;
+    color: #fff;
+    text-decoration: none;
+  }
+  .event-watch-btn-sm {
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    margin-left: 12px;
+  }
+  .schedule-abstract {
+    position: relative;
+    max-height: 3.2em;
+    line-height: 1.6;
+    overflow: hidden;
+    text-align: justify;
+  }
+  .schedule-abstract-read-more {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-left: 3em;
+    background: linear-gradient(to right, transparent, #e8f8f0 30%);
+    font-weight: 700;
+    color: var(--brand);
+    text-decoration: underline;
+  }
+  .schedule-section .item {
+    margin-bottom: 4.5rem;
+  }
+</style>
+
+
+<style>
+  /* Track navigation */
+  .track-nav {
+    padding: 0.75rem 0;
+    margin-bottom: 1.5rem;
+  }
+  .track-nav-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .track-nav-links {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .track-nav-links a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--brand);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+  .track-nav-links a:hover {
+    background: var(--brand-dark);
+    color: white;
+  }
+  .view-toggle-link {
+    color: var(--brand);
+    text-decoration: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--brand);
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+  .view-toggle-link:hover {
+    background: var(--brand);
+    color: white;
+  }
+  .view-toggle-link.active {
+    background: var(--brand);
+    color: white;
+  }
+  /* Table view */
+  .schedule-table-view { display: none; }
+  .schedule-table-view.active { display: block; }
+  .schedule-timeline-view { display: block; }
+  .schedule-timeline-view.hidden { display: none; }
+  .schedule-grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-top: 1rem;
+    table-layout: fixed;
+  }
+  .schedule-grid-table th {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    color: white;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .schedule-grid-table th:first-child {
+    width: 60px;
+  }
+  .schedule-grid-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--brand-lightest);
+    vertical-align: top;
+  }
+  .schedule-grid-table td.merged-cell {
+    text-align: center;
+    font-weight: 500;
+    color: #555;
+    background: var(--brand-lightest);
+  }
+  .schedule-grid-table .time-cell {
+    color: var(--brand);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .schedule-grid-table .talk-cell a {
+    color: #222;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .schedule-grid-table .talk-cell a:hover {
+    color: var(--brand);
+  }
+  .schedule-grid-table .speaker-info {
+    color: #444;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+  }
+  .schedule-grid-table .speaker-info .affiliation {
+    color: #666;
+  }
+  .schedule-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  .schedule-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.8rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  .schedule-meta-divider {
+    color: #ccc;
+    font-weight: 300;
+  }
+  /* Track section header */
+  .track-section-header {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    margin: 2rem 0 0 0;
+    border-radius: 4px 4px 0 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .track-section-header:first-of-type {
+    margin-top: 0;
+  }
+
+  .schedule-section.theme-bg-light { background-color: #f0faf5 !important; }
+</style>
+
+<section id="schedule" class="schedule-section section theme-bg-light">
+  <div class="container">
+    <h2 class="section-heading text-center mb-4">Schedule</h2>
+
+    <!-- Schedule meta info -->
+    <div class="schedule-meta">
+      <span class="schedule-meta-item">November 20, 2024</span>
+      <span class="schedule-meta-divider">•</span>
+      <span class="schedule-meta-item">single track</span>
+      <span class="schedule-meta-divider">•</span>
+      <span class="schedule-meta-item">09AM - 01AM</span>
+      <span class="schedule-meta-divider">•</span>
+      <span class="schedule-meta-item">Online, in-person</span>
+    </div>
+
+
+    
+
+    <!-- Track navigation -->
+    <div class="track-nav">
+      <div class="track-nav-inner">
+        <div class="track-nav-links" id="track-links-0">
+
+          <a href="#track-0-1">track 1</a>
+
+        </div>
+        <span class="view-toggle-link" id="view-toggle-0" onclick="toggleView(0)">view as table</span>
+      </div>
+    </div>
+
+    <!-- Timeline View (default) -->
+    <div id="timeline-view-0" class="schedule-timeline-view">
+
+      <div class="track-section-header" id="track-0-1">track 1 &bull; Track 1</div>
+      <div class="schedule-tab-content">
+        <div class="tab-pane active">
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">09:00</h4>
+              <div class="profile">
+                <a href="#modal-speaker-" data-bs-toggle="modal" data-bs-target="#modal-speaker-"><img class="profile-image rounded-circle mb-2" src="" alt=""></a>
+                <div class="name"></div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3" style="color:#098dcf;">Welcome</h3>
+              <div class="location mb-3" style="color:#098dcf;">Online</div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">09:15</h4>
+              <div class="profile">
+                <a href="#modal-speaker-0" data-bs-toggle="modal" data-bs-target="#modal-speaker-0"><img class="profile-image rounded-circle mb-2" src="../speakers/Alok Ranjan & Saurabh Suman.png" alt=""></a>
+                <div class="name">Alok Ranjan & Saurabh Suman</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-0" data-bs-toggle="modal" data-bs-target="#modal-speaker-0">Building a Production-Ready AI-Powered Chatbot Tutor with Hybrid RAG system</a>
+              </h3>
+              <div class="location mb-3">Dropbox & Accenture<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/-qfLmyMtxwM" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">In this talk, we dive deep into the development of a state-of-the-art AI-powered chatbot tutor using Retrieval-Augmented Generation (RAG) combined with fine-tuning and sophisticated prompt engineering techniques. We will explore a step-by-step guide starting from data collection and preparation, choosing and configuring models, to fine-tuning with domain-specific datasets, and iterative evaluation for performance optimization. Additionally, the session will cover the intricacies of prompt engineering, including dynamic adjustment, contextual prompt development, and bias mitigation to enhance the chatbot’s ability to deliver precise, engaging, and relevant educational interactions. Attendees will gain insights into building scalable and effective AI-driven tutoring solutions, focusing on leveraging RAG for contextual responses and continuous prompt optimization strategies.<a class="schedule-abstract-read-more" href="#modal-speaker-0" data-bs-toggle="modal" data-bs-target="#modal-speaker-0">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">09:45</h4>
+              <div class="profile">
+                <a href="#modal-speaker-1" data-bs-toggle="modal" data-bs-target="#modal-speaker-1"><img class="profile-image rounded-circle mb-2" src="../speakers/Jorrik Klijnsma.png" alt=""></a>
+                <div class="name">Jorrik Klijnsma</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-1" data-bs-toggle="modal" data-bs-target="#modal-speaker-1">A Large Language Model took me on vacation</a>
+              </h3>
+              <div class="location mb-3">Sopra Steria<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/8JRDBpcmjj4" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">Imagine handing over your vacation planning to an AI. Sounds crazy, right? That's exactly what Jorrik did for his trip to Porto in Portugal. ChatGPT picked everything from restaurants to the sightseeing spots. But this trip taught Jorrik more than just how to order pastel de nata in Portuguese.
+
+In this talk, you'll dive into different parallels between prompting engineering AI for travel tips and using it for coding and problem-solving. You'll learn why context is king in AI interactions and ways to provide it effectively. Jorrik will walk you through real examples from my AI-planned adventure, showing how each interaction unlocked new insights into advanced prompting techniques. Plus, he will introduce you to "Indirect Conversation" a new method he describes as "pushing AI's creative boundaries".
+
+Integrating AI in applications is now everywhere to be found. And creating web applications, prompt engineering is set to become a crucial skill in our developers toolkit. The techniques you'll learn aren't just for planning vacations. They're the building blocks for creating smarter, more intuitive AI-powered tools. Whether you're designing chatbots, implementing AI-assisted search, or build the next-gen AI-driven web app, mastering these prompting skills will give you a significant benefit in creating a seamless user experience.
+
+By the end of this session, you'll walk away with practical skills to supercharge your AI interactions, whether you're planning your next vacation or tackling complex coding challenges. You'll gain a fresh perspective on AI's capabilities and limitations, and you'll be equipped with strategies to get more innovative, useful responses from AI tools. Get ready for a session that's a bit of fun, part travelogue, mainly tech talk, and entirely eye-opening!<a class="schedule-abstract-read-more" href="#modal-speaker-1" data-bs-toggle="modal" data-bs-target="#modal-speaker-1">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">10:15</h4>
+              <div class="profile">
+                <a href="#modal-speaker-2" data-bs-toggle="modal" data-bs-target="#modal-speaker-2"><img class="profile-image rounded-circle mb-2" src="../speakers/Johannes Kuhn & Maximilian Schattauer.png" alt=""></a>
+                <div class="name">Johannes Kuhn & Maximilian Schattauer</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-2" data-bs-toggle="modal" data-bs-target="#modal-speaker-2">Improving Retrieval Q&A Contextualization Prompts (using TextGrad)</a>
+              </h3>
+              <div class="location mb-3">Perelyn<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/JPS-wlMbj70" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">We showcase the importance of good query contextualization in document retrieval Q&A scenarios with various industry examples. We present approaches to improve contextualization by prompt engineering with TextGrad and show how crucial these improvements are for delivering industry-grade chatbot solutions and customer satisfaction.
+
+Background: When performing document retrieval in a Q&A/chatbot scenario, just using the last Q&A message, namely the current human inquiry, as a target might not yield good results. Often the context needed for retrieving relevant documents is spread out over several previous messages. Query contextualization helps by transforming a message history into a singular retrieval query including the relevant context. Main threats to the quality of the retrieval are missing context, a direct answer to the question, and follow-up questions back to the user in the contextualized query. These threats can be contained by a good choice of the contextualization model and a well-designed system prompt.<a class="schedule-abstract-read-more" href="#modal-speaker-2" data-bs-toggle="modal" data-bs-target="#modal-speaker-2">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">19:45</h4>
+              <div class="profile">
+                <a href="#modal-speaker-" data-bs-toggle="modal" data-bs-target="#modal-speaker-"><img class="profile-image rounded-circle mb-2" src="" alt=""></a>
+                <div class="name"></div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3" style="color:#098dcf;">Break</h3>
+              <div class="location mb-3" style="color:#098dcf;">Online</div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">20:00</h4>
+              <div class="profile">
+                <a href="#modal-speaker-3" data-bs-toggle="modal" data-bs-target="#modal-speaker-3"><img class="profile-image rounded-circle mb-2" src="../speakers/Koushik Sundar.png" alt=""></a>
+                <div class="name">Koushik Sundar</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-3" data-bs-toggle="modal" data-bs-target="#modal-speaker-3">Building a Production-Ready AI-Powered Chatbot Tutor with Hybrid RAG system</a>
+              </h3>
+              <div class="location mb-3">Citibank</div>
+              <div class="desc schedule-abstract">In this talk, we dive deep into the development of a state-of-the-art AI-powered chatbot tutor using Retrieval-Augmented Generation (RAG) combined with fine-tuning and sophisticated prompt engineering techniques. We will explore a step-by-step guide starting from data collection and preparation, choosing and configuring models, to fine-tuning with domain-specific datasets, and iterative evaluation for performance optimization. Additionally, the session will cover the intricacies of prompt engineering, including dynamic adjustment, contextual prompt development, and bias mitigation to enhance the chatbot’s ability to deliver precise, engaging, and relevant educational interactions. Attendees will gain insights into building scalable and effective AI-driven tutoring solutions, focusing on leveraging RAG for contextual responses and continuous prompt optimization strategies.<a class="schedule-abstract-read-more" href="#modal-speaker-3" data-bs-toggle="modal" data-bs-target="#modal-speaker-3">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">20:30</h4>
+              <div class="profile">
+                <a href="#modal-speaker-4" data-bs-toggle="modal" data-bs-target="#modal-speaker-4"><img class="profile-image rounded-circle mb-2" src="../speakers/Anastasia Podrabinek.png" alt=""></a>
+                <div class="name">Anastasia Podrabinek</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-4" data-bs-toggle="modal" data-bs-target="#modal-speaker-4">Navigating Prompt Quality in Enterprise: Chaos Control Guide</a>
+              </h3>
+              <div class="location mb-3">Wix<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/V7kgwQm3Q-c" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">What if you have a few hundreds developers building their AI-based features all across a huge user-facing product? Sounds exciting but also a bit troubling: how is it possible to move fast without compromising security and quality standards of an enterprise?
+
+During the past year, we’ve built a whole infrastructure for LLM-oriented development in Wix. As the industry was exploding with new models and techniques, this infrastructure grew to include a wide range of tools to make developer experience with AI really smooth. But then we’ve noticed something else: the easier it was to work with LLMs, the more difficult it was to make sure that the quality of LLM-based features stays high. That was the moment when we had to make a leap from AI democratisation to AI standardisation.
+
+Building a whole infrastructure of prompt QA tools and arranging prompt engineering flows gave me some new insights about bringing AI to enterprise while ensuring a high standard of LLM feature implementation.
+
+In this talk, I’ll take you through the AI Standartisation journey we took and share some practical ideas of improving prompt engineering standards across a big organisation. We’ll touch both technical solutions and educational approaches that can help in bringing enterprise prompt engineering standards to a higher level.<a class="schedule-abstract-read-more" href="#modal-speaker-4" data-bs-toggle="modal" data-bs-target="#modal-speaker-4">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">21:00</h4>
+              <div class="profile">
+                <a href="#modal-speaker-5" data-bs-toggle="modal" data-bs-target="#modal-speaker-5"><img class="profile-image rounded-circle mb-2" src="../speakers/Daniela De Quevedo.png" alt=""></a>
+                <div class="name">Daniela De Quevedo</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-5" data-bs-toggle="modal" data-bs-target="#modal-speaker-5">Maximizing the Potential of Foundation Models through Prompt Engineering</a>
+              </h3>
+              <div class="location mb-3">NTT Data<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/4KchW1UxqJg" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">Explore techniques to leverage capabilities of foundation models. Learn how prompt engineering enhances AI performance, enabling more accurate, context-aware, and tailored responses for diverse applications in natural language processing, sharing my experience as prompt engineer.<a class="schedule-abstract-read-more" href="#modal-speaker-5" data-bs-toggle="modal" data-bs-target="#modal-speaker-5">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">21:30</h4>
+              <div class="profile">
+                <a href="#modal-speaker-" data-bs-toggle="modal" data-bs-target="#modal-speaker-"><img class="profile-image rounded-circle mb-2" src="" alt=""></a>
+                <div class="name"></div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3" style="color:#098dcf;">Break</h3>
+              <div class="location mb-3" style="color:#098dcf;">Online</div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">21:45</h4>
+              <div class="profile">
+                <a href="#modal-speaker-6" data-bs-toggle="modal" data-bs-target="#modal-speaker-6"><img class="profile-image rounded-circle mb-2" src="../speakers/Alara Ozturk & Hilik Paz.png" alt=""></a>
+                <div class="name">Alara Ozturk & Hilik Paz</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-6" data-bs-toggle="modal" data-bs-target="#modal-speaker-6">Model-Based Input Validation for Preventing Prompt Injection Attacks</a>
+              </h3>
+              <div class="location mb-3">Arato.ai<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/Tlk2z4aJP90" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">As Large Language Models (LLMs) become increasingly integrated into various applications, the threat of prompt injection attacks has emerged as a significant security concern. This presentation introduces a novel model-based input validation approach to mitigate these attacks in LLM-integrated applications.
+
+We present a meta-prompt methodology that acts as an intermediate validator, examining user inputs before they reach the LLM. Our approach builds on established input validation techniques, drawing parallels with traditional security measures like SQL injection prevention.
+
+Throughout the presentation, we will discuss the challenges of input validation in LLM contexts and explore how our model-based approach provides a more flexible and adaptive solution. We'll share preliminary results from evaluations against established prompt injection datasets, highlighting the effectiveness of our methodology in detecting and mitigating various types of injection attempts.
+
+Join us for an insightful exploration of this innovative approach to enhancing the security of LLM applications through advanced prompt engineering techniques, and learn how to implement robust input validation mechanisms to safeguard your AI-driven systems.<a class="schedule-abstract-read-more" href="#modal-speaker-6" data-bs-toggle="modal" data-bs-target="#modal-speaker-6">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">22:15</h4>
+              <div class="profile">
+                <a href="#modal-speaker-7" data-bs-toggle="modal" data-bs-target="#modal-speaker-7"><img class="profile-image rounded-circle mb-2" src="../speakers/Jeroen Egelmeers.png" alt=""></a>
+                <div class="name">Jeroen Egelmeers</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-7" data-bs-toggle="modal" data-bs-target="#modal-speaker-7">Words as weapons: The dark arts of Prompt Engineering</a>
+              </h3>
+              <div class="location mb-3">Sogeti<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/NpYU0L_9w1U" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">With a "Co-pilot for everything," our interaction with technology and daily tasks is evolving. Organizations are increasingly integrating LLMs into their applications, enhancing features like search tools, chatbots, and internal information systems.
+
+Chances are, you're already working with Generative AI or will be soon. But are you aware of the risks before diving into use cases or development? Curiosity drives us to explore limits, which can lead to finding ways around "Guard Rails." These guard rails prevent misuse, like asking ChatGPT how to build a bomb. But what if clever wordplay confuses LLMs into bypassing these safeguards?
+
+In "The dark arts of Prompt Engineering," we'll explore Prompt Injections. We'll cover what Guard Rails are, how they function, and how to circumvent them using Prompt Injections—purely for educational purposes. Understanding these risks is crucial for knowing where to implement safeguards or reconsider actions. This session goes beyond tech details. It’s about real-life impacts. You'll see examples that will make you rethink AI's role in our lives. We'll also discuss the ethical aspect—how to use AI responsibly and safely. Plus, learn a fun trick: hide some "words as weapons" in your CV to trick recruiters!
+
+As AI is here to stay, let's get secure and join this session!
+Learn from the mistakes other companies have already made.
+Don’t miss this important and eye-opening session!
+
+<a class="schedule-abstract-read-more" href="#modal-speaker-7" data-bs-toggle="modal" data-bs-target="#modal-speaker-7">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">22:45</h4>
+              <div class="profile">
+                <a href="#modal-speaker-" data-bs-toggle="modal" data-bs-target="#modal-speaker-"><img class="profile-image rounded-circle mb-2" src="" alt=""></a>
+                <div class="name"></div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3" style="color:#098dcf;">Break</h3>
+              <div class="location mb-3" style="color:#098dcf;">Online</div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">23:00</h4>
+              <div class="profile">
+                <a href="#modal-speaker-8" data-bs-toggle="modal" data-bs-target="#modal-speaker-8"><img class="profile-image rounded-circle mb-2" src="../speakers/Aldan Creo.png" alt=""></a>
+                <div class="name">Aldan Creo</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-8" data-bs-toggle="modal" data-bs-target="#modal-speaker-8">Can we evade AI-generated content detectors using prompt engineering?</a>
+              </h3>
+              <div class="location mb-3">Accenture Labs<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/3-rr2u2oDSA" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">In this talk, we'll explore an intriguing question: can clever prompt engineering help us bypass AI-generated content detectors? We'll dive into the world of AI detection and briefly explain how these systems work. Then we'll go straight to the answer, using the latest scientific literature. Get ready for a fast-paced session that bridges the gap between prompt engineering and AI detection!<a class="schedule-abstract-read-more" href="#modal-speaker-8" data-bs-toggle="modal" data-bs-target="#modal-speaker-8">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">23:30</h4>
+              <div class="profile">
+                <a href="#modal-speaker-9" data-bs-toggle="modal" data-bs-target="#modal-speaker-9"><img class="profile-image rounded-circle mb-2" src="../speakers/David Campbell.png" alt=""></a>
+                <div class="name">David Campbell</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-9" data-bs-toggle="modal" data-bs-target="#modal-speaker-9">Ignore Previous Instructions: Embracing AI Red Teaming</a>
+              </h3>
+              <div class="location mb-3">Scale Ai<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/Dvgi3FLGnkU" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">In this talk, we will explore the journey of Red Teaming from its origins to its transformation into AI Red Teaming, highlighting its pivotal role in shaping the future of Large Language Models (LLMs) and beyond. Drawing from my firsthand experiences developing and deploying the largest generative red teaming platform to date, I will share insightful antidotes and real-world examples. We will explore how adversarial red teaming fortifies AI applications at every layer—protecting platforms, businesses, and consumers. This includes safeguarding the external application interface, reinforcing LLM guardrails, and enhancing the security of the LLMs' internal algorithms. Join me as we uncover the critical importance of adversarial strategies in securing the AI landscape.<a class="schedule-abstract-read-more" href="#modal-speaker-9" data-bs-toggle="modal" data-bs-target="#modal-speaker-9">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">00:00</h4>
+              <div class="profile">
+                <a href="#modal-speaker-10" data-bs-toggle="modal" data-bs-target="#modal-speaker-10"><img class="profile-image rounded-circle mb-2" src="../speakers/Daniel Jackson.png" alt=""></a>
+                <div class="name">Daniel Jackson</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-10" data-bs-toggle="modal" data-bs-target="#modal-speaker-10">Digital Course Assistants for Mathematics and Math Education</a>
+              </h3>
+              <div class="location mb-3">University of Maine<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/5ad79dg0o00" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">In this session, I will share how I use OpenAI's ChatGPT to create custom "digital course assistants" for both my mathematics and math education courses. These assistants generate course materials such as assignments, quizzes, and lecture notes, and are also made available to students for personalized learning. I will detail the prompt engineering methodologies I use to tailor the GPTs for specific educational needs, ensuring clarity in mathematical explanations, optimizing accuracy, and enhancing learning engagement. By highlighting practical strategies for prompt optimization and creativity in teaching, this session will provide attendees with insights on how to effectively integrate AI tools into education, offering both production-ready applications and experimental possibilities.<a class="schedule-abstract-read-more" href="#modal-speaker-10" data-bs-toggle="modal" data-bs-target="#modal-speaker-10">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">00:30</h4>
+              <div class="profile">
+                <a href="#modal-speaker-11" data-bs-toggle="modal" data-bs-target="#modal-speaker-11"><img class="profile-image rounded-circle mb-2" src="../speakers/Jesus Serrano.png" alt=""></a>
+                <div class="name">Jesus Serrano</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-11" data-bs-toggle="modal" data-bs-target="#modal-speaker-11">Can AI Be Used to Develop a Whole Videogame?</a>
+              </h3>
+              <div class="location mb-3">Microsoft<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/QVOgbUDWY3w" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">That's what I asked me a few months ago to bring to life one of my childhood deepest aspirations since I learn programming at 8 years old... Being the main character in my own videogame.
+
+Bald NinjAI, a retro-inspired beat'em-up, is being brought to life entirely through the power of AI. In this session, I’ll showcase how AI tools are used across every aspect of the game development process—scriptwriting, lore creation, character design, animations, sound, music, and coding. From generating thousands of lines of code to crafting iconic game elements like a Tokyo train fight level, AI is transforming the way we create games.
+
+Learn about the dozens of cutting-edge tools AI technologies, that have empowered me to streamline such a creative process.
+
+Whether you're a game developer, AI enthusiast, or curious about how AI is reshaping the gaming industry, this session will provide valuable insights into the future of game creation.<a class="schedule-abstract-read-more" href="#modal-speaker-11" data-bs-toggle="modal" data-bs-target="#modal-speaker-11">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">01:00</h4>
+              <div class="profile">
+                <a href="#modal-speaker-" data-bs-toggle="modal" data-bs-target="#modal-speaker-"><img class="profile-image rounded-circle mb-2" src="" alt=""></a>
+                <div class="name"></div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3" style="color:#098dcf;">Wrap up</h3>
+              <div class="location mb-3" style="color:#098dcf;">Scan each other's QR codes & head to a nearby pub!</div>
+              
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Table View -->
+    <div id="table-view-0" class="schedule-table-view">
+      <table class="schedule-grid-table">
+        <thead>
+          <tr>
+            <th>Time</th>
+
+            <th style="width: calc((100% - 60px) / 1)">track 1</th>
+
+          </tr>
+        </thead>
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">00:00</td>
+            <td class="talk-cell" colspan="1">
+
+              <a href="#modal-speaker-10" data-bs-toggle="modal" data-bs-target="#modal-speaker-10">Digital Course Assistants for Mathematics and Math Education</a>
+              <div class="speaker-info">Daniel Jackson <span class="affiliation">• University of Maine</span></div>
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">00:30</td>
+            <td class="talk-cell" colspan="1">
+
+              <a href="#modal-speaker-11" data-bs-toggle="modal" data-bs-target="#modal-speaker-11">Can AI Be Used to Develop a Whole Videogame?</a>
+              <div class="speaker-info">Jesus Serrano <span class="affiliation">• Microsoft</span></div>
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell merged-cell">01:00</td>
+            <td class="talk-cell merged-cell" colspan="1">
+
+              Wrap up
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell merged-cell">09:00</td>
+            <td class="talk-cell merged-cell" colspan="1">
+
+              Welcome
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">09:15</td>
+            <td class="talk-cell" colspan="1">
+
+              <a href="#modal-speaker-0" data-bs-toggle="modal" data-bs-target="#modal-speaker-0">Building a Production-Ready AI-Powered Chatbot Tutor with Hybrid RAG system</a>
+              <div class="speaker-info">Alok Ranjan & Saurabh Suman <span class="affiliation">• Dropbox & Accenture</span></div>
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">09:45</td>
+            <td class="talk-cell" colspan="1">
+
+              <a href="#modal-speaker-1" data-bs-toggle="modal" data-bs-target="#modal-speaker-1">A Large Language Model took me on vacation</a>
+              <div class="speaker-info">Jorrik Klijnsma <span class="affiliation">• Sopra Steria</span></div>
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">10:15</td>
+            <td class="talk-cell" colspan="1">
+
+              <a href="#modal-speaker-2" data-bs-toggle="modal" data-bs-target="#modal-speaker-2">Improving Retrieval Q&A Contextualization Prompts (using TextGrad)</a>
+              <div class="speaker-info">Johannes Kuhn & Maximilian Schattauer <span class="affiliation">• Perelyn</span></div>
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell merged-cell">19:45</td>
+            <td class="talk-cell merged-cell" colspan="1">
+
+              Break
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">20:00</td>
+            <td class="talk-cell" colspan="1">
+
+              <a href="#modal-speaker-3" data-bs-toggle="modal" data-bs-target="#modal-speaker-3">Building a Production-Ready AI-Powered Chatbot Tutor with Hybrid RAG system</a>
+              <div class="speaker-info">Koushik Sundar <span class="affiliation">• Citibank</span></div>
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">20:30</td>
+            <td class="talk-cell" colspan="1">
+
+              <a href="#modal-speaker-4" data-bs-toggle="modal" data-bs-target="#modal-speaker-4">Navigating Prompt Quality in Enterprise: Chaos Control Guide</a>
+              <div class="speaker-info">Anastasia Podrabinek <span class="affiliation">• Wix</span></div>
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">21:00</td>
+            <td class="talk-cell" colspan="1">
+
+              <a href="#modal-speaker-5" data-bs-toggle="modal" data-bs-target="#modal-speaker-5">Maximizing the Potential of Foundation Models through Prompt Engineering</a>
+              <div class="speaker-info">Daniela De Quevedo <span class="affiliation">• NTT Data</span></div>
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell merged-cell">21:30</td>
+            <td class="talk-cell merged-cell" colspan="1">
+
+              Break
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">21:45</td>
+            <td class="talk-cell" colspan="1">
+
+              <a href="#modal-speaker-6" data-bs-toggle="modal" data-bs-target="#modal-speaker-6">Model-Based Input Validation for Preventing Prompt Injection Attacks</a>
+              <div class="speaker-info">Alara Ozturk & Hilik Paz <span class="affiliation">• Arato.ai</span></div>
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">22:15</td>
+            <td class="talk-cell" colspan="1">
+
+              <a href="#modal-speaker-7" data-bs-toggle="modal" data-bs-target="#modal-speaker-7">Words as weapons: The dark arts of Prompt Engineering</a>
+              <div class="speaker-info">Jeroen Egelmeers <span class="affiliation">• Sogeti</span></div>
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell merged-cell">22:45</td>
+            <td class="talk-cell merged-cell" colspan="1">
+
+              Break
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">23:00</td>
+            <td class="talk-cell" colspan="1">
+
+              <a href="#modal-speaker-8" data-bs-toggle="modal" data-bs-target="#modal-speaker-8">Can we evade AI-generated content detectors using prompt engineering?</a>
+              <div class="speaker-info">Aldan Creo <span class="affiliation">• Accenture Labs</span></div>
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">23:30</td>
+            <td class="talk-cell" colspan="1">
+
+              <a href="#modal-speaker-9" data-bs-toggle="modal" data-bs-target="#modal-speaker-9">Ignore Previous Instructions: Embracing AI Red Teaming</a>
+              <div class="speaker-info">David Campbell <span class="affiliation">• Scale Ai</span></div>
+
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+
+
+
+    <script>
+    function toggleView(day) {
+      const timelineView = document.getElementById('timeline-view-' + day);
+      const tableView = document.getElementById('table-view-' + day);
+      const toggleBtn = document.getElementById('view-toggle-' + day);
+      const trackLinks = document.getElementById('track-links-' + day);
+
+      if (tableView.classList.contains('active')) {
+        tableView.classList.remove('active');
+        timelineView.classList.remove('hidden');
+        toggleBtn.textContent = 'view as table';
+        toggleBtn.classList.remove('active');
+        trackLinks.style.display = 'flex';
+      } else {
+        tableView.classList.add('active');
+        timelineView.classList.add('hidden');
+        toggleBtn.textContent = 'view as timeline';
+        toggleBtn.classList.add('active');
+        trackLinks.style.display = 'none';
+      }
+    }
+    </script>
+
+    
+    <div class="schedule-cta text-center mx-auto mt-4"><a href="https://luma.com/sre" target="_blank" rel="noopener" class="btn btn-secondary btn-lg d-block d-md-inline-block">Upcoming conferences on LUMA</a></div>
+    
+  </div>
+</section>
+
+
+
+
+<section id="speakers" class="speakers-section section">
+  <div class="container">
+    <h3 class="section-heading text-center mb-3">Speakers</h3>
+    <div class="row row-cols-2 row-cols-lg-5">
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-6" data-bs-toggle="modal" data-bs-target="#modal-speaker-6"><img src="../speakers/Alara Ozturk & Hilik Paz.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Alara Ozturk<br>&amp; Hilik Paz</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Arato.ai</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Alara_Ozturk__Hilik_Paz_Aratoai_ModelBased_Input_Validation_for_Preventing_Prompt_Injection_Attacks#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/Tlk2z4aJP90" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/alara-o-299936106/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/hilikpaz/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-8" data-bs-toggle="modal" data-bs-target="#modal-speaker-8"><img src="../speakers/Aldan Creo.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Aldan Creo</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Accenture Labs</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Aldan_Creo_Accenture_Labs_Can_we_evade_AIgenerated_content_detectors_using_prompt_engineering#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/3-rr2u2oDSA" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://linkedin.com/in/acmcmc"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-0" data-bs-toggle="modal" data-bs-target="#modal-speaker-0"><img src="../speakers/Alok Ranjan & Saurabh Suman.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Alok Ranjan<br>&amp; Saurabh Suman</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Dropbox & Accenture</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Alok_Ranjan__Saurabh_Suman_Dropbox__Accenture_Building_a_ProductionReady_AIPowered_Chatbot_Tutor_wit#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/-qfLmyMtxwM" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/alok-g-ranjan/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/sumansaurabhpro/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-4" data-bs-toggle="modal" data-bs-target="#modal-speaker-4"><img src="../speakers/Anastasia Podrabinek.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Anastasia Podrabinek</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Wix</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Anastasia_Podrabinek_Wix_Navigating_Prompt_Quality_in_Enterprise_Chaos_Control_Guide#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/V7kgwQm3Q-c" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/anastasia-podrabinek/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-10" data-bs-toggle="modal" data-bs-target="#modal-speaker-10"><img src="../speakers/Daniel Jackson.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Daniel Jackson</h5>
+            <div class="card-text mb-3">
+              <div class="meta">University of Maine</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Daniel_Jackson_University_of_Maine_Digital_Course_Assistants_for_Mathematics_and_Math_Education#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/5ad79dg0o00" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/daniel-jackson-077aa3181/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-5" data-bs-toggle="modal" data-bs-target="#modal-speaker-5"><img src="../speakers/Daniela De Quevedo.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Daniela De Quevedo</h5>
+            <div class="card-text mb-3">
+              <div class="meta">NTT Data</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Daniela_De_Quevedo_NTT_Data_Maximizing_the_Potential_of_Foundation_Models_through_Prompt_Engineering#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/4KchW1UxqJg" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/danieladequevedo"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-9" data-bs-toggle="modal" data-bs-target="#modal-speaker-9"><img src="../speakers/David Campbell.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">David Campbell</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Scale Ai</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./David_Campbell_Scale_Ai_Ignore_Previous_Instructions_Embracing_AI_Red_Teaming#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/Dvgi3FLGnkU" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/ddcam/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-7" data-bs-toggle="modal" data-bs-target="#modal-speaker-7"><img src="../speakers/Jeroen Egelmeers.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Jeroen Egelmeers</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Sogeti</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Jeroen_Egelmeers_Sogeti_Words_as_weapons_The_dark_arts_of_Prompt_Engineering#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/NpYU0L_9w1U" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/jegelmeers/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-11" data-bs-toggle="modal" data-bs-target="#modal-speaker-11"><img src="../speakers/Jesus Serrano.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Jesus Serrano</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Microsoft</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Jesus_Serrano_Microsoft_Can_AI_Be_Used_to_Develop_a_Whole_Videogame#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/QVOgbUDWY3w" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/jscastro/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-2" data-bs-toggle="modal" data-bs-target="#modal-speaker-2"><img src="../speakers/Johannes Kuhn & Maximilian Schattauer.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Johannes Kuhn & Maximilian Schattauer</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Perelyn</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Johannes_Kuhn__Maximilian_Schattauer_Perelyn_Improving_Retrieval_QA_Contextualization_Prompts_using_#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/JPS-wlMbj70" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/johannes-kuhn-ai"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/mschattauer/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-1" data-bs-toggle="modal" data-bs-target="#modal-speaker-1"><img src="../speakers/Jorrik Klijnsma.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Jorrik Klijnsma</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Sopra Steria</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Jorrik_Klijnsma_Sopra_Steria_A_Large_Language_Model_took_me_on_vacation#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/8JRDBpcmjj4" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/jorrik-klijnsma/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-3" data-bs-toggle="modal" data-bs-target="#modal-speaker-3"><img src="../speakers/Koushik Sundar.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Koushik Sundar</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Citibank</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Koushik_Sundar_Citibank_Building_a_ProductionReady_AIPowered_Chatbot_Tutor_with_Hybrid_RAG_system#speakers-section" class="event-read-more-btn">Read more</a>
+              
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/koushiksundar/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      
+
+    </div><!--//row-->
+    
+  </div><!--//container-->
+
+</section><!--//speakers-section-->
+
+
+
+
+
+<section id="playlist" class="section text-white" style="background: #3DA2E0;">
+  <div class="container text-center">
+    <h3 class="section-heading mb-4 text-white">Watch the Talks</h3>
+    <div class="ratio ratio-16x9" style="max-width: 800px; margin: 0 auto;">
+      <iframe src="https://www.youtube.com/embed/videoseries?list=PLQEYbmzcCfpc4b9Z1zGd4waWwthP-PdmM" title="YouTube playlist" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="sponsors" class="sponsors-section section">
+  <div class="container">
+    <h3 class="section-heading text-center mb-3">Sponsors &amp; Partners</h3>
+    <div class="section-intro text-center single-col-max mx-auto mb-5">Want to become a sponsor? Get in touch!</div>
+    <div class="row logos justify-content-center">
+      
+      <div class="logo-item col-6 col-md-4 col-lg-2"><a href="https://arato.ai/" target="_blank"><img src="../sponsors/arato.png" alt=""></a></div>
+      
+      <div class="logo-item col-6 col-md-4 col-lg-2"><a href="https://www.comet.com/" target="_blank"><img src="../sponsors/comet.png" alt=""></a></div>
+      
+      <div class="logo-item col-6 col-md-4 col-lg-2"><a href="https://www.skool.com/ai-productivity-hub/about" target="_blank"><img src="../sponsors/aiproductivityhub.png" alt=""></a></div>
+      
+      <div class="logo-item col-6 col-md-4 col-lg-2"><a href="https://www.prompthub.us/" target="_blank"><img src="../sponsors/prompt-hub.png" alt=""></a></div>
+      
+      <div class="logo-item col-6 col-md-4 col-lg-2"><a href="https://packtpub.com/" target="_blank"><img src="../sponsors/packt.png" alt=""></a></div>
+      
+    </div><!--//row-->
+    <div class="sponsors-cta text-center pt-5"><a class="btn-primary btn btn-lg" href="mailto:hello@promptengineering.rocks">Become A Sponsor</a></div>
+  </div><!--//container-->
+</section><!--//sponsors-section-->
+
+
+
+<style>
+  .modal-speaker .desc p,
+  .modal-speaker .desc li {
+    text-align: justify;
+    line-height: 1.75;
+    color: #444;
+    font-size: 0.95rem;
+  }
+  .modal-speaker .desc {
+    padding-bottom: 0.25rem;
+  }
+</style>
+
+
+<!-- Modal Speaker 0 -->
+<div class="modal modal-speaker modal-speaker-0" id="modal-speaker-0" tabindex="-1" role="dialog" aria-labelledby="speaker-0-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-0-ModalLabel" class="modal-title sr-only"
+>Alok Ranjan & Saurabh Suman</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Alok Ranjan & Saurabh Suman.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Alok Ranjan & Saurabh Suman</h2>
+                          <div class="meta mb-2">Dropbox & Accenture</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/alok-g-ranjan/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/sumansaurabhpro/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>In this talk, we dive deep into the development of a state-of-the-art AI-powered chatbot tutor using Retrieval-Augmented Generation (RAG) combined with fine-tuning and sophisticated prompt engineering techniques. We will explore a step-by-step guide starting from data collection and preparation, choosing and configuring models, to fine-tuning with domain-specific datasets, and iterative evaluation for performance optimization. Additionally, the session will cover the intricacies of prompt engineering, including dynamic adjustment, contextual prompt development, and bias mitigation to enhance the chatbot’s ability to deliver precise, engaging, and relevant educational interactions. Attendees will gain insights into building scalable and effective AI-driven tutoring solutions, focusing on leveraging RAG for contextual responses and continuous prompt optimization strategies.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 1 -->
+<div class="modal modal-speaker modal-speaker-1" id="modal-speaker-1" tabindex="-1" role="dialog" aria-labelledby="speaker-1-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-1-ModalLabel" class="modal-title sr-only"
+>Jorrik Klijnsma</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Jorrik Klijnsma.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Jorrik Klijnsma</h2>
+                          <div class="meta mb-2">Sopra Steria</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/jorrik-klijnsma/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>Imagine handing over your vacation planning to an AI. Sounds crazy, right? That's exactly what Jorrik did for his trip to Porto in Portugal. ChatGPT picked everything from restaurants to the sightseeing spots. But this trip taught Jorrik more than just how to order pastel de nata in Portuguese.</p>
+<p>In this talk, you'll dive into different parallels between prompting engineering AI for travel tips and using it for coding and problem-solving. You'll learn why context is king in AI interactions and ways to provide it effectively. Jorrik will walk you through real examples from my AI-planned adventure, showing how each interaction unlocked new insights into advanced prompting techniques. Plus, he will introduce you to "Indirect Conversation" a new method he describes as "pushing AI's creative boundaries".</p>
+<p>Integrating AI in applications is now everywhere to be found. And creating web applications, prompt engineering is set to become a crucial skill in our developers toolkit. The techniques you'll learn aren't just for planning vacations. They're the building blocks for creating smarter, more intuitive AI-powered tools. Whether you're designing chatbots, implementing AI-assisted search, or build the next-gen AI-driven web app, mastering these prompting skills will give you a significant benefit in creating a seamless user experience.</p>
+<p>By the end of this session, you'll walk away with practical skills to supercharge your AI interactions, whether you're planning your next vacation or tackling complex coding challenges. You'll gain a fresh perspective on AI's capabilities and limitations, and you'll be equipped with strategies to get more innovative, useful responses from AI tools. Get ready for a session that's a bit of fun, part travelogue, mainly tech talk, and entirely eye-opening!</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 2 -->
+<div class="modal modal-speaker modal-speaker-2" id="modal-speaker-2" tabindex="-1" role="dialog" aria-labelledby="speaker-2-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-2-ModalLabel" class="modal-title sr-only"
+>Johannes Kuhn & Maximilian Schattauer</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Johannes Kuhn & Maximilian Schattauer.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Johannes Kuhn & Maximilian Schattauer</h2>
+                          <div class="meta mb-2">Perelyn</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/johannes-kuhn-ai"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/mschattauer/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>We showcase the importance of good query contextualization in document retrieval Q&amp;A scenarios with various industry examples. We present approaches to improve contextualization by prompt engineering with TextGrad and show how crucial these improvements are for delivering industry-grade chatbot solutions and customer satisfaction.</p>
+<p>Background: When performing document retrieval in a Q&amp;A/chatbot scenario, just using the last Q&amp;A message, namely the current human inquiry, as a target might not yield good results. Often the context needed for retrieving relevant documents is spread out over several previous messages. Query contextualization helps by transforming a message history into a singular retrieval query including the relevant context. Main threats to the quality of the retrieval are missing context, a direct answer to the question, and follow-up questions back to the user in the contextualized query. These threats can be contained by a good choice of the contextualization model and a well-designed system prompt.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 3 -->
+<div class="modal modal-speaker modal-speaker-3" id="modal-speaker-3" tabindex="-1" role="dialog" aria-labelledby="speaker-3-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-3-ModalLabel" class="modal-title sr-only"
+>Koushik Sundar</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Koushik Sundar.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Koushik Sundar</h2>
+                          <div class="meta mb-2">Citibank</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/koushiksundar/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>In this talk, we dive deep into the development of a state-of-the-art AI-powered chatbot tutor using Retrieval-Augmented Generation (RAG) combined with fine-tuning and sophisticated prompt engineering techniques. We will explore a step-by-step guide starting from data collection and preparation, choosing and configuring models, to fine-tuning with domain-specific datasets, and iterative evaluation for performance optimization. Additionally, the session will cover the intricacies of prompt engineering, including dynamic adjustment, contextual prompt development, and bias mitigation to enhance the chatbot’s ability to deliver precise, engaging, and relevant educational interactions. Attendees will gain insights into building scalable and effective AI-driven tutoring solutions, focusing on leveraging RAG for contextual responses and continuous prompt optimization strategies.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 4 -->
+<div class="modal modal-speaker modal-speaker-4" id="modal-speaker-4" tabindex="-1" role="dialog" aria-labelledby="speaker-4-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-4-ModalLabel" class="modal-title sr-only"
+>Anastasia Podrabinek</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Anastasia Podrabinek.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Anastasia Podrabinek</h2>
+                          <div class="meta mb-2">Wix</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/anastasia-podrabinek/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>What if you have a few hundreds developers building their AI-based features all across a huge user-facing product? Sounds exciting but also a bit troubling: how is it possible to move fast without compromising security and quality standards of an enterprise?</p>
+<p>During the past year, we’ve built a whole infrastructure for LLM-oriented development in Wix. As the industry was exploding with new models and techniques, this infrastructure grew to include a wide range of tools to make developer experience with AI really smooth. But then we’ve noticed something else: the easier it was to work with LLMs, the more difficult it was to make sure that the quality of LLM-based features stays high. That was the moment when we had to make a leap from AI democratisation to AI standardisation.</p>
+<p>Building a whole infrastructure of prompt QA tools and arranging prompt engineering flows gave me some new insights about bringing AI to enterprise while ensuring a high standard of LLM feature implementation.</p>
+<p>In this talk, I’ll take you through the AI Standartisation journey we took and share some practical ideas of improving prompt engineering standards across a big organisation. We’ll touch both technical solutions and educational approaches that can help in bringing enterprise prompt engineering standards to a higher level.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 5 -->
+<div class="modal modal-speaker modal-speaker-5" id="modal-speaker-5" tabindex="-1" role="dialog" aria-labelledby="speaker-5-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-5-ModalLabel" class="modal-title sr-only"
+>Daniela De Quevedo</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Daniela De Quevedo.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Daniela De Quevedo</h2>
+                          <div class="meta mb-2">NTT Data</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/danieladequevedo"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>Explore techniques to leverage capabilities of foundation models. Learn how prompt engineering enhances AI performance, enabling more accurate, context-aware, and tailored responses for diverse applications in natural language processing, sharing my experience as prompt engineer.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 6 -->
+<div class="modal modal-speaker modal-speaker-6" id="modal-speaker-6" tabindex="-1" role="dialog" aria-labelledby="speaker-6-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-6-ModalLabel" class="modal-title sr-only"
+>Alara Ozturk & Hilik Paz</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Alara Ozturk & Hilik Paz.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Alara Ozturk & Hilik Paz</h2>
+                          <div class="meta mb-2">Arato.ai</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/alara-o-299936106/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/hilikpaz/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>As Large Language Models (LLMs) become increasingly integrated into various applications, the threat of prompt injection attacks has emerged as a significant security concern. This presentation introduces a novel model-based input validation approach to mitigate these attacks in LLM-integrated applications.</p>
+<p>We present a meta-prompt methodology that acts as an intermediate validator, examining user inputs before they reach the LLM. Our approach builds on established input validation techniques, drawing parallels with traditional security measures like SQL injection prevention.</p>
+<p>Throughout the presentation, we will discuss the challenges of input validation in LLM contexts and explore how our model-based approach provides a more flexible and adaptive solution. We'll share preliminary results from evaluations against established prompt injection datasets, highlighting the effectiveness of our methodology in detecting and mitigating various types of injection attempts.</p>
+<p>Join us for an insightful exploration of this innovative approach to enhancing the security of LLM applications through advanced prompt engineering techniques, and learn how to implement robust input validation mechanisms to safeguard your AI-driven systems.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 7 -->
+<div class="modal modal-speaker modal-speaker-7" id="modal-speaker-7" tabindex="-1" role="dialog" aria-labelledby="speaker-7-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-7-ModalLabel" class="modal-title sr-only"
+>Jeroen Egelmeers</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Jeroen Egelmeers.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Jeroen Egelmeers</h2>
+                          <div class="meta mb-2">Sogeti</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/jegelmeers/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>With a "Co-pilot for everything," our interaction with technology and daily tasks is evolving. Organizations are increasingly integrating LLMs into their applications, enhancing features like search tools, chatbots, and internal information systems.</p>
+<p>Chances are, you're already working with Generative AI or will be soon. But are you aware of the risks before diving into use cases or development? Curiosity drives us to explore limits, which can lead to finding ways around "Guard Rails." These guard rails prevent misuse, like asking ChatGPT how to build a bomb. But what if clever wordplay confuses LLMs into bypassing these safeguards?</p>
+<p>In "The dark arts of Prompt Engineering," we'll explore Prompt Injections. We'll cover what Guard Rails are, how they function, and how to circumvent them using Prompt Injections—purely for educational purposes. Understanding these risks is crucial for knowing where to implement safeguards or reconsider actions. This session goes beyond tech details. It’s about real-life impacts. You'll see examples that will make you rethink AI's role in our lives. We'll also discuss the ethical aspect—how to use AI responsibly and safely. Plus, learn a fun trick: hide some "words as weapons" in your CV to trick recruiters!</p>
+<p>As AI is here to stay, let's get secure and join this session!
+Learn from the mistakes other companies have already made.
+Don’t miss this important and eye-opening session!</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 8 -->
+<div class="modal modal-speaker modal-speaker-8" id="modal-speaker-8" tabindex="-1" role="dialog" aria-labelledby="speaker-8-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-8-ModalLabel" class="modal-title sr-only"
+>Aldan Creo</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Aldan Creo.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Aldan Creo</h2>
+                          <div class="meta mb-2">Accenture Labs</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://linkedin.com/in/acmcmc"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>In this talk, we'll explore an intriguing question: can clever prompt engineering help us bypass AI-generated content detectors? We'll dive into the world of AI detection and briefly explain how these systems work. Then we'll go straight to the answer, using the latest scientific literature. Get ready for a fast-paced session that bridges the gap between prompt engineering and AI detection!</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 9 -->
+<div class="modal modal-speaker modal-speaker-9" id="modal-speaker-9" tabindex="-1" role="dialog" aria-labelledby="speaker-9-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-9-ModalLabel" class="modal-title sr-only"
+>David Campbell</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/David Campbell.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">David Campbell</h2>
+                          <div class="meta mb-2">Scale Ai</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/ddcam/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>In this talk, we will explore the journey of Red Teaming from its origins to its transformation into AI Red Teaming, highlighting its pivotal role in shaping the future of Large Language Models (LLMs) and beyond. Drawing from my firsthand experiences developing and deploying the largest generative red teaming platform to date, I will share insightful antidotes and real-world examples. We will explore how adversarial red teaming fortifies AI applications at every layer—protecting platforms, businesses, and consumers. This includes safeguarding the external application interface, reinforcing LLM guardrails, and enhancing the security of the LLMs' internal algorithms. Join me as we uncover the critical importance of adversarial strategies in securing the AI landscape.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 10 -->
+<div class="modal modal-speaker modal-speaker-10" id="modal-speaker-10" tabindex="-1" role="dialog" aria-labelledby="speaker-10-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-10-ModalLabel" class="modal-title sr-only"
+>Daniel Jackson</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Daniel Jackson.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Daniel Jackson</h2>
+                          <div class="meta mb-2">University of Maine</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/daniel-jackson-077aa3181/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>In this session, I will share how I use OpenAI's ChatGPT to create custom "digital course assistants" for both my mathematics and math education courses. These assistants generate course materials such as assignments, quizzes, and lecture notes, and are also made available to students for personalized learning. I will detail the prompt engineering methodologies I use to tailor the GPTs for specific educational needs, ensuring clarity in mathematical explanations, optimizing accuracy, and enhancing learning engagement. By highlighting practical strategies for prompt optimization and creativity in teaching, this session will provide attendees with insights on how to effectively integrate AI tools into education, offering both production-ready applications and experimental possibilities.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 11 -->
+<div class="modal modal-speaker modal-speaker-11" id="modal-speaker-11" tabindex="-1" role="dialog" aria-labelledby="speaker-11-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-11-ModalLabel" class="modal-title sr-only"
+>Jesus Serrano</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Jesus Serrano.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Jesus Serrano</h2>
+                          <div class="meta mb-2">Microsoft</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/jscastro/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>That's what I asked me a few months ago to bring to life one of my childhood deepest aspirations since I learn programming at 8 years old... Being the main character in my own videogame.</p>
+<p>Bald NinjAI, a retro-inspired beat'em-up, is being brought to life entirely through the power of AI. In this session, I’ll showcase how AI tools are used across every aspect of the game development process—scriptwriting, lore creation, character design, animations, sound, music, and coding. From generating thousands of lines of code to crafting iconic game elements like a Tokyo train fight level, AI is transforming the way we create games.</p>
+<p>Learn about the dozens of cutting-edge tools AI technologies, that have empowered me to streamline such a creative process.</p>
+<p>Whether you're a game developer, AI enthusiast, or curious about how AI is reshaping the gaming industry, this session will provide valuable insights into the future of game creation.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+
+
+
+
+
+
+<footer class="footer py-5 theme-bg-primary">
+    <div class="container text-center">
+
+        <ul class="social-list list-inline mb-4">
+            <li class="list-inline-item me-3"><a target="_blank" href="https://luma.com/sre" style="text-decoration:none;">✦</a></li>
+            <li class="list-inline-item me-3"><a target="_blank" href="https://discord.gg/ravEjTxNAX"><i class="fab fa-discord fa-fw"></i></a></li>
+            <li class="list-inline-item me-3"><a target="_blank" href="https://www.linkedin.com/company/prompt-engineering-conference/"><i class="fab fa-linkedin fa-fw"></i></a></li>
+            <li class="list-inline-item me-3"><a href="mailto:salnikov@gmail.com"><i class="fas fa-envelope fa-fw"></i></a></li>
+            <li class="list-inline-item me-0"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@PromptEngineeringConf"><i class="fab fa-youtube fa-fw"></i></a></li>
+        </ul>
+
+    </div><!--//container-->
+</footer>
+
+
+<!-- Javascript -->
+<script src="assets/plugins/popper.min.js"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="assets/plugins/smoothscroll.min.js"></script>
+<script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

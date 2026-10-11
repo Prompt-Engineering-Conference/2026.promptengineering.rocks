@@ -1,0 +1,104 @@
+start_time: "2026-11-26T09:00:00+00:00"
+event_state: before
+date_string: "November 26, 2026"
+location_string: "London, UK"
+city_name: "London"
+luma_evt: evt-plTUz2bsyWurucv
+cfp_url: https://cfp.ninja/e/the-prompt-engineering-conference-london-2026
+
+days: 1
+tracks: 3
+attendees: 150
+speakers: "30+"
+
+rooms:
+- track 1
+- track 2
+- track 3
+
+breaks:
+- title: Registration
+  duration: 30
+  comment: Main lobby
+  talks_before: 0
+- title: Coffee break
+  duration: 15
+  comment: Main lobby
+  talks_before: 1
+- title: Lunch & networking
+  duration: 45
+  comment: Main lobby
+  talks_before: 3
+- title: Networking & sponsor crawl
+  duration: 15
+  comment: Main lobby
+  talks_before: 3
+- title: Networking & sponsor crawl
+  duration: 15
+  comment: Main lobby
+  talks_before: 2
+
+sponsors:
+  - logo: harness.png
+    url: https://www.harness.io/
+  - logo: aiproductivityhub.png
+    url: https://www.skool.com/ai-productivity-hub/about
+  - logo: prompt-hub.png
+    url: https://www.prompthub.us/
+  - logo: packt.png
+    url: https://packtpub.com/
+  - logo: hockeystick.png
+    url: https://www.hockeystick.show
+  - logo: pe-norway-full.png
+    url: https://www.meetup.com/promptengineering-community/
+  - logo: gdg_london.png
+    name: GDG London
+    url: https://www.meetup.com/gdglondon/
+  - logo: london-agentic-ai-meetup.png
+    url: https://www.meetup.com/london-agentic-ai/
+  - logo: it-schulungen.png
+    url: https://www.it-schulungen.com/
+  - logo: pec.png
+    url: https://www.pec.asia/2025/conference
+  - logo: cubixai.png
+    url: https://cubixai.com/
+  - logo: angular-london.png
+    url: https://www.meetup.com/angular-london/
+  - logo: freecodecamp-london.png
+    url: https://www.meetup.com/freecodecamp-london/
+  - logo: london-pytorch.png
+    url: https://www.meetup.com/london-pytorch-meetup/
+  - logo: techleadconf.png
+    url: https://techleadconf.com/
+  - logo: gitnation.png
+    url: https://gitnation.com/
+  - logo: city-js.png
+    url: https://cityjsconf.org/
+
+hero_pictures:
+- ../photos/pec-2.jpg
+- ../photos/pec-3.jpg
+- ../photos/pec-4.jpg
+
+# brand identity
+brand_name: "Prompt Engineering Conference"
+brand_key: "pec"            # short key for the shared form backends (BRANDS in llmday/_build/*.gs)
+brand_domain: "promptengineering.rocks"
+brand_description: "The world's first conference about prompt engineering"
+brand_tagline: "Learn how to interact with the most advanced AI on our planet"
+brand_og_pitch: "Probably the most exciting prompt engineering conference in"
+brand_color: "#6b40d8"
+brand_twitter: "@PromptEngConf"
+brand_ga_id: "G-TJD11HYWN5"
+brand_gads_id: ""
+brand_twt_pixel: ""
+logo_image: "assets/images/logo-token.png"
+
+base_path: "https://promptengineering.rocks/"
+base_folder: "static"
+twitter_url: https://x.com/PromptEngConf
+linkedin_url: https://www.linkedin.com/company/prompt-engineering-conference/
+youtube_url: https://www.youtube.com/@PromptEngineeringConf
+mailto: "mailto:hello@promptengineering.rocks"
+calendly_sponsor_url: "https://calendly.com/sreday/30min"
+youtube_playlist:

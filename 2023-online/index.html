@@ -1,0 +1,3283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Prompt Engineering Conference - Online, October 16, 2023</title>
+	<!-- link previews: _build/og_images.py -->
+	<meta property="og:title" content="Prompt Engineering Conference - Online - October 16, 2023">
+	<meta property="og:description" content="The world&#x27;s first conference about prompt engineering. Probably the most exciting prompt engineering conference in Online!">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://promptengineering.rocks/2023-online/">
+	<meta property="og:site_name" content="Prompt Engineering Conference">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:image" content="https://promptengineering.rocks/og/2cb074cafcdb64a9.jpg">
+	<meta property="og:image:secure_url" content="https://promptengineering.rocks/og/2cb074cafcdb64a9.jpg">
+	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="600">
+	<meta property="og:image:alt" content="Prompt Engineering Conference - Online - October 16, 2023">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@PromptEngConf">
+	<meta name="twitter:creator" content="@PromptEngConf">
+	<meta name="twitter:title" content="Prompt Engineering Conference - Online - October 16, 2023">
+	<meta name="twitter:description" content="The world&#x27;s first conference about prompt engineering. Probably the most exciting prompt engineering conference in Online!">
+	<meta name="twitter:image" content="https://promptengineering.rocks/og/2cb074cafcdb64a9.jpg">
+	<meta name="twitter:image:alt" content="Prompt Engineering Conference - Online - October 16, 2023">
+
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Prompt Engineering Conference conference">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+	<link rel="manifest" href="./assets/site.webmanifest">
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800|Roboto:300,400,700&display=swap" rel="stylesheet">
+
+	<!-- FontAwesome JS-->
+	<script defer src="assets/fontawesome/js/all.min.js"></script>
+
+	<!-- Theme CSS -->
+	<link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
+
+
+<!-- Twitter conversion tracking base code -->
+<script>
+	!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+	},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
+	a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+	twq('config','');
+	</script>
+	<!-- End Twitter conversion tracking base code -->
+	
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TJD11HYWN5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TJD11HYWN5');
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+<style>
+	.tinted {
+		box-shadow: 0 3000px rgba(30, 30, 90, 0.7) inset;
+	}
+	.retro {
+		font-family: 'Monoton', sans-serif;
+	}
+	.logo {
+		color: white;
+		font-weight: 400;
+	}
+	.logo img {
+		max-width: 400px;
+		height: auto;
+	}
+	.theme-bg-primary {
+		background: #6b40d8;
+	}
+	.hero-block .social-list li, footer .social-list li {
+		font-size: 1.75rem;
+	}
+	.hero-block .social-list li a, footer .social-list li a {
+		color: white;
+		text-decoration: none;
+	}
+	.hero-block .social-list li a:hover, footer .social-list li a:hover {
+		color: white;
+		text-decoration: none;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+	section[id] {
+		scroll-margin-top: 70px;
+	}
+	#home {
+		scroll-margin-top: 70px;
+	}
+	.hero-cta a, .hero-cta a:hover { text-decoration: none; }
+	:root {
+		--brand: #6b40d8;
+		--brand-light: color-mix(in srgb, #6b40d8 70%, white);
+		--brand-lighter: color-mix(in srgb, #6b40d8 45%, white);
+		--brand-lightest: color-mix(in srgb, #6b40d8 15%, white);
+		--brand-pale: color-mix(in srgb, #6b40d8 10%, white);
+		--brand-dark: color-mix(in srgb, #6b40d8 100%, black 20%);
+		--brand-darker: color-mix(in srgb, #6b40d8 100%, black 35%);
+	}
+</style>
+
+
+<body>
+	<header id="header" class="header fixed-top">
+		<div class="branding">
+			<div class="container-fluid">
+				<nav class="main-nav navbar navbar-expand-lg">
+					<div class="site-logo"><a href="/">
+                        <!-- <img class="logo-icon" src="assets/images/logo-white.svg" alt="logo"></a> -->
+                    </div>
+
+					
+
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div id="navigation" class="navbar-collapse collapse  justify-content-lg-end me-lg-3">
+						
+						<ul class="nav navbar-nav">
+
+							<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+							
+							<li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
+							<li class="nav-item"><a class="nav-link" href="#speakers">Speakers</a></li>
+							
+							<li class="nav-item"><a class="nav-link" href="#playlist">Playlist</a></li>
+							<li class="nav-item"><a class="nav-link" href="#sponsors">Sponsors</a></li>
+						</ul><!--//nav-->
+						
+					</div><!--//navabr-collapse-->
+
+				</nav><!--//main-nav-->
+
+			</div><!--//container-->
+		</div><!--//branding-->
+	</header><!--//header-->
+
+	
+	<div id="home" class="hero-block">
+		<div id="hero-carousel" class="hero-carousel carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+			<div class="carousel-inner">
+				
+				<div class="carousel-item tinted active" style="background:url('../photos/pec-1.jpg') no-repeat center; background-size: cover;"></div>
+				
+				<div class="carousel-item tinted " style="background:url('../photos/pec-2.jpg') no-repeat center; background-size: cover;"></div>
+				
+				<div class="carousel-item tinted " style="background:url('../photos/pec-3.jpg') no-repeat center; background-size: cover;"></div>
+				
+				<div class="carousel-item tinted " style="background:url('../photos/pec-4.jpg') no-repeat center; background-size: cover;"></div>
+				
+			</div>
+
+		</div>
+		<div class="container">
+			<div class="hero-text-block text-center" style="max-width: 100%;">
+				<h1 class="logo"><img src="assets/images/logo-token.png" alt="Prompt Engineering Conference"></h1>
+				
+				<h2 class="text-white">Learn how to interact with the most advanced AI on our planet</h2>
+				<h3 class="text-white"><i class="far fa-calendar-alt me-2"></i>October 16, 2023 <i class="fas fa-map-marker-alt mx-2"></i>Online</h3>
+				<div class="hero-cta mt-5">
+					
+					<a class="btn btn-secondary btn-lg" href="https://www.youtube.com/playlist?list=PLQEYbmzcCfpe-3GLDTtwvfF6MpjLVVFZ1" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="white" style="vertical-align:middle;margin-right:6px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Playlist</a>
+					
+					
+			    </div>
+					<ul class="social-list list-inline mt-4">
+						<li class="list-inline-item me-3"><a target="_blank" href="https://luma.com/sre" style="text-decoration:none;">✦</a></li>
+						<li class="list-inline-item me-3"><a target="_blank" href="https://discord.gg/ravEjTxNAX"><i class="fab fa-discord fa-fw"></i></a></li>
+						<li class="list-inline-item me-3"><a target="_blank" href="https://www.linkedin.com/company/prompt-engineering-conference/"><i class="fab fa-linkedin fa-fw"></i></a></li>
+						<li class="list-inline-item me-3"><a href="mailto:salnikov@gmail.com"><i class="fas fa-envelope fa-fw"></i></a></li>
+						<li class="list-inline-item me-0"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@PromptEngineeringConf"><i class="fab fa-youtube fa-fw"></i></a></li>
+					</ul>
+				
+			</div><!--//hero-text-block-->
+		</div><!--//container-->
+
+	</div><!--//hero-block-->
+	
+
+	<div class="stats-block theme-bg-primary text-white py-4 text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-6 col-md-3">
+					<div class="item">
+						<div class="number">1</div>
+						<div class="unit">Day</div>
+					</div><!--//item-->
+				</div><!--//col-->
+				<div class="col-6 col-md-3">
+					<div class="item">
+						<div class="number">30+</div>
+						<div class="unit">Speakers</div>
+					</div><!--//item-->
+				</div><!--//col-->
+				<div class="col-6 col-md-3">
+					<div class="item">
+						<div class="number">2</div>
+						<div class="unit">Tracks</div>
+					</div><!--//item-->
+				</div><!--//col-->
+				<div class="col-6 col-md-3">
+					<div class="item">
+						<div class="number">250+</div>
+						<div class="unit">Attendees</div>
+					</div><!--//item-->
+				</div><!--//col-->
+			</div>
+		</div><!--//container-->
+	</div><!--//stats-block-->
+
+
+<!-- CONTENT -->
+
+
+<section id="about" class="about-section section">
+
+  <div class="container">
+    <div class="event-countdown text-center mb-3">
+    
+      <h4 class="countdown-intro mb-2 text-center mb-3">Event finished, what's next?</h4>
+      
+      <style>
+        .idx-tl { position: relative; padding: 20px 0 8px; margin-bottom: 8px; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .idx-tl-line { position: absolute; top: 26px; left: 0; right: 0; height: 2px; background: var(--brand-lighter); z-index: 0; }
+        .idx-tl-events { display: flex; justify-content: space-between; position: relative; gap: 8px; overflow-x: auto; padding-bottom: 8px; align-items: stretch; }
+        .idx-tl-event { display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 0; }
+        .idx-tl-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--brand); border: 2px solid #fff; outline: 2px solid var(--brand); margin-bottom: 10px; flex-shrink: 0; z-index: 1; }
+        .idx-tl-dot.past { background: #999; outline-color: #999; }
+        .idx-tl-chip { background: var(--brand-lightest); border: 1px solid var(--brand-lighter); border-radius: 8px; padding: 8px 10px; text-align: center; text-decoration: none; width: 100%; transition: background .15s; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .idx-tl-city { font-family: 'Montserrat', sans-serif; font-size: .8rem; font-weight: 700; color: var(--brand-dark); overflow-wrap: break-word; word-break: break-word; }
+        .idx-tl-chip:hover { background: var(--brand-pale); text-decoration: none; }
+        .idx-tl-chip.past { background: #e8e8e8; border-color: #ccc; }
+        .idx-tl-chip.past:hover { background: #d8d8d8; }
+        .idx-tl-chip.past .idx-tl-city { color: #555; }
+        .idx-tl-date { font-size: .75rem; color: var(--brand-light); margin-top: 2px; }
+        .idx-tl-chip.past .idx-tl-date { color: #777; }
+        .idx-tl-pin-event { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+        .idx-tl-pin { font-size: 2.25rem; line-height: 1; color: var(--brand-dark); margin-bottom: 10px; position: relative; top: -4px; }
+      </style>
+      <div class="idx-tl">
+        <div class="idx-tl-line"></div>
+        <div class="idx-tl-events">
+          
+          
+          
+          <div class="idx-tl-event">
+            <div class="idx-tl-dot past"></div>
+            <a href="../2025-london-q4/" class="idx-tl-chip past">
+              <div class="idx-tl-city">London</div>
+              <div class="idx-tl-date" style="font-style:normal;">United Kingdom</div>
+              <div class="idx-tl-date">October 16, 2025</div>
+            </a>
+          </div>
+          
+          
+          
+          <div class="idx-tl-pin-event"><div class="idx-tl-pin">▼</div></div>
+          
+          <div class="idx-tl-event">
+            <div class="idx-tl-dot "></div>
+            <a href="../2026-london-q4/" class="idx-tl-chip">
+              <div class="idx-tl-city">London</div>
+              <div class="idx-tl-date" style="font-style:normal;">United Kingdom</div>
+              <div class="idx-tl-date">November 26, 2026</div>
+            </a>
+          </div>
+          
+        </div>
+      </div>
+      
+    
+    </div>
+  </div>
+  <script>
+    /* ======= Countdown ========= */
+    // set the date we're counting down to
+    var target_date = new Date("2023-10-16T09:00:00+00:00").getTime();
+     
+    // variables for time units
+    var days, hours, minutes, seconds;
+     
+    // get tag element
+    var countdown =  document.getElementById("countdown-box");
+    var days_span = document.createElement("SPAN");
+    days_span.className = 'days';
+    countdown.appendChild(days_span);
+    var hours_span = document.createElement("SPAN");
+    hours_span.className = 'hours';
+    countdown.appendChild(hours_span);
+    var minutes_span = document.createElement("SPAN");
+    minutes_span.className = 'minutes';
+    countdown.appendChild(minutes_span);
+    var secs_span = document.createElement("SPAN");
+    secs_span.className = 'secs';
+    countdown.appendChild(secs_span);
+     
+    // update the tag with id "countdown" every 1 second
+    setInterval(function () {
+     
+        // find the amount of "seconds" between now and target
+        var current_date = new Date().getTime();
+        var seconds_left = (target_date - current_date) / 1000;
+     
+        // do some time calculations
+        days = parseInt(seconds_left / 86400);
+        seconds_left = seconds_left % 86400;
+         
+        hours = parseInt(seconds_left / 3600);
+        seconds_left = seconds_left % 3600;
+         
+        minutes = parseInt(seconds_left / 60);
+        seconds = parseInt(seconds_left % 60);
+         
+        // format countdown string + set tag value.
+        days_span.innerHTML = '<span class="number">' + days + '</span>' + '<span class="unit">Days</span>';
+        hours_span.innerHTML = '<span class="number">' + hours + '</span>' + '<span class="unit">Hrs</span>';
+        minutes_span.innerHTML = '<span class="number">' + minutes + '</span>' + '<span class="unit">Mins</span>';
+        secs_span.innerHTML = '<span class="number">' + seconds + '</span>' + '<span class="unit">Secs</span>'; 
+     
+    }, 1000);
+    </script>
+</section>
+
+
+
+<style>
+  .speakers-section .card {
+    height: 100%;
+  }
+  .speakers-section .card-footer {
+    min-height: 3rem;
+  }
+  .speakers-section .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+  }
+  .speakers-section .card-title {
+    font-size: 1.1rem;
+  }
+  .event-card-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+    margin-top: auto;
+    width: 100%;
+  }
+  .speakers-section .event-card-buttons a {
+    flex: 0 1 50%;
+    text-align: center;
+    min-width: 0;
+    display: block;
+  }
+  .event-read-more-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--brand);
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+  }
+  .event-read-more-btn:hover,
+  .event-read-more-btn:focus {
+    background: var(--brand-light);
+    color: #fff;
+    text-decoration: none;
+  }
+  .event-watch-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #EC645E;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+  }
+  .event-watch-btn:hover,
+  .event-watch-btn:focus {
+    background: #F28B87;
+    color: #fff;
+    text-decoration: none;
+  }
+  .event-watch-btn-sm {
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    margin-left: 12px;
+  }
+  .schedule-abstract {
+    position: relative;
+    max-height: 3.2em;
+    line-height: 1.6;
+    overflow: hidden;
+    text-align: justify;
+  }
+  .schedule-abstract-read-more {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-left: 3em;
+    background: linear-gradient(to right, transparent, #e8f8f0 30%);
+    font-weight: 700;
+    color: var(--brand);
+    text-decoration: underline;
+  }
+  .schedule-section .item {
+    margin-bottom: 4.5rem;
+  }
+</style>
+
+
+<style>
+  /* Track navigation */
+  .track-nav {
+    padding: 0.75rem 0;
+    margin-bottom: 1.5rem;
+  }
+  .track-nav-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .track-nav-links {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .track-nav-links a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--brand);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+  .track-nav-links a:hover {
+    background: var(--brand-dark);
+    color: white;
+  }
+  .view-toggle-link {
+    color: var(--brand);
+    text-decoration: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--brand);
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+  .view-toggle-link:hover {
+    background: var(--brand);
+    color: white;
+  }
+  .view-toggle-link.active {
+    background: var(--brand);
+    color: white;
+  }
+  /* Table view */
+  .schedule-table-view { display: none; }
+  .schedule-table-view.active { display: block; }
+  .schedule-timeline-view { display: block; }
+  .schedule-timeline-view.hidden { display: none; }
+  .schedule-grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-top: 1rem;
+    table-layout: fixed;
+  }
+  .schedule-grid-table th {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    color: white;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .schedule-grid-table th:first-child {
+    width: 60px;
+  }
+  .schedule-grid-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--brand-lightest);
+    vertical-align: top;
+  }
+  .schedule-grid-table td.merged-cell {
+    text-align: center;
+    font-weight: 500;
+    color: #555;
+    background: var(--brand-lightest);
+  }
+  .schedule-grid-table .time-cell {
+    color: var(--brand);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .schedule-grid-table .talk-cell a {
+    color: #222;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .schedule-grid-table .talk-cell a:hover {
+    color: var(--brand);
+  }
+  .schedule-grid-table .speaker-info {
+    color: #444;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+  }
+  .schedule-grid-table .speaker-info .affiliation {
+    color: #666;
+  }
+  .schedule-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  .schedule-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.8rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  .schedule-meta-divider {
+    color: #ccc;
+    font-weight: 300;
+  }
+  /* Track section header */
+  .track-section-header {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    margin: 2rem 0 0 0;
+    border-radius: 4px 4px 0 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .track-section-header:first-of-type {
+    margin-top: 0;
+  }
+
+  .schedule-section.theme-bg-light { background-color: #f0faf5 !important; }
+</style>
+
+<section id="schedule" class="schedule-section section theme-bg-light">
+  <div class="container">
+    <h2 class="section-heading text-center mb-4">Schedule</h2>
+
+    <!-- Schedule meta info -->
+    <div class="schedule-meta">
+      <span class="schedule-meta-item">October 16, 2023</span>
+      <span class="schedule-meta-divider">•</span>
+      <span class="schedule-meta-item">2 parallel tracks</span>
+      <span class="schedule-meta-divider">•</span>
+      <span class="schedule-meta-item">09AM - 11:30PM</span>
+      <span class="schedule-meta-divider">•</span>
+      <span class="schedule-meta-item">Online, in-person</span>
+    </div>
+
+
+    
+
+    <!-- Track navigation -->
+    <div class="track-nav">
+      <div class="track-nav-inner">
+        <div class="track-nav-links" id="track-links-0">
+
+          <a href="#track-0-1">track 1</a>
+
+          <a href="#track-0-2">track 2</a>
+
+        </div>
+        <span class="view-toggle-link" id="view-toggle-0" onclick="toggleView(0)">view as table</span>
+      </div>
+    </div>
+
+    <!-- Timeline View (default) -->
+    <div id="timeline-view-0" class="schedule-timeline-view">
+
+      <div class="track-section-header" id="track-0-1">track 1 &bull; Track 1</div>
+      <div class="schedule-tab-content">
+        <div class="tab-pane active">
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">09:00</h4>
+              <div class="profile">
+                <a href="#modal-speaker-" data-bs-toggle="modal" data-bs-target="#modal-speaker-"><img class="profile-image rounded-circle mb-2" src="" alt=""></a>
+                <div class="name"></div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3" style="color:#098dcf;">Welcome</h3>
+              <div class="location mb-3" style="color:#098dcf;">Online</div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">09:15</h4>
+              <div class="profile">
+                <a href="#modal-speaker-0" data-bs-toggle="modal" data-bs-target="#modal-speaker-0"><img class="profile-image rounded-circle mb-2" src="../speakers/Ajit Jaokar.png" alt=""></a>
+                <div class="name">Ajit Jaokar</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-0" data-bs-toggle="modal" data-bs-target="#modal-speaker-0">Prompt Engineering: Democratising learning of AI - experiences from the University of Oxford</a>
+              </h3>
+              <div class="location mb-3">University of Oxford<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/1LSdyeqefbw" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract"><a class="schedule-abstract-read-more" href="#modal-speaker-0" data-bs-toggle="modal" data-bs-target="#modal-speaker-0">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">09:45</h4>
+              <div class="profile">
+                <a href="#modal-speaker-1" data-bs-toggle="modal" data-bs-target="#modal-speaker-1"><img class="profile-image rounded-circle mb-2" src="../speakers/Rohan Singh Rajput.png" alt=""></a>
+                <div class="name">Rohan Singh Rajput</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-1" data-bs-toggle="modal" data-bs-target="#modal-speaker-1">Prompt Based Recommendation Systems: A New Era of Personalized Experiences</a>
+              </h3>
+              <div class="location mb-3">Capital One<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/LQ8Lo5nD7eY" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">In the evolving digital landscape, recommendation systems are a critical component in driving customer engagement and satisfaction. With the advent of large language models (LLMs) like GPT-4, a new vista of possibilities has opened up, extending the capabilities of these systems. This session will delve into the intriguing confluence of LLMs and recommendation systems, revealing the future of personalized experiences.
+
+The session will kick off with an introduction to LLMs, followed by an examination of their synergy with recommendation systems. We'll explore the advantages LLMs bring, such as superior context understanding, predictive accuracy, and rich, nuanced personalization. We'll also discuss the challenges, such as potential biases and resource requirements.
+
+A highlight will be case studies, showcasing real-world applications of LLMs in recommendation systems and illustrating how businesses are leveraging this technology to revolutionize their customer engagement strategies.<a class="schedule-abstract-read-more" href="#modal-speaker-1" data-bs-toggle="modal" data-bs-target="#modal-speaker-1">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">10:15</h4>
+              <div class="profile">
+                <a href="#modal-speaker-2" data-bs-toggle="modal" data-bs-target="#modal-speaker-2"><img class="profile-image rounded-circle mb-2" src="../speakers/Ayse Glass.png" alt=""></a>
+                <div class="name">Ayse Glass</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-2" data-bs-toggle="modal" data-bs-target="#modal-speaker-2">Generated Cities and Architecture</a>
+              </h3>
+              <div class="location mb-3">HafenCity University Hamburg<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/V7Z2ZQP-2HA" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">Generating non-existing city concepts, materials and architectural design<a class="schedule-abstract-read-more" href="#modal-speaker-2" data-bs-toggle="modal" data-bs-target="#modal-speaker-2">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">19:45</h4>
+              <div class="profile">
+                <a href="#modal-speaker-" data-bs-toggle="modal" data-bs-target="#modal-speaker-"><img class="profile-image rounded-circle mb-2" src="" alt=""></a>
+                <div class="name"></div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3" style="color:#098dcf;">Break</h3>
+              <div class="location mb-3" style="color:#098dcf;">Online</div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">20:00</h4>
+              <div class="profile">
+                <a href="#modal-speaker-3" data-bs-toggle="modal" data-bs-target="#modal-speaker-3"><img class="profile-image rounded-circle mb-2" src="../speakers/The Prompt King.png" alt=""></a>
+                <div class="name">The Prompt King</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-3" data-bs-toggle="modal" data-bs-target="#modal-speaker-3">Better Prompting with Pseudocode</a>
+              </h3>
+              <div class="location mb-3"><a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/TADrrG6Fhjk" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">In the rapidly-evolving landscape of AI, the way we interact with generative models significantly impacts their usefulness and the outcomes they produce. This session aims to shed light on a technique to streamline AI interactions: pseudocode prompting.
+
+Natural language is great for simple prompts, but it often lacks the precision required for more complex or algorithmic interactions. Enter pseudocode, a simplified semi-formal language that can efficiently guide AI towards desired responses while following specific rules.
+
+Through this session, we'll discuss:
+
+* Principles of pseudocode prompting and how it improves reasoning performance over natural language prompts.
+* Practical strategies and methods for generating and optimizing pseudocode prompts for various applications.
+* How pseudocode prompts can reduce token usage by 20-30%, leading to decreased costs and faster responses.
+* How pseudocode can democratize programming, making it accessible to a wider audience by allowing the specification of requirements as natural-language rules or constraints.
+* Illustrate how structured pseudocode offers easier navigation and maintenance of complex prompts compared to natural language through scope blocks, indentation, and visual encapsulation.
+* Enhancing Response Quality: Using structured templates and queries to minimize poorly-formed responses and reduce token usage.
+
+This session will focus on the practical application of pseudocode in AI, making it highly suitable for those interested in deploying more efficient and robust AI applications.
+
+Whether you are a seasoned data scientist, a developer looking for innovative ways to interact with AI models, or simply an AI enthusiast, this session will equip you with fresh insights and practical strategies for a more efficient AI prompting experience.<a class="schedule-abstract-read-more" href="#modal-speaker-3" data-bs-toggle="modal" data-bs-target="#modal-speaker-3">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">20:30</h4>
+              <div class="profile">
+                <a href="#modal-speaker-4" data-bs-toggle="modal" data-bs-target="#modal-speaker-4"><img class="profile-image rounded-circle mb-2" src="../speakers/Rory Preddy.png" alt=""></a>
+                <div class="name">Rory Preddy</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-4" data-bs-toggle="modal" data-bs-target="#modal-speaker-4">Semantic Kernel: Teaching AI to Not Just Repeat, But Complete!</a>
+              </h3>
+              <div class="location mb-3">Microsoft<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/8ekor35KlxQ" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">Get ready to supercharge your development with Semantic Kernel and Semantic Kernel Tools! This powerful SDK and extension for Visual Studio Code lets you mix conventional programming languages with the latest in Large Language Model AI to deliver delightful and intelligent experiences.
+With SK, you can quickly and easily integrate AI capabilities into your applications without needing to train or fine-tune a model from scratch. And with SK's Skills, Memories, and Connectors, you'll have maximum flexibility to build new experiences that bring unparalleled productivity for your users.
+Plus, with Semantic Kernel Tools, you'll be able to develop your own semantic skills faster and with greater ease. So, what are you waiting for? Join the AI revolution with Semantic Kernel and Semantic Kernel Tools today! <a class="schedule-abstract-read-more" href="#modal-speaker-4" data-bs-toggle="modal" data-bs-target="#modal-speaker-4">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">21:00</h4>
+              <div class="profile">
+                <a href="#modal-speaker-5" data-bs-toggle="modal" data-bs-target="#modal-speaker-5"><img class="profile-image rounded-circle mb-2" src="../speakers/Eric Allen.png" alt=""></a>
+                <div class="name">Eric Allen</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-5" data-bs-toggle="modal" data-bs-target="#modal-speaker-5">Rapid Prototyping with AI</a>
+              </h3>
+              <div class="location mb-3">Doxel<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/hC-28WmlZRk" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">ChatGPT can help you brainstorm. GitHub's Copilot can be a great rubber duck for your codebase. But, what if you want to build something new?
+
+In this talk we'll explore how to leverage current tooling to explore open source models, quickly spin up a model with a persona and instructions, and even build out an MVP with the help of a bot empowered with the ability to write and execute code.
+
+You'll learn about some exciting new tools as well as some tips and tricks for prototyping your next idea using language models.<a class="schedule-abstract-read-more" href="#modal-speaker-5" data-bs-toggle="modal" data-bs-target="#modal-speaker-5">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">21:30</h4>
+              <div class="profile">
+                <a href="#modal-speaker-" data-bs-toggle="modal" data-bs-target="#modal-speaker-"><img class="profile-image rounded-circle mb-2" src="" alt=""></a>
+                <div class="name"></div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3" style="color:#098dcf;">Break</h3>
+              <div class="location mb-3" style="color:#098dcf;">Online</div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">21:45</h4>
+              <div class="profile">
+                <a href="#modal-speaker-6" data-bs-toggle="modal" data-bs-target="#modal-speaker-6"><img class="profile-image rounded-circle mb-2" src="../speakers/Greg Nash.png" alt=""></a>
+                <div class="name">Greg Nash</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-6" data-bs-toggle="modal" data-bs-target="#modal-speaker-6">Building complex data visualisations using ChatGPT: The power of Iterative Prompt Engineering</a>
+              </h3>
+              <div class="location mb-3">GET AI<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/qtXONibuDY8" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">Explore the frontier of data visualization in this session, where we merge the prowess of generative AI with the elegance of Vega-Lite in Microsoft Power BI. Witness the power of Iterative Prompt Engineering as we guide ChatGPT to craft intricate visuals from raw data. Delve into this innovative technique and discover a novel way to tell compelling data stories. Join us for a transformative look at the future of AI-driven data visualization.<a class="schedule-abstract-read-more" href="#modal-speaker-6" data-bs-toggle="modal" data-bs-target="#modal-speaker-6">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">22:15</h4>
+              <div class="profile">
+                <a href="#modal-speaker-7" data-bs-toggle="modal" data-bs-target="#modal-speaker-7"><img class="profile-image rounded-circle mb-2" src="../speakers/Jan Krans.png" alt=""></a>
+                <div class="name">Jan Krans</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-7" data-bs-toggle="modal" data-bs-target="#modal-speaker-7">The Power of Prompting: Rocket Fuel for People with a Growth Mindset; Here's the Proof!</a>
+              </h3>
+              <div class="location mb-3">Atos<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/-dqIEkAK9Ac" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">In a world where generative AI is reshaping the boundaries of what's possible, the power of prompting emerges as the game-changer.
+
+But can it truly be a seismic catalyst for those with a growth mindset?
+
+This session provides the answer by delving deeper into the transformative journey of harnessing generative AI, not just as a tool, but as a partner in exploration, personal development, and growth.
+
+Dive into a personal journey of rediscovery and innovation as we explore 'Mystical Fusion' Tarot system, not as an end product, but as a testament to the creative learning process: the challenges faced, the boundaries pushed, and the lessons learned.
+
+From revisiting a decades-old idea with limited to no programming experience to the triumph of creating a tangible delivery of the project, it's a story of resilience, innovation, and the boundless possibilities that emerge when a growth mindset meets the right tools.
+
+By the end of this journey, what was once a hypothesis before the experiment is now proven, culminating in a fully functional AI-powered Tarot app running on its own server in the cloud, a physical deck of 52 cards, a guiding e-book, and a website, all created during a 2 and a half week creative holiday break.
+
+The proof has been delivered. The power of prompting is rocket fuel for people with a growth mindset. The only limitation is your own creativity and energy, or like Charlie Chaplin once said: "Imagination is nothing without doing".<a class="schedule-abstract-read-more" href="#modal-speaker-7" data-bs-toggle="modal" data-bs-target="#modal-speaker-7">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">22:45</h4>
+              <div class="profile">
+                <a href="#modal-speaker-" data-bs-toggle="modal" data-bs-target="#modal-speaker-"><img class="profile-image rounded-circle mb-2" src="" alt=""></a>
+                <div class="name"></div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3" style="color:#098dcf;">Break</h3>
+              <div class="location mb-3" style="color:#098dcf;">Online</div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">23:00</h4>
+              <div class="profile">
+                <a href="#modal-speaker-8" data-bs-toggle="modal" data-bs-target="#modal-speaker-8"><img class="profile-image rounded-circle mb-2" src="../speakers/Alexander Holmeset.png" alt=""></a>
+                <div class="name">Alexander Holmeset</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-8" data-bs-toggle="modal" data-bs-target="#modal-speaker-8">How can you use prompt engineering to debug PowerShell?</a>
+              </h3>
+              <div class="location mb-3">Sopra Steria<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/8y_osPPlzbw" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">I will go through some simple steps that can help you improve how you debug issues in PowerShell. The methods can be applied to. other languages also. Can it also help you code more effectively?<a class="schedule-abstract-read-more" href="#modal-speaker-8" data-bs-toggle="modal" data-bs-target="#modal-speaker-8">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">23:30</h4>
+              <div class="profile">
+                <a href="#modal-speaker-" data-bs-toggle="modal" data-bs-target="#modal-speaker-"><img class="profile-image rounded-circle mb-2" src="" alt=""></a>
+                <div class="name"></div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3" style="color:#098dcf;">Wrap up</h3>
+              <div class="location mb-3" style="color:#098dcf;">Scan each other's QR codes & head to a nearby pub!</div>
+              
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="track-section-header" id="track-0-2">track 2 &bull; Track 2</div>
+      <div class="schedule-tab-content">
+        <div class="tab-pane active">
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">09:00</h4>
+              <div class="profile">
+                <a href="#modal-speaker-" data-bs-toggle="modal" data-bs-target="#modal-speaker-"><img class="profile-image rounded-circle mb-2" src="" alt=""></a>
+                <div class="name"></div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3" style="color:#098dcf;">Welcome</h3>
+              <div class="location mb-3" style="color:#098dcf;">Online</div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">09:15</h4>
+              <div class="profile">
+                <a href="#modal-speaker-9" data-bs-toggle="modal" data-bs-target="#modal-speaker-9"><img class="profile-image rounded-circle mb-2" src="../speakers/Stephen Perin.png" alt=""></a>
+                <div class="name">Stephen Perin</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-9" data-bs-toggle="modal" data-bs-target="#modal-speaker-9">Navigating the Evolution of Prompt Engineering</a>
+              </h3>
+              <div class="location mb-3">Inetum<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/diO41g9cGxA" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">A Journey through Diverse Patterns and Future Horizons in Generative AI: Prompt Engineering represents a rapidly evolving field within AI. The landscape of prompt patterns has become extensively documented and diversified, encompassing LLM reasoning approaches that span from one-shot to Chain-of-Thought and Tree-of-Thought prompting. In this session, our focus will delve into the evolutionary journey and the future prospects of prompt engineering. We will draw parallels with the historical progression of programming patterns and technologies, offering valuable insights and cross-domain learning opportunities. Join us to explore the dynamic realm of prompts and their role in shaping the landscape of Generative AI.<a class="schedule-abstract-read-more" href="#modal-speaker-9" data-bs-toggle="modal" data-bs-target="#modal-speaker-9">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">09:45</h4>
+              <div class="profile">
+                <a href="#modal-speaker-10" data-bs-toggle="modal" data-bs-target="#modal-speaker-10"><img class="profile-image rounded-circle mb-2" src="../speakers/Jesus Serrano.png" alt=""></a>
+                <div class="name">Jesus Serrano</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-10" data-bs-toggle="modal" data-bs-target="#modal-speaker-10">The Dawn of Universal Creativity: Reinventing Design Workflows!</a>
+              </h3>
+              <div class="location mb-3">Microsoft<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/LKE_mYksvbk" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">Embark on a journey to the Universal Creativity Era, where Generative AI supercharges imagination across design domains. Delve into real-world examples from diverse sectors and with brands such as Disney, Marvel, Starbucks... 
+
+This session showcases AI's transformative role in many different design workflows, from ad campaigns, product and character design, video production, movie casting and costume design, co-branding activities, and even theme park menus design!
+ 
+Witness how AI democratizes creativity, blurring traditional boundaries and welcoming everyone to leave their unique mark in this grand innovation tapestry.<a class="schedule-abstract-read-more" href="#modal-speaker-10" data-bs-toggle="modal" data-bs-target="#modal-speaker-10">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">10:15</h4>
+              <div class="profile">
+                <a href="#modal-speaker-11" data-bs-toggle="modal" data-bs-target="#modal-speaker-11"><img class="profile-image rounded-circle mb-2" src="../speakers/Anand Kulkarni.png" alt=""></a>
+                <div class="name">Anand Kulkarni</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-11" data-bs-toggle="modal" data-bs-target="#modal-speaker-11">Whose Intellectual Property is Prompt Engineering?</a>
+              </h3>
+              <div class="location mb-3">AccleroTech<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/5SFjPfM84Dc" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">Prompt Engineering is revolutionizing business scenarios. But how about the Intellectual Propoerty (IP) rights of this immersive and impactful activity? Is there any IP? Who does it belong to? How to secure it? With rights come duties, what are they?<a class="schedule-abstract-read-more" href="#modal-speaker-11" data-bs-toggle="modal" data-bs-target="#modal-speaker-11">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">19:45</h4>
+              <div class="profile">
+                <a href="#modal-speaker-" data-bs-toggle="modal" data-bs-target="#modal-speaker-"><img class="profile-image rounded-circle mb-2" src="" alt=""></a>
+                <div class="name"></div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3" style="color:#098dcf;">Break</h3>
+              <div class="location mb-3" style="color:#098dcf;">Online</div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">20:00</h4>
+              <div class="profile">
+                <a href="#modal-speaker-12" data-bs-toggle="modal" data-bs-target="#modal-speaker-12"><img class="profile-image rounded-circle mb-2" src="../speakers/Mark Hennings.png" alt=""></a>
+                <div class="name">Mark Hennings</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-12" data-bs-toggle="modal" data-bs-target="#modal-speaker-12">Intro to Fine-tuning</a>
+              </h3>
+              <div class="location mb-3">Simple Booth<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/OIGET79NEsw" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">What fine-tuning is, how it works, its benefits for prompt engineers and production deployments, and how to migrate from an instruction-based prompt to a fine-tuned LLM.<a class="schedule-abstract-read-more" href="#modal-speaker-12" data-bs-toggle="modal" data-bs-target="#modal-speaker-12">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">20:30</h4>
+              <div class="profile">
+                <a href="#modal-speaker-13" data-bs-toggle="modal" data-bs-target="#modal-speaker-13"><img class="profile-image rounded-circle mb-2" src="../speakers/Anastasia Podrabinek.png" alt=""></a>
+                <div class="name">Anastasia Podrabinek</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-13" data-bs-toggle="modal" data-bs-target="#modal-speaker-13">How prompt engineering projects change R &D cycle and team work in enterprise</a>
+              </h3>
+              <div class="location mb-3">Wix<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/LLp68_FIPJM" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">As a Product Manager for AI tools, I see a lot of challenges arising when the uncertainties of AI world meet the well-defined processes of classical engineering projects. These challenges include:
+
+- The nondeterministic nature of natural language inputs and outputs, that creates a lot of uncertainty and widens the gap between the working Proof-of-concept and a well-rounded enterprise level solution.
+- Roles shift: the prompt engineering and testing effort highly relies on team members without engineering background (content writers, marketing professionals) who are experts in language but may lack familiarity with R &D processes.
+- Speed vs. Quality: this old as time conflict creates more tension than ever when a company needs to adopt AI fast without compromising the high quality and security standards
+
+All these things create a lot of friction in big projects, where previously there was a smooth and clear way of planning, execution, testing and delivery.
+In this talk, I'll suggest a few ways to optimize the work, to build good prompt evaluation processes, to teach project teams about prompt engineering and to build a process in which prompt engineering is a normal, well defined and somewhat predictable part of the workflow<a class="schedule-abstract-read-more" href="#modal-speaker-13" data-bs-toggle="modal" data-bs-target="#modal-speaker-13">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">21:00</h4>
+              <div class="profile">
+                <a href="#modal-speaker-14" data-bs-toggle="modal" data-bs-target="#modal-speaker-14"><img class="profile-image rounded-circle mb-2" src="../speakers/PromptGang.png" alt=""></a>
+                <div class="name">C Wen & Zhaohong Wang</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-14" data-bs-toggle="modal" data-bs-target="#modal-speaker-14">Prompt Engineering a Product Manager</a>
+              </h3>
+              <div class="location mb-3">Google & Integra Credit<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/CPf_f6jnpBc" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">In today's fast-paced development cycles, product managers are often swamped with the task of continuously reviewing project tickets to assess the status and potential risks. Our presentation dives into how prompt engineering can be a game-changer in this process. Utilizing natural language processing, we showcase a method for parsing and interpreting the vast array of project tickets to instantly categorize them based on urgency, risk, and other vital metrics originated from internal hackathon project we did to help leadership understand the risks of project from reading thousands of tickets in one pass using LLM models. This enables product managers to make well-informed decisions more efficiently. Furthermore, we present a prototype of an AI-powered assistant built on this methodology, designed to assist product managers in real-time project evaluation and risk management.<a class="schedule-abstract-read-more" href="#modal-speaker-14" data-bs-toggle="modal" data-bs-target="#modal-speaker-14">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">21:30</h4>
+              <div class="profile">
+                <a href="#modal-speaker-" data-bs-toggle="modal" data-bs-target="#modal-speaker-"><img class="profile-image rounded-circle mb-2" src="" alt=""></a>
+                <div class="name"></div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3" style="color:#098dcf;">Break</h3>
+              <div class="location mb-3" style="color:#098dcf;">Online</div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">21:45</h4>
+              <div class="profile">
+                <a href="#modal-speaker-15" data-bs-toggle="modal" data-bs-target="#modal-speaker-15"><img class="profile-image rounded-circle mb-2" src="../speakers/Daniel Kocot.png" alt=""></a>
+                <div class="name">Daniel Kocot</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-15" data-bs-toggle="modal" data-bs-target="#modal-speaker-15">Leveraging Prompt Engineering for Effective OpenAPI Descriptions of APIs</a>
+              </h3>
+              <div class="location mb-3">adorsys<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/Ndn5UiyMgQM" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">In this session, we will delve into the practical and effective use of Prompt Engineering in designing detailed, accurate, and user-friendly OpenAPI descriptions for APIs. OpenAPI, a widely accepted standard for describing RESTful APIs, plays a critical role in API design, development, and usage. It allows both humans and machines to understand and interact with the capabilities of a service without direct access to the source code.
+
+However, creating accurate and comprehensive OpenAPI descriptions can be a daunting task. This is where Prompt Engineering, a cutting-edge technique, can significantly enhance the process. It enables AI models to understand and generate more accurate, contextually relevant responses, hence perfect for crafting intricate API descriptions.
+
+In this session, we will explore strategies for translating API operations into natural language prompts, effective ways of refining API models based on generated prompts, and practical demonstrations of how these techniques can improve the API development workflow. Attendees will gain a deeper understanding of how to leverage AI and Prompt Engineering in producing high-quality OpenAPI descriptions, leading to better-designed, more robust, and easily understandable APIs.<a class="schedule-abstract-read-more" href="#modal-speaker-15" data-bs-toggle="modal" data-bs-target="#modal-speaker-15">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">22:15</h4>
+              <div class="profile">
+                <a href="#modal-speaker-16" data-bs-toggle="modal" data-bs-target="#modal-speaker-16"><img class="profile-image rounded-circle mb-2" src="../speakers/Jeroen Egelmeers.png" alt=""></a>
+                <div class="name">Jeroen Egelmeers</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-16" data-bs-toggle="modal" data-bs-target="#modal-speaker-16">Supercharge Your Productivity: Mastering Prompt Engineering</a>
+              </h3>
+              <div class="location mb-3">Sogeti<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/kjQTp94OZ2g" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">At numerous conferences, there is a growing discussion about the impressive capabilities of the OpenAI API, ChatGPT, MidJourney, and other similar tools. However, a common question consistently arises among the audience: "How can we effectively write prompts?" - The most important task working with those models. Let's answer that question!
+
+Sending a message to ChatGPT or other AI tools seems simple, but expertise lies in mastering prompts for desired outputs. Talks usually cover applications, model explanations, or API usage. This talk is different! In this talk we'll dive into Prompt Engineering!
+
+During this session, Jeroen will explain what Prompt Engineering is, why it is important to learn, will guide you through a step-by-step process called the Crafting AI Prompts Framework, which he has personally developed to create optimal prompts. By the end of the presentation, you will be equipped to effectively utilize the framework, simplifying text-based tasks such as content writing and review, while also expanding into areas like image and slide deck creation, user story development, and even coding: only by using the right prompts!
+
+Don't miss out on this opportunity to enhance your skills, boost your productivity, and stay ahead of the curve!<a class="schedule-abstract-read-more" href="#modal-speaker-16" data-bs-toggle="modal" data-bs-target="#modal-speaker-16">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">22:45</h4>
+              <div class="profile">
+                <a href="#modal-speaker-" data-bs-toggle="modal" data-bs-target="#modal-speaker-"><img class="profile-image rounded-circle mb-2" src="" alt=""></a>
+                <div class="name"></div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3" style="color:#098dcf;">Break</h3>
+              <div class="location mb-3" style="color:#098dcf;">Online</div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">23:00</h4>
+              <div class="profile">
+                <a href="#modal-speaker-17" data-bs-toggle="modal" data-bs-target="#modal-speaker-17"><img class="profile-image rounded-circle mb-2" src="../speakers/Peter Charquero Kestenholz.png" alt=""></a>
+                <div class="name">Peter Charquero Kestenholz</div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3">
+                <a class="theme-link" href="#modal-speaker-17" data-bs-toggle="modal" data-bs-target="#modal-speaker-17">Prompting your next company strategy</a>
+              </h3>
+              <div class="location mb-3">Context&<a class="event-watch-btn event-watch-btn-sm" href="https://youtu.be/lj2QzFgP3pw" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a></div>
+              <div class="desc schedule-abstract">Experience how natural language can assist you and your management team in developing comprehensive strategies based on OKR (Objectives and Key Results) principles, as well as setting up supporting initiatives and projects.
+
+The live demonstration will utilize Azure OpenAI, ChatGPT, and the Microsoft Copilot ecosystem.
+
+The speaker possesses more than 20 years of experience in project portfolio management and has been a Microsoft MVP for 12 years.<a class="schedule-abstract-read-more" href="#modal-speaker-17" data-bs-toggle="modal" data-bs-target="#modal-speaker-17">... Read more</a></div>
+              
+            </div>
+          </div>
+
+          <div class="item item-talk">
+            <div class="meta">
+              <h4 class="time mb-3">23:30</h4>
+              <div class="profile">
+                <a href="#modal-speaker-" data-bs-toggle="modal" data-bs-target="#modal-speaker-"><img class="profile-image rounded-circle mb-2" src="" alt=""></a>
+                <div class="name"></div>
+              </div>
+            </div>
+            <div class="content">
+              
+              <h3 class="title mb-3" style="color:#098dcf;">Wrap up</h3>
+              <div class="location mb-3" style="color:#098dcf;">Scan each other's QR codes & head to a nearby pub!</div>
+              
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Table View -->
+    <div id="table-view-0" class="schedule-table-view">
+      <table class="schedule-grid-table">
+        <thead>
+          <tr>
+            <th>Time</th>
+
+            <th style="width: calc((100% - 60px) / 2)">track 1</th>
+
+            <th style="width: calc((100% - 60px) / 2)">track 2</th>
+
+          </tr>
+        </thead>
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell merged-cell">09:00</td>
+            <td class="talk-cell merged-cell" colspan="2">
+
+              Welcome
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">09:15</td>
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-0" data-bs-toggle="modal" data-bs-target="#modal-speaker-0">Prompt Engineering: Democratising learning of AI - experiences from the University of Oxford</a>
+              <div class="speaker-info">Ajit Jaokar <span class="affiliation">• University of Oxford</span></div>
+            </td>
+
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-9" data-bs-toggle="modal" data-bs-target="#modal-speaker-9">Navigating the Evolution of Prompt Engineering</a>
+              <div class="speaker-info">Stephen Perin <span class="affiliation">• Inetum</span></div>
+            </td>
+
+
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">09:45</td>
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-1" data-bs-toggle="modal" data-bs-target="#modal-speaker-1">Prompt Based Recommendation Systems: A New Era of Personalized Experiences</a>
+              <div class="speaker-info">Rohan Singh Rajput <span class="affiliation">• Capital One</span></div>
+            </td>
+
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-10" data-bs-toggle="modal" data-bs-target="#modal-speaker-10">The Dawn of Universal Creativity: Reinventing Design Workflows!</a>
+              <div class="speaker-info">Jesus Serrano <span class="affiliation">• Microsoft</span></div>
+            </td>
+
+
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">10:15</td>
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-2" data-bs-toggle="modal" data-bs-target="#modal-speaker-2">Generated Cities and Architecture</a>
+              <div class="speaker-info">Ayse Glass <span class="affiliation">• HafenCity University Hamburg</span></div>
+            </td>
+
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-11" data-bs-toggle="modal" data-bs-target="#modal-speaker-11">Whose Intellectual Property is Prompt Engineering?</a>
+              <div class="speaker-info">Anand Kulkarni <span class="affiliation">• AccleroTech</span></div>
+            </td>
+
+
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell merged-cell">19:45</td>
+            <td class="talk-cell merged-cell" colspan="2">
+
+              Break
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">20:00</td>
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-3" data-bs-toggle="modal" data-bs-target="#modal-speaker-3">Better Prompting with Pseudocode</a>
+              <div class="speaker-info">The Prompt King</div>
+            </td>
+
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-12" data-bs-toggle="modal" data-bs-target="#modal-speaker-12">Intro to Fine-tuning</a>
+              <div class="speaker-info">Mark Hennings <span class="affiliation">• Simple Booth</span></div>
+            </td>
+
+
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">20:30</td>
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-4" data-bs-toggle="modal" data-bs-target="#modal-speaker-4">Semantic Kernel: Teaching AI to Not Just Repeat, But Complete!</a>
+              <div class="speaker-info">Rory Preddy <span class="affiliation">• Microsoft</span></div>
+            </td>
+
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-13" data-bs-toggle="modal" data-bs-target="#modal-speaker-13">How prompt engineering projects change R &D cycle and team work in enterprise</a>
+              <div class="speaker-info">Anastasia Podrabinek <span class="affiliation">• Wix</span></div>
+            </td>
+
+
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">21:00</td>
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-5" data-bs-toggle="modal" data-bs-target="#modal-speaker-5">Rapid Prototyping with AI</a>
+              <div class="speaker-info">Eric Allen <span class="affiliation">• Doxel</span></div>
+            </td>
+
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-14" data-bs-toggle="modal" data-bs-target="#modal-speaker-14">Prompt Engineering a Product Manager</a>
+              <div class="speaker-info">C Wen & Zhaohong Wang <span class="affiliation">• Google & Integra Credit</span></div>
+            </td>
+
+
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell merged-cell">21:30</td>
+            <td class="talk-cell merged-cell" colspan="2">
+
+              Break
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">21:45</td>
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-6" data-bs-toggle="modal" data-bs-target="#modal-speaker-6">Building complex data visualisations using ChatGPT: The power of Iterative Prompt Engineering</a>
+              <div class="speaker-info">Greg Nash <span class="affiliation">• GET AI</span></div>
+            </td>
+
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-15" data-bs-toggle="modal" data-bs-target="#modal-speaker-15">Leveraging Prompt Engineering for Effective OpenAPI Descriptions of APIs</a>
+              <div class="speaker-info">Daniel Kocot <span class="affiliation">• adorsys</span></div>
+            </td>
+
+
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">22:15</td>
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-7" data-bs-toggle="modal" data-bs-target="#modal-speaker-7">The Power of Prompting: Rocket Fuel for People with a Growth Mindset; Here's the Proof!</a>
+              <div class="speaker-info">Jan Krans <span class="affiliation">• Atos</span></div>
+            </td>
+
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-16" data-bs-toggle="modal" data-bs-target="#modal-speaker-16">Supercharge Your Productivity: Mastering Prompt Engineering</a>
+              <div class="speaker-info">Jeroen Egelmeers <span class="affiliation">• Sogeti</span></div>
+            </td>
+
+
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell merged-cell">22:45</td>
+            <td class="talk-cell merged-cell" colspan="2">
+
+              Break
+
+            </td>
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell">23:00</td>
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-8" data-bs-toggle="modal" data-bs-target="#modal-speaker-8">How can you use prompt engineering to debug PowerShell?</a>
+              <div class="speaker-info">Alexander Holmeset <span class="affiliation">• Sopra Steria</span></div>
+            </td>
+
+
+
+
+
+
+
+            <td class="talk-cell">
+              <a href="#modal-speaker-17" data-bs-toggle="modal" data-bs-target="#modal-speaker-17">Prompting your next company strategy</a>
+              <div class="speaker-info">Peter Charquero Kestenholz <span class="affiliation">• Context&</span></div>
+            </td>
+
+
+          </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+            <td class="time-cell merged-cell">23:30</td>
+            <td class="talk-cell merged-cell" colspan="2">
+
+              Wrap up
+
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+
+
+
+    <script>
+    function toggleView(day) {
+      const timelineView = document.getElementById('timeline-view-' + day);
+      const tableView = document.getElementById('table-view-' + day);
+      const toggleBtn = document.getElementById('view-toggle-' + day);
+      const trackLinks = document.getElementById('track-links-' + day);
+
+      if (tableView.classList.contains('active')) {
+        tableView.classList.remove('active');
+        timelineView.classList.remove('hidden');
+        toggleBtn.textContent = 'view as table';
+        toggleBtn.classList.remove('active');
+        trackLinks.style.display = 'flex';
+      } else {
+        tableView.classList.add('active');
+        timelineView.classList.add('hidden');
+        toggleBtn.textContent = 'view as timeline';
+        toggleBtn.classList.add('active');
+        trackLinks.style.display = 'none';
+      }
+    }
+    </script>
+
+    
+    <div class="schedule-cta text-center mx-auto mt-4"><a href="https://luma.com/sre" target="_blank" rel="noopener" class="btn btn-secondary btn-lg d-block d-md-inline-block">Upcoming conferences on LUMA</a></div>
+    
+  </div>
+</section>
+
+
+
+
+<section id="speakers" class="speakers-section section">
+  <div class="container">
+    <h3 class="section-heading text-center mb-3">Speakers</h3>
+    <div class="row row-cols-2 row-cols-lg-5">
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-0" data-bs-toggle="modal" data-bs-target="#modal-speaker-0"><img src="../speakers/Ajit Jaokar.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Ajit Jaokar</h5>
+            <div class="card-text mb-3">
+              <div class="meta">University of Oxford</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Ajit_Jaokar_University_of_Oxford_Prompt_Engineering_Democratising_learning_of_AI__experiences_from_t#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/1LSdyeqefbw" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/ajitjaokar/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-8" data-bs-toggle="modal" data-bs-target="#modal-speaker-8"><img src="../speakers/Alexander Holmeset.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Alexander Holmeset</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Sopra Steria</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Alexander_Holmeset_Sopra_Steria_How_can_you_use_prompt_engineering_to_debug_PowerShell#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/8y_osPPlzbw" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/alexander-holmeset-01447123/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-11" data-bs-toggle="modal" data-bs-target="#modal-speaker-11"><img src="../speakers/Anand Kulkarni.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Anand Kulkarni</h5>
+            <div class="card-text mb-3">
+              <div class="meta">AccleroTech</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Anand_Kulkarni_AccleroTech_Whose_Intellectual_Property_is_Prompt_Engineering#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/5SFjPfM84Dc" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/anand-p-kulkarni/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-13" data-bs-toggle="modal" data-bs-target="#modal-speaker-13"><img src="../speakers/Anastasia Podrabinek.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Anastasia Podrabinek</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Wix</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Anastasia_Podrabinek_Wix_How_prompt_engineering_projects_change_R_D_cycle_and_team_work_in_enterpris#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/LLp68_FIPJM" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/anastasia-podrabinek/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-2" data-bs-toggle="modal" data-bs-target="#modal-speaker-2"><img src="../speakers/Ayse Glass.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Ayse Glass</h5>
+            <div class="card-text mb-3">
+              <div class="meta">HafenCity University Hamburg</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Ayse_Glass_HafenCity_University_Hamburg_Generated_Cities_and_Architecture#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/V7Z2ZQP-2HA" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/ayseglass/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-14" data-bs-toggle="modal" data-bs-target="#modal-speaker-14"><img src="../speakers/PromptGang.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">C Wen<br>&amp; Zhaohong Wang</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Google & Integra Credit</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./C_Wen__Zhaohong_Wang_Google__Integra_Credit_Prompt_Engineering_a_Product_Manager#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/CPf_f6jnpBc" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-15" data-bs-toggle="modal" data-bs-target="#modal-speaker-15"><img src="../speakers/Daniel Kocot.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Daniel Kocot</h5>
+            <div class="card-text mb-3">
+              <div class="meta">adorsys</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Daniel_Kocot_adorsys_Leveraging_Prompt_Engineering_for_Effective_OpenAPI_Descriptions_of_APIs#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/Ndn5UiyMgQM" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/danielkocot/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-5" data-bs-toggle="modal" data-bs-target="#modal-speaker-5"><img src="../speakers/Eric Allen.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Eric Allen</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Doxel</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Eric_Allen_Doxel_Rapid_Prototyping_with_AI#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/hC-28WmlZRk" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/allenericr/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-6" data-bs-toggle="modal" data-bs-target="#modal-speaker-6"><img src="../speakers/Greg Nash.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Greg Nash</h5>
+            <div class="card-text mb-3">
+              <div class="meta">GET AI</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Greg_Nash_GET_AI_Building_complex_data_visualisations_using_ChatGPT_The_power_of_Iterative_Prompt_En#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/qtXONibuDY8" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/gregnash78/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-7" data-bs-toggle="modal" data-bs-target="#modal-speaker-7"><img src="../speakers/Jan Krans.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Jan Krans</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Atos</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Jan_Krans_Atos_The_Power_of_Prompting_Rocket_Fuel_for_People_with_a_Growth_Mindset_Heres_the_Proof#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/-dqIEkAK9Ac" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/jankrans/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-16" data-bs-toggle="modal" data-bs-target="#modal-speaker-16"><img src="../speakers/Jeroen Egelmeers.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Jeroen Egelmeers</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Sogeti</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Jeroen_Egelmeers_Sogeti_Supercharge_Your_Productivity_Mastering_Prompt_Engineering#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/kjQTp94OZ2g" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/jegelmeers/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-10" data-bs-toggle="modal" data-bs-target="#modal-speaker-10"><img src="../speakers/Jesus Serrano.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Jesus Serrano</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Microsoft</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Jesus_Serrano_Microsoft_The_Dawn_of_Universal_Creativity_Reinventing_Design_Workflows#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/LKE_mYksvbk" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/jscastro"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-12" data-bs-toggle="modal" data-bs-target="#modal-speaker-12"><img src="../speakers/Mark Hennings.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Mark Hennings</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Simple Booth</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Mark_Hennings_Simple_Booth_Intro_to_Finetuning#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/OIGET79NEsw" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/markhennings/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-17" data-bs-toggle="modal" data-bs-target="#modal-speaker-17"><img src="../speakers/Peter Charquero Kestenholz.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Peter Charquero Kestenholz</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Context&</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Peter_Charquero_Kestenholz_Context_Prompting_your_next_company_strategy#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/lj2QzFgP3pw" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/peterkestenholz/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-1" data-bs-toggle="modal" data-bs-target="#modal-speaker-1"><img src="../speakers/Rohan Singh Rajput.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Rohan Singh Rajput</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Capital One</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Rohan_Singh_Rajput_Capital_One_Prompt_Based_Recommendation_Systems_A_New_Era_of_Personalized_Experie#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/LQ8Lo5nD7eY" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/rohan3/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-4" data-bs-toggle="modal" data-bs-target="#modal-speaker-4"><img src="../speakers/Rory Preddy.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Rory Preddy</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Microsoft</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Rory_Preddy_Microsoft_Semantic_Kernel_Teaching_AI_to_Not_Just_Repeat__But_Complete#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/8ekor35KlxQ" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/rorypreddy/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-9" data-bs-toggle="modal" data-bs-target="#modal-speaker-9"><img src="../speakers/Stephen Perin.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">Stephen Perin</h5>
+            <div class="card-text mb-3">
+              <div class="meta">Inetum</div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./Stephen_Perin_Inetum_Navigating_the_Evolution_of_Prompt_Engineering#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/diO41g9cGxA" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              <li class="list-inline-item"><a  href="https://www.linkedin.com/in/stephenperin/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      <div class="col mb-4">
+        <div class="card rounded">
+          <a href="#modal-speaker-3" data-bs-toggle="modal" data-bs-target="#modal-speaker-3"><img src="../speakers/The Prompt King.png" class="card-img-top rounded-0" alt=""></a>
+          <div class="card-body">
+            <h5 class="card-title mb-2">The Prompt King</h5>
+            <div class="card-text mb-3">
+              <div class="meta"></div>
+            </div><!--//card-text-->
+            <div class="event-card-buttons">
+              <a href="./The_Prompt_King_Better_Prompting_with_Pseudocode#speakers-section" class="event-read-more-btn">Read more</a>
+              <a class="event-watch-btn" href="https://youtu.be/TADrrG6Fhjk" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:middle;margin-right:4px"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>Watch</a>
+            </div>
+          </div><!--//card-->
+          <div class="card-footer text-muted">
+            <ul class="social-list list-inline mb-0">
+              
+              
+              
+              
+            </ul><!--//social-list-->
+          </div>
+        </div><!--//card-->
+      </div><!--//col-->
+
+      
+
+      
+
+    </div><!--//row-->
+    
+  </div><!--//container-->
+
+</section><!--//speakers-section-->
+
+
+
+
+
+<section id="playlist" class="section text-white" style="background: #3DA2E0;">
+  <div class="container text-center">
+    <h3 class="section-heading mb-4 text-white">Watch the Talks</h3>
+    <div class="ratio ratio-16x9" style="max-width: 800px; margin: 0 auto;">
+      <iframe src="https://www.youtube.com/embed/videoseries?list=PLQEYbmzcCfpe-3GLDTtwvfF6MpjLVVFZ1" title="YouTube playlist" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="sponsors" class="sponsors-section section">
+  <div class="container">
+    <h3 class="section-heading text-center mb-3">Sponsors &amp; Partners</h3>
+    <div class="section-intro text-center single-col-max mx-auto mb-5">Want to become a sponsor? Get in touch!</div>
+    <div class="row logos justify-content-center">
+      
+      <div class="logo-item col-6 col-md-4 col-lg-2"><a href="https://arato.ai/" target="_blank"><img src="../sponsors/arato.png" alt=""></a></div>
+      
+      <div class="logo-item col-6 col-md-4 col-lg-2"><a href="https://www.comet.com/" target="_blank"><img src="../sponsors/comet.png" alt=""></a></div>
+      
+      <div class="logo-item col-6 col-md-4 col-lg-2"><a href="https://www.skool.com/ai-productivity-hub/about" target="_blank"><img src="../sponsors/aiproductivityhub.png" alt=""></a></div>
+      
+      <div class="logo-item col-6 col-md-4 col-lg-2"><a href="https://www.prompthub.us/" target="_blank"><img src="../sponsors/prompt-hub.png" alt=""></a></div>
+      
+      <div class="logo-item col-6 col-md-4 col-lg-2"><a href="https://packtpub.com/" target="_blank"><img src="../sponsors/packt.png" alt=""></a></div>
+      
+    </div><!--//row-->
+    <div class="sponsors-cta text-center pt-5"><a class="btn-primary btn btn-lg" href="mailto:hello@promptengineering.rocks">Become A Sponsor</a></div>
+  </div><!--//container-->
+</section><!--//sponsors-section-->
+
+
+
+<style>
+  .modal-speaker .desc p,
+  .modal-speaker .desc li {
+    text-align: justify;
+    line-height: 1.75;
+    color: #444;
+    font-size: 0.95rem;
+  }
+  .modal-speaker .desc {
+    padding-bottom: 0.25rem;
+  }
+</style>
+
+
+<!-- Modal Speaker 0 -->
+<div class="modal modal-speaker modal-speaker-0" id="modal-speaker-0" tabindex="-1" role="dialog" aria-labelledby="speaker-0-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-0-ModalLabel" class="modal-title sr-only"
+>Ajit Jaokar</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Ajit Jaokar.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Ajit Jaokar</h2>
+                          <div class="meta mb-2">University of Oxford</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/ajitjaokar/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Ajit Jaokar is a Visiting Fellow at the University of Oxford and Course Director for AI Cloud and Edge implementations. A leading voice in applied AI, he combines academic research with real-world consulting, including work with the UK Ministry of Justice.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 1 -->
+<div class="modal modal-speaker modal-speaker-1" id="modal-speaker-1" tabindex="-1" role="dialog" aria-labelledby="speaker-1-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-1-ModalLabel" class="modal-title sr-only"
+>Rohan Singh Rajput</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Rohan Singh Rajput.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Rohan Singh Rajput</h2>
+                          <div class="meta mb-2">Capital One</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/rohan3/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>In the evolving digital landscape, recommendation systems are a critical component in driving customer engagement and satisfaction. With the advent of large language models (LLMs) like GPT-4, a new vista of possibilities has opened up, extending the capabilities of these systems. This session will delve into the intriguing confluence of LLMs and recommendation systems, revealing the future of personalized experiences.</p>
+<p>The session will kick off with an introduction to LLMs, followed by an examination of their synergy with recommendation systems. We'll explore the advantages LLMs bring, such as superior context understanding, predictive accuracy, and rich, nuanced personalization. We'll also discuss the challenges, such as potential biases and resource requirements.</p>
+<p>A highlight will be case studies, showcasing real-world applications of LLMs in recommendation systems and illustrating how businesses are leveraging this technology to revolutionize their customer engagement strategies.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Rohan Singh Rajput is a Senior Lead Machine Learning Engineer at Capital One, specializing in scalable ML systems, recommendation engines, and LLM-based platforms. He has over 7 years of experience building AI-driven products across multiple industries.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 2 -->
+<div class="modal modal-speaker modal-speaker-2" id="modal-speaker-2" tabindex="-1" role="dialog" aria-labelledby="speaker-2-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-2-ModalLabel" class="modal-title sr-only"
+>Ayse Glass</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Ayse Glass.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Ayse Glass</h2>
+                          <div class="meta mb-2">HafenCity University Hamburg</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/ayseglass/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>Generating non-existing city concepts, materials and architectural design</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Ayse Glass is an Interim Professor of AI and Digital Methods at HafenCity University Hamburg. Her work spans smart cities, computational design, and AI-driven urban systems, with a strong focus on generative design and simulation.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 3 -->
+<div class="modal modal-speaker modal-speaker-3" id="modal-speaker-3" tabindex="-1" role="dialog" aria-labelledby="speaker-3-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-3-ModalLabel" class="modal-title sr-only"
+>The Prompt King</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/The Prompt King.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">The Prompt King</h2>
+                          <div class="meta mb-2"></div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>In the rapidly-evolving landscape of AI, the way we interact with generative models significantly impacts their usefulness and the outcomes they produce. This session aims to shed light on a technique to streamline AI interactions: pseudocode prompting.</p>
+<p>Natural language is great for simple prompts, but it often lacks the precision required for more complex or algorithmic interactions. Enter pseudocode, a simplified semi-formal language that can efficiently guide AI towards desired responses while following specific rules.</p>
+<p>Through this session, we'll discuss:</p>
+<ul>
+<li>Principles of pseudocode prompting and how it improves reasoning performance over natural language prompts.</li>
+<li>Practical strategies and methods for generating and optimizing pseudocode prompts for various applications.</li>
+<li>How pseudocode prompts can reduce token usage by 20-30%, leading to decreased costs and faster responses.</li>
+<li>How pseudocode can democratize programming, making it accessible to a wider audience by allowing the specification of requirements as natural-language rules or constraints.</li>
+<li>Illustrate how structured pseudocode offers easier navigation and maintenance of complex prompts compared to natural language through scope blocks, indentation, and visual encapsulation.</li>
+<li>Enhancing Response Quality: Using structured templates and queries to minimize poorly-formed responses and reduce token usage.</li>
+</ul>
+<p>This session will focus on the practical application of pseudocode in AI, making it highly suitable for those interested in deploying more efficient and robust AI applications.</p>
+<p>Whether you are a seasoned data scientist, a developer looking for innovative ways to interact with AI models, or simply an AI enthusiast, this session will equip you with fresh insights and practical strategies for a more efficient AI prompting experience.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 4 -->
+<div class="modal modal-speaker modal-speaker-4" id="modal-speaker-4" tabindex="-1" role="dialog" aria-labelledby="speaker-4-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-4-ModalLabel" class="modal-title sr-only"
+>Rory Preddy</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Rory Preddy.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Rory Preddy</h2>
+                          <div class="meta mb-2">Microsoft</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/rorypreddy/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>Get ready to supercharge your development with Semantic Kernel and Semantic Kernel Tools! This powerful SDK and extension for Visual Studio Code lets you mix conventional programming languages with the latest in Large Language Model AI to deliver delightful and intelligent experiences.
+With SK, you can quickly and easily integrate AI capabilities into your applications without needing to train or fine-tune a model from scratch. And with SK's Skills, Memories, and Connectors, you'll have maximum flexibility to build new experiences that bring unparalleled productivity for your users.
+Plus, with Semantic Kernel Tools, you'll be able to develop your own semantic skills faster and with greater ease. So, what are you waiting for? Join the AI revolution with Semantic Kernel and Semantic Kernel Tools today! </p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Rory Preddy is a Principal AI Advocate at Microsoft with over 27 years of experience. A globally recognized speaker, he helps developers adopt cloud and AI technologies through engaging and practical education.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 5 -->
+<div class="modal modal-speaker modal-speaker-5" id="modal-speaker-5" tabindex="-1" role="dialog" aria-labelledby="speaker-5-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-5-ModalLabel" class="modal-title sr-only"
+>Eric Allen</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Eric Allen.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Eric Allen</h2>
+                          <div class="meta mb-2">Doxel</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/allenericr/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>ChatGPT can help you brainstorm. GitHub's Copilot can be a great rubber duck for your codebase. But, what if you want to build something new?</p>
+<p>In this talk we'll explore how to leverage current tooling to explore open source models, quickly spin up a model with a persona and instructions, and even build out an MVP with the help of a bot empowered with the ability to write and execute code.</p>
+<p>You'll learn about some exciting new tools as well as some tips and tricks for prototyping your next idea using language models.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Eric Allen is a full-stack software engineer specializing in applied AI and LLM systems. With 15+ years of experience, he has built and shipped products from early-stage startups to enterprise-scale platforms.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 6 -->
+<div class="modal modal-speaker modal-speaker-6" id="modal-speaker-6" tabindex="-1" role="dialog" aria-labelledby="speaker-6-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-6-ModalLabel" class="modal-title sr-only"
+>Greg Nash</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Greg Nash.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Greg Nash</h2>
+                          <div class="meta mb-2">GET AI</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/gregnash78/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>Explore the frontier of data visualization in this session, where we merge the prowess of generative AI with the elegance of Vega-Lite in Microsoft Power BI. Witness the power of Iterative Prompt Engineering as we guide ChatGPT to craft intricate visuals from raw data. Delve into this innovative technique and discover a novel way to tell compelling data stories. Join us for a transformative look at the future of AI-driven data visualization.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Greg Nash is Director of Cloud &amp; AI Platforms at GET AI and a Microsoft Data Platform MVP. He specializes in helping organizations turn data into actionable insights using Microsoft Fabric, Power BI, and Azure.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 7 -->
+<div class="modal modal-speaker modal-speaker-7" id="modal-speaker-7" tabindex="-1" role="dialog" aria-labelledby="speaker-7-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-7-ModalLabel" class="modal-title sr-only"
+>Jan Krans</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Jan Krans.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Jan Krans</h2>
+                          <div class="meta mb-2">Atos</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/jankrans/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>In a world where generative AI is reshaping the boundaries of what's possible, the power of prompting emerges as the game-changer.</p>
+<p>But can it truly be a seismic catalyst for those with a growth mindset?</p>
+<p>This session provides the answer by delving deeper into the transformative journey of harnessing generative AI, not just as a tool, but as a partner in exploration, personal development, and growth.</p>
+<p>Dive into a personal journey of rediscovery and innovation as we explore 'Mystical Fusion' Tarot system, not as an end product, but as a testament to the creative learning process: the challenges faced, the boundaries pushed, and the lessons learned.</p>
+<p>From revisiting a decades-old idea with limited to no programming experience to the triumph of creating a tangible delivery of the project, it's a story of resilience, innovation, and the boundless possibilities that emerge when a growth mindset meets the right tools.</p>
+<p>By the end of this journey, what was once a hypothesis before the experiment is now proven, culminating in a fully functional AI-powered Tarot app running on its own server in the cloud, a physical deck of 52 cards, a guiding e-book, and a website, all created during a 2 and a half week creative holiday break.</p>
+<p>The proof has been delivered. The power of prompting is rocket fuel for people with a growth mindset. The only limitation is your own creativity and energy, or like Charlie Chaplin once said: "Imagination is nothing without doing".</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Jan Krans is Global Chief Product Officer for Generative AI at Atos, with 25+ years of experience in digital transformation. He focuses on turning AI into measurable business value across enterprise organizations.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 8 -->
+<div class="modal modal-speaker modal-speaker-8" id="modal-speaker-8" tabindex="-1" role="dialog" aria-labelledby="speaker-8-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-8-ModalLabel" class="modal-title sr-only"
+>Alexander Holmeset</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Alexander Holmeset.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Alexander Holmeset</h2>
+                          <div class="meta mb-2">Sopra Steria</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/alexander-holmeset-01447123/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>I will go through some simple steps that can help you improve how you debug issues in PowerShell. The methods can be applied to. other languages also. Can it also help you code more effectively?</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Alexander Holmeset is Manager of Modern Work at Sopra Steria and a Microsoft AI and Teams MVP. He focuses on cloud, collaboration, and helping organizations adopt AI through strong data and platform foundations.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 9 -->
+<div class="modal modal-speaker modal-speaker-9" id="modal-speaker-9" tabindex="-1" role="dialog" aria-labelledby="speaker-9-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-9-ModalLabel" class="modal-title sr-only"
+>Stephen Perin</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Stephen Perin.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Stephen Perin</h2>
+                          <div class="meta mb-2">Inetum</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/stephenperin/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>A Journey through Diverse Patterns and Future Horizons in Generative AI: Prompt Engineering represents a rapidly evolving field within AI. The landscape of prompt patterns has become extensively documented and diversified, encompassing LLM reasoning approaches that span from one-shot to Chain-of-Thought and Tree-of-Thought prompting. In this session, our focus will delve into the evolutionary journey and the future prospects of prompt engineering. We will draw parallels with the historical progression of programming patterns and technologies, offering valuable insights and cross-domain learning opportunities. Join us to explore the dynamic realm of prompts and their role in shaping the landscape of Generative AI.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Stephen Perin is CTO for Integration &amp; Outsourcing at Inetum France, with deep expertise in digital transformation, flow engineering, and generative AI. He advises organizations on IT strategy, innovation, and sustainable software delivery at scale.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 10 -->
+<div class="modal modal-speaker modal-speaker-10" id="modal-speaker-10" tabindex="-1" role="dialog" aria-labelledby="speaker-10-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-10-ModalLabel" class="modal-title sr-only"
+>Jesus Serrano</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Jesus Serrano.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Jesus Serrano</h2>
+                          <div class="meta mb-2">Microsoft</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/jscastro"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>Embark on a journey to the Universal Creativity Era, where Generative AI supercharges imagination across design domains. Delve into real-world examples from diverse sectors and with brands such as Disney, Marvel, Starbucks... </p>
+<p>This session showcases AI's transformative role in many different design workflows, from ad campaigns, product and character design, video production, movie casting and costume design, co-branding activities, and even theme park menus design!</p>
+<p>Witness how AI democratizes creativity, blurring traditional boundaries and welcoming everyone to leave their unique mark in this grand innovation tapestry.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Jesus Serrano is an Innovation Lead at Microsoft Studio42 and a globally recognized AI keynote speaker. He focuses on blending human creativity with AI to build real-world experiences, and has delivered 200+ talks worldwide.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 11 -->
+<div class="modal modal-speaker modal-speaker-11" id="modal-speaker-11" tabindex="-1" role="dialog" aria-labelledby="speaker-11-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-11-ModalLabel" class="modal-title sr-only"
+>Anand Kulkarni</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Anand Kulkarni.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Anand Kulkarni</h2>
+                          <div class="meta mb-2">AccleroTech</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/anand-p-kulkarni/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>Prompt Engineering is revolutionizing business scenarios. But how about the Intellectual Propoerty (IP) rights of this immersive and impactful activity? Is there any IP? Who does it belong to? How to secure it? With rights come duties, what are they?</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Co-Founder of AccleroTech, Anand Kulkarni brings 25+ years of experience at the intersection of technology and business. He specializes in AI-first digital engineering, automation, and enterprise transformation, with a focus on driving productivity and long-term value creation.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 12 -->
+<div class="modal modal-speaker modal-speaker-12" id="modal-speaker-12" tabindex="-1" role="dialog" aria-labelledby="speaker-12-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-12-ModalLabel" class="modal-title sr-only"
+>Mark Hennings</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Mark Hennings.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Mark Hennings</h2>
+                          <div class="meta mb-2">Simple Booth</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/markhennings/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>What fine-tuning is, how it works, its benefits for prompt engineers and production deployments, and how to migrate from an instruction-based prompt to a fine-tuned LLM.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Mark Hennings is Co-founder and CEO of Simple Booth and Founder of Entry Point AI, a platform for fine-tuning LLMs. He is an entrepreneur focused on building creative, AI-driven products and experiences.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 13 -->
+<div class="modal modal-speaker modal-speaker-13" id="modal-speaker-13" tabindex="-1" role="dialog" aria-labelledby="speaker-13-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-13-ModalLabel" class="modal-title sr-only"
+>Anastasia Podrabinek</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Anastasia Podrabinek.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Anastasia Podrabinek</h2>
+                          <div class="meta mb-2">Wix</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/anastasia-podrabinek/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>As a Product Manager for AI tools, I see a lot of challenges arising when the uncertainties of AI world meet the well-defined processes of classical engineering projects. These challenges include:</p>
+<ul>
+<li>The nondeterministic nature of natural language inputs and outputs, that creates a lot of uncertainty and widens the gap between the working Proof-of-concept and a well-rounded enterprise level solution.</li>
+<li>Roles shift: the prompt engineering and testing effort highly relies on team members without engineering background (content writers, marketing professionals) who are experts in language but may lack familiarity with R &amp;D processes.</li>
+<li>Speed vs. Quality: this old as time conflict creates more tension than ever when a company needs to adopt AI fast without compromising the high quality and security standards</li>
+</ul>
+<p>All these things create a lot of friction in big projects, where previously there was a smooth and clear way of planning, execution, testing and delivery.
+In this talk, I'll suggest a few ways to optimize the work, to build good prompt evaluation processes, to teach project teams about prompt engineering and to build a process in which prompt engineering is a normal, well defined and somewhat predictable part of the workflow</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Anastasia Podrabinek is a Product Manager at Wix, focused on data science and AI infrastructure. She brings years of experience building and managing scalable digital products.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 14 -->
+<div class="modal modal-speaker modal-speaker-14" id="modal-speaker-14" tabindex="-1" role="dialog" aria-labelledby="speaker-14-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-14-ModalLabel" class="modal-title sr-only"
+>C Wen & Zhaohong Wang</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/PromptGang.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">C Wen & Zhaohong Wang</h2>
+                          <div class="meta mb-2">Google & Integra Credit</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>In today's fast-paced development cycles, product managers are often swamped with the task of continuously reviewing project tickets to assess the status and potential risks. Our presentation dives into how prompt engineering can be a game-changer in this process. Utilizing natural language processing, we showcase a method for parsing and interpreting the vast array of project tickets to instantly categorize them based on urgency, risk, and other vital metrics originated from internal hackathon project we did to help leadership understand the risks of project from reading thousands of tickets in one pass using LLM models. This enables product managers to make well-informed decisions more efficiently. Furthermore, we present a prototype of an AI-powered assistant built on this methodology, designed to assist product managers in real-time project evaluation and risk management.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 15 -->
+<div class="modal modal-speaker modal-speaker-15" id="modal-speaker-15" tabindex="-1" role="dialog" aria-labelledby="speaker-15-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-15-ModalLabel" class="modal-title sr-only"
+>Daniel Kocot</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Daniel Kocot.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Daniel Kocot</h2>
+                          <div class="meta mb-2">adorsys</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/danielkocot/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>In this session, we will delve into the practical and effective use of Prompt Engineering in designing detailed, accurate, and user-friendly OpenAPI descriptions for APIs. OpenAPI, a widely accepted standard for describing RESTful APIs, plays a critical role in API design, development, and usage. It allows both humans and machines to understand and interact with the capabilities of a service without direct access to the source code.</p>
+<p>However, creating accurate and comprehensive OpenAPI descriptions can be a daunting task. This is where Prompt Engineering, a cutting-edge technique, can significantly enhance the process. It enables AI models to understand and generate more accurate, contextually relevant responses, hence perfect for crafting intricate API descriptions.</p>
+<p>In this session, we will explore strategies for translating API operations into natural language prompts, effective ways of refining API models based on generated prompts, and practical demonstrations of how these techniques can improve the API development workflow. Attendees will gain a deeper understanding of how to leverage AI and Prompt Engineering in producing high-quality OpenAPI descriptions, leading to better-designed, more robust, and easily understandable APIs.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Daniel Kocot is a Principal Integration Architect at adorsys, specializing in API strategy and scalable architectures. He helps organizations design API ecosystems as strategic assets for AI and digital transformation.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 16 -->
+<div class="modal modal-speaker modal-speaker-16" id="modal-speaker-16" tabindex="-1" role="dialog" aria-labelledby="speaker-16-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-16-ModalLabel" class="modal-title sr-only"
+>Jeroen Egelmeers</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Jeroen Egelmeers.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Jeroen Egelmeers</h2>
+                          <div class="meta mb-2">Sogeti</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/jegelmeers/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>At numerous conferences, there is a growing discussion about the impressive capabilities of the OpenAI API, ChatGPT, MidJourney, and other similar tools. However, a common question consistently arises among the audience: "How can we effectively write prompts?" - The most important task working with those models. Let's answer that question!</p>
+<p>Sending a message to ChatGPT or other AI tools seems simple, but expertise lies in mastering prompts for desired outputs. Talks usually cover applications, model explanations, or API usage. This talk is different! In this talk we'll dive into Prompt Engineering!</p>
+<p>During this session, Jeroen will explain what Prompt Engineering is, why it is important to learn, will guide you through a step-by-step process called the Crafting AI Prompts Framework, which he has personally developed to create optimal prompts. By the end of the presentation, you will be equipped to effectively utilize the framework, simplifying text-based tasks such as content writing and review, while also expanding into areas like image and slide deck creation, user story development, and even coding: only by using the right prompts!</p>
+<p>Don't miss out on this opportunity to enhance your skills, boost your productivity, and stay ahead of the curve!</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Jeroen Egelmeers is a Prompt Engineering Advocate at Sogeti and a public speaker on generative AI. He specializes in prompt engineering, AI adoption, and training teams to effectively work with LLMs.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+<!-- Modal Speaker 17 -->
+<div class="modal modal-speaker modal-speaker-17" id="modal-speaker-17" tabindex="-1" role="dialog" aria-labelledby="speaker-17-ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 id="speaker-17-ModalLabel" class="modal-title sr-only"
+>Peter Charquero Kestenholz</h4>
+          </div>
+          <div class="modal-body p-0">
+              <div class="theme-bg-light p-5">
+                  <div class="row">
+                      <div class="col-12 col-md-auto text-center">
+                          <img class="profile-image mb-3 mb-md-0 me-md-4 rounded-circle mx-auto" src="../speakers/Peter Charquero Kestenholz.png" alt="" />
+                      </div>
+
+                      <div class="col text-center text-md-start mx-auto">
+                          <h2 class="name mb-2">Peter Charquero Kestenholz</h2>
+                          <div class="meta mb-2">Context&</div>
+                          <ul class="social-list list-inline mb-0">
+                            
+                            <li class="list-inline-item"><a  href="https://www.linkedin.com/in/peterkestenholz/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+                            
+                            
+                          </ul><!--//social-list-->
+                      </div><!--//col-->
+                  </div><!--//row-->
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Abstract</h5>
+                <p><p>Experience how natural language can assist you and your management team in developing comprehensive strategies based on OKR (Objectives and Key Results) principles, as well as setting up supporting initiatives and projects.</p>
+<p>The live demonstration will utilize Azure OpenAI, ChatGPT, and the Microsoft Copilot ecosystem.</p>
+<p>The speaker possesses more than 20 years of experience in project portfolio management and has been a Microsoft MVP for 12 years.</p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <p></p>
+              </div>
+              <div class="desc p-2 p-lg-3">
+                <h5 style="color:var(--brand);font-weight:700;">Bio</h5>
+                <p><p>Peter Charquero Kestenholz is Founder and Head of Innovation at Context&amp; and a Microsoft MVP. With over 20 years of experience, he leads AI-driven transformation initiatives and helps organizations navigate the shift to agentic AI.</p></p>
+              </div>
+          </div><!--//modal-body-->
+      </div><!--//modal-content-->
+  </div><!--//modal-dialog-->
+</div><!--//modal-->
+
+
+
+
+
+
+
+<footer class="footer py-5 theme-bg-primary">
+    <div class="container text-center">
+
+        <ul class="social-list list-inline mb-4">
+            <li class="list-inline-item me-3"><a target="_blank" href="https://luma.com/sre" style="text-decoration:none;">✦</a></li>
+            <li class="list-inline-item me-3"><a target="_blank" href="https://discord.gg/ravEjTxNAX"><i class="fab fa-discord fa-fw"></i></a></li>
+            <li class="list-inline-item me-3"><a target="_blank" href="https://www.linkedin.com/company/prompt-engineering-conference/"><i class="fab fa-linkedin fa-fw"></i></a></li>
+            <li class="list-inline-item me-3"><a href="mailto:salnikov@gmail.com"><i class="fas fa-envelope fa-fw"></i></a></li>
+            <li class="list-inline-item me-0"><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@PromptEngineeringConf"><i class="fab fa-youtube fa-fw"></i></a></li>
+        </ul>
+
+    </div><!--//container-->
+</footer>
+
+
+<!-- Javascript -->
+<script src="assets/plugins/popper.min.js"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="assets/plugins/smoothscroll.min.js"></script>
+<script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

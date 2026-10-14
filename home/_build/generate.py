@@ -232,6 +232,35 @@ with open(BASE_FOLDER + "/headshots/index.html", "w", encoding="utf-8") as f:
     print("Writing out headshots/index.html (hidden, not in sitemap)")
     f.write(env.get_template("headshots.html").render(page="headshots.html", **context))
 
+# Root 404.html (GitHub Pages serves it for any missing path; 2026-10-14, before this PEC showed GitHub's own page):
+# the sister sites' 404 with the PEC logo instead of a mascot. No folder renames on PEC, so no redirect rules.
+print(DIVIDER)
+with open(BASE_FOLDER + "/404.html", "w", encoding="utf-8") as f:
+    print("Writing out 404.html")
+    f.write(env.get_template("404.html").render(**{**context, "brand_name": context.get("brand_name") or "Prompt Engineering Conference",
+                                                    "brand_color": "#6b40d8", "punchline": "this page was a hallucination", "redirects": []}))
+
+# /404-index.json: what the 404 page may suggest ("Did you mean ...") or, for harmless slips, redirect to. Same as
+# the sister sites: event folders of home/metadata.yml (upcoming first) + the pages each one built (../<folder>/static/*.html,
+# the root Makefile builds events before home). Hidden pages live in sub-folders and are never listed.
+import json as _json404
+_idx_events, _idx_pages = [], {}
+for _upcoming, _key in ((True, "events"), (False, "events_past")):
+    for _ev in (context.get(_key) or []):
+        _u = str((_ev or {}).get("url") or "")
+        if not _u.startswith("./"):
+            continue                                         # external link, not a folder of this site
+        _f = _u.strip("./").strip("/")
+        if not _f or "/" in _f or any(e["folder"] == _f for e in _idx_events):
+            continue
+        _idx_events.append({"folder": _f, "path": "/" + _f + "/", "name": str(_ev.get("name") or _f),
+                            "upcoming": 1 if _upcoming else 0, "order": len(_idx_events)})
+        _idx_pages[_f] = sorted(os.path.basename(_p) for _p in glob.glob("../" + _f + "/static/*.html")
+                                if os.path.basename(_p).lower() != "index.html")
+with open(BASE_FOLDER + "/404-index.json", "w", encoding="utf-8") as f:
+    _json404.dump({"events": _idx_events, "pages": _idx_pages, "site": ["/"]}, f, ensure_ascii=False, separators=(",", ":"))
+print("Writing out 404-index.json (%d event folders, %d pages)" % (len(_idx_events), sum(len(v) for v in _idx_pages.values())))
+
 # STATUS PAGE (hidden, /status/): lineup + sponsor progress of every upcoming event.
 # Talks: rows of ../<event>/_db/talks.csv with a live status (talk / keynote / workshop, legacy "confirmed"), against 12 slots
 # per track (tracks from the event metadata); status "draft" rows are shown next to them ("+ N draft") but never count. Sponsors: the event's sponsors list minus the partner

@@ -628,6 +628,12 @@
     color: #444;
     font-size: 0.95rem;
   }
+  /* Phones: justified text in a narrow column leaves big gaps between words */
+  @media (max-width: 767.98px) {
+    .modal-speaker .desc p,
+    .modal-speaker .desc li,
+    .schedule-abstract { text-align: left; }
+  }
   .modal-speaker .desc {
     padding-bottom: 0.25rem;
   }

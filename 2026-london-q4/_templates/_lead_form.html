@@ -35,7 +35,7 @@
       <div class="lead-group" data-group="budget">
         <div class="lead-group-label">Budget</div>
         <div class="lead-chips">
-          {% for m in ['No budget', '$1K-5K', '$5K-10K', '$10K+'] %}
+          {% for m in ['No budget', 'Under $1K', '$1K-5K', '$5K-10K', '$10K-25K', '$25K+'] %}
           <label class="lead-chip"><input type="radio" name="budget" value="{{ m }}"><span>{{ m }}</span></label>
           {% endfor %}
         </div>

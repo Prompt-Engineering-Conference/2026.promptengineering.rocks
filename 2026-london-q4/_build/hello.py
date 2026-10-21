@@ -1,6 +1,6 @@
 """/<event>/hello/ - the opening deck shown on the venue screen before the first talk (Marek 2026-10-19, after the
 PLATFORMday Austin deck): Hello <city>, the team, WhatsApp + LinkedIn, the event's partners, the sister brands,
-the open-source projects (cfp.ninja, Reliaburger) and a Reliaburger slide with reliaburger.com's catchphrase, the sister
+the community tools (cfp.ninja) and a Reliaburger slide drawn like reliaburger.com's hero (live version + catchphrase), the sister
 brands' upcoming events, then this brand's mascot sticker with its upcoming events. Full-screen button + clicker keys in the page.
 
 Everything comes from data, nothing is typed per event:
@@ -10,9 +10,10 @@ Everything comes from data, nothing is typed per event:
   - the sister sites' published metadata.yml (https://llmday.com/metadata.yml and /<event>/metadata.yml),
     fetched once per build run and cached 30 min in ../.cache/hello-sisters.json (stale copy if the fetch fails;
     SKIP_CFP_CHECK=1 or SKIP_HELLO_FETCH=1 = offline build, cache only)
-  - panoramas/<city_name>.jpg tinted in the brand's colours (the City view picture) behind slides 1 and 4
-  - the open_source entries with `spotlight`: their site's <h1> + eyebrow line (cached 30 min in ../.cache/hello-pitch.json,
-    same offline rules)
+  - panoramas/<city_name>.jpg tinted in the brand's colours (the City view picture) behind slide 1; the event's
+    assets/images/venue/venue-1.jpg behind slide 4 (partners), the panorama when there is none
+  - the open_source entries with `spotlight`: their site's <h1>, eyebrow line and wordmark (cached 30 min in
+    ../.cache/hello-pitch.json, same offline rules); the page re-reads the <h1> + eyebrow itself every 15 min
 Not built for past/ events (../.past-events, written by make stage).
 
 Built for bad venue wifi (2026-10-20): the QR codes are inline SVG (qr_svg below), the pictures are sized WebPs (_Img),
@@ -385,7 +386,7 @@ def _sister_events(brands):
 MAP = {'lon0': -130.0, 'lon1': 110.0, 'lat0': -38.0, 'lat1': 64.0, 'w': 1600}
 MAP_X, MAP_Y = 160, 306
 MAP_PAD = (160, 160, 150, 10)   # left, right, top, bottom: the PNG runs on to the slide's edges, feathered out (PAD_* there)
-_KEEP_OUT = [(40, 810, 290, 1060), (1540, 690, 1920, 1080), (0, 0, 1920, 290), (600, 1010, 1320, 1080)]   # QR, mascot, heading, "many more"
+_KEEP_OUT = [(40, 750, 350, 1060), (1490, 620, 1920, 1080), (0, 0, 400, 330), (400, 0, 1920, 200)]   # QR, mascot, logo, heading
 
 
 def _miller(lat):
@@ -479,7 +480,7 @@ IMG_SCALE = 2
 IMG_CACHE = '../.cache/hello-img'
 IMG_VERSION = '1'                                            # bump to re-encode everything
 BOX_LOGO = (340, 340)                                        # the biggest a brand / open-source logo is drawn
-BOX_MASCOT = (330, 330)                                      # mascots and stickers: 320-330 px tall
+BOX_MASCOT = (430, 430)                                      # mascots and stickers: 320 px (Hello) to 429 px (maps) tall
 BOX_TEAM = (250, 250)
 
 
@@ -565,14 +566,19 @@ def _text(fragment):
 
 
 def _site_pitch(url):
-    """the site's current catchphrase: its <h1> (one line per <br>) and the small line above it (.eyebrow)"""
+    """the site's current catchphrase: its <h1> (one line per <br>), the small line above it (.eyebrow, with the version)
+    and its masthead wordmark (.wordmark = .mark tile + name)"""
     req = urllib.request.Request(url, headers={'User-Agent': 'hello-deck-build'})
     with urllib.request.urlopen(req, timeout=8) as r:
         page = r.read().decode('utf-8', 'replace')
     h1 = re.search(r'<h1\b[^>]*>(.*?)</h1>', page, re.S | re.I)
     lines = [_text(x) for x in re.split(r'<br\s*/?>', h1.group(1), flags=re.I)] if h1 else []
     eyebrow = re.search(r'class="[^"]*\beyebrow\b[^"]*"[^>]*>(.*?)</', page, re.S | re.I)
-    return {'lines': [x for x in lines if x], 'eyebrow': _text(eyebrow.group(1)) if eyebrow else ''}
+    word = re.search(r'<a\b[^>]*class="[^"]*\bwordmark\b[^"]*"[^>]*>(.*?)</a>', page, re.S | re.I)   # <span class="mark">r/</span>reliaburger
+    mark = re.search(r'class="[^"]*\bmark\b[^"]*"[^>]*>(.*?)</span>', word.group(1), re.S | re.I) if word else None
+    return {'lines': [x for x in lines if x], 'eyebrow': _text(eyebrow.group(1)) if eyebrow else '',
+            'mark': _text(mark.group(1)) if mark else '',
+            'word': _text(word.group(1)[mark.end():] if mark else word.group(1)) if word else ''}
 
 
 def _pitches(projects):
@@ -711,6 +717,7 @@ def _build(context, env, base_folder):
         'linkedin_url': linkedin, 'linkedin_qr': qr_svg(linkedin) if linkedin else '',
         'home_url': base, 'home_qr': qr_svg(base),
         'city_bg': img.panorama(city, theme.get('pano_lo', '#000000'), theme.get('pano_hi', '#888888')),
+        'venue_bg': img.picture('assets/images/venue/venue-1.jpg', (1920, 1080)),   # behind the partners slide
         'team': [dict(t, src=asset(t.get('photo'), BOX_TEAM)) for t in cfg.get('team') or []],
         'sponsors': sponsors,
         'family': [b for b in brands if b['key'] != key and b.get('family', True)],

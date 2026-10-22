@@ -114,30 +114,12 @@ jobs:
           path: .cache
           key: site-cache-${{ github.run_id }}
 
-      # static/ goes out as one fresh commit on gh-pages (it keeps only the live site, not every past version - the repo had
-      # grown to GBs). The live branch is fetched without file contents (seconds, where the old deploy action downloaded the
-      # whole site, ~1 min on SREday) and the push sends only new or changed files. The live CNAME is kept when static/ has
-      # none, as the old action did; an unchanged site is not pushed again.
       - name: Deploy
-        env:
-          GH_PAGES_TOKEN: ${{ github.token }}
-        run: |
-          export GIT_DIR=$RUNNER_TEMP/pages/.git GIT_WORK_TREE=$PWD/static GIT_INDEX_FILE=$RUNNER_TEMP/pages.index
-          git init -q "$RUNNER_TEMP/pages"
-          printf '.github/\n.ssh/\n' > "$GIT_DIR/info/exclude"   # left out, as the old deploy action did
-          git remote add origin "https://x-access-token:${GH_PAGES_TOKEN}@github.com/${{ github.repository }}.git"
-          old=""
-          if git fetch -q --filter=blob:none --depth=1 origin gh-pages; then old=$(git rev-parse FETCH_HEAD); fi
-          git add -A
-          if [ ! -e static/CNAME ] && [ -n "$old" ] && cname=$(git rev-parse -q --verify "$old:CNAME"); then
-            git update-index --add --cacheinfo "100644,$cname,CNAME"
-          fi
-          tree=$(git write-tree)
-          if [ -n "$old" ] && [ "$tree" = "$(git rev-parse "$old^{tree}")" ]; then echo "Nothing changed: the live site is already this build"; exit 0; fi
-          commit=$(git -c user.name="${{ github.actor }}" -c user.email="${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com" \
-            commit-tree "$tree" -m "Deploying to gh-pages from @ ${{ github.repository }}@${{ github.sha }} 🚀")
-          git push -q --force origin "$commit:refs/heads/gh-pages"
-          echo "Deployed $commit"
+        uses: JamesIves/github-pages-deploy-action@v4.4.0
+        with:
+          branch: gh-pages
+          folder: static
+          single-commit: true   # gh-pages keeps only the live site, not every past version (the repo had grown to GBs)
 
       - name: Build time
         if: always()

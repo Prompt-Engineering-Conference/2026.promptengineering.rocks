@@ -124,6 +124,7 @@ jobs:
         run: |
           export GIT_DIR=$RUNNER_TEMP/pages/.git GIT_WORK_TREE=$PWD/static GIT_INDEX_FILE=$RUNNER_TEMP/pages.index
           git init -q "$RUNNER_TEMP/pages"
+          printf '.github/\n.ssh/\n' > "$GIT_DIR/info/exclude"   # left out, as the old deploy action did
           git remote add origin "https://x-access-token:${GH_PAGES_TOKEN}@github.com/${{ github.repository }}.git"
           old=""
           if git fetch -q --filter=blob:none --depth=1 origin gh-pages; then old=$(git rev-parse FETCH_HEAD); fi

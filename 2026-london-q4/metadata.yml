@@ -27,14 +27,16 @@ breaks:
   talks_before: 5
 
 sponsors:
-  - logo: harness.png
-    url: https://www.harness.io/
+  - logo: coral.png
+    url: https://withcoral.com/
   - logo: aiproductivityhub.png
     url: https://www.skool.com/ai-productivity-hub/about
   - logo: prompt-hub.png
     url: https://www.prompthub.us/
   - logo: packt.png
     url: https://packtpub.com/
+  - logo: reliaburger.png
+    url: https://reliaburger.com/
   - logo: hockeystick.png
     url: https://www.hockeystick.show
   - logo: pe-norway-full.png

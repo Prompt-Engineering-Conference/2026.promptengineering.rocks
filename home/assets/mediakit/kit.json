@@ -1,0 +1,44 @@
+[
+ {
+  "file": "pec-logo-token.png",
+  "label": "Logo, colour",
+  "note": "2229×918 PNG",
+  "bg": "light"
+ },
+ {
+  "file": "pec-logo-token.svg",
+  "label": "Logo, colour, vector",
+  "note": "Vector (SVG)",
+  "bg": "light"
+ },
+ {
+  "file": "pec-logo.png",
+  "label": "Logo",
+  "note": "1060×386 PNG",
+  "bg": "light"
+ },
+ {
+  "file": "pec-logo.svg",
+  "label": "Logo, vector",
+  "note": "Vector (SVG)",
+  "bg": "light"
+ },
+ {
+  "file": "pec-logo-white.png",
+  "label": "Logo, white",
+  "note": "1060×386 PNG",
+  "bg": "dark"
+ },
+ {
+  "file": "pec-logo-white.svg",
+  "label": "Logo, white, vector",
+  "note": "Vector (SVG)",
+  "bg": "dark"
+ },
+ {
+  "file": "pec-avatar.png",
+  "label": "Avatar",
+  "note": "650×650 PNG",
+  "bg": "light"
+ }
+]

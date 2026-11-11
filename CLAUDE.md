@@ -76,6 +76,9 @@ The "I need more stats" expandable section on the sponsorship page has two kinds
 ## Sister repos
 Same structure: `llmday` (the reference copy), `sreday`, `platformday`. Ports go llmday -> PEC. Since 2026-10-06 `_event_template/_build/generate.py` is byte-identical in all four repos (PEC-specific values come from metadata: `brand_key: pec`, `brand_domain`); keep it that way - port llmday's file verbatim. Deliberate PEC differences live in the templates (`_base.html` design, single-brand `_lead_form.html`, own attendee data in `sponsorship.html`) and in `home/` (no ambassadors/host pages, PEC-only `_STATUS_BRANDS`, own GitHub org). Marek: **PEC is no sister brand** on the sites - no cross-brand buttons, no PEC chip on the other brands' forms.
 
+## London lineup comes from LLMday ("transpose the lineup from LLMday to PEC")
+PEC London 2026 = LLMday London 2026 Q4 (one co-located event, llmday is the source of truth). `python _build/recircle.py transpose [event]` copies llmday's `talks.csv` byte for byte and puts every headshot the lineup uses on the **PEC circle**: missing ones and any still on the LLMday circle are re-mixed from `llmday/speakers/`, PEC-circle ones are never touched. Never copy an llmday headshot over as it is. `audit` lists which circle each headshot is on. Circle colour maps: `_build/circles/`.
+
 ## Forms (lead form + hidden organizer pages)
 The lead form and the hidden `/<event>/{onboarding,fasttrack,invitation,onboardsponsor}/` pages share the Apps Script deployments of llmday (`llmday/_build/*.gs`, brand key `pec` from `brand_key` in the event `metadata.yml`). PEC has no mail alias: emails go out from `mark@llmday.com`, the fast-track `anna@` route resolves to `anna@llmday.com`, the speaker discount code is `PEC20`. The PEC lead form has no "which conference" picker. See README for details.
 

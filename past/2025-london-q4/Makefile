@@ -7,7 +7,7 @@ deps:
 clean:
 	rm -rf ./static/*
 
-theme:
+theme: deps   # static/ must exist first: under make -j, cp into a missing static/ made static a copy of assets/ (home lost its CSS, 2026-11-11)
 	cp -r ../_assets/template_v1/* static/
 	cp -r assets static
 	cp -r ../sponsors static

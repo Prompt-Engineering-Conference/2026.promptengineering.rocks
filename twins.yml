@@ -1,0 +1,6 @@
+# Twin events (Marek 2026-11-27): PEC London is the same event as LLMday London "until further notice" - one
+# lineup, schedule, sponsors, Luma and CFP, all built in llmday. Each entry here makes PEC's folder a copy of
+# llmday's (brand kept, see _build/twin.yml); .github/workflows/twin.yml keeps it so every 15 minutes and on
+# every push. Change a twin in llmday, never here. To let a PEC event go its own way, remove its entry.
+- source: 2026-london-q4     # llmday folder
+  folder: 2026-london-q4     # PEC folder

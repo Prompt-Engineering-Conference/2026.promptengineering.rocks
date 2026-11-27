@@ -1,0 +1,18 @@
+# Twin events (see _build/twin_sync.py): what stays PEC's in a twin's folder. Everything else - every other
+# metadata key (including any llmday adds later), _db/, _build/, the other templates, slides, venue pictures -
+# is copied from llmday, so the twin cannot drift. Patterns are fnmatch globs.
+brand_keys:
+  - brand_*            # brand_name, brand_key, brand_domain, brand_color, analytics ids...
+  - logo_image
+  - base_path
+  - base_folder
+  - twitter_url
+  - linkedin_url
+  - youtube_url
+  - youtube_playlist
+  - mailto
+  - hero_pictures
+brand_files:            # paths inside the event folder
+  - _templates/_base.html        # PEC design, logo, nav
+  - _templates/_lead_form.html   # single-brand lead form (no conference/region chips)
+  - _templates/sponsorship.html  # PEC colours and attendee data

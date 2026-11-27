@@ -1,0 +1,59 @@
+name: Twin events
+
+# Twin events (Marek 2026-11-27): a PEC event listed in twins.yml is the same event as its LLMday one - one lineup,
+# schedule, sponsors, Luma and CFP, built in llmday. This copies llmday's folder over PEC's (PEC brand kept, see
+# _build/twin.yml) every 15 minutes and after every push here, so the two can never drift: an edit made in PEC to a
+# twin's facts is put back. Change a twin in llmday. A copy commit queues the site build itself (pushes made with
+# the workflow's own token don't start other workflows).
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: twin
+  cancel-in-progress: false
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: llmday (public, only what the twins need)
+        run: |
+          folders=$(python3 -c "import yaml; print(' '.join(t['source'] for t in yaml.safe_load(open('twins.yml')) or []))")
+          git clone --quiet --depth 1 --filter=blob:none --sparse https://github.com/sreday/llmday.git ../llmday
+          paths="home/metadata.yml speakers sponsors"
+          for f in $folders; do paths="$paths $f past/$f"; done
+          git -C ../llmday sparse-checkout set --no-cone $paths
+          echo "LLMDAY_SHA=$(git -C ../llmday rev-parse --short=7 HEAD)" >> $GITHUB_ENV
+
+      - name: Deps
+        run: pip install --quiet pyyaml numpy "Pillow==13.0.0"
+
+      - name: Copy the twins
+        run: |
+          python _build/twin_sync.py | tee /tmp/twin.txt
+          { echo "## Twin events (llmday $LLMDAY_SHA)"; echo; echo '```'; cat /tmp/twin.txt; echo '```'; } >> $GITHUB_STEP_SUMMARY
+
+      - name: Commit and build
+        run: |
+          git add -A
+          if git diff --cached --quiet; then echo "Twins already identical to llmday $LLMDAY_SHA"; exit 0; fi
+          { echo "Twin: copy from LLMday $LLMDAY_SHA"; echo; grep '^  ~' /tmp/twin.txt | head -40; } > /tmp/msg.txt
+          git -c user.name="Twin events" -c user.email="actions@github.com" commit --quiet -F /tmp/msg.txt
+          for i in 1 2 3; do
+            git push --quiet origin HEAD:main && break
+            git pull --quiet --rebase origin main   # someone pushed meanwhile: copy on top of theirs
+          done
+          gh workflow run static-build.yml --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}

@@ -367,6 +367,7 @@
 {% endif %}
 <main class="wrap">
   <div class="brand">{{ brand_name }} · status</div>
+  {% if status_twins %}<div class="sub" style="margin:0 0 14px">{% for t in status_twins %}Twin of <a href="{{ t.source_url }}">{{ t.source_url | replace('https://', '') }}</a> ({{ t.folder }}): copied from LLMday every 15 min{% if t.commit %}, last change {{ t.date }} (<a href="https://github.com/Prompt-Engineering-Conference/2026.promptengineering.rocks/commit/{{ t.commit }}">{{ t.commit }}</a>, LLMday {{ t.llmday }}){% endif %}. Change it in llmday.{% if not loop.last %}<br>{% endif %}{% endfor %}</div>{% endif %}
   <h1>Upcoming conferences</h1>
   <div class="sub">Confirmed talks, standardized {{ status_slots }} talks per track. Check start/end time to decide if we should accept more.</div>
   <div class="legend">

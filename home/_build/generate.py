@@ -243,6 +243,28 @@ print("CFP buttons on the upcoming event cards")
 for _ev in (context.get("events") or []):
     _cfp_folder = str(_ev.get("url") or "").strip("./").rstrip("/")
     _ev["cfp_button_url"] = _home_cfp_button(_cfp_folder) if _cfp_folder and os.path.isdir("../" + _cfp_folder) else ""
+# the hero "CFP" button opens the first upcoming event's open CFP (a twin's is llmday's cfp.ninja event, the one shared
+# CFP of both brands); with none open it searches cfp.ninja as before
+context["hero_cfp_url"] = next((e["cfp_button_url"] for e in (context.get("events") or []) if e.get("cfp_button_url")), "")
+
+# TWIN EVENTS (Marek 2026-11-27, ../twins.yml): PEC events that are copies of an LLMday event (workflow twin.yml).
+# /status/ shows each with the last copy commit, so anyone can see the twin is being kept.
+import subprocess
+_twin_rows = []
+try:
+    with open("../twins.yml", encoding="utf-8") as _f:
+        _twins = yaml.load(_f, Loader=yaml.FullLoader) or []
+except OSError:
+    _twins = []
+for _t in _twins:
+    _tf = _t.get("folder") or _t.get("source")
+    _tl = subprocess.run(["git", "log", "-1", "--format=%h|%cs|%s", "--grep=^Twin: copy from LLMday", "--", "../" + _tf, "../past/" + _tf],
+                         capture_output=True, text=True).stdout.strip().split("|", 2)
+    _twin_rows.append({"folder": _tf, "source_url": "https://llmday.com/%s/" % _t.get("source"),
+                       "commit": _tl[0] if len(_tl) == 3 else "", "date": _tl[1] if len(_tl) == 3 else "",
+                       "llmday": _tl[2].rsplit(" ", 1)[-1] if len(_tl) == 3 else ""})
+    print("Twin %s: last copy %s" % (_tf, " ".join(_tl) or "none in the fetched history"))
+context["status_twins"] = _twin_rows
 
 # MAIN PAGES
 print(DIVIDER)

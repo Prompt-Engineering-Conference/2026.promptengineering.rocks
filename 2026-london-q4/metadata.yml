@@ -33,7 +33,7 @@ breaks:
   comment: Main lobby
   opening: true  # opening breaks run in this order and end at start_time: 8:00 - 9:30
 - title: Coffee break
-  duration: 30
+  duration: 45
   comment: Main lobby
   # this decides how many talks in-between this and previous section
   talks_before: 0

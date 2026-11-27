@@ -504,10 +504,20 @@ _ob_vname, _ob_vaddr = (_VENUE_TBC, str(context.get('location_string', ''))) if 
 # Same numbers as _SLOTS_PER_TRACK / SCHEDULE_AUTO_PCT in home/_build/generate.py.
 SCHEDULE_AUTO_PCT = 70
 SLOTS_PER_TRACK = 12
+# 2-day events (Marek 2026-10-20, Campinas 2026): 12 slots per track PER DAY, so the slot counts below use tracks x days
+SLOT_DAYS = int(re.sub(r"[^\d]", "", str(context.get("days") or "1")) or 1)
+# TRACK OFFSET (Marek 2026-11-08): metadata `track_offset: {<track>: x}` starts that track x slots (DEFAULT_TALK_DURATION
+# each) after the others would start it, right after the opening break(s), so a short track needs no filler rows in
+# the sheet; the breaks still land where they do on every other track. A negative x digs into the opening break(s)
+# instead: the track starts x slots earlier and its first block of talks gets x more rows. Keys are the CSV "track"
+# values (on a split 2-day track the offset applies to each day). The offset slots leave (or add to) the slot count.
+_track_offset = {str(k).strip(): int(v or 0) for k, v in (context.get("track_offset") or {}).items()}
+_toff = lambda track: _track_offset.get(str(track).split(" (day ")[0].strip(), 0)
+_TOFF_SLOTS = sum(_track_offset.values())
 if str(context.get("event_state") or "").strip() == "before":
-    _auto_tracks = int(re.sub(r"[^\d]", "", str(context.get("tracks") or "1")) or 1)
+    _auto_tracks = int(re.sub(r"[^\d]", "", str(context.get("tracks") or "1")) or 1) * SLOT_DAYS
     _auto_live = sum(1 for t in talks_raw if talk_kind(t.get("status")) in LIVE_KINDS)
-    _auto_pct = round(100.0 * _auto_live / (_auto_tracks * SLOTS_PER_TRACK))
+    _auto_pct = round(100.0 * _auto_live / max(_auto_tracks * SLOTS_PER_TRACK - _TOFF_SLOTS, 1))
     _auto_venue = not context.get("venue_tbc") and bool(_ob_vname) \
         and not re.search(r"\b(tba|tbc|tbd|to be (confirmed|announced))\b", _ob_vname, re.I)
     if _auto_pct >= SCHEDULE_AUTO_PCT and _auto_venue:
@@ -520,9 +530,20 @@ if str(context.get("event_state") or "").strip() == "before":
         if _auto_new != _auto_src:
             with open('metadata.yml', 'w', encoding='utf-8') as f:
                 f.write(_auto_new)
-        print("Schedule auto-published: %d/%d talks (%d%%), event_state before -> active" % (_auto_live, _auto_tracks * SLOTS_PER_TRACK, _auto_pct))
+        print("Schedule auto-published: %d/%d talks (%d%%), event_state before -> active" % (_auto_live, _auto_tracks * SLOTS_PER_TRACK - _TOFF_SLOTS, _auto_pct))
     else:
-        print("Schedule not published yet: %d/%d talks (%d%%, publishes at %d%%)%s" % (_auto_live, _auto_tracks * SLOTS_PER_TRACK, _auto_pct, SCHEDULE_AUTO_PCT, "" if _auto_venue else ", and no confirmed venue"))
+        print("Schedule not published yet: %d/%d talks (%d%%, publishes at %d%%)%s" % (_auto_live, _auto_tracks * SLOTS_PER_TRACK - _TOFF_SLOTS, _auto_pct, SCHEDULE_AUTO_PCT, "" if _auto_venue else ", and no confirmed venue"))
+
+# SCHEDULE HEADING (Marek 2026-10-17): "Schedule - work in progress" until 80% of the talk slots are filled - the same
+# count as above, live talks.csv rows against 12 slots per track - then just "Schedule". An event that is over always
+# says "Schedule" (see EVENT OVER below).
+SCHEDULE_FULL_PCT = 80
+_sh_tracks = int(re.sub(r"[^\d]", "", str(context.get("tracks") or "1")) or 1) * SLOT_DAYS
+_sh_live = sum(1 for t in talks_raw if talk_kind(t.get("status")) in LIVE_KINDS)
+context["schedule_fill_pct"] = round(100.0 * _sh_live / max(_sh_tracks * SLOTS_PER_TRACK - _TOFF_SLOTS, 1))
+context["schedule_wip"] = context["schedule_fill_pct"] < SCHEDULE_FULL_PCT
+print("Schedule heading: %d/%d talks (%d%%)%s" % (_sh_live, _sh_tracks * SLOTS_PER_TRACK - _TOFF_SLOTS, context["schedule_fill_pct"],
+                                                  " - work in progress" if context["schedule_wip"] else ""))
 
 # EVENT OVER -> "after" (Marek 2026-10-15): over = metadata says event_state: after, OR a full 24 h have passed since
 # the event ended (end of its last day, `days` long, in the event's own timezone). Then the build treats the event as
@@ -771,12 +792,12 @@ for _brk in context.get("breaks") or []:
 _rows_by_track = {}
 for _talk in talks:
     _rows_by_track.setdefault(_talk.get("track"), []).append(_talk)
-for _track_rows in _rows_by_track.values():
+for _track_key, _track_rows in _rows_by_track.items():
     _lead = None
-    for _pos, _talk in enumerate(_track_rows):
+    for _pos, _talk in enumerate(_track_rows, _toff(_track_key)):
         _raw = _talk.get("duration")
         _minutes = int(_raw) if _raw is not None and _raw != "" else DEFAULT_TALK_DURATION
-        if (_lead is not None and _pos not in _break_cuts
+        if (_lead is not None and (_pos <= 0 or _pos not in _break_cuts)
                 and _talk.get("name", "").strip() == _lead.get("name", "").strip()
                 and _talk.get("title", "").strip() == _lead.get("title", "").strip()):
             _talk["merged_into"] = _lead["id"]
@@ -885,12 +906,25 @@ context["about_topics"] = _about_topics
 tracks_ordered = []
 # all talks sorted in tracks (every sheet row: see LONGER SESSIONS)
 tracks = dict()
+# multi-day events (Marek 2026-10-20, Campinas 2026: one track over two days, "track" 1 on both days, "day" 1 / 2):
+# the schedule splits days by track order (tracks / days per day), so a track value used on several days becomes one
+# track per day, "1 (day 2)" etc., in day order. Track values that differ per day (Paris "day1" / "day2") are untouched.
+_tk_days = max(1, int(context.get("days") or 1))
+_tk_seen = {}
+for talk in _talk_rows:
+    _tk_seen.setdefault(talk.get("track"), set()).add(str(talk.get("day") or "").strip())
+_tk_split = _tk_days > 1 and any(len(v) > 1 for v in _tk_seen.values())
 for talk in _talk_rows:
     track = talk.get("track")
+    if _tk_split and len(_tk_seen[track]) > 1:
+        track = "%s (day %s)" % (track, str(talk.get("day") or "").strip() or "1")
     if track not in tracks:
         tracks[track] = []
         tracks_ordered.append(track)
     tracks[track].append(talk)
+if _tk_split:
+    _tk_day = lambda k: int(str(tracks[k][0].get("day") or "1").strip() or 1) if str(tracks[k][0].get("day") or "1").strip().isdigit() else 1
+    tracks_ordered.sort(key=_tk_day)
 # metadata.yml may declare the planned track count ("tracks: N") - that wins
 # for display so pages show the plan before talks are announced
 _planned_tracks = context.get("tracks") if isinstance(context.get("tracks"), int) else None
@@ -901,6 +935,8 @@ context["tracks_display"] = _planned_tracks or max(len(tracks_ordered), 1)
 # coffee" - without a plenary to open the day, that slot is when people arrive and register
 if not keynotes:
     for _b in context.get("breaks") or []:
+        if _b.get("opening"):
+            continue
         if int(_b.get("talks_before") or 0) == 0 and str(_b.get("title", "")).strip().lower() == "coffee break":
             _b["title"] = "Registration and coffee"
         break
@@ -912,14 +948,25 @@ breaks = context.get("breaks") or []
 for _bi, _brk in enumerate(breaks):
     _brk["_brk_idx"] = _bi
 keynote_breaks = [b for b in breaks if int(b.get("talks_before") or 0) < 0]
+# an "opening: true" break (e.g. Doors open) comes before the first keynote on every track and
+# ENDS at start_time, so start_time stays the first keynote (countdown, calendar, cfp.ninja)
+# and the day starts that many minutes earlier (Marek 2026-10-28, SREday Amsterdam 2026 Q4)
+opening_breaks = [b for b in breaks if b.get("opening")]
+_opening_minutes = sum(int(b.get("duration") or 0) for b in opening_breaks)
 for track in tracks_ordered:
-    old_order = tracks[track]
+    # TRACK OFFSET: x empty slots ahead of the first talk (dropped with the keynote placeholders, once the times are in)
+    _off = _toff(track)
+    old_order = [dict(placeholder=True, duration=DEFAULT_TALK_DURATION) for _ in range(max(_off, 0))] + tracks[track]
+    _extra = max(-_off, 0)
     new_order = []
     offset = 0
     for brk in breaks:
-        if brk in keynote_breaks:
+        if brk in keynote_breaks or brk in opening_breaks:
             continue
-        for i in range(brk.get("talks_before")):
+        _n = brk.get("talks_before")
+        if _extra and _n > 0:                     # negative offset: the first block takes x more rows
+            _n, _extra = _n + _extra, 0
+        for i in range(_n):
             if offset < len(old_order):
                 new_order.append(old_order[offset])
                 offset += 1
@@ -930,9 +977,20 @@ for track in tracks_ordered:
         offset += 1
     new_order.append(dict(
         title="Wrap up",
-        comment="Scan each other's QR codes & head to a nearby pub!",
+        comment=context.get("wrap_up_comment") or "Scan each other's QR codes & head to a nearby pub!",   # metadata wrap_up_comment: the event's own line
         duration=0,
     ))
+    # negative offset: the track starts x slots into the opening break(s), shortened from the end (gone at 0 min)
+    if _off < 0:
+        _lead_n = 0
+        while _lead_n < len(new_order) and "_brk_idx" in new_order[_lead_n] and not new_order[_lead_n].get("name"):
+            _lead_n += 1
+        _cut = -_off * DEFAULT_TALK_DURATION
+        for _b in reversed(new_order[:_lead_n]):
+            _take = min(_cut, int(_b.get("duration") or 0))
+            _b["duration"] = int(_b.get("duration") or 0) - _take
+            _cut -= _take
+        new_order = [b for b in new_order[:_lead_n] if b["duration"] > 0] + new_order[_lead_n:]
     # the breaks are placed by sheet row; now each longer session is one item
     tracks[track] = [t for t in new_order if not t.get("merged_into")]
 
@@ -955,11 +1013,11 @@ for i, track in enumerate(tracks_ordered):
         _after = -int(brk["talks_before"])
         if _after < len(prepend):
             prepend.insert(_after, brk.copy())
-    tracks[track] = prepend + tracks[track]
+    tracks[track] = [b.copy() for b in opening_breaks] + prepend + tracks[track]
 
 # insert times & durations
 for track in tracks:
-    current_time = datetime.datetime.fromisoformat(context.get("start_time"))
+    current_time = datetime.datetime.fromisoformat(context.get("start_time")) - timedelta(minutes=_opening_minutes)
     for talk in tracks[track]:
         raw = talk.get("duration")
         talk["duration"] = int(raw) if raw is not None and raw != "" else DEFAULT_TALK_DURATION
@@ -987,6 +1045,13 @@ for brk in breaks:
                         tracks[track][j]["start_time"] = current
                         current += timedelta(minutes=tracks[track][j]["duration"])
                     break
+
+# TRACK OFFSET: a track with an offset wraps up with the rest of its day, not when its own talks run out
+_wd = max(len(tracks_ordered) // max(int(context.get("days") or 1), 1), 1)
+for _ti, _track in enumerate(tracks_ordered):
+    if _toff(_track) and tracks[_track] and tracks[_track][-1].get("title") == "Wrap up":
+        _same_day = tracks_ordered[_wd * (_ti // _wd):_wd * (_ti // _wd + 1)]
+        tracks[_track][-1]["start_time"] = max(tracks[t][-1]["start_time"] for t in _same_day if tracks[t])
 
 # ── HELLO INTRO (Marek 2026-11-08) ───────────────────────────────────────────
 # Every day gets "Hello <city>!!! - short Intro to <brand>", 10 minutes carved out of a break that is already there, so
@@ -1043,7 +1108,7 @@ if context.get("city_name") and not context.get("schedule_embed"):
 # ── END HELLO INTRO ──────────────────────────────────────────────────────────
 
 # compute schedule time bracket
-schedule_start = datetime.datetime.fromisoformat(context.get("start_time"))
+schedule_start = datetime.datetime.fromisoformat(context.get("start_time")) - timedelta(minutes=_opening_minutes)
 schedule_end = schedule_start
 for track in tracks:
     for talk in tracks[track]:
@@ -1734,7 +1799,7 @@ def _inv_host_company(sponsors):
 
 _inv_rows = _inv_confirmed(talks_raw)
 _inv_tracks = int(context.get('tracks_display') or 1)
-_inv_target = _INV_SLOTS_PER_TRACK * _inv_tracks
+_inv_target = _INV_SLOTS_PER_TRACK * _inv_tracks * SLOT_DAYS
 _inv_pct = int(round(100.0 * len(_inv_rows) / _inv_target)) if _inv_target else 0
 _inv_tier = 'strong' if _inv_pct >= 50 else ('building' if _inv_pct >= 25 else 'early')
 _inv_src = context['onboarding_event']
@@ -1810,6 +1875,8 @@ print("Sponsor onboarding: %s | %d opportunities | size %s" % (
 # onboarding, fasttrack, teasers, communityhero, invitation and onboardsponsor pages are written as "This event has
 # ended" (ended.html) so a past event's forms, cards and ticket codes can no longer be used. The waitlist stays live.
 _EVENT_ENDED = _event_over()
+if _EVENT_ENDED:
+    context["schedule_wip"] = False                 # a past event's schedule is what happened: no "work in progress"
 
 
 def _next_sponsorship_url():
